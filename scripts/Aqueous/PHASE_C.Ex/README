@@ -1,0 +1,86 @@
+OBJECTIVE:
+In this directory you create the PRMTOP of the coarse-grained protein 
+based on MINIZ (minimized structure from phase B)
+
+**** IMPOTANT **** make sure you have the right path for amber directory
+__________________________________________________________________________
+
+STEPS:
+
+1) run cpFiles.csh
+	
+	./cpFiles.csh name dir
+
+name: the same name used for all files in the bulk case
+dir: is the name for the bulk directory where you have all needed input files 
+
+
+example: ./cpFiles.csh cdf ../PHASE_B
+
+
+2) run PhaseC.csh
+
+       ./PhaseC.csh  pdb name chain model map disulfile ureatype crowdtype RG MG crowdnum box
+
+pdb: input pdb file
+name: the same name used for all files in the bulk case
+model: BT or  GO
+map: BT map
+disulfile: file with the list of disulfide bonds
+ureatype: urea (nourea)
+crowdtype: 0 (no crowders), 1 (spherical crowders), and 2 (dumbbell crowders)
+RG: rg for spherical crowder
+MG: mass of spherical crowder
+crowdnum: number of crowders
+box: size of the simulation box (PBC)
+
+Example: ./PhaseC.csh  1CFD.pdb  cfd A GO BTmap.dat ds.inp nourea 0 11.485 3250.0 0 300
+
+__________________________________________________________________________
+
+NOTES:
+
+1) The input files:
+
+	PDB file
+	MINIZ file
+	PAIR file
+	HB file
+	ATOM file
+	NUM file
+
+2) The needed scripts and other files:
+
+	a) c code
+
+	        frcfield_ab.amber10.c				  : generates the force field for the protein (frc.go)
+
+	b) shell scripts 
+		
+		PhaseC.csh						  : the main script
+
+	c) perl scripts
+
+		calc6-12out.all.parm7.tmp (template) 			  : calculates the LJ parameters for GO model
+		tlp.cacb.pl			  		  : creates the cacb tleap script for protein and crowders
+
+	d) header file
+
+		IOablinux.header (template, will be updated in step4.csh) : header file
+
+3) The output files:
+
+	TOP								  : prmtop file
+	OUTCRD								  : crd file
+
+4) The script "addCrowd.csh" has more comments.
+
+
+___________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
+                                                UPDATES
+___________________________________________________________________________________________________________________
+
+Jul 3, 2012 Dirar: Replacing the EP residue with ZP. EP is confused with "Extra Points" in Amber10.
+
+

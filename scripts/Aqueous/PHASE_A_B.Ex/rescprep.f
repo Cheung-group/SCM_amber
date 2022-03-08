@@ -1,0 +1,279 @@
+	SUBROUTINE rescprep(ENPDB,NRES,CHNM,K1,K2)
+	CHARACTER*150 ENPDB
+	CHARACTER*1 CHNM
+ 1000	FORMAT (A72)
+ 1001	FORMAT (F4.2,A68)
+	CALL FNDATA
+	call prep(ENPDB,NRES,CHNM,K1,K2)
+	RETURN
+	END
+	SUBROUTINE FNDATA
+	CHARACTER*1 ALET(10),ALET1(13)
+	CHARACTER*3 NAM3(20)
+	INTEGER*4 SVT(36),NFAR(20)
+	INTEGER*2 SVAR(167)
+	COMMON /CALET/	ALET, ALET1
+	COMMON /CRA/	RA(13), SN, ZN, SZP, SAP
+	COMMON /CNAM/ NAM3
+	COMMON /CSVT/	SVT
+	COMMON /CNFAR/	NFAR
+	COMMON /CSVAR/ SVAR
+	DATA ALET /'0','1','2','3','4','5','6','7','8','9'/
+	DATA ALET1 /'N','O','C','S','P','L','F','R','I','E','A',' ','*'/
+      DATA RA	/1.7, 1.5, 1.9, 1.9, 1.23, 1.75, 1.7, 1.85, 2.0, 1.5
+     2          ,1.5, 1.5, 1.5/
+      DATA NAM3	/'ALA','ARG','ASN','ASP','CYS','GLN','GLU','GLY','HIS'
+     2          ,'ILE','LEU','LYS','MET','PHE','PRO','SER','THR','TRP'
+     3          ,'TYR','VAL'/
+      DATA SVT	/-1,-1,-1,1,-1,-1,-1,-1, 1,-1,1,-1,-1,-1,1,1,1
+     2          ,-1,-1,1,-1, -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+     3          ,1,-1,1/
+      DATA SVAR	/3,7,6,2,4,  3,7,6,2,4,4,7,3,6,3,3,  3,7,6,2,4,6,2,3
+     2          ,3,7,6,2,4,6,2,2, 3,7,6,2,4,6,3,7,6,2,4,4,6,2,3
+     3          ,3,7,6,2,4,4,6,2,2, 3,6,6,2,  3,7,6,2,4,5,1,5,5,1
+     4          ,3,7,6,2,4,4,4,4 ,3,7,6,2,4,4,4,4,  3,7,6,2,4,4,4,7,3
+     5          ,3,7,6,2,4,4,8,4, 3,7,6,2,4,5,5,5,5,5,5,  6,4,6,2,4,4,4
+     6          ,3,7,6,2,6,1, 3,7,6,2,6,1,4 ,3,7,6,2,4,5,5,5,3,5,5,5,5,5
+     7          ,3,7,6,2,4,5,5,5,5,5,5,1, 3,7,6,2,4,4,4/
+      DATA NFAR	/1,6,17,25,33,39,48,57,61,71,79,87,96,104,115,122,128,
+     2           135,149,161/
+	return
+	end
+      SUBROUTINE WIF083 (XUACC,YUACC,ZUACC)
+      IMPLICIT       NONE
+      INTEGER        NKO, IQA, IQC, JJ, K, I, J, KMIN, IQB
+      REAL           XB, YB, PH, CT, ST, MINDST, DST, TMP,
+     +               XUACC(1000), YUACC(1000),ZUACC(1000)
+      NKO=14
+      IQA=0
+      IQB=1
+      DO 10 I=1,NKO
+         IQC=IQA+IQB
+         IQA=IQB
+         IQB=IQC
+   10 CONTINUE
+      JJ=0
+      DO 20 K=1,IQB
+         XB=FLOAT(K)/FLOAT(IQB)
+         JJ=JJ+IQA
+         IF (JJ.GT.IQB) JJ=JJ-IQB
+         YB=FLOAT(JJ)/FLOAT(IQB)
+         PH=3.1415926*2.0*YB
+         CT=1.0-2.0*XB
+         ST=SQRT(1.0-CT*CT)
+         XUACC(K)=ST*COS(PH)
+         YUACC(K)=ST*SIN(PH)
+         ZUACC(K)=CT
+   20 CONTINUE
+      DO 30 K=3,IQB
+         MINDST=(XUACC(K)-XUACC(K-1))**2+(YUACC(K)-YUACC(K-1))**2+
+     +        (ZUACC(K)-ZUACC(K-1))**2+(XUACC(K)-XUACC(K-2))**2+
+     +        (YUACC(K)-YUACC(K-2))**2+(ZUACC(K)-ZUACC(K-2))**2
+         KMIN=K
+         DO 35 J=K+1,MIN(IQB,K+80)
+            DST=(XUACC(J)-XUACC(K-1))**2+(YUACC(J)-YUACC(K-1))**2+
+     +           (ZUACC(J)-ZUACC(K-1))**2+(XUACC(J)-XUACC(K-2))**2+
+     +           (YUACC(J)-YUACC(K-2))**2+(ZUACC(J)-ZUACC(K-2))**2
+            IF (DST.LT.MINDST) THEN
+               MINDST=DST
+               KMIN=J
+            END IF
+ 35      CONTINUE
+         IF (KMIN.GT.K) THEN
+            TMP=XUACC(K)
+            XUACC(K)=XUACC(KMIN)
+            XUACC(KMIN)=TMP
+            TMP=YUACC(K)
+            YUACC(K)=YUACC(KMIN)
+            YUACC(KMIN)=TMP
+            TMP=ZUACC(K)
+            ZUACC(K)=ZUACC(KMIN)
+            ZUACC(KMIN)=TMP
+         END IF
+ 30   CONTINUE
+      RETURN
+      END
+      SUBROUTINE  SURFA(I,NA,SA)
+      INTEGER*2   COD(29000), NAA(29000)
+      DIMENSION   NT(1000), SS(1000)
+	COMMON /IKC/	IKR(1000)
+	COMMON /NTSS/	IK, NT, SS
+	COMMON /CNN2/	N11, N22
+	COMMON /CIJR/	IJR
+	COMMON /CRW/	RWW
+	COMMON /CXYZ/ 	X(29000), Y(29000), Z(29000)
+	COMMON /CCCOD/	COD
+	COMMON /XTT/	XT, YT, ZT
+	COMMON /CRA/	RA(13), SN, ZN, SZP, SAP
+	COMMON /PPP/	IP
+	COMMON /CNAA/	NAA
+	COMMON /CXCR/	XCR(4000), YCR(4000), ZCR(4000), RDR(4000)
+	COMMON /NABEC/	NAB(4000), NAE(4000),NRINSQ(4000)
+     	COMMON /UACC/ 	XUACC(1000), YUACC(1000), ZUACC(1000)
+	COMMON /CBUMP/  IRB, LRB(100)
+      PI=3.1415926
+	RWW=1.4
+	IP=0
+      SA=0.
+      J=COD(I)
+      IF (J.EQ.0.) GOTO 100
+      RR=RA(J)+RWW
+      IK=0
+      X1=X(I)
+      Y1=Y(I)
+      Z1=Z(I)
+	DO 101 J1=1,IJR
+	J11=NAB(J1)
+	IF (J11.EQ.N11) GOTO 4
+	R11=RR+RDR(J1)+RWW
+	R1=R11*R11
+	X2=X1-XCR(J1)
+	Y2=Y1-YCR(J1)
+	Z2=Z1-ZCR(J1)
+  	RK=X2*X2+Y2*Y2+Z2*Z2
+	IF (RK.GT.R1) GOTO 101
+    4	J22=NAE(J1)
+	IAA=0
+	DO 105 J=J11,J22
+	IF (I.EQ.J) GOTO 105
+   77	J2=COD(J)
+	R11=RR+RA(J2)+RWW
+	R1=R11*R11
+	X2=X1-X(J)
+	Y2=Y1-Y(J)
+	Z2=Z1-Z(J)
+	RK=X2*X2+Y2*Y2+Z2*Z2
+	IF (RK.GT.R1) GOTO 105
+	IK=IK+1
+	NT(IK)=J
+	SS(IK)=RK
+  105	CONTINUE
+  101	CONTINUE
+      I1=IK-1
+      DO 104 J=1,I1
+      R1=SS(J)
+      J1=J+1
+      DO 104 K=J1,IK
+      IF(SS(K).GT.R1) GOTO 104
+      SS(J)=SS(K)
+      SS(K)=R1
+      R1=SS(J)
+      K1=NT(J)
+      NT(J)=NT(K)
+      NT(K)=K1
+  104 CONTINUE
+	DO 103 J=1,IK
+  103 IKR(J) = 0
+      SN=0.
+      ZN=0.
+	DO 102 J=1,610
+         XT=XUACC(J)*RR+X1
+         YT=YUACC(J)*RR+Y1
+         ZT=ZUACC(J)*RR+Z1
+      IP=IP+1
+      DO 106 JJ=1,IK
+      I1=NT(JJ)
+      J1=COD(I1)
+      XC=X(I1)-XT
+      YC=Y(I1)-YT
+      ZC=Z(I1)-ZT
+      XC=XC*XC+YC*YC+ZC*ZC
+      ZC=RA(J1)+RWW
+      YC=ZC*ZC
+      IF(XC.GT.YC) GOTO 106
+	IJ=JJ
+	GOTO 1
+  106 CONTINUE
+      SN=SN+1.
+      GOTO 102
+    1 ZN=ZN+1.
+	IKR(IJ)=IKR(IJ)+1
+  102	CONTINUE
+	SAP=PI*RR*RR*4.
+	SZP=SN+ZN
+      SA=SAP*SN/SZP
+  100 RETURN
+      END
+	SUBROUTINE   SSCONT(I,ISU,IACON,II)
+	CHARACTER*1  CMET(29000), CA1(29000), CA2(29000), CA3(29000)
+     2              ,B4(995), B6(995), B7(995), B5(995), B11(995)
+     3              ,B15(995), BB7(995), BB8(995)
+	CHARACTER*1  NAMCH(29000), B2(995), NACH
+	CHARACTER*3  NAM3(20), NAMR(29000), B3(995)
+	INTEGER*2    COD(29000), SVA(29000), BCC(995)
+       	INTEGER*4    NOR(29000), B1(995), ISUPR(10)
+     2              ,B8(995), IKR(1000), NOR1, B12(995), B13(995)
+     3              ,SVT(36), B14(995), B0(995)
+	DIMENSION    NT(1000), SS(1000), B9(995), B10(995)
+	COMMON /COMCC/	CMET, CA1, CA2, CA3
+	COMMON /CCCOD/	COD
+        COMMON /BIC/	B1, B8
+	COMMON /B1C/	B2, B4, B5, B6, B7, B11, B15, BB7, BB8
+	COMMON /B3C/	B3
+	COMMON /N3C/	NAM3
+	COMMON /NMC/	NACH, NAMR, NAMCH
+	COMMON /NOC/	NOR1, NOR
+	COMMON /SVC/	SVA
+	COMMON /CRA/	RA(13), SN, ZN, SZP, SAP
+	COMMON /BCBC/	BCC
+	COMMON /NTSS/	IK, NT, SS
+	COMMON /IKC/	IKR
+	COMMON /B9C/	B9, B10
+	COMMON /CSUFT/	SUFT(10,10)
+	COMMON /CSUPR/	SUPR(10)
+	COMMON /CNTYP/	NTYP
+	COMMON /CB14/	B12, B13, B14, B0
+	COMMON /CSVT/	SVT
+	COMMON /CRW/	RWW
+	COMMON /CNHB/	NHB, N1HB(500), N2HB(500)
+	COMMON /CIPR/	IPRIZ
+	ITT=SVA(I)
+	DO 100 ifz=1,10
+  100	ISUPR(Ifz)=0
+	IV=COD(I)
+	R1=RA(IV)
+	DO 300 IQ=1,IK
+	IIQ=IKR(IQ)
+	IF (IIQ.EQ.0) GOTO 300
+	INA=NT(IQ)
+	IF (NAMCH(I).EQ.NAMCH(INA).AND.NAMR(INA).EQ.NAMR(I)
+     2.AND.NOR(INA).EQ.NOR(I)) GOTO 300
+	ifp=1
+	ISU=ISU+1
+	TT=SS(IQ)
+	B9(ISU)=TT
+	IV=COD(INA)
+	JTT=SVA(INA)
+	ISUPR(JTT)=ISUPR(JTT)+IIQ
+	B12(ISU)=ITT
+	B13(ISU)=JTT
+	KTT=(2*NTYP-ITT)*(ITT-1)/2+JTT
+	IF (ITT.GT.JTT) KTT=(2*NTYP-JTT)*(JTT-1)/2+ITT
+	B14(ISU)=SVT(KTT)
+   84   B1(ISU)=NOR(INA)
+	B5(ISU)=CA2(INA)
+	B11(ISU)=CA3(INA)
+	B4(ISU)=CA1(INA)
+	B6(ISU)=CA1(I)
+	B7(ISU)=CA2(I)
+	BB7(ISU)=CMET(I)
+	BB8(ISU)=CMET(INA)
+	B15(ISU)=CA3(I)
+	B3(ISU)=NAMR(INA)
+	B2(ISU)=NAMCH(INA)
+	B8(ISU)=II
+	B10(ISU)=IIQ*SAP/SZP
+	B0(ISU)=0
+	IF (ITT.GT.3.OR.JTT.GT.3) GOTO 300
+	IF (ITT.GT.1.AND.ITT.EQ.JTT) GOTO 300
+	B0(ISU)=1
+	NHB=NHB+1
+	N1HB(NHB)=I
+	N2HB(NHB)=INA
+  300   IIZ=IIZ+IIQ
+	DO 101 Irz=1,10
+  101	SUPR(Irz)=SAP*ISUPR(Irz)/SZP
+ 1000   FORMAT (2X,2I4,4F10.2)
+    1   RETURN
+	END
+

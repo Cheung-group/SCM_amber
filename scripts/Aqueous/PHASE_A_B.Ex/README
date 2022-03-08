@@ -1,0 +1,103 @@
+OBJECTIVE:
+In this directory you create all the files you need to create a coarse-grained
+mode of protein starting from a pdf file. The created files can be used in 
+any MD package using AMBER force field. 
+
+**** IMPOTANT **** make sure you have the right path for amber directory
+__________________________________________________________________________
+
+STEPS:
+
+run CaCb.csh
+
+Usage:   ./CaCb.new.csh  pdb       name chain model map disulfile ureatype crowdtype RG MG crowdnum box
+
+pdb: input pdb file
+name: the same name used for all files in the bulk case
+model: BT or  GO
+map: BT map
+disulfile: file with the list of disulfide bonds
+ureatype: urea (nourea)
+crowdtype: 0 (no crowders), 1 (spherical crowders), and 2 (dumbbell crowders)
+RG: rg for spherical crowder
+MG: mass of spherical crowder
+crowdnum: number of crowders
+box: size of the simulation box (PBC)
+
+
+Example: Aqeuous with GO model
+
+./CaCb.new.csh  1CFD.pdb  cfd   A    GO   BTmap.dat ds.inp nourea 0 11.485 3250.0 0 300
+
+ureatype: must be "nourea"
+crowdtype: must be "0"
+RG MG crowdnum box: these value don't affect the output if crowdtype is "0"
+
+__________________________________________________________________________
+
+NOTES:
+
+1) The input files:
+
+	pdb file
+	ds.inp								  : disulfide bond list
+
+2) The needed scripts and other files:
+
+	a) c code
+
+		beta_coor.c						  : calculates the cbeta coordinate
+	        format.c						  : formats the crd file
+	        resc.c						  	  : generates SC contacts (see reference)
+	        frcfield_ab.xy.amber10.c				  : generates the force field for the protein (frc.go)
+		countHB.c						  : produces pseudo.inp
+		triple.c						  : produces triple.inp
+
+	b) shell scripts 
+		
+		CaCb.csh						  : the main script
+
+	c) perl scripts
+
+		removeH_OT.pl 						  : removes Hydrogen and OT atoms from the original pdb file
+	        numbers.pl						  : calculates NATOM and NTYPE for use in header files
+		hbond-dssp.pl						  : extract HB pairs
+	 	clean_HBlist.pl						  : cleans HB list	
+		makemap.ab.pl 						  : extracts the SC pair list 
+		calc6-12out.GO.parm7.tmp (template) 			  : calculates the LJ parameters for GO model
+		calc6-12out.HOMO.parm7.tmp (template)			  : calculates the LJ parameters for homo GO model
+		calc6-12out.BT.parm7.tmp (template)			  : calculates the LJ parameters for BT model
+
+	d) executable 
+
+		dssp							  : DSSP algorithm exec (see reference)
+
+	e) header file
+
+		IOab.header (template, will be updated in CaCb.csh)  	  : header file
+		IOab.1.header (template, will be updated in CaCb.csh)     : header file
+		IOablinux.header (template, will be updated in CaCb.csh) : header file
+
+3) The output files:
+
+	PDB								  : pdb file with no Hydrogen or OT's
+	NUM								  : file that has the natom and ntype
+	NATIVE								  : crd file of the native state
+	ATOM								  : atom index file
+	HB								  : HB pair index file
+	SC								  : SC contact pair index file
+	PAIR								  : PAIR contact pair index file
+	TOP								  : prmtop file
+	pseudo.inp
+	triple.inp
+
+4) The script "CaCb.csh" has more comments.
+
+
+___________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________
+						UPDATES
+___________________________________________________________________________________________________________________
+
+Jul 3, 2012 Dirar: Replacing the EP residue with ZP. EP is confused with "Extra Points" in Amber10.
+

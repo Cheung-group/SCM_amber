@@ -1,0 +1,3901 @@
+cacb_unit = createUnit CACB
+mon0 = createAtom A0 A0 0.0
+set mon0 position {-2.66526315789474	14.1236842105263	6.90263157894737}
+cacb_res0 = createResidue R0
+add cacb_res0 mon0
+mon1 = createAtom N0 N0 0.0
+set mon1 position {-2.54315789473684	14.4910526315789	7.02052631578947}
+add cacb_res0 mon1
+add cacb_unit cacb_res0
+bond mon1 mon0
+mon2 = createAtom A1 A1 0.0
+set mon2 position {-3.07394736842105	14.3963157894737	6.01026315789474}
+cacb_res1 = createResidue R1
+add cacb_res1 mon2
+bond mon2 mon0
+mon3 = createAtom N1 N1 0.0
+set mon3 position {-3.34578947368421	14.6847368421053	5.96026315789474}
+add cacb_res1 mon3
+add cacb_unit cacb_res1
+bond mon3 mon2
+mon4 = createAtom A2 A2 0.0
+set mon4 position {-2.26473684210526	14.2578947368421	5.40605263157895}
+cacb_res2 = createResidue R2
+add cacb_res2 mon4
+bond mon4 mon2
+mon5 = createAtom N2 N2 0.0
+set mon5 position {-2.34	14.4405263157895	5.04894736842105}
+add cacb_res2 mon5
+add cacb_unit cacb_res2
+bond mon5 mon4
+mon6 = createAtom A3 A3 0.0
+set mon6 position {-1.67394736842105	14.6	6.13552631578947}
+cacb_res3 = createResidue R3
+add cacb_res3 mon6
+bond mon6 mon4
+mon7 = createAtom N3 N3 0.0
+set mon7 position {-1.73789473684211	14.9960526315789	6.22157894736842}
+add cacb_res3 mon7
+add cacb_unit cacb_res3
+bond mon7 mon6
+mon8 = createAtom A4 A4 0.0
+set mon8 position {-1.28342105263158	14.2371052631579	6.97}
+cacb_res4 = createResidue R4
+add cacb_res4 mon8
+bond mon8 mon6
+mon9 = createAtom N4 N4 0.0
+set mon9 position {-1.11657894736842	13.87	6.90368421052632}
+add cacb_res4 mon9
+add cacb_unit cacb_res4
+bond mon9 mon8
+mon10 = createAtom A5 A5 0.0
+set mon10 position {-0.870526315789474	14.7184210526316	7.74526315789474}
+cacb_res5 = createResidue R5
+add cacb_res5 mon10
+bond mon10 mon8
+mon11 = createAtom N5 N5 0.0
+set mon11 position {-1.09710526315789	14.9376315789474	7.99342105263158}
+add cacb_res5 mon11
+add cacb_unit cacb_res5
+bond mon11 mon10
+mon12 = createAtom A6 A6 0.0
+set mon12 position {-0.105526315789474	14.2042105263158	8.12894736842105}
+cacb_res6 = createResidue R6
+add cacb_res6 mon12
+bond mon12 mon10
+mon13 = createAtom N6 N6 0.0
+set mon13 position {0.0557894736842105	13.9431578947368	7.84605263157895}
+add cacb_res6 mon13
+add cacb_unit cacb_res6
+bond mon13 mon12
+mon14 = createAtom A7 A7 0.0
+set mon14 position {0.525	14.3828947368421	8.87552631578947}
+cacb_res7 = createResidue R7
+add cacb_res7 mon14
+bond mon14 mon12
+mon15 = createAtom N7 N7 0.0
+set mon15 position {0.375526315789474	14.4231578947368	9.23789473684211}
+add cacb_res7 mon15
+add cacb_unit cacb_res7
+bond mon15 mon14
+mon16 = createAtom A8 A8 0.0
+set mon16 position {1.46078947368421	14.1157894736842	9.05552631578947}
+cacb_res8 = createResidue R8
+add cacb_res8 mon16
+add cacb_unit cacb_res8
+bond mon16 mon14
+mon17 = createAtom A9 A9 0.0
+set mon17 position {1.71763157894737	14.1289473684211	10.0507894736842}
+cacb_res9 = createResidue R9
+add cacb_res9 mon17
+bond mon17 mon16
+mon18 = createAtom N9 N9 0.0
+set mon18 position {1.51578947368421	13.9207894736842	10.3263157894737}
+add cacb_res9 mon18
+add cacb_unit cacb_res9
+bond mon18 mon17
+mon19 = createAtom AA AA 0.0
+set mon19 position {2.60921052631579	14.1497368421053	10.5210526315789}
+cacb_res10 = createResidue R10
+add cacb_res10 mon19
+bond mon19 mon17
+mon20 = createAtom NA NA 0.0
+set mon20 position {2.68736842105263	14.3747368421053	10.8394736842105}
+add cacb_res10 mon20
+add cacb_unit cacb_res10
+bond mon20 mon19
+mon21 = createAtom AB AB 0.0
+set mon21 position {2.63421052631579	13.1602631578947	10.6247368421053}
+cacb_res11 = createResidue R11
+add cacb_res11 mon21
+bond mon21 mon19
+mon22 = createAtom NB NB 0.0
+set mon22 position {2.37815789473684	12.9618421052632	10.8686842105263}
+add cacb_res11 mon22
+add cacb_unit cacb_res11
+bond mon22 mon21
+mon23 = createAtom AC AC 0.0
+set mon23 position {2.73210526315789	13.0260526315789	9.62473684210526}
+cacb_res12 = createResidue R12
+add cacb_res12 mon23
+bond mon23 mon21
+mon24 = createAtom NC NC 0.0
+set mon24 position {3.06868421052632	12.8018421052632	9.58763157894737}
+add cacb_res12 mon24
+add cacb_unit cacb_res12
+bond mon24 mon23
+mon25 = createAtom AD AD 0.0
+set mon25 position {1.78473684210526	12.7515789473684	9.47868421052632}
+cacb_res13 = createResidue R13
+add cacb_res13 mon25
+bond mon25 mon23
+mon26 = createAtom ND ND 0.0
+set mon26 position {1.60710526315789	12.6076315789474	9.81078947368421}
+add cacb_res13 mon26
+add cacb_unit cacb_res13
+bond mon26 mon25
+mon27 = createAtom AE AE 0.0
+set mon27 position {1.09473684210526	13.0481578947368	8.81289473684211}
+cacb_res14 = createResidue R14
+add cacb_res14 mon27
+bond mon27 mon25
+mon28 = createAtom NE NE 0.0
+set mon28 position {1.07631578947368	12.9444736842105	8.42657894736842}
+add cacb_res14 mon28
+add cacb_unit cacb_res14
+bond mon28 mon27
+mon29 = createAtom AF AF 0.0
+set mon29 position {0.163947368421053	12.9997368421053	9.15236842105263}
+cacb_res15 = createResidue R15
+add cacb_res15 mon29
+bond mon29 mon27
+mon30 = createAtom NF NF 0.0
+set mon30 position {-0.0402631578947368	13.3055263157895	9.32631578947368}
+add cacb_res15 mon30
+add cacb_unit cacb_res15
+bond mon30 mon29
+mon31 = createAtom AG AG 0.0
+set mon31 position {-0.139210526315789	12.4344736842105	8.3971052631579}
+cacb_res16 = createResidue R16
+add cacb_res16 mon31
+bond mon31 mon29
+mon32 = createAtom NG NG 0.0
+set mon32 position {-0.391578947368421	12.615	8.13736842105263}
+add cacb_res16 mon32
+add cacb_unit cacb_res16
+bond mon32 mon31
+mon33 = createAtom AH AH 0.0
+set mon33 position {0.263947368421053	11.6763157894737	7.89026315789474}
+cacb_res17 = createResidue R17
+add cacb_res17 mon33
+bond mon33 mon31
+mon34 = createAtom NH NH 0.0
+set mon34 position {0.391842105263158	11.3713157894737	8.12184210526316}
+add cacb_res17 mon34
+add cacb_unit cacb_res17
+bond mon34 mon33
+mon35 = createAtom AI AI 0.0
+set mon35 position {-0.371052631578947	11.5384210526316	7.13578947368421}
+cacb_res18 = createResidue R18
+add cacb_res18 mon35
+bond mon35 mon33
+mon36 = createAtom NI NI 0.0
+set mon36 position {-0.621842105263158	11.2413157894737	7.22368421052632}
+add cacb_res18 mon36
+add cacb_unit cacb_res18
+bond mon36 mon35
+mon37 = createAtom AJ AJ 0.0
+set mon37 position {-0.752631578947368	12.2415789473684	6.51684210526316}
+cacb_res19 = createResidue R19
+add cacb_res19 mon37
+bond mon37 mon35
+mon38 = createAtom NJ NJ 0.0
+set mon38 position {-0.512368421052632	12.5515789473684	6.39789473684211}
+add cacb_res19 mon38
+add cacb_unit cacb_res19
+bond mon38 mon37
+mon39 = createAtom AK AK 0.0
+set mon39 position {-1.48052631578947	12.0334210526316	5.86736842105263}
+cacb_res20 = createResidue R20
+add cacb_res20 mon39
+bond mon39 mon37
+mon40 = createAtom NK NK 0.0
+set mon40 position {-1.79552631578947	11.8244736842105	5.99657894736842}
+add cacb_res20 mon40
+add cacb_unit cacb_res20
+bond mon40 mon39
+mon41 = createAtom AL AL 0.0
+set mon41 position {-1.60263157894737	12.6576315789474	5.08631578947368}
+cacb_res21 = createResidue R21
+add cacb_res21 mon41
+bond mon41 mon39
+mon42 = createAtom NL NL 0.0
+set mon42 position {-1.28657894736842	12.7473684210526	4.84736842105263}
+add cacb_res21 mon42
+add cacb_unit cacb_res21
+bond mon42 mon41
+mon43 = createAtom AM AM 0.0
+set mon43 position {-2.50026315789474	12.5621052631579	4.66552631578947}
+cacb_res22 = createResidue R22
+add cacb_res22 mon43
+bond mon43 mon41
+mon44 = createAtom NM NM 0.0
+set mon44 position {-2.84263157894737	12.7115789473684	4.80763157894737}
+add cacb_res22 mon44
+add cacb_unit cacb_res22
+bond mon44 mon43
+mon45 = createAtom AN AN 0.0
+set mon45 position {-2.47684210526316	12.4939473684211	3.66184210526316}
+cacb_res23 = createResidue R23
+add cacb_res23 mon45
+bond mon45 mon43
+mon46 = createAtom NN NN 0.0
+set mon46 position {-2.61815789473684	12.1781578947368	3.46026315789474}
+add cacb_res23 mon46
+add cacb_unit cacb_res23
+bond mon46 mon45
+mon47 = createAtom AO AO 0.0
+set mon47 position {-3.15315789473684	13.2260526315789	3.56789473684211}
+cacb_res24 = createResidue R24
+add cacb_res24 mon47
+bond mon47 mon45
+mon48 = createAtom NO NO 0.0
+set mon48 position {-3.49368421052632	13.2352631578947	3.77868421052632}
+add cacb_res24 mon48
+add cacb_unit cacb_res24
+bond mon48 mon47
+mon49 = createAtom AP AP 0.0
+set mon49 position {-2.48368421052632	13.8918421052632	3.91657894736842}
+cacb_res25 = createResidue R25
+add cacb_res25 mon49
+bond mon49 mon47
+mon50 = createAtom NP NP 0.0
+set mon50 position {-2.24578947368421	13.8457894736842	4.23368421052632}
+add cacb_res25 mon50
+add cacb_unit cacb_res25
+bond mon50 mon49
+mon51 = createAtom AQ AQ 0.0
+set mon51 position {-2.05789473684211	14.4563157894737	3.21763157894737}
+cacb_res26 = createResidue R26
+add cacb_res26 mon51
+bond mon51 mon49
+mon52 = createAtom NQ NQ 0.0
+set mon52 position {-2.20815789473684	14.7905263157895	3.04973684210526}
+add cacb_res26 mon52
+add cacb_unit cacb_res26
+bond mon52 mon51
+mon53 = createAtom AR AR 0.0
+set mon53 position {-1.36605263157895	14.7528947368421	3.90394736842105}
+cacb_res27 = createResidue R27
+add cacb_res27 mon53
+bond mon53 mon51
+mon54 = createAtom NR NR 0.0
+set mon54 position {-1.32157894736842	15.1478947368421	3.94736842105263}
+add cacb_res27 mon54
+add cacb_unit cacb_res27
+bond mon54 mon53
+mon55 = createAtom AS AS 0.0
+set mon55 position {-1.12473684210526	14.4528947368421	4.81131578947369}
+cacb_res28 = createResidue R28
+add cacb_res28 mon55
+bond mon55 mon53
+mon56 = createAtom NS NS 0.0
+set mon56 position {-0.995526315789474	14.075	4.84421052631579}
+add cacb_res28 mon56
+add cacb_unit cacb_res28
+bond mon56 mon55
+mon57 = createAtom AT AT 0.0
+set mon57 position {-0.760526315789474	15.0281578947368	5.54131578947368}
+cacb_res29 = createResidue R29
+add cacb_res29 mon57
+bond mon57 mon55
+mon58 = createAtom NT NT 0.0
+set mon58 position {-0.965	15.3747368421053	5.61894736842105}
+add cacb_res29 mon58
+add cacb_unit cacb_res29
+bond mon58 mon57
+mon59 = createAtom AU AU 0.0
+set mon59 position {-0.208947368421053	14.7710526315789	6.335}
+cacb_res30 = createResidue R30
+add cacb_res30 mon59
+bond mon59 mon57
+mon60 = createAtom NU NU 0.0
+set mon60 position {0.101052631578947	14.5144736842105	6.28894736842105}
+add cacb_res30 mon60
+add cacb_unit cacb_res30
+bond mon60 mon59
+mon61 = createAtom AV AV 0.0
+set mon61 position {-0.122894736842105	15.4147368421053	7.09078947368421}
+cacb_res31 = createResidue R31
+add cacb_res31 mon61
+bond mon61 mon59
+mon62 = createAtom NV NV 0.0
+set mon62 position {-0.452105263157895	15.5992105263158	7.22236842105263}
+add cacb_res31 mon62
+add cacb_unit cacb_res31
+bond mon62 mon61
+mon63 = createAtom AW AW 0.0
+set mon63 position {0.650263157894737	15.2042105263158	7.67578947368421}
+cacb_res32 = createResidue R32
+add cacb_res32 mon63
+bond mon63 mon61
+mon64 = createAtom NW NW 0.0
+set mon64 position {0.999736842105263	15.0828947368421	7.50894736842105}
+add cacb_res32 mon64
+add cacb_unit cacb_res32
+bond mon64 mon63
+mon65 = createAtom AX AX 0.0
+set mon65 position {0.808947368421053	15.5944736842105	8.59263157894737}
+cacb_res33 = createResidue R33
+add cacb_res33 mon65
+bond mon65 mon63
+mon66 = createAtom NX NX 0.0
+set mon66 position {0.493684210526316	15.7126315789474	8.80894736842105}
+add cacb_res33 mon66
+add cacb_unit cacb_res33
+bond mon66 mon65
+mon67 = createAtom AY AY 0.0
+set mon67 position {1.51263157894737	15.4028947368421	9.27342105263158}
+cacb_res34 = createResidue R34
+add cacb_res34 mon67
+bond mon67 mon65
+mon68 = createAtom NY NY 0.0
+set mon68 position {1.88368421052632	15.4715789473684	9.16236842105263}
+add cacb_res34 mon68
+add cacb_unit cacb_res34
+bond mon68 mon67
+mon69 = createAtom AZ AZ 0.0
+set mon69 position {1.19368421052632	15.4073684210526	10.2315789473684}
+cacb_res35 = createResidue R35
+add cacb_res35 mon69
+bond mon69 mon67
+mon70 = createAtom NZ NZ 0.0
+set mon70 position {0.893421052631579	15.1663157894737	10.3371052631579}
+add cacb_res35 mon70
+add cacb_unit cacb_res35
+bond mon70 mon69
+mon71 = createAtom B0 B0 0.0
+set mon71 position {1.95105263157895	15.4160526315789	10.8910526315789}
+cacb_res36 = createResidue R36
+add cacb_res36 mon71
+add cacb_unit cacb_res36
+bond mon71 mon69
+mon72 = createAtom B1 B1 0.0
+set mon72 position {2.77631578947368	15.9318421052632	11.1305263157895}
+cacb_res37 = createResidue R37
+add cacb_res37 mon72
+bond mon72 mon71
+mon73 = createAtom O1 O1 0.0
+set mon73 position {2.88263157894737	15.9194736842105	11.5160526315789}
+add cacb_res37 mon73
+add cacb_unit cacb_res37
+bond mon73 mon72
+mon74 = createAtom B2 B2 0.0
+set mon74 position {3.53368421052632	15.5555263157895	10.6215789473684}
+cacb_res38 = createResidue R38
+add cacb_res38 mon74
+bond mon74 mon72
+mon75 = createAtom O2 O2 0.0
+set mon75 position {3.58894736842105	15.1626315789474	10.5839473684211}
+add cacb_res38 mon75
+add cacb_unit cacb_res38
+bond mon75 mon74
+mon76 = createAtom B3 B3 0.0
+set mon76 position {3.99578947368421	16.1063157894737	9.91105263157895}
+cacb_res39 = createResidue R39
+add cacb_res39 mon76
+bond mon76 mon74
+mon77 = createAtom O3 O3 0.0
+set mon77 position {4.33184210526316	16.2989473684211	10.0202631578947}
+add cacb_res39 mon77
+add cacb_unit cacb_res39
+bond mon77 mon76
+mon78 = createAtom B4 B4 0.0
+set mon78 position {4.07894736842105	15.8510526315789	8.94868421052632}
+cacb_res40 = createResidue R40
+add cacb_res40 mon78
+bond mon78 mon76
+mon79 = createAtom O4 O4 0.0
+set mon79 position {4.015	16.1386842105263	8.67421052631579}
+add cacb_res40 mon79
+add cacb_unit cacb_res40
+bond mon79 mon78
+mon80 = createAtom B5 B5 0.0
+set mon80 position {5.04184210526316	15.5363157894737	8.97631578947368}
+cacb_res41 = createResidue R41
+add cacb_res41 mon80
+bond mon80 mon78
+mon81 = createAtom O5 O5 0.0
+set mon81 position {5.35789473684211	15.7652631578947	9.08631578947368}
+add cacb_res41 mon81
+add cacb_unit cacb_res41
+bond mon81 mon80
+mon82 = createAtom B6 B6 0.0
+set mon82 position {4.78078947368421	14.8423684210526	9.65289473684211}
+cacb_res42 = createResidue R42
+add cacb_res42 mon82
+bond mon82 mon80
+mon83 = createAtom O6 O6 0.0
+set mon83 position {4.78473684210526	14.9965789473684	10.0336842105263}
+add cacb_res42 mon83
+add cacb_unit cacb_res42
+bond mon83 mon82
+mon84 = createAtom B7 B7 0.0
+set mon84 position {3.83315789473684	14.6357894736842	9.42368421052632}
+cacb_res43 = createResidue R43
+add cacb_res43 mon84
+bond mon84 mon82
+mon85 = createAtom O7 O7 0.0
+set mon85 position {3.64289473684211	14.6521052631579	9.785}
+add cacb_res43 mon85
+add cacb_unit cacb_res43
+bond mon85 mon84
+mon86 = createAtom B8 B8 0.0
+set mon86 position {3.60105263157895	15.0710526315789	8.54631578947368}
+cacb_res44 = createResidue R44
+add cacb_res44 mon86
+add cacb_unit cacb_res44
+bond mon86 mon84
+mon87 = createAtom B9 B9 0.0
+set mon87 position {2.83078947368421	14.5855263157895	8.09815789473684}
+cacb_res45 = createResidue R45
+add cacb_res45 mon87
+bond mon87 mon86
+mon88 = createAtom O9 O9 0.0
+set mon88 position {2.49184210526316	14.5197368421053	8.30868421052632}
+add cacb_res45 mon88
+add cacb_unit cacb_res45
+bond mon88 mon87
+mon89 = createAtom BA BA 0.0
+set mon89 position {2.52815789473684	14.5926315789474	7.1378947368421}
+cacb_res46 = createResidue R46
+add cacb_res46 mon89
+bond mon89 mon87
+mon90 = createAtom OA OA 0.0
+set mon90 position {2.83052631578947	14.6452631578947	6.87210526315789}
+add cacb_res46 mon90
+add cacb_unit cacb_res46
+bond mon90 mon89
+mon91 = createAtom BB BB 0.0
+set mon91 position {1.82394736842105	14.0313157894737	6.6871052631579}
+cacb_res47 = createResidue R47
+add cacb_res47 mon91
+bond mon91 mon89
+mon92 = createAtom OB OB 0.0
+set mon92 position {1.44052631578947	14.1465789473684	6.72131578947368}
+add cacb_res47 mon92
+add cacb_unit cacb_res47
+bond mon92 mon91
+mon93 = createAtom BC BC 0.0
+set mon93 position {2.18815789473684	13.6526315789474	5.82684210526316}
+cacb_res48 = createResidue R48
+add cacb_res48 mon93
+bond mon93 mon91
+mon94 = createAtom OC OC 0.0
+set mon94 position {2.58684210526316	13.5702631578947	5.84105263157895}
+add cacb_res48 mon94
+add cacb_unit cacb_res48
+bond mon94 mon93
+mon95 = createAtom BD BD 0.0
+set mon95 position {1.67078947368421	13.0713157894737	5.175}
+cacb_res49 = createResidue R49
+add cacb_res49 mon95
+bond mon95 mon93
+mon96 = createAtom OD OD 0.0
+set mon96 position {1.30789473684211	13.1952631578947	5.05263157894737}
+add cacb_res49 mon96
+add cacb_unit cacb_res49
+bond mon96 mon95
+mon97 = createAtom BE BE 0.0
+set mon97 position {2.04	12.4071052631579	4.51657894736842}
+cacb_res50 = createResidue R50
+add cacb_res50 mon97
+bond mon97 mon95
+mon98 = createAtom OE OE 0.0
+set mon98 position {2.44078947368421	12.38	4.55473684210526}
+add cacb_res50 mon98
+add cacb_unit cacb_res50
+bond mon98 mon97
+mon99 = createAtom BF BF 0.0
+set mon99 position {1.84131578947368	11.4813157894737	4.19473684210526}
+cacb_res51 = createResidue R51
+add cacb_res51 mon99
+bond mon99 mon97
+mon100 = createAtom OF OF 0.0
+set mon100 position {1.93447368421053	11.315	3.84763157894737}
+add cacb_res51 mon100
+add cacb_unit cacb_res51
+bond mon100 mon99
+mon101 = createAtom BG BG 0.0
+set mon101 position {2.10552631578947	10.7710526315789	4.84026315789474}
+cacb_res52 = createResidue R52
+add cacb_res52 mon101
+bond mon101 mon99
+mon102 = createAtom OG OG 0.0
+set mon102 position {1.87921052631579	10.4502631578947	4.89105263157895}
+add cacb_res52 mon102
+add cacb_unit cacb_res52
+bond mon102 mon101
+mon103 = createAtom BH BH 0.0
+set mon103 position {2.85289473684211	10.5334210526316	4.20078947368421}
+cacb_res53 = createResidue R53
+add cacb_res53 mon103
+bond mon103 mon101
+mon104 = createAtom OH OH 0.0
+set mon104 position {2.79947368421053	10.4334210526316	3.82184210526316}
+add cacb_res53 mon104
+add cacb_unit cacb_res53
+bond mon104 mon103
+mon105 = createAtom BI BI 0.0
+set mon105 position {3.26631578947368	11.44	4.18684210526316}
+cacb_res54 = createResidue R54
+add cacb_res54 mon105
+bond mon105 mon103
+mon106 = createAtom OI OI 0.0
+set mon106 position {3.11947368421053	11.7286842105263	3.96473684210526}
+add cacb_res54 mon106
+add cacb_unit cacb_res54
+bond mon106 mon105
+mon107 = createAtom BJ BJ 0.0
+set mon107 position {3.22578947368421	11.6297368421053	5.15894736842105}
+cacb_res55 = createResidue R55
+add cacb_res55 mon107
+bond mon107 mon105
+mon108 = createAtom OJ OJ 0.0
+set mon108 position {2.98052631578947	11.4507894736842	5.42657894736842}
+add cacb_res55 mon108
+add cacb_unit cacb_res55
+bond mon108 mon107
+mon109 = createAtom BK BK 0.0
+set mon109 position {4.12131578947368	11.2334210526316	5.38973684210526}
+cacb_res56 = createResidue R56
+add cacb_res56 mon109
+bond mon109 mon107
+mon110 = createAtom OK OK 0.0
+set mon110 position {4.25289473684211	10.8507894736842	5.36526315789474}
+add cacb_res56 mon110
+add cacb_unit cacb_res56
+bond mon110 mon109
+mon111 = createAtom BL BL 0.0
+set mon111 position {4.60526315789474	11.7586842105263	4.68921052631579}
+cacb_res57 = createResidue R57
+add cacb_res57 mon111
+add cacb_unit cacb_res57
+bond mon111 mon109
+mon112 = createAtom BM BM 0.0
+set mon112 position {4.10736842105263	12.5884210526316	4.915}
+cacb_res58 = createResidue R58
+add cacb_res58 mon112
+bond mon112 mon111
+mon113 = createAtom OM OM 0.0
+set mon113 position {3.71131578947368	12.6231578947368	4.915}
+add cacb_res58 mon113
+add cacb_unit cacb_res58
+bond mon113 mon112
+mon114 = createAtom BN BN 0.0
+set mon114 position {4.39105263157895	12.4352631578947	5.88}
+cacb_res59 = createResidue R59
+add cacb_res59 mon114
+bond mon114 mon112
+mon115 = createAtom ON ON 0.0
+set mon115 position {4.28631578947368	12.1189473684211	6.11684210526316}
+add cacb_res59 mon115
+add cacb_unit cacb_res59
+bond mon115 mon114
+mon116 = createAtom BO BO 0.0
+set mon116 position {5.36105263157895	12.2473684210526	5.65552631578947}
+cacb_res60 = createResidue R60
+add cacb_res60 mon116
+bond mon116 mon114
+mon117 = createAtom OO OO 0.0
+set mon117 position {5.50078947368421	11.9313157894737	5.44631578947368}
+add cacb_res60 mon117
+add cacb_unit cacb_res60
+bond mon117 mon116
+mon118 = createAtom BP BP 0.0
+set mon118 position {5.45552631578947	13.0452631578947	5.06921052631579}
+cacb_res61 = createResidue R61
+add cacb_res61 mon118
+bond mon118 mon116
+mon119 = createAtom OP OP 0.0
+set mon119 position {5.31394736842105	13.0639473684211	4.69736842105263}
+add cacb_res61 mon119
+add cacb_unit cacb_res61
+bond mon119 mon118
+mon120 = createAtom BQ BQ 0.0
+set mon120 position {4.95973684210526	13.6497368421053	5.69736842105263}
+cacb_res62 = createResidue R62
+add cacb_res62 mon120
+add cacb_unit cacb_res62
+bond mon120 mon118
+mon121 = createAtom BR BR 0.0
+set mon121 position {5.61342105263158	13.4113157894737	6.41394736842105}
+cacb_res63 = createResidue R63
+add cacb_res63 mon121
+bond mon121 mon120
+mon122 = createAtom OR OR 0.0
+set mon122 position {5.70394736842105	13.0368421052632	6.52631578947368}
+add cacb_res63 mon122
+add cacb_unit cacb_res63
+bond mon122 mon121
+mon123 = createAtom BS BS 0.0
+set mon123 position {6.37	13.6773684210526	5.82236842105263}
+cacb_res64 = createResidue R64
+add cacb_res64 mon123
+bond mon123 mon121
+mon124 = createAtom OS OS 0.0
+set mon124 position {6.49052631578947	13.4923684210526	5.49289473684211}
+add cacb_res64 mon124
+add cacb_unit cacb_res64
+bond mon124 mon123
+mon125 = createAtom BT BT 0.0
+set mon125 position {5.92289473684211	14.5671052631579	5.58368421052632}
+cacb_res65 = createResidue R65
+add cacb_res65 mon125
+bond mon125 mon123
+mon126 = createAtom OT OT 0.0
+set mon126 position {5.56184210526316	14.6115789473684	5.4228947368421}
+add cacb_res65 mon126
+add cacb_unit cacb_res65
+bond mon126 mon125
+mon127 = createAtom BU BU 0.0
+set mon127 position {5.995	14.9665789473684	6.49815789473684}
+cacb_res66 = createResidue R66
+add cacb_res66 mon127
+add cacb_unit cacb_res66
+bond mon127 mon125
+mon128 = createAtom BV BV 0.0
+set mon128 position {5.45394736842105	15.4886842105263	7.15552631578947}
+cacb_res67 = createResidue R67
+add cacb_res67 mon128
+bond mon128 mon127
+mon129 = createAtom OV OV 0.0
+set mon129 position {5.59921052631579	15.5923684210526	7.52026315789474}
+add cacb_res67 mon129
+add cacb_unit cacb_res67
+bond mon129 mon128
+mon130 = createAtom BW BW 0.0
+set mon130 position {5.54236842105263	16.3192105263158	6.61421052631579}
+cacb_res68 = createResidue R68
+add cacb_res68 mon130
+bond mon130 mon128
+mon131 = createAtom OW OW 0.0
+set mon131 position {5.89921052631579	16.4902631578947	6.50842105263158}
+add cacb_res68 mon131
+add cacb_unit cacb_res68
+bond mon131 mon130
+mon132 = createAtom BX BX 0.0
+set mon132 position {5.09394736842105	15.8242105263158	5.85578947368421}
+cacb_res69 = createResidue R69
+add cacb_res69 mon132
+bond mon132 mon130
+mon133 = createAtom OX OX 0.0
+set mon133 position {5.27210526315789	15.5823684210526	5.58631578947368}
+add cacb_res69 mon133
+add cacb_unit cacb_res69
+bond mon133 mon132
+mon134 = createAtom BY BY 0.0
+set mon134 position {4.41184210526316	15.4557894736842	6.52052631578947}
+cacb_res70 = createResidue R70
+add cacb_res70 mon134
+bond mon134 mon132
+mon135 = createAtom OY OY 0.0
+set mon135 position {4.04578947368421	15.6044736842105	6.39947368421053}
+add cacb_res70 mon135
+add cacb_unit cacb_res70
+bond mon135 mon134
+mon136 = createAtom BZ BZ 0.0
+set mon136 position {4.78342105263158	14.5307894736842	6.36263157894737}
+cacb_res71 = createResidue R71
+add cacb_res71 mon136
+bond mon136 mon134
+mon137 = createAtom OZ OZ 0.0
+set mon137 position {4.71421052631579	14.3223684210526	6.70947368421053}
+add cacb_res71 mon137
+add cacb_unit cacb_res71
+bond mon137 mon136
+mon138 = createAtom C0 C0 0.0
+set mon138 position {4.36947368421053	14.4571052631579	5.45447368421053}
+cacb_res72 = createResidue R72
+add cacb_res72 mon138
+bond mon138 mon136
+mon139 = createAtom P0 P0 0.0
+set mon139 position {4.00921052631579	14.6313157894737	5.41894736842105}
+add cacb_res72 mon139
+add cacb_unit cacb_res72
+bond mon139 mon138
+mon140 = createAtom C1 C1 0.0
+set mon140 position {4.89473684210526	14.4023684210526	4.60684210526316}
+cacb_res73 = createResidue R73
+add cacb_res73 mon140
+bond mon140 mon138
+mon141 = createAtom P1 P1 0.0
+set mon141 position {4.98184210526316	14.0578947368421	4.41473684210526}
+add cacb_res73 mon141
+add cacb_unit cacb_res73
+bond mon141 mon140
+mon142 = createAtom C2 C2 0.0
+set mon142 position {4.60842105263158	15.2147368421053	4.07736842105263}
+cacb_res74 = createResidue R74
+add cacb_res74 mon142
+bond mon142 mon140
+mon143 = createAtom P2 P2 0.0
+set mon143 position {4.86052631578947	15.5168421052632	4.03473684210526}
+add cacb_res74 mon143
+add cacb_unit cacb_res74
+bond mon143 mon142
+mon144 = createAtom C3 C3 0.0
+set mon144 position {3.97421052631579	15.0281578947368	3.32368421052632}
+cacb_res75 = createResidue R75
+add cacb_res75 mon144
+bond mon144 mon142
+mon145 = createAtom P3 P3 0.0
+set mon145 position {4.13315789473684	15.2152631578947	2.99684210526316}
+add cacb_res75 mon145
+add cacb_unit cacb_res75
+bond mon145 mon144
+mon146 = createAtom C4 C4 0.0
+set mon146 position {3.95921052631579	14.0513157894737	3.54421052631579}
+cacb_res76 = createResidue R76
+add cacb_res76 mon146
+bond mon146 mon144
+mon147 = createAtom P4 P4 0.0
+set mon147 position {3.94894736842105	13.89	3.91263157894737}
+add cacb_res76 mon147
+add cacb_unit cacb_res76
+bond mon147 mon146
+mon148 = createAtom C5 C5 0.0
+set mon148 position {3.41368421052632	13.6052631578947	2.81868421052632}
+cacb_res77 = createResidue R77
+add cacb_res77 mon148
+bond mon148 mon146
+mon149 = createAtom P5 P5 0.0
+set mon149 position {3.60052631578947	13.4273684210526	2.515}
+add cacb_res77 mon149
+add cacb_unit cacb_res77
+bond mon149 mon148
+mon150 = createAtom C6 C6 0.0
+set mon150 position {3.08447368421053	12.9	3.43710526315789}
+cacb_res78 = createResidue R78
+add cacb_res78 mon150
+bond mon150 mon148
+mon151 = createAtom P6 P6 0.0
+set mon151 position {3.33368421052632	12.645	3.60789473684211}
+add cacb_res78 mon151
+add cacb_unit cacb_res78
+bond mon151 mon150
+mon152 = createAtom C7 C7 0.0
+set mon152 position {2.66973684210526	13.5371052631579	4.08657894736842}
+cacb_res79 = createResidue R79
+add cacb_res79 mon152
+bond mon152 mon150
+mon153 = createAtom P7 P7 0.0
+set mon153 position {2.88184210526316	13.8234210526316	4.27868421052632}
+add cacb_res79 mon153
+add cacb_unit cacb_res79
+bond mon153 mon152
+mon154 = createAtom C8 C8 0.0
+set mon154 position {1.69657894736842	13.6397368421053	3.85684210526316}
+cacb_res80 = createResidue R80
+add cacb_res80 mon154
+bond mon154 mon152
+mon155 = createAtom P8 P8 0.0
+set mon155 position {1.41394736842105	13.35	3.92736842105263}
+add cacb_res80 mon155
+add cacb_unit cacb_res80
+bond mon155 mon154
+mon156 = createAtom C9 C9 0.0
+set mon156 position {1.53842105263158	14.35	4.53710526315789}
+cacb_res81 = createResidue R81
+add cacb_res81 mon156
+bond mon156 mon154
+mon157 = createAtom P9 P9 0.0
+set mon157 position {1.15078947368421	14.3571052631579	4.63}
+add cacb_res81 mon157
+add cacb_unit cacb_res81
+bond mon157 mon156
+mon158 = createAtom CA CA 0.0
+set mon158 position {1.97526315789474	14.6773684210526	5.37947368421053}
+cacb_res82 = createResidue R82
+add cacb_res82 mon158
+bond mon158 mon156
+mon159 = createAtom PA PA 0.0
+set mon159 position {2.36894736842105	14.6260526315789	5.35}
+add cacb_res82 mon159
+add cacb_unit cacb_res82
+bond mon159 mon158
+mon160 = createAtom CB CB 0.0
+set mon160 position {1.95973684210526	15.375	6.09631578947368}
+cacb_res83 = createResidue R83
+add cacb_res83 mon160
+bond mon160 mon158
+mon161 = createAtom PB PB 0.0
+set mon161 position {1.76105263157895	15.3310526315789	6.45184210526316}
+add cacb_res83 mon161
+add cacb_unit cacb_res83
+bond mon161 mon160
+mon162 = createAtom CC CC 0.0
+set mon162 position {2.76421052631579	15.8615789473684	6.43342105263158}
+cacb_res84 = createResidue R84
+add cacb_res84 mon162
+bond mon162 mon160
+mon163 = createAtom PC PC 0.0
+set mon163 position {2.79605263157895	16.2607894736842	6.50921052631579}
+add cacb_res84 mon163
+add cacb_unit cacb_res84
+bond mon163 mon162
+mon164 = createAtom CD CD 0.0
+set mon164 position {3.23210526315789	15.5410526315789	7.27605263157895}
+cacb_res85 = createResidue R85
+add cacb_res85 mon164
+bond mon164 mon162
+mon165 = createAtom PD PD 0.0
+set mon165 position {3.62684210526316	15.4618421052632	7.29236842105263}
+add cacb_res85 mon165
+add cacb_unit cacb_res85
+bond mon165 mon164
+mon166 = createAtom CE CE 0.0
+set mon166 position {2.77684210526316	15.9760526315789	8.07210526315789}
+cacb_res86 = createResidue R86
+add cacb_res86 mon166
+bond mon166 mon164
+mon167 = createAtom PE PE 0.0
+set mon167 position {2.36394736842105	16.0423684210526	8.05368421052632}
+add cacb_res86 mon167
+add cacb_unit cacb_res86
+bond mon167 mon166
+mon168 = createAtom CF CF 0.0
+set mon168 position {3.07736842105263	16.0571052631579	9.01473684210526}
+cacb_res87 = createResidue R87
+add cacb_res87 mon168
+add cacb_unit cacb_res87
+bond mon168 mon166
+mon169 = createAtom CG CG 0.0
+set mon169 position {2.43815789473684	16.1147368421053	9.76526315789474}
+cacb_res88 = createResidue R88
+add cacb_res88 mon169
+bond mon169 mon168
+mon170 = createAtom PG PG 0.0
+set mon170 position {2.49868421052632	15.9986842105263	10.145}
+add cacb_res88 mon170
+add cacb_unit cacb_res88
+bond mon170 mon169
+mon171 = createAtom CH CH 0.0
+set mon171 position {1.78947368421053	16.8481578947368	9.76210526315789}
+cacb_res89 = createResidue R89
+add cacb_res89 mon171
+add cacb_unit cacb_res89
+bond mon171 mon169
+mon172 = createAtom CI CI 0.0
+set mon172 position {1.76736842105263	16.8710526315789	8.75421052631579}
+cacb_res90 = createResidue R90
+add cacb_res90 mon172
+bond mon172 mon171
+mon173 = createAtom PI PI 0.0
+set mon173 position {2.10263157894737	16.8747368421053	8.54236842105263}
+add cacb_res90 mon173
+add cacb_unit cacb_res90
+bond mon173 mon172
+mon174 = createAtom CJ CJ 0.0
+set mon174 position {1.10105263157895	16.5815789473684	8.05736842105263}
+cacb_res91 = createResidue R91
+add cacb_res91 mon174
+bond mon174 mon172
+mon175 = createAtom PJ PJ 0.0
+set mon175 position {0.752631578947368	16.7847368421053	8.11657894736842}
+add cacb_res91 mon175
+add cacb_unit cacb_res91
+bond mon175 mon174
+mon176 = createAtom CK CK 0.0
+set mon176 position {1.17236842105263	16.3694736842105	7.07131578947368}
+cacb_res92 = createResidue R92
+add cacb_res92 mon176
+bond mon176 mon174
+mon177 = createAtom PK PK 0.0
+set mon177 position {1.52578947368421	16.2276315789474	6.935}
+add cacb_res92 mon177
+add cacb_unit cacb_res92
+bond mon177 mon176
+mon178 = createAtom CL CL 0.0
+set mon178 position {0.514736842105263	15.9894736842105	6.41973684210526}
+cacb_res93 = createResidue R93
+add cacb_res93 mon178
+bond mon178 mon176
+mon179 = createAtom PL PL 0.0
+set mon179 position {0.161842105263158	16.1776315789474	6.42131578947368}
+add cacb_res93 mon179
+add cacb_unit cacb_res93
+bond mon179 mon178
+mon180 = createAtom CM CM 0.0
+set mon180 position {0.582894736842105	15.5978947368421	5.49289473684211}
+cacb_res94 = createResidue R94
+add cacb_res94 mon180
+bond mon180 mon178
+mon181 = createAtom PM PM 0.0
+set mon181 position {0.892631578947368	15.3226315789474	5.45526315789474}
+add cacb_res94 mon181
+add cacb_unit cacb_res94
+bond mon181 mon180
+mon182 = createAtom CN CN 0.0
+set mon182 position {-0.143157894736842	15.4915789473684	4.80342105263158}
+cacb_res95 = createResidue R95
+add cacb_res95 mon182
+bond mon182 mon180
+mon183 = createAtom PN PN 0.0
+set mon183 position {-0.376052631578947	15.8139473684211	4.71631578947368}
+add cacb_res95 mon183
+add cacb_unit cacb_res95
+bond mon183 mon182
+mon184 = createAtom CO CO 0.0
+set mon184 position {0.0392105263157895	14.88	4.015}
+cacb_res96 = createResidue R96
+add cacb_res96 mon184
+bond mon184 mon182
+mon185 = createAtom PO PO 0.0
+set mon185 position {0.319473684210526	14.5939473684211	4.10605263157895}
+add cacb_res96 mon185
+add cacb_unit cacb_res96
+bond mon185 mon184
+mon186 = createAtom CP CP 0.0
+set mon186 position {-0.508947368421053	14.5515789473684	3.23368421052632}
+cacb_res97 = createResidue R97
+add cacb_res97 mon186
+bond mon186 mon184
+mon187 = createAtom PP PP 0.0
+set mon187 position {-0.455263157894737	14.645	2.84473684210526}
+add cacb_res97 mon187
+add cacb_unit cacb_res97
+bond mon187 mon186
+mon188 = createAtom CQ CQ 0.0
+set mon188 position {-0.893947368421053	13.6552631578947	3.34631578947368}
+cacb_res98 = createResidue R98
+add cacb_res98 mon188
+bond mon188 mon186
+mon189 = createAtom PQ PQ 0.0
+set mon189 position {-1.25842105263158	13.6005263157895	3.52105263157895}
+add cacb_res98 mon189
+add cacb_unit cacb_res98
+bond mon189 mon188
+mon190 = createAtom CR CR 0.0
+set mon190 position {-0.713947368421053	13.4565789473684	2.37052631578947}
+cacb_res99 = createResidue R99
+add cacb_res99 mon190
+bond mon190 mon188
+mon191 = createAtom PR PR 0.0
+set mon191 position {-0.772631578947368	13.7028947368421	2.05684210526316}
+add cacb_res99 mon191
+add cacb_unit cacb_res99
+bond mon191 mon190
+mon192 = createAtom CS CS 0.0
+set mon192 position {0.241842105263158	13.2642105263158	2.63815789473684}
+cacb_res100 = createResidue R100
+add cacb_res100 mon192
+bond mon192 mon190
+mon193 = createAtom PS PS 0.0
+set mon193 position {0.485789473684211	13.5134210526316	2.82947368421053}
+add cacb_res100 mon193
+add cacb_unit cacb_res100
+bond mon193 mon192
+mon194 = createAtom CT CT 0.0
+set mon194 position {-0.0663157894736842	12.4334210526316	3.11394736842105}
+cacb_res101 = createResidue R101
+add cacb_res101 mon194
+bond mon194 mon192
+mon195 = createAtom PT PT 0.0
+set mon195 position {-0.258684210526316	12.4686842105263	3.46921052631579}
+add cacb_res101 mon195
+add cacb_unit cacb_res101
+bond mon195 mon194
+mon196 = createAtom CU CU 0.0
+set mon196 position {-0.391578947368421	11.6144736842105	2.63131578947368}
+cacb_res102 = createResidue R102
+add cacb_res102 mon196
+bond mon196 mon194
+mon197 = createAtom PU PU 0.0
+set mon197 position {-0.176315789473684	11.4965789473684	2.31315789473684}
+add cacb_res102 mon197
+add cacb_unit cacb_res102
+bond mon197 mon196
+mon198 = createAtom CV CV 0.0
+set mon198 position {-0.920526315789474	10.8086842105263	2.90052631578947}
+cacb_res103 = createResidue R103
+add cacb_res103 mon198
+bond mon198 mon196
+mon199 = createAtom PV PV 0.0
+set mon199 position {-1.22684210526316	10.6834210526316	2.67421052631579}
+add cacb_res103 mon199
+add cacb_unit cacb_res103
+bond mon199 mon198
+mon200 = createAtom CW CW 0.0
+set mon200 position {-0.403421052631579	10.01	3.23447368421053}
+cacb_res104 = createResidue R104
+add cacb_res104 mon200
+add cacb_unit cacb_res104
+bond mon200 mon198
+mon201 = createAtom CX CX 0.0
+set mon201 position {0.444736842105263	10.4760526315789	3.4721052631579}
+cacb_res105 = createResidue R105
+add cacb_res105 mon201
+bond mon201 mon200
+mon202 = createAtom PX PX 0.0
+set mon202 position {0.543684210526316	10.7984210526316	3.26026315789474}
+add cacb_res105 mon202
+add cacb_unit cacb_res105
+bond mon202 mon201
+mon203 = createAtom CY CY 0.0
+set mon203 position {0.733684210526316	10.5005263157895	4.43947368421053}
+cacb_res106 = createResidue R106
+add cacb_res106 mon203
+bond mon203 mon201
+mon204 = createAtom PY PY 0.0
+set mon204 position {0.944473684210526	10.1989473684211	4.61131578947368}
+add cacb_res106 mon204
+add cacb_unit cacb_res106
+bond mon204 mon203
+mon205 = createAtom CZ CZ 0.0
+set mon205 position {0.980789473684211	11.4010526315789	4.83631578947368}
+cacb_res107 = createResidue R107
+add cacb_res107 mon205
+bond mon205 mon203
+mon206 = createAtom PZ PZ 0.0
+set mon206 position {0.773157894736842	11.7281578947368	4.74}
+add cacb_res107 mon206
+add cacb_unit cacb_res107
+bond mon206 mon205
+mon207 = createAtom D0 D0 0.0
+set mon207 position {1.46894736842105	11.6118421052632	5.67526315789474}
+cacb_res108 = createResidue R108
+add cacb_res108 mon207
+bond mon207 mon205
+mon208 = createAtom Q0 Q0 0.0
+set mon208 position {1.82394736842105	11.4226315789474	5.71789473684211}
+add cacb_res108 mon208
+add cacb_unit cacb_res108
+bond mon208 mon207
+mon209 = createAtom D1 D1 0.0
+set mon209 position {1.49763157894737	12.4797368421053	6.18184210526316}
+cacb_res109 = createResidue R109
+add cacb_res109 mon209
+bond mon209 mon207
+mon210 = createAtom Q1 Q1 0.0
+set mon210 position {1.17868421052632	12.6944736842105	6.3121052631579}
+add cacb_res109 mon210
+add cacb_unit cacb_res109
+bond mon210 mon209
+mon211 = createAtom D2 D2 0.0
+set mon211 position {2.29263157894737	12.6078947368421	6.78078947368421}
+cacb_res110 = createResidue R110
+add cacb_res110 mon211
+bond mon211 mon209
+mon212 = createAtom Q2 Q2 0.0
+set mon212 position {2.56026315789474	12.3384210526316	6.6328947368421}
+add cacb_res110 mon212
+add cacb_unit cacb_res110
+bond mon212 mon211
+mon213 = createAtom D3 D3 0.0
+set mon213 position {2.87894736842105	13.2884210526316	7.19684210526316}
+cacb_res111 = createResidue R111
+add cacb_res111 mon213
+bond mon213 mon211
+mon214 = createAtom Q3 Q3 0.0
+set mon214 position {2.87368421052632	13.3584210526316	7.59973684210526}
+add cacb_res111 mon214
+add cacb_unit cacb_res111
+bond mon214 mon213
+mon215 = createAtom D4 D4 0.0
+set mon215 position {3.82315789473684	13.3431578947368	6.83973684210526}
+cacb_res112 = createResidue R112
+add cacb_res112 mon215
+bond mon215 mon213
+mon216 = createAtom Q4 Q4 0.0
+set mon216 position {3.90973684210526	13.4726315789474	6.465}
+add cacb_res112 mon216
+add cacb_unit cacb_res112
+bond mon216 mon215
+mon217 = createAtom D5 D5 0.0
+set mon217 position {4.28368421052632	13.7136842105263	7.65921052631579}
+cacb_res113 = createResidue R113
+add cacb_res113 mon217
+bond mon217 mon215
+mon218 = createAtom Q5 Q5 0.0
+set mon218 position {4.105	13.8642105263158	7.99763157894737}
+add cacb_res113 mon218
+add cacb_unit cacb_res113
+bond mon218 mon217
+mon219 = createAtom D6 D6 0.0
+set mon219 position {5.095	13.1005263157895	7.78842105263158}
+cacb_res114 = createResidue R114
+add cacb_res114 mon219
+bond mon219 mon217
+mon220 = createAtom Q6 Q6 0.0
+set mon220 position {5.44473684210526	13.2702631578947	7.83921052631579}
+add cacb_res114 mon220
+add cacb_unit cacb_res114
+bond mon220 mon219
+mon221 = createAtom D7 D7 0.0
+set mon221 position {4.88763157894737	12.2734210526316	8.34078947368421}
+cacb_res115 = createResidue R115
+add cacb_res115 mon221
+add cacb_unit cacb_res115
+bond mon221 mon219
+mon222 = createAtom D8 D8 0.0
+set mon222 position {3.91815789473684	12.5152631578947	8.45684210526316}
+cacb_res116 = createResidue R116
+add cacb_res116 mon222
+bond mon222 mon221
+mon223 = createAtom Q8 Q8 0.0
+set mon223 position {3.79815789473684	12.8984210526316	8.52394736842105}
+add cacb_res116 mon223
+add cacb_unit cacb_res116
+bond mon223 mon222
+mon224 = createAtom D9 D9 0.0
+set mon224 position {3.46894736842105	12.1307894736842	7.62210526315789}
+cacb_res117 = createResidue R117
+add cacb_res117 mon224
+bond mon224 mon222
+mon225 = createAtom Q9 Q9 0.0
+set mon225 position {3.62052631578947	12.1310526315789	7.24605263157895}
+add cacb_res117 mon225
+add cacb_unit cacb_res117
+bond mon225 mon224
+mon226 = createAtom DA DA 0.0
+set mon226 position {3.41894736842105	11.1984210526316	8.01473684210526}
+cacb_res118 = createResidue R118
+add cacb_res118 mon226
+bond mon226 mon224
+mon227 = createAtom QA QA 0.0
+set mon227 position {3.71710526315789	10.9986842105263	8.17947368421053}
+add cacb_res118 mon227
+add cacb_unit cacb_res118
+bond mon227 mon226
+mon228 = createAtom DB DB 0.0
+set mon228 position {2.84868421052632	11.6044736842105	8.73052631578947}
+cacb_res119 = createResidue R119
+add cacb_res119 mon228
+bond mon228 mon226
+mon229 = createAtom QB QB 0.0
+set mon229 position {2.99473684210526	11.815	9.04157894736842}
+add cacb_res119 mon229
+add cacb_unit cacb_res119
+bond mon229 mon228
+mon230 = createAtom DC DC 0.0
+set mon230 position {2.33736842105263	12.2594736842105	8.17315789473684}
+cacb_res120 = createResidue R120
+add cacb_res120 mon230
+bond mon230 mon228
+mon231 = createAtom QC QC 0.0
+set mon231 position {2.47842105263158	12.6376315789474	8.20921052631579}
+add cacb_res120 mon231
+add cacb_unit cacb_res120
+bond mon231 mon230
+mon232 = createAtom DD DD 0.0
+set mon232 position {1.92763157894737	11.8213157894737	7.38973684210526}
+cacb_res121 = createResidue R121
+add cacb_res121 mon232
+bond mon232 mon230
+mon233 = createAtom QD QD 0.0
+set mon233 position {2.21	11.5607894736842	7.26578947368421}
+add cacb_res121 mon233
+add cacb_unit cacb_res121
+bond mon233 mon232
+mon234 = createAtom DE DE 0.0
+set mon234 position {1.03578947368421	11.4915789473684	7.10947368421053}
+cacb_res122 = createResidue R122
+add cacb_res122 mon234
+add cacb_unit cacb_res122
+bond mon234 mon232
+mon235 = createAtom DF DF 0.0
+set mon235 position {0.504736842105263	11.2321052631579	6.31394736842105}
+cacb_res123 = createResidue R123
+add cacb_res123 mon235
+bond mon235 mon234
+mon236 = createAtom QF QF 0.0
+set mon236 position {0.34	10.8563157894737	6.31184210526316}
+add cacb_res123 mon236
+add cacb_unit cacb_res123
+bond mon236 mon235
+mon237 = createAtom DG DG 0.0
+set mon237 position {-0.0176315789473684	11.7992105263158	5.6728947368421}
+cacb_res124 = createResidue R124
+add cacb_res124 mon237
+bond mon237 mon235
+mon238 = createAtom QG QG 0.0
+set mon238 position {0.153684210526316	12.1405263157895	5.52026315789474}
+add cacb_res124 mon238
+add cacb_unit cacb_res124
+bond mon238 mon237
+mon239 = createAtom DH DH 0.0
+set mon239 position {-0.724210526315789	11.3344736842105	5.13342105263158}
+cacb_res125 = createResidue R125
+add cacb_res125 mon239
+bond mon239 mon237
+mon240 = createAtom QH QH 0.0
+set mon240 position {-0.915263157894737	11.0742105263158	5.38}
+add cacb_res125 mon240
+add cacb_unit cacb_res125
+bond mon240 mon239
+mon241 = createAtom DI DI 0.0
+set mon241 position {-1.29684210526316	11.6847368421053	4.35842105263158}
+cacb_res126 = createResidue R126
+add cacb_res126 mon241
+bond mon241 mon239
+mon242 = createAtom QI QI 0.0
+set mon242 position {-1.17026315789474	11.7218421052632	3.98421052631579}
+add cacb_res126 mon242
+add cacb_unit cacb_res126
+bond mon242 mon241
+mon243 = createAtom DJ DJ 0.0
+set mon243 position {-2.23921052631579	11.3131578947368	4.48947368421053}
+cacb_res127 = createResidue R127
+add cacb_res127 mon243
+bond mon243 mon241
+mon244 = createAtom QJ QJ 0.0
+set mon244 position {-2.37105263157895	11.25	4.86763157894737}
+add cacb_res127 mon244
+add cacb_unit cacb_res127
+bond mon244 mon243
+bond mon5 mon50
+cr_mon0 = createAtom ZZ ZZ 0.0
+set cr_mon0 position { 57.2678955492858	104.033299725634	-149.669543944909}
+cr_res0 = createResidue CRWD
+add cacb_unit cr_res0
+add cr_res0 cr_mon0
+cr_mon1 = createAtom ZZ ZZ 0.0
+set cr_mon1 position { 27.8983766948691	1.39745531262143	136.050598831203}
+cr_res1 = createResidue CRWD
+add cacb_unit cr_res1
+add cr_res1 cr_mon1
+cr_mon2 = createAtom ZZ ZZ 0.0
+set cr_mon2 position { -20.9098410149618	-112.008238687917	-28.2260844975799}
+cr_res2 = createResidue CRWD
+add cacb_unit cr_res2
+add cr_res2 cr_mon2
+cr_mon3 = createAtom ZZ ZZ 0.0
+set cr_mon3 position { 40.4005623599232	-1.76867683863939	53.4843767964439}
+cr_res3 = createResidue CRWD
+add cacb_unit cr_res3
+add cr_res3 cr_mon3
+cr_mon4 = createAtom ZZ ZZ 0.0
+set cr_mon4 position { -17.042517816029	-34.9316728056422	145.649554229884}
+cr_res4 = createResidue CRWD
+add cacb_unit cr_res4
+add cr_res4 cr_mon4
+cr_mon5 = createAtom ZZ ZZ 0.0
+set cr_mon5 position { -39.5874699315435	59.0041997757407	144.774025201068}
+cr_res5 = createResidue CRWD
+add cacb_unit cr_res5
+add cr_res5 cr_mon5
+cr_mon6 = createAtom ZZ ZZ 0.0
+set cr_mon6 position { 122.25367296081	107.160586187367	3.85882930983676}
+cr_res6 = createResidue CRWD
+add cacb_unit cr_res6
+add cr_res6 cr_mon6
+cr_mon7 = createAtom ZZ ZZ 0.0
+set cr_mon7 position { -120.362564976891	4.02534188387627	35.0158078541831}
+cr_res7 = createResidue CRWD
+add cacb_unit cr_res7
+add cr_res7 cr_mon7
+cr_mon8 = createAtom ZZ ZZ 0.0
+set cr_mon8 position { 119.361393644128	35.8955701284629	-64.8738819123249}
+cr_res8 = createResidue CRWD
+add cacb_unit cr_res8
+add cr_res8 cr_mon8
+cr_mon9 = createAtom ZZ ZZ 0.0
+set cr_mon9 position { -42.0766830269152	-69.7305498652529	-31.9294475280017}
+cr_res9 = createResidue CRWD
+add cacb_unit cr_res9
+add cr_res9 cr_mon9
+cr_mon10 = createAtom ZZ ZZ 0.0
+set cr_mon10 position { -141.456812056692	-14.6227837114985	115.492691682983}
+cr_res10 = createResidue CRWD
+add cacb_unit cr_res10
+add cr_res10 cr_mon10
+cr_mon11 = createAtom ZZ ZZ 0.0
+set cr_mon11 position { 102.129087803385	93.2152195662898	-33.9449025303828}
+cr_res11 = createResidue CRWD
+add cacb_unit cr_res11
+add cr_res11 cr_mon11
+cr_mon12 = createAtom ZZ ZZ 0.0
+set cr_mon12 position { 24.4663202102057	-97.1081766249583	46.611735993692}
+cr_res12 = createResidue CRWD
+add cacb_unit cr_res12
+add cr_res12 cr_mon12
+cr_mon13 = createAtom ZZ ZZ 0.0
+set cr_mon13 position { -114.485854709562	-57.2178737615008	-31.2786996772388}
+cr_res13 = createResidue CRWD
+add cacb_unit cr_res13
+add cr_res13 cr_mon13
+cr_mon14 = createAtom ZZ ZZ 0.0
+set cr_mon14 position { -10.2757399240314	139.467044501799	100.81618811308}
+cr_res14 = createResidue CRWD
+add cacb_unit cr_res14
+add cr_res14 cr_mon14
+cr_mon15 = createAtom ZZ ZZ 0.0
+set cr_mon15 position { -50.4909199429065	-41.3261952852405	27.4816253617907}
+cr_res15 = createResidue CRWD
+add cacb_unit cr_res15
+add cr_res15 cr_mon15
+cr_mon16 = createAtom ZZ ZZ 0.0
+set cr_mon16 position { -19.4580817546626	147.051395365858	110.893173069164}
+cr_res16 = createResidue CRWD
+add cacb_unit cr_res16
+add cr_res16 cr_mon16
+cr_mon17 = createAtom ZZ ZZ 0.0
+set cr_mon17 position { -9.77613566688902	79.8366753324952	-38.4086786626526}
+cr_res17 = createResidue CRWD
+add cacb_unit cr_res17
+add cr_res17 cr_mon17
+cr_mon18 = createAtom ZZ ZZ 0.0
+set cr_mon18 position { -57.7124135464299	108.601206919668	49.6566745714102}
+cr_res18 = createResidue CRWD
+add cacb_unit cr_res18
+add cr_res18 cr_mon18
+cr_mon19 = createAtom ZZ ZZ 0.0
+set cr_mon19 position { -44.1555525801675	-110.965533389918	74.5614187505446}
+cr_res19 = createResidue CRWD
+add cacb_unit cr_res19
+add cr_res19 cr_mon19
+cr_mon20 = createAtom ZZ ZZ 0.0
+set cr_mon20 position { -89.8166938200777	-115.867671314085	-71.1886423920713}
+cr_res20 = createResidue CRWD
+add cacb_unit cr_res20
+add cr_res20 cr_mon20
+cr_mon21 = createAtom ZZ ZZ 0.0
+set cr_mon21 position { 2.2480175770319	108.586559819447	24.9290704200718}
+cr_res21 = createResidue CRWD
+add cacb_unit cr_res21
+add cr_res21 cr_mon21
+cr_mon22 = createAtom ZZ ZZ 0.0
+set cr_mon22 position { -117.763925449057	13.2810115779272	-142.002107472854}
+cr_res22 = createResidue CRWD
+add cacb_unit cr_res22
+add cr_res22 cr_mon22
+cr_mon23 = createAtom ZZ ZZ 0.0
+set cr_mon23 position { -39.5257757555825	-21.9011946877099	-18.1171129803253}
+cr_res23 = createResidue CRWD
+add cacb_unit cr_res23
+add cr_res23 cr_mon23
+cr_mon24 = createAtom ZZ ZZ 0.0
+set cr_mon24 position { 147.662914265036	-2.8997851087297	103.43316141308}
+cr_res24 = createResidue CRWD
+add cacb_unit cr_res24
+add cr_res24 cr_mon24
+cr_mon25 = createAtom ZZ ZZ 0.0
+set cr_mon25 position { -137.646230358843	64.5185419268014	49.2327431715282}
+cr_res25 = createResidue CRWD
+add cacb_unit cr_res25
+add cr_res25 cr_mon25
+cr_mon26 = createAtom ZZ ZZ 0.0
+set cr_mon26 position { 140.420668668343	33.1531478780654	-8.4878666391706}
+cr_res26 = createResidue CRWD
+add cacb_unit cr_res26
+add cr_res26 cr_mon26
+cr_mon27 = createAtom ZZ ZZ 0.0
+set cr_mon27 position { 133.003491425174	111.297001090051	-64.1072890412239}
+cr_res27 = createResidue CRWD
+add cacb_unit cr_res27
+add cr_res27 cr_mon27
+cr_mon28 = createAtom ZZ ZZ 0.0
+set cr_mon28 position { 46.1914014201678	101.108961524405	85.5119865124568}
+cr_res28 = createResidue CRWD
+add cacb_unit cr_res28
+add cr_res28 cr_mon28
+cr_mon29 = createAtom ZZ ZZ 0.0
+set cr_mon29 position { -36.6025602574886	91.2209679865935	97.6878710809331}
+cr_res29 = createResidue CRWD
+add cacb_unit cr_res29
+add cr_res29 cr_mon29
+cr_mon30 = createAtom ZZ ZZ 0.0
+set cr_mon30 position { 62.0101432399739	-24.6506883186733	-43.2609069130965}
+cr_res30 = createResidue CRWD
+add cacb_unit cr_res30
+add cr_res30 cr_mon30
+cr_mon31 = createAtom ZZ ZZ 0.0
+set cr_mon31 position { 123.990189636946	-53.7971625378145	-98.2234377799351}
+cr_res31 = createResidue CRWD
+add cacb_unit cr_res31
+add cr_res31 cr_mon31
+cr_mon32 = createAtom ZZ ZZ 0.0
+set cr_mon32 position { 81.5087483748027	-134.420917956001	-95.5068250157606}
+cr_res32 = createResidue CRWD
+add cacb_unit cr_res32
+add cr_res32 cr_mon32
+cr_mon33 = createAtom ZZ ZZ 0.0
+set cr_mon33 position { 9.8656020529198	-52.269358858587	-122.464290294185}
+cr_res33 = createResidue CRWD
+add cacb_unit cr_res33
+add cr_res33 cr_mon33
+cr_mon34 = createAtom ZZ ZZ 0.0
+set cr_mon34 position { 68.5240517340066	-123.485858318383	-6.30062160854727}
+cr_res34 = createResidue CRWD
+add cacb_unit cr_res34
+add cr_res34 cr_mon34
+cr_mon35 = createAtom ZZ ZZ 0.0
+set cr_mon35 position { -76.8935093704954	-117.980520720175	-36.8379595815391}
+cr_res35 = createResidue CRWD
+add cacb_unit cr_res35
+add cr_res35 cr_mon35
+cr_mon36 = createAtom ZZ ZZ 0.0
+set cr_mon36 position { -146.837465869467	85.6110050451591	-48.5120320255088}
+cr_res36 = createResidue CRWD
+add cacb_unit cr_res36
+add cr_res36 cr_mon36
+cr_mon37 = createAtom ZZ ZZ 0.0
+set cr_mon37 position { -141.632404902386	-147.311709398211	-124.928276533936}
+cr_res37 = createResidue CRWD
+add cacb_unit cr_res37
+add cr_res37 cr_mon37
+cr_mon38 = createAtom ZZ ZZ 0.0
+set cr_mon38 position { -19.5995149176294	132.165633049967	84.400409537221}
+cr_res38 = createResidue CRWD
+add cacb_unit cr_res38
+add cr_res38 cr_mon38
+cr_mon39 = createAtom ZZ ZZ 0.0
+set cr_mon39 position { 36.477097220974	-102.072097902912	-128.538406889168}
+cr_res39 = createResidue CRWD
+add cacb_unit cr_res39
+add cr_res39 cr_mon39
+cr_mon40 = createAtom ZZ ZZ 0.0
+set cr_mon40 position { -54.6231036993692	-127.92224355407	-62.9550018327844}
+cr_res40 = createResidue CRWD
+add cacb_unit cr_res40
+add cr_res40 cr_mon40
+cr_mon41 = createAtom ZZ ZZ 0.0
+set cr_mon41 position { -8.21801368458708	-45.4543081550558	-143.440423973961}
+cr_res41 = createResidue CRWD
+add cacb_unit cr_res41
+add cr_res41 cr_mon41
+cr_mon42 = createAtom ZZ ZZ 0.0
+set cr_mon42 position { -117.161411133288	94.0029432446558	-70.80059156301}
+cr_res42 = createResidue CRWD
+add cacb_unit cr_res42
+add cr_res42 cr_mon42
+cr_mon43 = createAtom ZZ ZZ 0.0
+set cr_mon43 position { -28.0573352225559	-103.807704774416	-31.2108035364567}
+cr_res43 = createResidue CRWD
+add cacb_unit cr_res43
+add cr_res43 cr_mon43
+cr_mon44 = createAtom ZZ ZZ 0.0
+set cr_mon44 position { -44.1186411325592	-6.08512399362979	77.5934507243182}
+cr_res44 = createResidue CRWD
+add cacb_unit cr_res44
+add cr_res44 cr_mon44
+cr_mon45 = createAtom ZZ ZZ 0.0
+set cr_mon45 position { 2.15753289528564	-47.6057408873448	128.002697225725}
+cr_res45 = createResidue CRWD
+add cacb_unit cr_res45
+add cr_res45 cr_mon45
+cr_mon46 = createAtom ZZ ZZ 0.0
+set cr_mon46 position { -136.5102423969	-124.219298951909	-109.484145101445}
+cr_res46 = createResidue CRWD
+add cacb_unit cr_res46
+add cr_res46 cr_mon46
+cr_mon47 = createAtom ZZ ZZ 0.0
+set cr_mon47 position { 132.17932200012	47.2231420936613	-149.493309493678}
+cr_res47 = createResidue CRWD
+add cacb_unit cr_res47
+add cr_res47 cr_mon47
+cr_mon48 = createAtom ZZ ZZ 0.0
+set cr_mon48 position { 82.5746770844443	61.5648063775183	77.8319147978298}
+cr_res48 = createResidue CRWD
+add cacb_unit cr_res48
+add cr_res48 cr_mon48
+cr_mon49 = createAtom ZZ ZZ 0.0
+set cr_mon49 position { 3.40843476483528	102.684012986827	74.8294348998698}
+cr_res49 = createResidue CRWD
+add cacb_unit cr_res49
+add cr_res49 cr_mon49
+cr_mon50 = createAtom ZZ ZZ 0.0
+set cr_mon50 position { 63.6234111624123	32.012042074161	-113.069665550195}
+cr_res50 = createResidue CRWD
+add cacb_unit cr_res50
+add cr_res50 cr_mon50
+cr_mon51 = createAtom ZZ ZZ 0.0
+set cr_mon51 position { 24.4992355161628	-120.001138414971	-64.1231487750595}
+cr_res51 = createResidue CRWD
+add cacb_unit cr_res51
+add cr_res51 cr_mon51
+cr_mon52 = createAtom ZZ ZZ 0.0
+set cr_mon52 position { -118.621307610474	-7.00004240075174	50.1189148798336}
+cr_res52 = createResidue CRWD
+add cacb_unit cr_res52
+add cr_res52 cr_mon52
+cr_mon53 = createAtom ZZ ZZ 0.0
+set cr_mon53 position { -80.6953411173673	-23.9556845545497	-108.931768557406}
+cr_res53 = createResidue CRWD
+add cacb_unit cr_res53
+add cr_res53 cr_mon53
+cr_mon54 = createAtom ZZ ZZ 0.0
+set cr_mon54 position { 16.1281063857846	80.7125909380112	-5.92331898918736}
+cr_res54 = createResidue CRWD
+add cacb_unit cr_res54
+add cr_res54 cr_mon54
+cr_mon55 = createAtom ZZ ZZ 0.0
+set cr_mon55 position { 17.8990298348097	-7.75678333680894	-42.6239888846673}
+cr_res55 = createResidue CRWD
+add cacb_unit cr_res55
+add cr_res55 cr_mon55
+cr_mon56 = createAtom ZZ ZZ 0.0
+set cr_mon56 position { -86.162995961276	135.567421328335	-130.574997753251}
+cr_res56 = createResidue CRWD
+add cacb_unit cr_res56
+add cr_res56 cr_mon56
+cr_mon57 = createAtom ZZ ZZ 0.0
+set cr_mon57 position { -10.7162054716987	76.2872563787223	-118.972090615883}
+cr_res57 = createResidue CRWD
+add cacb_unit cr_res57
+add cr_res57 cr_mon57
+cr_mon58 = createAtom ZZ ZZ 0.0
+set cr_mon58 position { -84.096209944904	55.3849607440704	8.55083074137148}
+cr_res58 = createResidue CRWD
+add cacb_unit cr_res58
+add cr_res58 cr_mon58
+cr_mon59 = createAtom ZZ ZZ 0.0
+set cr_mon59 position { 54.2118604364049	-34.2369944518648	-110.632721042484}
+cr_res59 = createResidue CRWD
+add cacb_unit cr_res59
+add cr_res59 cr_mon59
+cr_mon60 = createAtom ZZ ZZ 0.0
+set cr_mon60 position { 137.491642465653	-38.0443941690359	-52.7155546760394}
+cr_res60 = createResidue CRWD
+add cacb_unit cr_res60
+add cr_res60 cr_mon60
+cr_mon61 = createAtom ZZ ZZ 0.0
+set cr_mon61 position { 12.3067458418809	133.967162825415	-24.0707737039145}
+cr_res61 = createResidue CRWD
+add cacb_unit cr_res61
+add cr_res61 cr_mon61
+cr_mon62 = createAtom ZZ ZZ 0.0
+set cr_mon62 position { 147.946101307179	55.2610132776401	51.7564434070461}
+cr_res62 = createResidue CRWD
+add cacb_unit cr_res62
+add cr_res62 cr_mon62
+cr_mon63 = createAtom ZZ ZZ 0.0
+set cr_mon63 position { -5.68323814133151	128.896189749758	7.53662721903439}
+cr_res63 = createResidue CRWD
+add cacb_unit cr_res63
+add cr_res63 cr_mon63
+cr_mon64 = createAtom ZZ ZZ 0.0
+set cr_mon64 position { -13.8010341291864	-122.671896332517	59.4018276942425}
+cr_res64 = createResidue CRWD
+add cacb_unit cr_res64
+add cr_res64 cr_mon64
+cr_mon65 = createAtom ZZ ZZ 0.0
+set cr_mon65 position { -95.4864508127606	80.8939789229495	5.99408578238609}
+cr_res65 = createResidue CRWD
+add cacb_unit cr_res65
+add cr_res65 cr_mon65
+cr_mon66 = createAtom ZZ ZZ 0.0
+set cr_mon66 position { 73.1211260872687	-106.67741296952	59.4302083246003}
+cr_res66 = createResidue CRWD
+add cacb_unit cr_res66
+add cr_res66 cr_mon66
+cr_mon67 = createAtom ZZ ZZ 0.0
+set cr_mon67 position { -127.910226618178	120.944426128756	133.291280414658}
+cr_res67 = createResidue CRWD
+add cacb_unit cr_res67
+add cr_res67 cr_mon67
+cr_mon68 = createAtom ZZ ZZ 0.0
+set cr_mon68 position { -70.4927100028531	129.114607781371	-111.597412550988}
+cr_res68 = createResidue CRWD
+add cacb_unit cr_res68
+add cr_res68 cr_mon68
+cr_mon69 = createAtom ZZ ZZ 0.0
+set cr_mon69 position { 41.0381877531655	23.8753245011775	-115.612613106592}
+cr_res69 = createResidue CRWD
+add cacb_unit cr_res69
+add cr_res69 cr_mon69
+cr_mon70 = createAtom ZZ ZZ 0.0
+set cr_mon70 position { 123.993737072178	-115.271376298436	-45.4025728814546}
+cr_res70 = createResidue CRWD
+add cacb_unit cr_res70
+add cr_res70 cr_mon70
+cr_mon71 = createAtom ZZ ZZ 0.0
+set cr_mon71 position { -90.4679989578753	113.918300600035	17.818418681663}
+cr_res71 = createResidue CRWD
+add cacb_unit cr_res71
+add cr_res71 cr_mon71
+cr_mon72 = createAtom ZZ ZZ 0.0
+set cr_mon72 position { 111.009395203466	39.6668771292013	100.256555385164}
+cr_res72 = createResidue CRWD
+add cacb_unit cr_res72
+add cr_res72 cr_mon72
+cr_mon73 = createAtom ZZ ZZ 0.0
+set cr_mon73 position { 86.3054329102731	147.625477139504	-126.114822226624}
+cr_res73 = createResidue CRWD
+add cacb_unit cr_res73
+add cr_res73 cr_mon73
+cr_mon74 = createAtom ZZ ZZ 0.0
+set cr_mon74 position { 146.131963406758	-96.0319241594526	54.7720488945867}
+cr_res74 = createResidue CRWD
+add cacb_unit cr_res74
+add cr_res74 cr_mon74
+cr_mon75 = createAtom ZZ ZZ 0.0
+set cr_mon75 position { 114.22942497193	-38.6267471338638	-106.629823471716}
+cr_res75 = createResidue CRWD
+add cacb_unit cr_res75
+add cr_res75 cr_mon75
+cr_mon76 = createAtom ZZ ZZ 0.0
+set cr_mon76 position { 74.0116285557971	-24.8836611961835	35.0522159320594}
+cr_res76 = createResidue CRWD
+add cacb_unit cr_res76
+add cr_res76 cr_mon76
+cr_mon77 = createAtom ZZ ZZ 0.0
+set cr_mon77 position { -95.1860600380421	-97.0245699002266	-122.46423053731}
+cr_res77 = createResidue CRWD
+add cacb_unit cr_res77
+add cr_res77 cr_mon77
+cr_mon78 = createAtom ZZ ZZ 0.0
+set cr_mon78 position { -67.5964306615693	136.376627593477	-5.98158123711166}
+cr_res78 = createResidue CRWD
+add cacb_unit cr_res78
+add cr_res78 cr_mon78
+cr_mon79 = createAtom ZZ ZZ 0.0
+set cr_mon79 position { -65.5003757764533	69.3365784187893	63.3087359267826}
+cr_res79 = createResidue CRWD
+add cacb_unit cr_res79
+add cr_res79 cr_mon79
+cr_mon80 = createAtom ZZ ZZ 0.0
+set cr_mon80 position { 100.54892546819	38.008118558966	-69.7284325967782}
+cr_res80 = createResidue CRWD
+add cacb_unit cr_res80
+add cr_res80 cr_mon80
+cr_mon81 = createAtom ZZ ZZ 0.0
+set cr_mon81 position { -110.773966186603	99.8051505932207	29.7744812801525}
+cr_res81 = createResidue CRWD
+add cacb_unit cr_res81
+add cr_res81 cr_mon81
+cr_mon82 = createAtom ZZ ZZ 0.0
+set cr_mon82 position { -142.438476846102	-58.2934241820958	-144.469318325646}
+cr_res82 = createResidue CRWD
+add cacb_unit cr_res82
+add cr_res82 cr_mon82
+cr_mon83 = createAtom ZZ ZZ 0.0
+set cr_mon83 position { -35.6641139659985	-137.589160274598	-144.694045597931}
+cr_res83 = createResidue CRWD
+add cacb_unit cr_res83
+add cr_res83 cr_mon83
+cr_mon84 = createAtom ZZ ZZ 0.0
+set cr_mon84 position { -113.844690810808	44.895834490363	-51.9615590446346}
+cr_res84 = createResidue CRWD
+add cacb_unit cr_res84
+add cr_res84 cr_mon84
+cr_mon85 = createAtom ZZ ZZ 0.0
+set cr_mon85 position { 112.016306483944	-70.13170691116	-100.103051146525}
+cr_res85 = createResidue CRWD
+add cacb_unit cr_res85
+add cr_res85 cr_mon85
+cr_mon86 = createAtom ZZ ZZ 0.0
+set cr_mon86 position { -58.1528485303888	6.39116890777913	-73.0313459834864}
+cr_res86 = createResidue CRWD
+add cacb_unit cr_res86
+add cr_res86 cr_mon86
+cr_mon87 = createAtom ZZ ZZ 0.0
+set cr_mon87 position { 97.20611167822	-88.5111432258764	-24.2990987380601}
+cr_res87 = createResidue CRWD
+add cacb_unit cr_res87
+add cr_res87 cr_mon87
+cr_mon88 = createAtom ZZ ZZ 0.0
+set cr_mon88 position { -149.881619102031	17.8865881154024	132.826794253595}
+cr_res88 = createResidue CRWD
+add cacb_unit cr_res88
+add cr_res88 cr_mon88
+cr_mon89 = createAtom ZZ ZZ 0.0
+set cr_mon89 position { -92.4787179447385	-143.92549542736	92.502148400699}
+cr_res89 = createResidue CRWD
+add cacb_unit cr_res89
+add cr_res89 cr_mon89
+cr_mon90 = createAtom ZZ ZZ 0.0
+set cr_mon90 position { -60.2991573468454	123.2277542574	108.037129102145}
+cr_res90 = createResidue CRWD
+add cacb_unit cr_res90
+add cr_res90 cr_mon90
+cr_mon91 = createAtom ZZ ZZ 0.0
+set cr_mon91 position { 79.1017453892067	-144.15497826391	118.293867375726}
+cr_res91 = createResidue CRWD
+add cacb_unit cr_res91
+add cr_res91 cr_mon91
+cr_mon92 = createAtom ZZ ZZ 0.0
+set cr_mon92 position { 49.262582094951	127.512961971719	88.9721700359548}
+cr_res92 = createResidue CRWD
+add cacb_unit cr_res92
+add cr_res92 cr_mon92
+cr_mon93 = createAtom ZZ ZZ 0.0
+set cr_mon93 position { -56.4135456698345	117.831186572554	-46.9413049600973}
+cr_res93 = createResidue CRWD
+add cacb_unit cr_res93
+add cr_res93 cr_mon93
+cr_mon94 = createAtom ZZ ZZ 0.0
+set cr_mon94 position { 92.5500307064173	77.7112111481635	-25.3573866766235}
+cr_res94 = createResidue CRWD
+add cacb_unit cr_res94
+add cr_res94 cr_mon94
+cr_mon95 = createAtom ZZ ZZ 0.0
+set cr_mon95 position { 62.7223550454787	19.7043371665519	2.77733468451871}
+cr_res95 = createResidue CRWD
+add cacb_unit cr_res95
+add cr_res95 cr_mon95
+cr_mon96 = createAtom ZZ ZZ 0.0
+set cr_mon96 position { -84.5093119041042	-53.7722981266796	139.494045292966}
+cr_res96 = createResidue CRWD
+add cacb_unit cr_res96
+add cr_res96 cr_mon96
+cr_mon97 = createAtom ZZ ZZ 0.0
+set cr_mon97 position { 55.7929369253735	120.533746122157	126.263277470055}
+cr_res97 = createResidue CRWD
+add cacb_unit cr_res97
+add cr_res97 cr_mon97
+cr_mon98 = createAtom ZZ ZZ 0.0
+set cr_mon98 position { 52.9452010732616	28.5358127119828	26.1534910868345}
+cr_res98 = createResidue CRWD
+add cacb_unit cr_res98
+add cr_res98 cr_mon98
+cr_mon99 = createAtom ZZ ZZ 0.0
+set cr_mon99 position { 148.648702188314	65.0741556577717	90.6160096681383}
+cr_res99 = createResidue CRWD
+add cacb_unit cr_res99
+add cr_res99 cr_mon99
+cr_mon100 = createAtom ZZ ZZ 0.0
+set cr_mon100 position { 124.049670515418	-118.221156127795	-19.0134626216274}
+cr_res100 = createResidue CRWD
+add cacb_unit cr_res100
+add cr_res100 cr_mon100
+cr_mon101 = createAtom ZZ ZZ 0.0
+set cr_mon101 position { 66.1942534852393	-12.1479316021283	-137.952484928113}
+cr_res101 = createResidue CRWD
+add cacb_unit cr_res101
+add cr_res101 cr_mon101
+cr_mon102 = createAtom ZZ ZZ 0.0
+set cr_mon102 position { -73.7483437056451	124.267837260995	-90.6148175587479}
+cr_res102 = createResidue CRWD
+add cacb_unit cr_res102
+add cr_res102 cr_mon102
+cr_mon103 = createAtom ZZ ZZ 0.0
+set cr_mon103 position { -0.31212681569599	32.3064449259466	7.59480905160856}
+cr_res103 = createResidue CRWD
+add cacb_unit cr_res103
+add cr_res103 cr_mon103
+cr_mon104 = createAtom ZZ ZZ 0.0
+set cr_mon104 position { 104.271841406311	108.802559523184	0.759722796027873}
+cr_res104 = createResidue CRWD
+add cacb_unit cr_res104
+add cr_res104 cr_mon104
+cr_mon105 = createAtom ZZ ZZ 0.0
+set cr_mon105 position { -94.6025940669649	-97.475228721007	12.2107850743632}
+cr_res105 = createResidue CRWD
+add cacb_unit cr_res105
+add cr_res105 cr_mon105
+cr_mon106 = createAtom ZZ ZZ 0.0
+set cr_mon106 position { -98.7948940300793	141.353404424527	-94.6979186919851}
+cr_res106 = createResidue CRWD
+add cacb_unit cr_res106
+add cr_res106 cr_mon106
+cr_mon107 = createAtom ZZ ZZ 0.0
+set cr_mon107 position { 141.717521742262	-113.494640288158	139.623604857169}
+cr_res107 = createResidue CRWD
+add cacb_unit cr_res107
+add cr_res107 cr_mon107
+cr_mon108 = createAtom ZZ ZZ 0.0
+set cr_mon108 position { 18.6836559543732	7.80465699005646	109.416006414701}
+cr_res108 = createResidue CRWD
+add cacb_unit cr_res108
+add cr_res108 cr_mon108
+cr_mon109 = createAtom ZZ ZZ 0.0
+set cr_mon109 position { -71.4632400785369	122.187850297631	-120.464114330389}
+cr_res109 = createResidue CRWD
+add cacb_unit cr_res109
+add cr_res109 cr_mon109
+cr_mon110 = createAtom ZZ ZZ 0.0
+set cr_mon110 position { 112.742645857373	142.009113951297	120.256538177247}
+cr_res110 = createResidue CRWD
+add cacb_unit cr_res110
+add cr_res110 cr_mon110
+cr_mon111 = createAtom ZZ ZZ 0.0
+set cr_mon111 position { 130.324214277702	70.783314350432	-27.0489417533007}
+cr_res111 = createResidue CRWD
+add cacb_unit cr_res111
+add cr_res111 cr_mon111
+cr_mon112 = createAtom ZZ ZZ 0.0
+set cr_mon112 position { -66.0062019350153	-117.511291387669	-2.65960280247803}
+cr_res112 = createResidue CRWD
+add cacb_unit cr_res112
+add cr_res112 cr_mon112
+cr_mon113 = createAtom ZZ ZZ 0.0
+set cr_mon113 position { 78.1324476548228	116.389185116571	92.2684945871325}
+cr_res113 = createResidue CRWD
+add cacb_unit cr_res113
+add cr_res113 cr_mon113
+cr_mon114 = createAtom ZZ ZZ 0.0
+set cr_mon114 position { -119.220291124865	129.752583467434	-86.1320272126779}
+cr_res114 = createResidue CRWD
+add cacb_unit cr_res114
+add cr_res114 cr_mon114
+cr_mon115 = createAtom ZZ ZZ 0.0
+set cr_mon115 position { -44.1025074570746	71.0884611685348	71.9899662039431}
+cr_res115 = createResidue CRWD
+add cacb_unit cr_res115
+add cr_res115 cr_mon115
+cr_mon116 = createAtom ZZ ZZ 0.0
+set cr_mon116 position { -79.4972024326714	-110.109103476613	50.1975449458929}
+cr_res116 = createResidue CRWD
+add cacb_unit cr_res116
+add cr_res116 cr_mon116
+cr_mon117 = createAtom ZZ ZZ 0.0
+set cr_mon117 position { -120.022622218377	-2.75385045291507	127.959470406634}
+cr_res117 = createResidue CRWD
+add cacb_unit cr_res117
+add cr_res117 cr_mon117
+cr_mon118 = createAtom ZZ ZZ 0.0
+set cr_mon118 position { 73.4829500564079	110.033884679157	-0.809036585917866}
+cr_res118 = createResidue CRWD
+add cacb_unit cr_res118
+add cr_res118 cr_mon118
+cr_mon119 = createAtom ZZ ZZ 0.0
+set cr_mon119 position { 20.7432912561742	146.779833751284	-108.151319273986}
+cr_res119 = createResidue CRWD
+add cacb_unit cr_res119
+add cr_res119 cr_mon119
+cr_mon120 = createAtom ZZ ZZ 0.0
+set cr_mon120 position { 109.664522854915	-9.6769044767484	4.80181479888451}
+cr_res120 = createResidue CRWD
+add cacb_unit cr_res120
+add cr_res120 cr_mon120
+cr_mon121 = createAtom ZZ ZZ 0.0
+set cr_mon121 position { -18.8984711515737	134.873839945848	-148.607155451971}
+cr_res121 = createResidue CRWD
+add cacb_unit cr_res121
+add cr_res121 cr_mon121
+cr_mon122 = createAtom ZZ ZZ 0.0
+set cr_mon122 position { -100.133888152767	92.3576342227967	129.250953707567}
+cr_res122 = createResidue CRWD
+add cacb_unit cr_res122
+add cr_res122 cr_mon122
+cr_mon123 = createAtom ZZ ZZ 0.0
+set cr_mon123 position { 16.9169909193641	-103.47174567178	-38.1846944205655}
+cr_res123 = createResidue CRWD
+add cacb_unit cr_res123
+add cr_res123 cr_mon123
+cr_mon124 = createAtom ZZ ZZ 0.0
+set cr_mon124 position { -114.565947673026	-35.4068345878872	-38.688133951511}
+cr_res124 = createResidue CRWD
+add cacb_unit cr_res124
+add cr_res124 cr_mon124
+cr_mon125 = createAtom ZZ ZZ 0.0
+set cr_mon125 position { 84.6244556133179	18.2423053604264	-12.2739158230559}
+cr_res125 = createResidue CRWD
+add cacb_unit cr_res125
+add cr_res125 cr_mon125
+cr_mon126 = createAtom ZZ ZZ 0.0
+set cr_mon126 position { 36.3005493219081	86.2320743443654	-143.226360721289}
+cr_res126 = createResidue CRWD
+add cacb_unit cr_res126
+add cr_res126 cr_mon126
+cr_mon127 = createAtom ZZ ZZ 0.0
+set cr_mon127 position { 131.109366360589	100.998774817895	-32.0660004227044}
+cr_res127 = createResidue CRWD
+add cacb_unit cr_res127
+add cr_res127 cr_mon127
+cr_mon128 = createAtom ZZ ZZ 0.0
+set cr_mon128 position { 139.027745744307	139.81412213424	54.5630029785489}
+cr_res128 = createResidue CRWD
+add cacb_unit cr_res128
+add cr_res128 cr_mon128
+cr_mon129 = createAtom ZZ ZZ 0.0
+set cr_mon129 position { 27.0948250906564	8.82122077616678	1.6895889545097}
+cr_res129 = createResidue CRWD
+add cacb_unit cr_res129
+add cr_res129 cr_mon129
+cr_mon130 = createAtom ZZ ZZ 0.0
+set cr_mon130 position { 147.186620645654	-51.8986514140344	-126.75476179377}
+cr_res130 = createResidue CRWD
+add cacb_unit cr_res130
+add cr_res130 cr_mon130
+cr_mon131 = createAtom ZZ ZZ 0.0
+set cr_mon131 position { -52.1277714751022	-52.0362348139425	-36.0112134988476}
+cr_res131 = createResidue CRWD
+add cacb_unit cr_res131
+add cr_res131 cr_mon131
+cr_mon132 = createAtom ZZ ZZ 0.0
+set cr_mon132 position { -8.01659368467291	99.3435171161579	60.7663216607751}
+cr_res132 = createResidue CRWD
+add cacb_unit cr_res132
+add cr_res132 cr_mon132
+cr_mon133 = createAtom ZZ ZZ 0.0
+set cr_mon133 position { -134.040209712398	-112.63921399614	100.928636391254}
+cr_res133 = createResidue CRWD
+add cacb_unit cr_res133
+add cr_res133 cr_mon133
+cr_mon134 = createAtom ZZ ZZ 0.0
+set cr_mon134 position { -120.708589800611	121.028307417102	-40.6256939451684}
+cr_res134 = createResidue CRWD
+add cacb_unit cr_res134
+add cr_res134 cr_mon134
+cr_mon135 = createAtom ZZ ZZ 0.0
+set cr_mon135 position { 111.131369414774	-141.842875533125	121.275258973851}
+cr_res135 = createResidue CRWD
+add cacb_unit cr_res135
+add cr_res135 cr_mon135
+cr_mon136 = createAtom ZZ ZZ 0.0
+set cr_mon136 position { 34.9373397332936	-9.41480414226703	55.3632316949749}
+cr_res136 = createResidue CRWD
+add cacb_unit cr_res136
+add cr_res136 cr_mon136
+cr_mon137 = createAtom ZZ ZZ 0.0
+set cr_mon137 position { 123.400072947435	20.3718508871955	132.084830286611}
+cr_res137 = createResidue CRWD
+add cacb_unit cr_res137
+add cr_res137 cr_mon137
+cr_mon138 = createAtom ZZ ZZ 0.0
+set cr_mon138 position { -29.8504060554546	128.278037025306	-145.547379380115}
+cr_res138 = createResidue CRWD
+add cacb_unit cr_res138
+add cr_res138 cr_mon138
+cr_mon139 = createAtom ZZ ZZ 0.0
+set cr_mon139 position { -140.748273399706	42.7743128190546	-51.8375644622473}
+cr_res139 = createResidue CRWD
+add cacb_unit cr_res139
+add cr_res139 cr_mon139
+cr_mon140 = createAtom ZZ ZZ 0.0
+set cr_mon140 position { 93.1394712441598	-98.3256510997464	143.429629512447}
+cr_res140 = createResidue CRWD
+add cacb_unit cr_res140
+add cr_res140 cr_mon140
+cr_mon141 = createAtom ZZ ZZ 0.0
+set cr_mon141 position { 107.264230984777	12.0524563517943	74.3297530978566}
+cr_res141 = createResidue CRWD
+add cacb_unit cr_res141
+add cr_res141 cr_mon141
+cr_mon142 = createAtom ZZ ZZ 0.0
+set cr_mon142 position { -63.2124774029077	-69.8501399775246	77.7165281908619}
+cr_res142 = createResidue CRWD
+add cacb_unit cr_res142
+add cr_res142 cr_mon142
+cr_mon143 = createAtom ZZ ZZ 0.0
+set cr_mon143 position { -104.594796871864	57.827331089344	94.3562556566782}
+cr_res143 = createResidue CRWD
+add cacb_unit cr_res143
+add cr_res143 cr_mon143
+cr_mon144 = createAtom ZZ ZZ 0.0
+set cr_mon144 position { -48.9714301140499	96.1526295016455	50.8906838214646}
+cr_res144 = createResidue CRWD
+add cacb_unit cr_res144
+add cr_res144 cr_mon144
+cr_mon145 = createAtom ZZ ZZ 0.0
+set cr_mon145 position { 28.6557004335826	-92.8792658864896	90.6676948352029}
+cr_res145 = createResidue CRWD
+add cacb_unit cr_res145
+add cr_res145 cr_mon145
+cr_mon146 = createAtom ZZ ZZ 0.0
+set cr_mon146 position { 45.5181317492436	38.5232783809734	-55.9128945938898}
+cr_res146 = createResidue CRWD
+add cacb_unit cr_res146
+add cr_res146 cr_mon146
+cr_mon147 = createAtom ZZ ZZ 0.0
+set cr_mon147 position { -6.28047029160257	143.668251284607	-35.2342549106204}
+cr_res147 = createResidue CRWD
+add cacb_unit cr_res147
+add cr_res147 cr_mon147
+cr_mon148 = createAtom ZZ ZZ 0.0
+set cr_mon148 position { 141.620644055254	16.8848114456395	58.4622078118446}
+cr_res148 = createResidue CRWD
+add cacb_unit cr_res148
+add cr_res148 cr_mon148
+cr_mon149 = createAtom ZZ ZZ 0.0
+set cr_mon149 position { -148.650705619874	0.626519362709743	-67.1337530266413}
+cr_res149 = createResidue CRWD
+add cacb_unit cr_res149
+add cr_res149 cr_mon149
+cr_mon150 = createAtom ZZ ZZ 0.0
+set cr_mon150 position { 145.630932974806	102.789185236733	50.9261425049313}
+cr_res150 = createResidue CRWD
+add cacb_unit cr_res150
+add cr_res150 cr_mon150
+cr_mon151 = createAtom ZZ ZZ 0.0
+set cr_mon151 position { 25.2936574986236	-62.6982291395262	-119.20177717252}
+cr_res151 = createResidue CRWD
+add cacb_unit cr_res151
+add cr_res151 cr_mon151
+cr_mon152 = createAtom ZZ ZZ 0.0
+set cr_mon152 position { 59.2708082741847	116.496216149017	91.5177806018281}
+cr_res152 = createResidue CRWD
+add cacb_unit cr_res152
+add cr_res152 cr_mon152
+cr_mon153 = createAtom ZZ ZZ 0.0
+set cr_mon153 position { -127.817118729792	-119.490305806611	-26.6350713459772}
+cr_res153 = createResidue CRWD
+add cacb_unit cr_res153
+add cr_res153 cr_mon153
+cr_mon154 = createAtom ZZ ZZ 0.0
+set cr_mon154 position { -11.2555600703001	-4.63786796448389	-4.19361128054341}
+cr_res154 = createResidue CRWD
+add cacb_unit cr_res154
+add cr_res154 cr_mon154
+cr_mon155 = createAtom ZZ ZZ 0.0
+set cr_mon155 position { -4.14935961449885	103.331369569569	-91.3109806984473}
+cr_res155 = createResidue CRWD
+add cacb_unit cr_res155
+add cr_res155 cr_mon155
+cr_mon156 = createAtom ZZ ZZ 0.0
+set cr_mon156 position { 21.6109712020565	12.9076693589823	-120.855514145186}
+cr_res156 = createResidue CRWD
+add cacb_unit cr_res156
+add cr_res156 cr_mon156
+cr_mon157 = createAtom ZZ ZZ 0.0
+set cr_mon157 position { 89.4904209124157	-1.55171129873288	95.5270728785933}
+cr_res157 = createResidue CRWD
+add cacb_unit cr_res157
+add cr_res157 cr_mon157
+cr_mon158 = createAtom ZZ ZZ 0.0
+set cr_mon158 position { 105.987782262907	-64.8945303970443	99.6923124384605}
+cr_res158 = createResidue CRWD
+add cacb_unit cr_res158
+add cr_res158 cr_mon158
+cr_mon159 = createAtom ZZ ZZ 0.0
+set cr_mon159 position { 99.3245241363397	99.5523335253598	-144.915497414623}
+cr_res159 = createResidue CRWD
+add cacb_unit cr_res159
+add cr_res159 cr_mon159
+cr_mon160 = createAtom ZZ ZZ 0.0
+set cr_mon160 position { 106.01365331005	3.06127300127912	90.9592022659613}
+cr_res160 = createResidue CRWD
+add cacb_unit cr_res160
+add cr_res160 cr_mon160
+cr_mon161 = createAtom ZZ ZZ 0.0
+set cr_mon161 position { 103.182377197523	-136.797684716624	-97.7243387941982}
+cr_res161 = createResidue CRWD
+add cacb_unit cr_res161
+add cr_res161 cr_mon161
+cr_mon162 = createAtom ZZ ZZ 0.0
+set cr_mon162 position { 51.9363015349104	7.10425483911266	-29.8920886319724}
+cr_res162 = createResidue CRWD
+add cacb_unit cr_res162
+add cr_res162 cr_mon162
+cr_mon163 = createAtom ZZ ZZ 0.0
+set cr_mon163 position { 66.3676249047853	73.6580208789295	-21.4122663795884}
+cr_res163 = createResidue CRWD
+add cacb_unit cr_res163
+add cr_res163 cr_mon163
+cr_mon164 = createAtom ZZ ZZ 0.0
+set cr_mon164 position { -106.530297035707	95.1775158988241	47.5891524692646}
+cr_res164 = createResidue CRWD
+add cacb_unit cr_res164
+add cr_res164 cr_mon164
+cr_mon165 = createAtom ZZ ZZ 0.0
+set cr_mon165 position { 103.969220767974	-110.168706516781	-80.8111245749643}
+cr_res165 = createResidue CRWD
+add cacb_unit cr_res165
+add cr_res165 cr_mon165
+cr_mon166 = createAtom ZZ ZZ 0.0
+set cr_mon166 position { 117.557451050695	-29.2911023759508	-132.610545040115}
+cr_res166 = createResidue CRWD
+add cacb_unit cr_res166
+add cr_res166 cr_mon166
+cr_mon167 = createAtom ZZ ZZ 0.0
+set cr_mon167 position { 132.505470078128	-103.084379174735	-34.5507382098667}
+cr_res167 = createResidue CRWD
+add cacb_unit cr_res167
+add cr_res167 cr_mon167
+cr_mon168 = createAtom ZZ ZZ 0.0
+set cr_mon168 position { 76.7907356930476	-84.0635831195357	122.164737594398}
+cr_res168 = createResidue CRWD
+add cacb_unit cr_res168
+add cr_res168 cr_mon168
+cr_mon169 = createAtom ZZ ZZ 0.0
+set cr_mon169 position { 88.2562513508894	-112.72196850982	-10.2124474772054}
+cr_res169 = createResidue CRWD
+add cacb_unit cr_res169
+add cr_res169 cr_mon169
+cr_mon170 = createAtom ZZ ZZ 0.0
+set cr_mon170 position { 104.855679302414	-137.873916077736	139.354546627238}
+cr_res170 = createResidue CRWD
+add cacb_unit cr_res170
+add cr_res170 cr_mon170
+cr_mon171 = createAtom ZZ ZZ 0.0
+set cr_mon171 position { 2.90780909712396	92.9591463031475	40.2093972471299}
+cr_res171 = createResidue CRWD
+add cacb_unit cr_res171
+add cr_res171 cr_mon171
+cr_mon172 = createAtom ZZ ZZ 0.0
+set cr_mon172 position { 146.864366897102	141.469213989872	-131.868102040515}
+cr_res172 = createResidue CRWD
+add cacb_unit cr_res172
+add cr_res172 cr_mon172
+cr_mon173 = createAtom ZZ ZZ 0.0
+set cr_mon173 position { -68.7312230368427	-71.8854401303151	82.8487037470268}
+cr_res173 = createResidue CRWD
+add cacb_unit cr_res173
+add cr_res173 cr_mon173
+cr_mon174 = createAtom ZZ ZZ 0.0
+set cr_mon174 position { 129.278008333074	-100.404480259164	128.848150470091}
+cr_res174 = createResidue CRWD
+add cacb_unit cr_res174
+add cr_res174 cr_mon174
+cr_mon175 = createAtom ZZ ZZ 0.0
+set cr_mon175 position { -13.5028005865664	99.3178444783087	64.103224984715}
+cr_res175 = createResidue CRWD
+add cacb_unit cr_res175
+add cr_res175 cr_mon175
+cr_mon176 = createAtom ZZ ZZ 0.0
+set cr_mon176 position { 59.4228369489837	-55.818197164345	-119.119810029101}
+cr_res176 = createResidue CRWD
+add cacb_unit cr_res176
+add cr_res176 cr_mon176
+cr_mon177 = createAtom ZZ ZZ 0.0
+set cr_mon177 position { 104.913754457905	-72.2032429785319	-99.4864915479738}
+cr_res177 = createResidue CRWD
+add cacb_unit cr_res177
+add cr_res177 cr_mon177
+cr_mon178 = createAtom ZZ ZZ 0.0
+set cr_mon178 position { -121.591932473079	-91.0330347212543	130.647330137314}
+cr_res178 = createResidue CRWD
+add cacb_unit cr_res178
+add cr_res178 cr_mon178
+cr_mon179 = createAtom ZZ ZZ 0.0
+set cr_mon179 position { -75.0440480754207	35.5374516532098	-109.281373500688}
+cr_res179 = createResidue CRWD
+add cacb_unit cr_res179
+add cr_res179 cr_mon179
+cr_mon180 = createAtom ZZ ZZ 0.0
+set cr_mon180 position { -137.632966733745	-103.031595654558	-44.871201035728}
+cr_res180 = createResidue CRWD
+add cacb_unit cr_res180
+add cr_res180 cr_mon180
+cr_mon181 = createAtom ZZ ZZ 0.0
+set cr_mon181 position { 43.727791658015	-40.556742012642	64.6739374251212}
+cr_res181 = createResidue CRWD
+add cacb_unit cr_res181
+add cr_res181 cr_mon181
+cr_mon182 = createAtom ZZ ZZ 0.0
+set cr_mon182 position { 8.5002538546437	14.9498380530723	82.9279898111164}
+cr_res182 = createResidue CRWD
+add cacb_unit cr_res182
+add cr_res182 cr_mon182
+cr_mon183 = createAtom ZZ ZZ 0.0
+set cr_mon183 position { -82.7456002082428	-5.33789562133329	-110.893883240021}
+cr_res183 = createResidue CRWD
+add cacb_unit cr_res183
+add cr_res183 cr_mon183
+cr_mon184 = createAtom ZZ ZZ 0.0
+set cr_mon184 position { 119.864290286942	-35.3619739510009	10.0556612121412}
+cr_res184 = createResidue CRWD
+add cacb_unit cr_res184
+add cr_res184 cr_mon184
+cr_mon185 = createAtom ZZ ZZ 0.0
+set cr_mon185 position { 86.0449043643534	-105.374707692878	142.131117305568}
+cr_res185 = createResidue CRWD
+add cacb_unit cr_res185
+add cr_res185 cr_mon185
+cr_mon186 = createAtom ZZ ZZ 0.0
+set cr_mon186 position { 75.7648052021398	-137.822173248357	-89.4600171389062}
+cr_res186 = createResidue CRWD
+add cacb_unit cr_res186
+add cr_res186 cr_mon186
+cr_mon187 = createAtom ZZ ZZ 0.0
+set cr_mon187 position { 129.307753251894	-130.35890999752	-112.304644162814}
+cr_res187 = createResidue CRWD
+add cacb_unit cr_res187
+add cr_res187 cr_mon187
+cr_mon188 = createAtom ZZ ZZ 0.0
+set cr_mon188 position { -98.2317109289799	-76.7461097316286	13.4470893929421}
+cr_res188 = createResidue CRWD
+add cacb_unit cr_res188
+add cr_res188 cr_mon188
+cr_mon189 = createAtom ZZ ZZ 0.0
+set cr_mon189 position { -93.6539194160268	74.4232464011969	-2.60506374413012}
+cr_res189 = createResidue CRWD
+add cacb_unit cr_res189
+add cr_res189 cr_mon189
+cr_mon190 = createAtom ZZ ZZ 0.0
+set cr_mon190 position { -105.901262159733	53.3064427911988	-62.8648437703053}
+cr_res190 = createResidue CRWD
+add cacb_unit cr_res190
+add cr_res190 cr_mon190
+cr_mon191 = createAtom ZZ ZZ 0.0
+set cr_mon191 position { 74.5369396320129	-111.565678571669	-19.5427753056798}
+cr_res191 = createResidue CRWD
+add cacb_unit cr_res191
+add cr_res191 cr_mon191
+cr_mon192 = createAtom ZZ ZZ 0.0
+set cr_mon192 position { -104.236022749068	92.0263559865958	-66.3483717864292}
+cr_res192 = createResidue CRWD
+add cacb_unit cr_res192
+add cr_res192 cr_mon192
+cr_mon193 = createAtom ZZ ZZ 0.0
+set cr_mon193 position { 55.7944981468232	-130.618414807487	138.374929986158}
+cr_res193 = createResidue CRWD
+add cacb_unit cr_res193
+add cr_res193 cr_mon193
+cr_mon194 = createAtom ZZ ZZ 0.0
+set cr_mon194 position { 22.5691560998502	-54.502287194736	27.992321828695}
+cr_res194 = createResidue CRWD
+add cacb_unit cr_res194
+add cr_res194 cr_mon194
+cr_mon195 = createAtom ZZ ZZ 0.0
+set cr_mon195 position { 124.285021011292	122.053296224397	-48.6946679375997}
+cr_res195 = createResidue CRWD
+add cacb_unit cr_res195
+add cr_res195 cr_mon195
+cr_mon196 = createAtom ZZ ZZ 0.0
+set cr_mon196 position { -116.796718993763	-48.5853225492932	143.119654353289}
+cr_res196 = createResidue CRWD
+add cacb_unit cr_res196
+add cr_res196 cr_mon196
+cr_mon197 = createAtom ZZ ZZ 0.0
+set cr_mon197 position { -147.55436078166	-143.902609883826	-26.2036046866484}
+cr_res197 = createResidue CRWD
+add cacb_unit cr_res197
+add cr_res197 cr_mon197
+cr_mon198 = createAtom ZZ ZZ 0.0
+set cr_mon198 position { 147.109235651178	-52.238748703369	100.242383897188}
+cr_res198 = createResidue CRWD
+add cacb_unit cr_res198
+add cr_res198 cr_mon198
+cr_mon199 = createAtom ZZ ZZ 0.0
+set cr_mon199 position { 78.6117506041037	-70.3573068344934	109.362212751075}
+cr_res199 = createResidue CRWD
+add cacb_unit cr_res199
+add cr_res199 cr_mon199
+cr_mon200 = createAtom ZZ ZZ 0.0
+set cr_mon200 position { -131.13542260722	143.756440489568	94.3893212004756}
+cr_res200 = createResidue CRWD
+add cacb_unit cr_res200
+add cr_res200 cr_mon200
+cr_mon201 = createAtom ZZ ZZ 0.0
+set cr_mon201 position { 60.8435148198048	-46.0572299446401	62.7246744084673}
+cr_res201 = createResidue CRWD
+add cacb_unit cr_res201
+add cr_res201 cr_mon201
+cr_mon202 = createAtom ZZ ZZ 0.0
+set cr_mon202 position { -65.3894447996958	89.6952172157661	-90.0130028543902}
+cr_res202 = createResidue CRWD
+add cacb_unit cr_res202
+add cr_res202 cr_mon202
+cr_mon203 = createAtom ZZ ZZ 0.0
+set cr_mon203 position { 45.9037917059078	-9.55348643492151	-28.9087440527545}
+cr_res203 = createResidue CRWD
+add cacb_unit cr_res203
+add cr_res203 cr_mon203
+cr_mon204 = createAtom ZZ ZZ 0.0
+set cr_mon204 position { 48.6490314651629	149.192415842488	-86.557822264454}
+cr_res204 = createResidue CRWD
+add cacb_unit cr_res204
+add cr_res204 cr_mon204
+cr_mon205 = createAtom ZZ ZZ 0.0
+set cr_mon205 position { 37.0282230884534	92.5938718346384	13.4188554977641}
+cr_res205 = createResidue CRWD
+add cacb_unit cr_res205
+add cr_res205 cr_mon205
+cr_mon206 = createAtom ZZ ZZ 0.0
+set cr_mon206 position { -47.7717513443164	-93.7528799815887	122.20877833748}
+cr_res206 = createResidue CRWD
+add cacb_unit cr_res206
+add cr_res206 cr_mon206
+cr_mon207 = createAtom ZZ ZZ 0.0
+set cr_mon207 position { -106.491201296974	-109.110865896299	24.1460337665082}
+cr_res207 = createResidue CRWD
+add cacb_unit cr_res207
+add cr_res207 cr_mon207
+cr_mon208 = createAtom ZZ ZZ 0.0
+set cr_mon208 position { -100.85892805718	-133.411913749367	26.61300612335}
+cr_res208 = createResidue CRWD
+add cacb_unit cr_res208
+add cr_res208 cr_mon208
+cr_mon209 = createAtom ZZ ZZ 0.0
+set cr_mon209 position { 42.8040853950868	92.1777514477352	-60.2495362136537}
+cr_res209 = createResidue CRWD
+add cacb_unit cr_res209
+add cr_res209 cr_mon209
+cr_mon210 = createAtom ZZ ZZ 0.0
+set cr_mon210 position { -71.0899853619974	-63.7014314367143	-52.1136625092101}
+cr_res210 = createResidue CRWD
+add cacb_unit cr_res210
+add cr_res210 cr_mon210
+cr_mon211 = createAtom ZZ ZZ 0.0
+set cr_mon211 position { -32.6978330528561	78.125646039911	-50.0928456978961}
+cr_res211 = createResidue CRWD
+add cacb_unit cr_res211
+add cr_res211 cr_mon211
+cr_mon212 = createAtom ZZ ZZ 0.0
+set cr_mon212 position { -101.557924565347	-25.1670405900668	-53.7745321335887}
+cr_res212 = createResidue CRWD
+add cacb_unit cr_res212
+add cr_res212 cr_mon212
+cr_mon213 = createAtom ZZ ZZ 0.0
+set cr_mon213 position { -30.0678966617248	-111.675940054146	-105.937711483611}
+cr_res213 = createResidue CRWD
+add cacb_unit cr_res213
+add cr_res213 cr_mon213
+cr_mon214 = createAtom ZZ ZZ 0.0
+set cr_mon214 position { 53.8811963535327	-112.66218121597	-40.338172135603}
+cr_res214 = createResidue CRWD
+add cacb_unit cr_res214
+add cr_res214 cr_mon214
+cr_mon215 = createAtom ZZ ZZ 0.0
+set cr_mon215 position { 113.362515985814	71.6797564455664	-31.0814915888152}
+cr_res215 = createResidue CRWD
+add cacb_unit cr_res215
+add cr_res215 cr_mon215
+cr_mon216 = createAtom ZZ ZZ 0.0
+set cr_mon216 position { -109.018153795047	149.149190871481	-77.3221325133928}
+cr_res216 = createResidue CRWD
+add cacb_unit cr_res216
+add cr_res216 cr_mon216
+cr_mon217 = createAtom ZZ ZZ 0.0
+set cr_mon217 position { -82.7415741987416	-62.5950573852183	-147.380972893662}
+cr_res217 = createResidue CRWD
+add cacb_unit cr_res217
+add cr_res217 cr_mon217
+cr_mon218 = createAtom ZZ ZZ 0.0
+set cr_mon218 position { -7.65672392308367	-139.5501578416	21.8834300812841}
+cr_res218 = createResidue CRWD
+add cacb_unit cr_res218
+add cr_res218 cr_mon218
+cr_mon219 = createAtom ZZ ZZ 0.0
+set cr_mon219 position { -126.034902528718	149.906164193166	-3.28221576105321}
+cr_res219 = createResidue CRWD
+add cacb_unit cr_res219
+add cr_res219 cr_mon219
+cr_mon220 = createAtom ZZ ZZ 0.0
+set cr_mon220 position { -149.819690115766	-143.751271646657	82.9740793972139}
+cr_res220 = createResidue CRWD
+add cacb_unit cr_res220
+add cr_res220 cr_mon220
+cr_mon221 = createAtom ZZ ZZ 0.0
+set cr_mon221 position { -97.7226225597455	38.7598404742828	-2.71085600775791}
+cr_res221 = createResidue CRWD
+add cacb_unit cr_res221
+add cr_res221 cr_mon221
+cr_mon222 = createAtom ZZ ZZ 0.0
+set cr_mon222 position { -68.4379414569943	-115.381424647774	99.793778880203}
+cr_res222 = createResidue CRWD
+add cacb_unit cr_res222
+add cr_res222 cr_mon222
+cr_mon223 = createAtom ZZ ZZ 0.0
+set cr_mon223 position { 78.6630337916435	76.0150405855644	111.860856757543}
+cr_res223 = createResidue CRWD
+add cacb_unit cr_res223
+add cr_res223 cr_mon223
+cr_mon224 = createAtom ZZ ZZ 0.0
+set cr_mon224 position { 14.74307915263	-25.7076295537189	-130.851718350297}
+cr_res224 = createResidue CRWD
+add cacb_unit cr_res224
+add cr_res224 cr_mon224
+cr_mon225 = createAtom ZZ ZZ 0.0
+set cr_mon225 position { 122.921346921131	-35.4593870083026	-70.0670411422081}
+cr_res225 = createResidue CRWD
+add cacb_unit cr_res225
+add cr_res225 cr_mon225
+cr_mon226 = createAtom ZZ ZZ 0.0
+set cr_mon226 position { -49.2631098207863	116.255490785728	-114.196095170009}
+cr_res226 = createResidue CRWD
+add cacb_unit cr_res226
+add cr_res226 cr_mon226
+cr_mon227 = createAtom ZZ ZZ 0.0
+set cr_mon227 position { 91.638814830651	-77.3811144902762	137.309090138688}
+cr_res227 = createResidue CRWD
+add cacb_unit cr_res227
+add cr_res227 cr_mon227
+cr_mon228 = createAtom ZZ ZZ 0.0
+set cr_mon228 position { 77.7127910006438	3.13652710503192	-113.554056659735}
+cr_res228 = createResidue CRWD
+add cacb_unit cr_res228
+add cr_res228 cr_mon228
+cr_mon229 = createAtom ZZ ZZ 0.0
+set cr_mon229 position { 139.200933685263	130.597663963165	-84.1452848542787}
+cr_res229 = createResidue CRWD
+add cacb_unit cr_res229
+add cr_res229 cr_mon229
+cr_mon230 = createAtom ZZ ZZ 0.0
+set cr_mon230 position { -69.2316799302059	47.3606170055881	-54.260608363251}
+cr_res230 = createResidue CRWD
+add cacb_unit cr_res230
+add cr_res230 cr_mon230
+cr_mon231 = createAtom ZZ ZZ 0.0
+set cr_mon231 position { 142.659527015395	37.8589385655079	28.8881873364808}
+cr_res231 = createResidue CRWD
+add cacb_unit cr_res231
+add cr_res231 cr_mon231
+cr_mon232 = createAtom ZZ ZZ 0.0
+set cr_mon232 position { 125.659452452332	-51.6217046333793	-62.4126356102632}
+cr_res232 = createResidue CRWD
+add cacb_unit cr_res232
+add cr_res232 cr_mon232
+cr_mon233 = createAtom ZZ ZZ 0.0
+set cr_mon233 position { 80.4801747548929	67.9931425305565	22.8679538398737}
+cr_res233 = createResidue CRWD
+add cacb_unit cr_res233
+add cr_res233 cr_mon233
+cr_mon234 = createAtom ZZ ZZ 0.0
+set cr_mon234 position { 50.8059975815559	-73.7328946025251	-124.957763826909}
+cr_res234 = createResidue CRWD
+add cacb_unit cr_res234
+add cr_res234 cr_mon234
+cr_mon235 = createAtom ZZ ZZ 0.0
+set cr_mon235 position { 121.308079704673	9.10434451795119	-52.595047419792}
+cr_res235 = createResidue CRWD
+add cacb_unit cr_res235
+add cr_res235 cr_mon235
+cr_mon236 = createAtom ZZ ZZ 0.0
+set cr_mon236 position { 99.8860583693837	-68.1365598223962	143.356310917467}
+cr_res236 = createResidue CRWD
+add cacb_unit cr_res236
+add cr_res236 cr_mon236
+cr_mon237 = createAtom ZZ ZZ 0.0
+set cr_mon237 position { -20.4811131665785	-8.48109798003129	22.8481482445659}
+cr_res237 = createResidue CRWD
+add cacb_unit cr_res237
+add cr_res237 cr_mon237
+cr_mon238 = createAtom ZZ ZZ 0.0
+set cr_mon238 position { 68.1011644467279	-139.938645309241	-47.6580631891725}
+cr_res238 = createResidue CRWD
+add cacb_unit cr_res238
+add cr_res238 cr_mon238
+cr_mon239 = createAtom ZZ ZZ 0.0
+set cr_mon239 position { -85.2990522449957	31.2697473970491	-74.5453326842288}
+cr_res239 = createResidue CRWD
+add cacb_unit cr_res239
+add cr_res239 cr_mon239
+cr_mon240 = createAtom ZZ ZZ 0.0
+set cr_mon240 position { 6.37155489109311	-19.1957842068092	113.839770264585}
+cr_res240 = createResidue CRWD
+add cacb_unit cr_res240
+add cr_res240 cr_mon240
+cr_mon241 = createAtom ZZ ZZ 0.0
+set cr_mon241 position { -145.134867533191	44.0733244585257	24.4909616158012}
+cr_res241 = createResidue CRWD
+add cacb_unit cr_res241
+add cr_res241 cr_mon241
+cr_mon242 = createAtom ZZ ZZ 0.0
+set cr_mon242 position { -22.6388204569769	83.113035639753	106.568719793715}
+cr_res242 = createResidue CRWD
+add cacb_unit cr_res242
+add cr_res242 cr_mon242
+cr_mon243 = createAtom ZZ ZZ 0.0
+set cr_mon243 position { 56.2148845260879	30.555761372813	26.2596872388592}
+cr_res243 = createResidue CRWD
+add cacb_unit cr_res243
+add cr_res243 cr_mon243
+cr_mon244 = createAtom ZZ ZZ 0.0
+set cr_mon244 position { 18.3054089548616	-41.7736033171209	91.9229106352464}
+cr_res244 = createResidue CRWD
+add cacb_unit cr_res244
+add cr_res244 cr_mon244
+cr_mon245 = createAtom ZZ ZZ 0.0
+set cr_mon245 position { 38.7160210586252	41.7834520002668	107.307889767438}
+cr_res245 = createResidue CRWD
+add cacb_unit cr_res245
+add cr_res245 cr_mon245
+cr_mon246 = createAtom ZZ ZZ 0.0
+set cr_mon246 position { -78.0280436165835	-123.638926035941	102.6791369953}
+cr_res246 = createResidue CRWD
+add cacb_unit cr_res246
+add cr_res246 cr_mon246
+cr_mon247 = createAtom ZZ ZZ 0.0
+set cr_mon247 position { -83.0326045971034	5.7841829151716	144.404816183113}
+cr_res247 = createResidue CRWD
+add cacb_unit cr_res247
+add cr_res247 cr_mon247
+cr_mon248 = createAtom ZZ ZZ 0.0
+set cr_mon248 position { -90.7672980653519	76.4516269895353	-60.5441849343602}
+cr_res248 = createResidue CRWD
+add cacb_unit cr_res248
+add cr_res248 cr_mon248
+cr_mon249 = createAtom ZZ ZZ 0.0
+set cr_mon249 position { 47.0274548232787	30.0307018190406	-72.8148360653975}
+cr_res249 = createResidue CRWD
+add cacb_unit cr_res249
+add cr_res249 cr_mon249
+cr_mon250 = createAtom ZZ ZZ 0.0
+set cr_mon250 position { -121.104659821266	5.81321884446666	11.72062521842}
+cr_res250 = createResidue CRWD
+add cacb_unit cr_res250
+add cr_res250 cr_mon250
+cr_mon251 = createAtom ZZ ZZ 0.0
+set cr_mon251 position { -70.3722831323176	98.6907114582639	-79.5050294877321}
+cr_res251 = createResidue CRWD
+add cacb_unit cr_res251
+add cr_res251 cr_mon251
+cr_mon252 = createAtom ZZ ZZ 0.0
+set cr_mon252 position { 48.5843874806786	91.6089630917909	-104.492188250144}
+cr_res252 = createResidue CRWD
+add cacb_unit cr_res252
+add cr_res252 cr_mon252
+cr_mon253 = createAtom ZZ ZZ 0.0
+set cr_mon253 position { -4.45150493041453	93.5458720566015	-60.8191660235605}
+cr_res253 = createResidue CRWD
+add cacb_unit cr_res253
+add cr_res253 cr_mon253
+cr_mon254 = createAtom ZZ ZZ 0.0
+set cr_mon254 position { -96.1478529851373	-146.078784249654	132.810600957557}
+cr_res254 = createResidue CRWD
+add cacb_unit cr_res254
+add cr_res254 cr_mon254
+cr_mon255 = createAtom ZZ ZZ 0.0
+set cr_mon255 position { 103.838339001832	32.0796785767516	1.03608406663298}
+cr_res255 = createResidue CRWD
+add cacb_unit cr_res255
+add cr_res255 cr_mon255
+cr_mon256 = createAtom ZZ ZZ 0.0
+set cr_mon256 position { -9.91476610724824	46.2074934631715	119.276086399205}
+cr_res256 = createResidue CRWD
+add cacb_unit cr_res256
+add cr_res256 cr_mon256
+cr_mon257 = createAtom ZZ ZZ 0.0
+set cr_mon257 position { -148.24827571994	60.7907668975027	-38.724352809281}
+cr_res257 = createResidue CRWD
+add cacb_unit cr_res257
+add cr_res257 cr_mon257
+cr_mon258 = createAtom ZZ ZZ 0.0
+set cr_mon258 position { -34.0298240567773	-4.0537151304072	-120.106630986972}
+cr_res258 = createResidue CRWD
+add cacb_unit cr_res258
+add cr_res258 cr_mon258
+cr_mon259 = createAtom ZZ ZZ 0.0
+set cr_mon259 position { -31.0740412151745	46.4776922979926	-22.2259126187573}
+cr_res259 = createResidue CRWD
+add cacb_unit cr_res259
+add cr_res259 cr_mon259
+cr_mon260 = createAtom ZZ ZZ 0.0
+set cr_mon260 position { -49.6043964383748	145.60189255556	121.795081037134}
+cr_res260 = createResidue CRWD
+add cacb_unit cr_res260
+add cr_res260 cr_mon260
+cr_mon261 = createAtom ZZ ZZ 0.0
+set cr_mon261 position { 14.5577830401955	3.06067252890436	-62.2750976561207}
+cr_res261 = createResidue CRWD
+add cacb_unit cr_res261
+add cr_res261 cr_mon261
+cr_mon262 = createAtom ZZ ZZ 0.0
+set cr_mon262 position { 79.1248293681154	-133.951451327082	144.923142266878}
+cr_res262 = createResidue CRWD
+add cacb_unit cr_res262
+add cr_res262 cr_mon262
+cr_mon263 = createAtom ZZ ZZ 0.0
+set cr_mon263 position { 9.06187643546588	27.9985273682502	7.92459457565613}
+cr_res263 = createResidue CRWD
+add cacb_unit cr_res263
+add cr_res263 cr_mon263
+cr_mon264 = createAtom ZZ ZZ 0.0
+set cr_mon264 position { 6.34869991824125	-63.681080390603	-79.8081988143789}
+cr_res264 = createResidue CRWD
+add cacb_unit cr_res264
+add cr_res264 cr_mon264
+cr_mon265 = createAtom ZZ ZZ 0.0
+set cr_mon265 position { 106.603136726482	109.057696383061	108.242610741762}
+cr_res265 = createResidue CRWD
+add cacb_unit cr_res265
+add cr_res265 cr_mon265
+cr_mon266 = createAtom ZZ ZZ 0.0
+set cr_mon266 position { 78.7553817776303	-30.4002770793396	-5.72510294560864}
+cr_res266 = createResidue CRWD
+add cacb_unit cr_res266
+add cr_res266 cr_mon266
+cr_mon267 = createAtom ZZ ZZ 0.0
+set cr_mon267 position { 11.5444660591294	-45.9851221864223	57.8556157636022}
+cr_res267 = createResidue CRWD
+add cacb_unit cr_res267
+add cr_res267 cr_mon267
+cr_mon268 = createAtom ZZ ZZ 0.0
+set cr_mon268 position { 38.1008296889487	-135.178072141541	-34.248086469243}
+cr_res268 = createResidue CRWD
+add cacb_unit cr_res268
+add cr_res268 cr_mon268
+cr_mon269 = createAtom ZZ ZZ 0.0
+set cr_mon269 position { 36.9305437320357	-94.1542665969695	-18.1897449714029}
+cr_res269 = createResidue CRWD
+add cacb_unit cr_res269
+add cr_res269 cr_mon269
+cr_mon270 = createAtom ZZ ZZ 0.0
+set cr_mon270 position { -28.6577346439795	-126.82624653773	-2.60978235775475}
+cr_res270 = createResidue CRWD
+add cacb_unit cr_res270
+add cr_res270 cr_mon270
+cr_mon271 = createAtom ZZ ZZ 0.0
+set cr_mon271 position { -95.0678162260672	60.7010787365983	-98.4223492054547}
+cr_res271 = createResidue CRWD
+add cacb_unit cr_res271
+add cr_res271 cr_mon271
+cr_mon272 = createAtom ZZ ZZ 0.0
+set cr_mon272 position { -100.9603211836	-73.9283766969066	47.7172626151717}
+cr_res272 = createResidue CRWD
+add cacb_unit cr_res272
+add cr_res272 cr_mon272
+cr_mon273 = createAtom ZZ ZZ 0.0
+set cr_mon273 position { 23.809623644447	-105.337861131961	35.3269206547353}
+cr_res273 = createResidue CRWD
+add cacb_unit cr_res273
+add cr_res273 cr_mon273
+cr_mon274 = createAtom ZZ ZZ 0.0
+set cr_mon274 position { -107.367662915219	99.920615236244	109.418808104651}
+cr_res274 = createResidue CRWD
+add cacb_unit cr_res274
+add cr_res274 cr_mon274
+cr_mon275 = createAtom ZZ ZZ 0.0
+set cr_mon275 position { -28.5711599614558	-25.3455562808821	54.642880368737}
+cr_res275 = createResidue CRWD
+add cacb_unit cr_res275
+add cr_res275 cr_mon275
+cr_mon276 = createAtom ZZ ZZ 0.0
+set cr_mon276 position { 45.8281779204551	-144.543676177513	74.0545116430713}
+cr_res276 = createResidue CRWD
+add cacb_unit cr_res276
+add cr_res276 cr_mon276
+cr_mon277 = createAtom ZZ ZZ 0.0
+set cr_mon277 position { -99.5991710581698	-44.59983868603	-81.9451966528362}
+cr_res277 = createResidue CRWD
+add cacb_unit cr_res277
+add cr_res277 cr_mon277
+cr_mon278 = createAtom ZZ ZZ 0.0
+set cr_mon278 position { 139.064799337135	22.7421587015293	24.2265641221817}
+cr_res278 = createResidue CRWD
+add cacb_unit cr_res278
+add cr_res278 cr_mon278
+cr_mon279 = createAtom ZZ ZZ 0.0
+set cr_mon279 position { 79.8502768447818	-112.976203792662	-39.3866781875651}
+cr_res279 = createResidue CRWD
+add cacb_unit cr_res279
+add cr_res279 cr_mon279
+cr_mon280 = createAtom ZZ ZZ 0.0
+set cr_mon280 position { -9.25466860881166	145.138037633842	-60.7431371501544}
+cr_res280 = createResidue CRWD
+add cacb_unit cr_res280
+add cr_res280 cr_mon280
+cr_mon281 = createAtom ZZ ZZ 0.0
+set cr_mon281 position { 41.702976190043	84.873415036574	-45.1242127989602}
+cr_res281 = createResidue CRWD
+add cacb_unit cr_res281
+add cr_res281 cr_mon281
+cr_mon282 = createAtom ZZ ZZ 0.0
+set cr_mon282 position { 143.957608446202	-107.903838729717	-45.2709053354557}
+cr_res282 = createResidue CRWD
+add cacb_unit cr_res282
+add cr_res282 cr_mon282
+cr_mon283 = createAtom ZZ ZZ 0.0
+set cr_mon283 position { -69.1176264807979	15.5869415914001	-112.955272189286}
+cr_res283 = createResidue CRWD
+add cacb_unit cr_res283
+add cr_res283 cr_mon283
+cr_mon284 = createAtom ZZ ZZ 0.0
+set cr_mon284 position { 128.578996877007	-102.021476265746	-11.2814191674527}
+cr_res284 = createResidue CRWD
+add cacb_unit cr_res284
+add cr_res284 cr_mon284
+cr_mon285 = createAtom ZZ ZZ 0.0
+set cr_mon285 position { 45.2777611566667	-57.774756679699	-6.66483906473445}
+cr_res285 = createResidue CRWD
+add cacb_unit cr_res285
+add cr_res285 cr_mon285
+cr_mon286 = createAtom ZZ ZZ 0.0
+set cr_mon286 position { 60.4526670308648	109.648585916363	116.008957908175}
+cr_res286 = createResidue CRWD
+add cacb_unit cr_res286
+add cr_res286 cr_mon286
+cr_mon287 = createAtom ZZ ZZ 0.0
+set cr_mon287 position { 65.9361758495592	101.051575104082	10.9291459216628}
+cr_res287 = createResidue CRWD
+add cacb_unit cr_res287
+add cr_res287 cr_mon287
+cr_mon288 = createAtom ZZ ZZ 0.0
+set cr_mon288 position { 109.600122804899	116.921334729662	-44.1798284899928}
+cr_res288 = createResidue CRWD
+add cacb_unit cr_res288
+add cr_res288 cr_mon288
+cr_mon289 = createAtom ZZ ZZ 0.0
+set cr_mon289 position { 55.2923354555752	58.8603346440205	71.4443131705664}
+cr_res289 = createResidue CRWD
+add cacb_unit cr_res289
+add cr_res289 cr_mon289
+cr_mon290 = createAtom ZZ ZZ 0.0
+set cr_mon290 position { 11.8901997451434	127.729934754041	47.8317208323329}
+cr_res290 = createResidue CRWD
+add cacb_unit cr_res290
+add cr_res290 cr_mon290
+cr_mon291 = createAtom ZZ ZZ 0.0
+set cr_mon291 position { -127.958879135679	-33.1537070953342	-1.21260651225796}
+cr_res291 = createResidue CRWD
+add cacb_unit cr_res291
+add cr_res291 cr_mon291
+cr_mon292 = createAtom ZZ ZZ 0.0
+set cr_mon292 position { 4.28697439698134	14.5233931143977	-71.6420962680683}
+cr_res292 = createResidue CRWD
+add cacb_unit cr_res292
+add cr_res292 cr_mon292
+cr_mon293 = createAtom ZZ ZZ 0.0
+set cr_mon293 position { -11.8064709502072	-8.32550157355634	61.9446400445867}
+cr_res293 = createResidue CRWD
+add cacb_unit cr_res293
+add cr_res293 cr_mon293
+cr_mon294 = createAtom ZZ ZZ 0.0
+set cr_mon294 position { 97.4033023268905	-128.952519232812	-10.4511385167545}
+cr_res294 = createResidue CRWD
+add cacb_unit cr_res294
+add cr_res294 cr_mon294
+cr_mon295 = createAtom ZZ ZZ 0.0
+set cr_mon295 position { -23.2214674036399	5.47231353335356	-52.7912946322822}
+cr_res295 = createResidue CRWD
+add cacb_unit cr_res295
+add cr_res295 cr_mon295
+cr_mon296 = createAtom ZZ ZZ 0.0
+set cr_mon296 position { -7.03250282219479	42.3271343646832	-12.5652562649574}
+cr_res296 = createResidue CRWD
+add cacb_unit cr_res296
+add cr_res296 cr_mon296
+cr_mon297 = createAtom ZZ ZZ 0.0
+set cr_mon297 position { 86.6176319198296	76.5746781386976	142.461628825195}
+cr_res297 = createResidue CRWD
+add cacb_unit cr_res297
+add cr_res297 cr_mon297
+cr_mon298 = createAtom ZZ ZZ 0.0
+set cr_mon298 position { -113.379925890326	-41.1584652294856	-132.664399355098}
+cr_res298 = createResidue CRWD
+add cacb_unit cr_res298
+add cr_res298 cr_mon298
+cr_mon299 = createAtom ZZ ZZ 0.0
+set cr_mon299 position { -145.305988694517	103.067068069041	67.7664494858014}
+cr_res299 = createResidue CRWD
+add cacb_unit cr_res299
+add cr_res299 cr_mon299
+cr_mon300 = createAtom ZZ ZZ 0.0
+set cr_mon300 position { 80.7167749502465	-39.421617100156	-133.196951598846}
+cr_res300 = createResidue CRWD
+add cacb_unit cr_res300
+add cr_res300 cr_mon300
+cr_mon301 = createAtom ZZ ZZ 0.0
+set cr_mon301 position { -2.1967318001991	-73.4388284207188	-5.47463182949741}
+cr_res301 = createResidue CRWD
+add cacb_unit cr_res301
+add cr_res301 cr_mon301
+cr_mon302 = createAtom ZZ ZZ 0.0
+set cr_mon302 position { 38.2728382779423	109.193725851485	-115.557430642778}
+cr_res302 = createResidue CRWD
+add cacb_unit cr_res302
+add cr_res302 cr_mon302
+cr_mon303 = createAtom ZZ ZZ 0.0
+set cr_mon303 position { -53.0492513313405	11.4653235488721	62.1265462835119}
+cr_res303 = createResidue CRWD
+add cacb_unit cr_res303
+add cr_res303 cr_mon303
+cr_mon304 = createAtom ZZ ZZ 0.0
+set cr_mon304 position { 133.805630404363	-100.374871203931	11.6273753570429}
+cr_res304 = createResidue CRWD
+add cacb_unit cr_res304
+add cr_res304 cr_mon304
+cr_mon305 = createAtom ZZ ZZ 0.0
+set cr_mon305 position { -65.2702241556177	75.0462345275249	144.188298062012}
+cr_res305 = createResidue CRWD
+add cacb_unit cr_res305
+add cr_res305 cr_mon305
+cr_mon306 = createAtom ZZ ZZ 0.0
+set cr_mon306 position { -10.6059341600979	-96.8959892758953	-34.3621158723938}
+cr_res306 = createResidue CRWD
+add cacb_unit cr_res306
+add cr_res306 cr_mon306
+cr_mon307 = createAtom ZZ ZZ 0.0
+set cr_mon307 position { 92.7703931215945	-96.6781907383105	64.1020415142627}
+cr_res307 = createResidue CRWD
+add cacb_unit cr_res307
+add cr_res307 cr_mon307
+cr_mon308 = createAtom ZZ ZZ 0.0
+set cr_mon308 position { -34.3206153367735	10.9399628592186	-149.254139880948}
+cr_res308 = createResidue CRWD
+add cacb_unit cr_res308
+add cr_res308 cr_mon308
+cr_mon309 = createAtom ZZ ZZ 0.0
+set cr_mon309 position { -112.569886833986	33.4788586157071	45.8820689558962}
+cr_res309 = createResidue CRWD
+add cacb_unit cr_res309
+add cr_res309 cr_mon309
+cr_mon310 = createAtom ZZ ZZ 0.0
+set cr_mon310 position { -63.9084076850136	133.918749374035	-48.9106934597093}
+cr_res310 = createResidue CRWD
+add cacb_unit cr_res310
+add cr_res310 cr_mon310
+cr_mon311 = createAtom ZZ ZZ 0.0
+set cr_mon311 position { -100.409418399265	100.68376315934	-35.2513638092084}
+cr_res311 = createResidue CRWD
+add cacb_unit cr_res311
+add cr_res311 cr_mon311
+cr_mon312 = createAtom ZZ ZZ 0.0
+set cr_mon312 position { 7.59873091252352	-149.581675974503	-40.9093735234134}
+cr_res312 = createResidue CRWD
+add cacb_unit cr_res312
+add cr_res312 cr_mon312
+cr_mon313 = createAtom ZZ ZZ 0.0
+set cr_mon313 position { -97.5313808762344	113.418130837121	-96.265350893448}
+cr_res313 = createResidue CRWD
+add cacb_unit cr_res313
+add cr_res313 cr_mon313
+cr_mon314 = createAtom ZZ ZZ 0.0
+set cr_mon314 position { -14.5811057666048	91.44515983837	-100.794197970588}
+cr_res314 = createResidue CRWD
+add cacb_unit cr_res314
+add cr_res314 cr_mon314
+cr_mon315 = createAtom ZZ ZZ 0.0
+set cr_mon315 position { -119.452134859151	-54.0127504102454	12.7598416312956}
+cr_res315 = createResidue CRWD
+add cacb_unit cr_res315
+add cr_res315 cr_mon315
+cr_mon316 = createAtom ZZ ZZ 0.0
+set cr_mon316 position { 129.256180556609	13.3026348117269	120.633979877978}
+cr_res316 = createResidue CRWD
+add cacb_unit cr_res316
+add cr_res316 cr_mon316
+cr_mon317 = createAtom ZZ ZZ 0.0
+set cr_mon317 position { 148.535425802886	90.4432943876639	121.89052006641}
+cr_res317 = createResidue CRWD
+add cacb_unit cr_res317
+add cr_res317 cr_mon317
+cr_mon318 = createAtom ZZ ZZ 0.0
+set cr_mon318 position { -32.3205805261122	92.4207626928812	36.8575775963816}
+cr_res318 = createResidue CRWD
+add cacb_unit cr_res318
+add cr_res318 cr_mon318
+cr_mon319 = createAtom ZZ ZZ 0.0
+set cr_mon319 position { 106.133204879994	52.3248635938035	-112.112729798499}
+cr_res319 = createResidue CRWD
+add cacb_unit cr_res319
+add cr_res319 cr_mon319
+cr_mon320 = createAtom ZZ ZZ 0.0
+set cr_mon320 position { -141.737298157271	9.21806643051752	46.0225284796852}
+cr_res320 = createResidue CRWD
+add cacb_unit cr_res320
+add cr_res320 cr_mon320
+cr_mon321 = createAtom ZZ ZZ 0.0
+set cr_mon321 position { -67.3410721526956	102.016032271922	30.077651806387}
+cr_res321 = createResidue CRWD
+add cacb_unit cr_res321
+add cr_res321 cr_mon321
+cr_mon322 = createAtom ZZ ZZ 0.0
+set cr_mon322 position { 47.029584972849	146.775514564661	116.169663969911}
+cr_res322 = createResidue CRWD
+add cacb_unit cr_res322
+add cr_res322 cr_mon322
+cr_mon323 = createAtom ZZ ZZ 0.0
+set cr_mon323 position { 71.4887207609991	-62.1656251258511	111.424362266887}
+cr_res323 = createResidue CRWD
+add cacb_unit cr_res323
+add cr_res323 cr_mon323
+cr_mon324 = createAtom ZZ ZZ 0.0
+set cr_mon324 position { -27.4364156527358	-110.609196030187	62.2232264953471}
+cr_res324 = createResidue CRWD
+add cacb_unit cr_res324
+add cr_res324 cr_mon324
+cr_mon325 = createAtom ZZ ZZ 0.0
+set cr_mon325 position { 85.9059234462258	-2.25931995876643	21.944169482444}
+cr_res325 = createResidue CRWD
+add cacb_unit cr_res325
+add cr_res325 cr_mon325
+cr_mon326 = createAtom ZZ ZZ 0.0
+set cr_mon326 position { -61.8120888273918	8.24717849884777	134.794907877943}
+cr_res326 = createResidue CRWD
+add cacb_unit cr_res326
+add cr_res326 cr_mon326
+cr_mon327 = createAtom ZZ ZZ 0.0
+set cr_mon327 position { 143.205656346517	148.340319988639	30.5560558019074}
+cr_res327 = createResidue CRWD
+add cacb_unit cr_res327
+add cr_res327 cr_mon327
+cr_mon328 = createAtom ZZ ZZ 0.0
+set cr_mon328 position { -72.4136781268573	-45.2715075389108	-71.3765167150481}
+cr_res328 = createResidue CRWD
+add cacb_unit cr_res328
+add cr_res328 cr_mon328
+cr_mon329 = createAtom ZZ ZZ 0.0
+set cr_mon329 position { 99.9188235804347	80.3346359208856	-47.6930676546331}
+cr_res329 = createResidue CRWD
+add cacb_unit cr_res329
+add cr_res329 cr_mon329
+cr_mon330 = createAtom ZZ ZZ 0.0
+set cr_mon330 position { -118.55480150992	128.367556034463	-130.911051525242}
+cr_res330 = createResidue CRWD
+add cacb_unit cr_res330
+add cr_res330 cr_mon330
+cr_mon331 = createAtom ZZ ZZ 0.0
+set cr_mon331 position { 17.5937984332478	129.408368093258	-72.7395041987201}
+cr_res331 = createResidue CRWD
+add cacb_unit cr_res331
+add cr_res331 cr_mon331
+cr_mon332 = createAtom ZZ ZZ 0.0
+set cr_mon332 position { -40.9449950840671	-26.7882445240886	120.004273006193}
+cr_res332 = createResidue CRWD
+add cacb_unit cr_res332
+add cr_res332 cr_mon332
+cr_mon333 = createAtom ZZ ZZ 0.0
+set cr_mon333 position { -119.413850645935	-96.2297308236561	122.73786040322}
+cr_res333 = createResidue CRWD
+add cacb_unit cr_res333
+add cr_res333 cr_mon333
+cr_mon334 = createAtom ZZ ZZ 0.0
+set cr_mon334 position { -54.6574891719953	-116.328519863595	-67.3840377063161}
+cr_res334 = createResidue CRWD
+add cacb_unit cr_res334
+add cr_res334 cr_mon334
+cr_mon335 = createAtom ZZ ZZ 0.0
+set cr_mon335 position { 95.73357831013	-79.4771925897646	-143.817675147695}
+cr_res335 = createResidue CRWD
+add cacb_unit cr_res335
+add cr_res335 cr_mon335
+cr_mon336 = createAtom ZZ ZZ 0.0
+set cr_mon336 position { 84.5464456676904	34.6745078466228	21.8554573600588}
+cr_res336 = createResidue CRWD
+add cacb_unit cr_res336
+add cr_res336 cr_mon336
+cr_mon337 = createAtom ZZ ZZ 0.0
+set cr_mon337 position { 95.9743701233172	-145.960275385659	-148.251515051173}
+cr_res337 = createResidue CRWD
+add cacb_unit cr_res337
+add cr_res337 cr_mon337
+cr_mon338 = createAtom ZZ ZZ 0.0
+set cr_mon338 position { 134.992358470398	-139.702591561757	-85.5942328739008}
+cr_res338 = createResidue CRWD
+add cacb_unit cr_res338
+add cr_res338 cr_mon338
+cr_mon339 = createAtom ZZ ZZ 0.0
+set cr_mon339 position { -64.7319986949185	-47.7394297243844	147.273362706641}
+cr_res339 = createResidue CRWD
+add cacb_unit cr_res339
+add cr_res339 cr_mon339
+cr_mon340 = createAtom ZZ ZZ 0.0
+set cr_mon340 position { 81.4466172922518	-11.1990480464002	148.153641750791}
+cr_res340 = createResidue CRWD
+add cacb_unit cr_res340
+add cr_res340 cr_mon340
+cr_mon341 = createAtom ZZ ZZ 0.0
+set cr_mon341 position { -0.153553465028011	133.196276363652	-88.33191629179}
+cr_res341 = createResidue CRWD
+add cacb_unit cr_res341
+add cr_res341 cr_mon341
+cr_mon342 = createAtom ZZ ZZ 0.0
+set cr_mon342 position { 98.0287113512905	-69.8839686762916	-11.3311292891698}
+cr_res342 = createResidue CRWD
+add cacb_unit cr_res342
+add cr_res342 cr_mon342
+cr_mon343 = createAtom ZZ ZZ 0.0
+set cr_mon343 position { 102.479121455322	-105.486822122564	-130.128959814896}
+cr_res343 = createResidue CRWD
+add cacb_unit cr_res343
+add cr_res343 cr_mon343
+cr_mon344 = createAtom ZZ ZZ 0.0
+set cr_mon344 position { -51.7619313265431	42.862871508828	101.814666796543}
+cr_res344 = createResidue CRWD
+add cacb_unit cr_res344
+add cr_res344 cr_mon344
+cr_mon345 = createAtom ZZ ZZ 0.0
+set cr_mon345 position { 116.198201254559	-38.0761087174537	56.1576089000752}
+cr_res345 = createResidue CRWD
+add cacb_unit cr_res345
+add cr_res345 cr_mon345
+cr_mon346 = createAtom ZZ ZZ 0.0
+set cr_mon346 position { 23.860667411417	-25.6280120363634	119.377328804553}
+cr_res346 = createResidue CRWD
+add cacb_unit cr_res346
+add cr_res346 cr_mon346
+cr_mon347 = createAtom ZZ ZZ 0.0
+set cr_mon347 position { 74.9222174673463	87.7156853806216	-13.824229990221}
+cr_res347 = createResidue CRWD
+add cacb_unit cr_res347
+add cr_res347 cr_mon347
+cr_mon348 = createAtom ZZ ZZ 0.0
+set cr_mon348 position { -29.9316302413278	-114.251163356526	-40.2823636785836}
+cr_res348 = createResidue CRWD
+add cacb_unit cr_res348
+add cr_res348 cr_mon348
+cr_mon349 = createAtom ZZ ZZ 0.0
+set cr_mon349 position { 94.8633148466293	105.87651524517	-126.26535432874}
+cr_res349 = createResidue CRWD
+add cacb_unit cr_res349
+add cr_res349 cr_mon349
+cr_mon350 = createAtom ZZ ZZ 0.0
+set cr_mon350 position { -145.137406688781	-20.1534657203759	-33.8305671565283}
+cr_res350 = createResidue CRWD
+add cacb_unit cr_res350
+add cr_res350 cr_mon350
+cr_mon351 = createAtom ZZ ZZ 0.0
+set cr_mon351 position { -109.478146645689	-82.2935122022113	28.7759829341248}
+cr_res351 = createResidue CRWD
+add cacb_unit cr_res351
+add cr_res351 cr_mon351
+cr_mon352 = createAtom ZZ ZZ 0.0
+set cr_mon352 position { 101.187444744017	-72.8535718743132	78.9400434820241}
+cr_res352 = createResidue CRWD
+add cacb_unit cr_res352
+add cr_res352 cr_mon352
+cr_mon353 = createAtom ZZ ZZ 0.0
+set cr_mon353 position { 3.03930371785199	20.2188879175193	-51.1594320615288}
+cr_res353 = createResidue CRWD
+add cacb_unit cr_res353
+add cr_res353 cr_mon353
+cr_mon354 = createAtom ZZ ZZ 0.0
+set cr_mon354 position { 120.262689900382	-61.898701324241	122.181373749309}
+cr_res354 = createResidue CRWD
+add cacb_unit cr_res354
+add cr_res354 cr_mon354
+cr_mon355 = createAtom ZZ ZZ 0.0
+set cr_mon355 position { -64.1081589991131	141.603550456353	-137.003199416285}
+cr_res355 = createResidue CRWD
+add cacb_unit cr_res355
+add cr_res355 cr_mon355
+cr_mon356 = createAtom ZZ ZZ 0.0
+set cr_mon356 position { -3.21854557516055	69.8412954440457	-139.578577717715}
+cr_res356 = createResidue CRWD
+add cacb_unit cr_res356
+add cr_res356 cr_mon356
+cr_mon357 = createAtom ZZ ZZ 0.0
+set cr_mon357 position { -123.699250002507	81.8125171951873	-115.440892627296}
+cr_res357 = createResidue CRWD
+add cacb_unit cr_res357
+add cr_res357 cr_mon357
+cr_mon358 = createAtom ZZ ZZ 0.0
+set cr_mon358 position { -89.9929436959408	-1.136936984458	-122.79228077145}
+cr_res358 = createResidue CRWD
+add cacb_unit cr_res358
+add cr_res358 cr_mon358
+cr_mon359 = createAtom ZZ ZZ 0.0
+set cr_mon359 position { -101.387518841419	130.593598981689	98.5207254779034}
+cr_res359 = createResidue CRWD
+add cacb_unit cr_res359
+add cr_res359 cr_mon359
+cr_mon360 = createAtom ZZ ZZ 0.0
+set cr_mon360 position { -141.531211184743	20.0670020418613	-112.224133841101}
+cr_res360 = createResidue CRWD
+add cacb_unit cr_res360
+add cr_res360 cr_mon360
+cr_mon361 = createAtom ZZ ZZ 0.0
+set cr_mon361 position { 128.085288459351	83.7573969897019	133.357437859409}
+cr_res361 = createResidue CRWD
+add cacb_unit cr_res361
+add cr_res361 cr_mon361
+cr_mon362 = createAtom ZZ ZZ 0.0
+set cr_mon362 position { -57.6952219759459	106.537286472477	-118.5841090871}
+cr_res362 = createResidue CRWD
+add cacb_unit cr_res362
+add cr_res362 cr_mon362
+cr_mon363 = createAtom ZZ ZZ 0.0
+set cr_mon363 position { -14.2674372319419	54.7558861135403	-56.8857274740743}
+cr_res363 = createResidue CRWD
+add cacb_unit cr_res363
+add cr_res363 cr_mon363
+cr_mon364 = createAtom ZZ ZZ 0.0
+set cr_mon364 position { -7.43167962600673	-111.686100072011	119.804062326763}
+cr_res364 = createResidue CRWD
+add cacb_unit cr_res364
+add cr_res364 cr_mon364
+cr_mon365 = createAtom ZZ ZZ 0.0
+set cr_mon365 position { 35.6178818343331	-120.23177473193	63.9908210047906}
+cr_res365 = createResidue CRWD
+add cacb_unit cr_res365
+add cr_res365 cr_mon365
+cr_mon366 = createAtom ZZ ZZ 0.0
+set cr_mon366 position { -94.2588101805878	65.7368172998012	23.8714286410609}
+cr_res366 = createResidue CRWD
+add cacb_unit cr_res366
+add cr_res366 cr_mon366
+cr_mon367 = createAtom ZZ ZZ 0.0
+set cr_mon367 position { -54.1278332108007	-145.741309851543	-144.376386370177}
+cr_res367 = createResidue CRWD
+add cacb_unit cr_res367
+add cr_res367 cr_mon367
+cr_mon368 = createAtom ZZ ZZ 0.0
+set cr_mon368 position { -7.67755938975831	70.1829339708496	88.1280339085695}
+cr_res368 = createResidue CRWD
+add cacb_unit cr_res368
+add cr_res368 cr_mon368
+cr_mon369 = createAtom ZZ ZZ 0.0
+set cr_mon369 position { -101.302298126414	71.1918669210203	-114.623423113481}
+cr_res369 = createResidue CRWD
+add cacb_unit cr_res369
+add cr_res369 cr_mon369
+cr_mon370 = createAtom ZZ ZZ 0.0
+set cr_mon370 position { -144.066392924769	-66.8126190025582	107.366775837219}
+cr_res370 = createResidue CRWD
+add cacb_unit cr_res370
+add cr_res370 cr_mon370
+cr_mon371 = createAtom ZZ ZZ 0.0
+set cr_mon371 position { 13.5595686444219	-74.9354638952294	-94.0319733689314}
+cr_res371 = createResidue CRWD
+add cacb_unit cr_res371
+add cr_res371 cr_mon371
+cr_mon372 = createAtom ZZ ZZ 0.0
+set cr_mon372 position { -123.508847767048	54.5130221540362	-60.6860947141126}
+cr_res372 = createResidue CRWD
+add cacb_unit cr_res372
+add cr_res372 cr_mon372
+cr_mon373 = createAtom ZZ ZZ 0.0
+set cr_mon373 position { -114.310051951517	95.2317019094732	-0.24814298426179}
+cr_res373 = createResidue CRWD
+add cacb_unit cr_res373
+add cr_res373 cr_mon373
+cr_mon374 = createAtom ZZ ZZ 0.0
+set cr_mon374 position { -105.83867635905	-95.9090384474656	-24.7047939499797}
+cr_res374 = createResidue CRWD
+add cacb_unit cr_res374
+add cr_res374 cr_mon374
+cr_mon375 = createAtom ZZ ZZ 0.0
+set cr_mon375 position { -38.0218183037798	20.5616095884256	-148.982299542114}
+cr_res375 = createResidue CRWD
+add cacb_unit cr_res375
+add cr_res375 cr_mon375
+cr_mon376 = createAtom ZZ ZZ 0.0
+set cr_mon376 position { 11.8747090997072	-108.557289315797	112.199553350274}
+cr_res376 = createResidue CRWD
+add cacb_unit cr_res376
+add cr_res376 cr_mon376
+cr_mon377 = createAtom ZZ ZZ 0.0
+set cr_mon377 position { 57.4851475657447	-75.1821030340952	17.2941221363928}
+cr_res377 = createResidue CRWD
+add cacb_unit cr_res377
+add cr_res377 cr_mon377
+cr_mon378 = createAtom ZZ ZZ 0.0
+set cr_mon378 position { -101.993116530037	-100.277425856304	89.1944300273348}
+cr_res378 = createResidue CRWD
+add cacb_unit cr_res378
+add cr_res378 cr_mon378
+cr_mon379 = createAtom ZZ ZZ 0.0
+set cr_mon379 position { -29.1732483640573	-146.481201452027	140.410218716001}
+cr_res379 = createResidue CRWD
+add cacb_unit cr_res379
+add cr_res379 cr_mon379
+cr_mon380 = createAtom ZZ ZZ 0.0
+set cr_mon380 position { -11.070419232755	25.1748808448397	24.5573221522665}
+cr_res380 = createResidue CRWD
+add cacb_unit cr_res380
+add cr_res380 cr_mon380
+cr_mon381 = createAtom ZZ ZZ 0.0
+set cr_mon381 position { -71.7836418164033	-12.9533673424437	-141.322415212284}
+cr_res381 = createResidue CRWD
+add cacb_unit cr_res381
+add cr_res381 cr_mon381
+cr_mon382 = createAtom ZZ ZZ 0.0
+set cr_mon382 position { -96.1116084288786	-42.5018683212564	-13.4650310332265}
+cr_res382 = createResidue CRWD
+add cacb_unit cr_res382
+add cr_res382 cr_mon382
+cr_mon383 = createAtom ZZ ZZ 0.0
+set cr_mon383 position { 57.7696170074987	65.967593395094	-6.98170713306681}
+cr_res383 = createResidue CRWD
+add cacb_unit cr_res383
+add cr_res383 cr_mon383
+cr_mon384 = createAtom ZZ ZZ 0.0
+set cr_mon384 position { -136.913038805277	140.446606633114	-77.3380954064205}
+cr_res384 = createResidue CRWD
+add cacb_unit cr_res384
+add cr_res384 cr_mon384
+cr_mon385 = createAtom ZZ ZZ 0.0
+set cr_mon385 position { -96.6717921118892	-85.4854993981693	-121.60011575384}
+cr_res385 = createResidue CRWD
+add cacb_unit cr_res385
+add cr_res385 cr_mon385
+cr_mon386 = createAtom ZZ ZZ 0.0
+set cr_mon386 position { -129.154719460483	-123.163397469329	19.5926465496751}
+cr_res386 = createResidue CRWD
+add cacb_unit cr_res386
+add cr_res386 cr_mon386
+cr_mon387 = createAtom ZZ ZZ 0.0
+set cr_mon387 position { 129.798013076993	-46.114454916744	-110.526987695091}
+cr_res387 = createResidue CRWD
+add cacb_unit cr_res387
+add cr_res387 cr_mon387
+cr_mon388 = createAtom ZZ ZZ 0.0
+set cr_mon388 position { 132.84823585295	75.0765472511191	57.0773760334294}
+cr_res388 = createResidue CRWD
+add cacb_unit cr_res388
+add cr_res388 cr_mon388
+cr_mon389 = createAtom ZZ ZZ 0.0
+set cr_mon389 position { 17.4013215777315	111.317751810743	64.3401382940823}
+cr_res389 = createResidue CRWD
+add cacb_unit cr_res389
+add cr_res389 cr_mon389
+cr_mon390 = createAtom ZZ ZZ 0.0
+set cr_mon390 position { -8.22266398110081	-25.2335884025776	147.881133787194}
+cr_res390 = createResidue CRWD
+add cacb_unit cr_res390
+add cr_res390 cr_mon390
+cr_mon391 = createAtom ZZ ZZ 0.0
+set cr_mon391 position { -18.8751663627826	145.045467431415	-20.5225091738662}
+cr_res391 = createResidue CRWD
+add cacb_unit cr_res391
+add cr_res391 cr_mon391
+cr_mon392 = createAtom ZZ ZZ 0.0
+set cr_mon392 position { -54.7861381019022	77.0437251976944	-132.384955266405}
+cr_res392 = createResidue CRWD
+add cacb_unit cr_res392
+add cr_res392 cr_mon392
+cr_mon393 = createAtom ZZ ZZ 0.0
+set cr_mon393 position { -98.7556267415023	149.903420280944	13.6639809842094}
+cr_res393 = createResidue CRWD
+add cacb_unit cr_res393
+add cr_res393 cr_mon393
+cr_mon394 = createAtom ZZ ZZ 0.0
+set cr_mon394 position { 140.556251611172	9.37452008738902	-28.4995296688624}
+cr_res394 = createResidue CRWD
+add cacb_unit cr_res394
+add cr_res394 cr_mon394
+cr_mon395 = createAtom ZZ ZZ 0.0
+set cr_mon395 position { 19.9431968544815	83.5669180021601	-135.716714067647}
+cr_res395 = createResidue CRWD
+add cacb_unit cr_res395
+add cr_res395 cr_mon395
+cr_mon396 = createAtom ZZ ZZ 0.0
+set cr_mon396 position { -146.690404073195	48.4809077723938	-10.1523933013237}
+cr_res396 = createResidue CRWD
+add cacb_unit cr_res396
+add cr_res396 cr_mon396
+cr_mon397 = createAtom ZZ ZZ 0.0
+set cr_mon397 position { -120.470768377424	-43.9033402113996	134.197466931175}
+cr_res397 = createResidue CRWD
+add cacb_unit cr_res397
+add cr_res397 cr_mon397
+cr_mon398 = createAtom ZZ ZZ 0.0
+set cr_mon398 position { 74.3703747396243	-69.090200025466	-48.4355225206546}
+cr_res398 = createResidue CRWD
+add cacb_unit cr_res398
+add cr_res398 cr_mon398
+cr_mon399 = createAtom ZZ ZZ 0.0
+set cr_mon399 position { -27.9946943255553	-4.66095505572746	108.376817874544}
+cr_res399 = createResidue CRWD
+add cacb_unit cr_res399
+add cr_res399 cr_mon399
+cr_mon400 = createAtom ZZ ZZ 0.0
+set cr_mon400 position { -63.1719831089118	62.442296009246	-69.990098572023}
+cr_res400 = createResidue CRWD
+add cacb_unit cr_res400
+add cr_res400 cr_mon400
+cr_mon401 = createAtom ZZ ZZ 0.0
+set cr_mon401 position { 65.080406018469	35.0445101443309	-92.3634805856167}
+cr_res401 = createResidue CRWD
+add cacb_unit cr_res401
+add cr_res401 cr_mon401
+cr_mon402 = createAtom ZZ ZZ 0.0
+set cr_mon402 position { -106.021036458121	-72.2643343753298	100.10006538569}
+cr_res402 = createResidue CRWD
+add cacb_unit cr_res402
+add cr_res402 cr_mon402
+cr_mon403 = createAtom ZZ ZZ 0.0
+set cr_mon403 position { -14.4033306465815	61.6664891383781	-77.0718119279543}
+cr_res403 = createResidue CRWD
+add cacb_unit cr_res403
+add cr_res403 cr_mon403
+cr_mon404 = createAtom ZZ ZZ 0.0
+set cr_mon404 position { -72.4625682338431	4.5905491546236	60.0997041334995}
+cr_res404 = createResidue CRWD
+add cacb_unit cr_res404
+add cr_res404 cr_mon404
+cr_mon405 = createAtom ZZ ZZ 0.0
+set cr_mon405 position { -33.6812825273761	-29.1181543376059	-63.1088595300156}
+cr_res405 = createResidue CRWD
+add cacb_unit cr_res405
+add cr_res405 cr_mon405
+cr_mon406 = createAtom ZZ ZZ 0.0
+set cr_mon406 position { -60.7929552339865	44.5484064176604	-123.226786281839}
+cr_res406 = createResidue CRWD
+add cacb_unit cr_res406
+add cr_res406 cr_mon406
+cr_mon407 = createAtom ZZ ZZ 0.0
+set cr_mon407 position { -97.2715208779661	1.62502549121832	23.7457602875573}
+cr_res407 = createResidue CRWD
+add cacb_unit cr_res407
+add cr_res407 cr_mon407
+cr_mon408 = createAtom ZZ ZZ 0.0
+set cr_mon408 position { -13.1293877180287	100.866553540845	-28.6466971552155}
+cr_res408 = createResidue CRWD
+add cacb_unit cr_res408
+add cr_res408 cr_mon408
+cr_mon409 = createAtom ZZ ZZ 0.0
+set cr_mon409 position { -8.15621566083067	-14.175952949498	-53.5043950660523}
+cr_res409 = createResidue CRWD
+add cacb_unit cr_res409
+add cr_res409 cr_mon409
+cr_mon410 = createAtom ZZ ZZ 0.0
+set cr_mon410 position { -27.716812381119	124.567749029175	-72.3890350549755}
+cr_res410 = createResidue CRWD
+add cacb_unit cr_res410
+add cr_res410 cr_mon410
+cr_mon411 = createAtom ZZ ZZ 0.0
+set cr_mon411 position { 44.4470265692274	-60.584141940981	-135.725408550818}
+cr_res411 = createResidue CRWD
+add cacb_unit cr_res411
+add cr_res411 cr_mon411
+cr_mon412 = createAtom ZZ ZZ 0.0
+set cr_mon412 position { -4.44901379970055	15.1435008350646	23.1624392656347}
+cr_res412 = createResidue CRWD
+add cacb_unit cr_res412
+add cr_res412 cr_mon412
+cr_mon413 = createAtom ZZ ZZ 0.0
+set cr_mon413 position { -33.6740069128886	-8.88092791811523	-49.0784541769983}
+cr_res413 = createResidue CRWD
+add cacb_unit cr_res413
+add cr_res413 cr_mon413
+cr_mon414 = createAtom ZZ ZZ 0.0
+set cr_mon414 position { 32.1000323193918	-133.942164859867	23.4897063187102}
+cr_res414 = createResidue CRWD
+add cacb_unit cr_res414
+add cr_res414 cr_mon414
+cr_mon415 = createAtom ZZ ZZ 0.0
+set cr_mon415 position { -35.1747631938238	64.5042945935234	109.555751037059}
+cr_res415 = createResidue CRWD
+add cacb_unit cr_res415
+add cr_res415 cr_mon415
+cr_mon416 = createAtom ZZ ZZ 0.0
+set cr_mon416 position { -145.785010006954	135.773990911551	-37.6136159797593}
+cr_res416 = createResidue CRWD
+add cacb_unit cr_res416
+add cr_res416 cr_mon416
+cr_mon417 = createAtom ZZ ZZ 0.0
+set cr_mon417 position { -100.565909567425	-68.3423259803593	-59.0530757443432}
+cr_res417 = createResidue CRWD
+add cacb_unit cr_res417
+add cr_res417 cr_mon417
+cr_mon418 = createAtom ZZ ZZ 0.0
+set cr_mon418 position { 3.06357849132333	0.905498462078214	-81.706575780176}
+cr_res418 = createResidue CRWD
+add cacb_unit cr_res418
+add cr_res418 cr_mon418
+cr_mon419 = createAtom ZZ ZZ 0.0
+set cr_mon419 position { 115.781878582118	-122.140239154532	-80.9302827558845}
+cr_res419 = createResidue CRWD
+add cacb_unit cr_res419
+add cr_res419 cr_mon419
+cr_mon420 = createAtom ZZ ZZ 0.0
+set cr_mon420 position { 134.729875104776	-83.6732622453454	-38.3271862231947}
+cr_res420 = createResidue CRWD
+add cacb_unit cr_res420
+add cr_res420 cr_mon420
+cr_mon421 = createAtom ZZ ZZ 0.0
+set cr_mon421 position { 73.1798522375335	-70.3343764250736	-20.3404179284263}
+cr_res421 = createResidue CRWD
+add cacb_unit cr_res421
+add cr_res421 cr_mon421
+cr_mon422 = createAtom ZZ ZZ 0.0
+set cr_mon422 position { -96.8931087597891	102.486432852461	70.8700865696127}
+cr_res422 = createResidue CRWD
+add cacb_unit cr_res422
+add cr_res422 cr_mon422
+cr_mon423 = createAtom ZZ ZZ 0.0
+set cr_mon423 position { 42.2555290269216	75.8321172796133	28.1258534280887}
+cr_res423 = createResidue CRWD
+add cacb_unit cr_res423
+add cr_res423 cr_mon423
+cr_mon424 = createAtom ZZ ZZ 0.0
+set cr_mon424 position { -127.117558987375	-30.2477484004555	-123.076396584525}
+cr_res424 = createResidue CRWD
+add cacb_unit cr_res424
+add cr_res424 cr_mon424
+cr_mon425 = createAtom ZZ ZZ 0.0
+set cr_mon425 position { -129.390573924025	140.219523945191	-134.52888184578}
+cr_res425 = createResidue CRWD
+add cacb_unit cr_res425
+add cr_res425 cr_mon425
+cr_mon426 = createAtom ZZ ZZ 0.0
+set cr_mon426 position { 97.2043655469452	-20.8309703047995	-133.399060731789}
+cr_res426 = createResidue CRWD
+add cacb_unit cr_res426
+add cr_res426 cr_mon426
+cr_mon427 = createAtom ZZ ZZ 0.0
+set cr_mon427 position { 29.8921303388312	68.0688545029088	31.0994184452134}
+cr_res427 = createResidue CRWD
+add cacb_unit cr_res427
+add cr_res427 cr_mon427
+cr_mon428 = createAtom ZZ ZZ 0.0
+set cr_mon428 position { -29.3654612198001	-135.648684291759	115.828984664224}
+cr_res428 = createResidue CRWD
+add cacb_unit cr_res428
+add cr_res428 cr_mon428
+cr_mon429 = createAtom ZZ ZZ 0.0
+set cr_mon429 position { -87.9326231364523	44.5842629464305	104.509428949063}
+cr_res429 = createResidue CRWD
+add cacb_unit cr_res429
+add cr_res429 cr_mon429
+cr_mon430 = createAtom ZZ ZZ 0.0
+set cr_mon430 position { 71.1738462269185	15.0832963888597	-103.270115181843}
+cr_res430 = createResidue CRWD
+add cacb_unit cr_res430
+add cr_res430 cr_mon430
+cr_mon431 = createAtom ZZ ZZ 0.0
+set cr_mon431 position { -7.70130173002173	41.6763124329453	11.5881180448334}
+cr_res431 = createResidue CRWD
+add cacb_unit cr_res431
+add cr_res431 cr_mon431
+cr_mon432 = createAtom ZZ ZZ 0.0
+set cr_mon432 position { 79.3268424885763	-111.554609490477	-100.839402788702}
+cr_res432 = createResidue CRWD
+add cacb_unit cr_res432
+add cr_res432 cr_mon432
+cr_mon433 = createAtom ZZ ZZ 0.0
+set cr_mon433 position { 35.2221572075017	136.62391517434	-14.6668714525148}
+cr_res433 = createResidue CRWD
+add cacb_unit cr_res433
+add cr_res433 cr_mon433
+cr_mon434 = createAtom ZZ ZZ 0.0
+set cr_mon434 position { -38.1519251021057	101.823817467398	102.574339197933}
+cr_res434 = createResidue CRWD
+add cacb_unit cr_res434
+add cr_res434 cr_mon434
+cr_mon435 = createAtom ZZ ZZ 0.0
+set cr_mon435 position { 125.645646437073	-99.8545642124267	9.75483035868976}
+cr_res435 = createResidue CRWD
+add cacb_unit cr_res435
+add cr_res435 cr_mon435
+cr_mon436 = createAtom ZZ ZZ 0.0
+set cr_mon436 position { 120.996916567165	-5.67401994703829	-87.7118870340905}
+cr_res436 = createResidue CRWD
+add cacb_unit cr_res436
+add cr_res436 cr_mon436
+cr_mon437 = createAtom ZZ ZZ 0.0
+set cr_mon437 position { -43.348855089922	95.6600842532577	-61.9825672748647}
+cr_res437 = createResidue CRWD
+add cacb_unit cr_res437
+add cr_res437 cr_mon437
+cr_mon438 = createAtom ZZ ZZ 0.0
+set cr_mon438 position { 35.2989709222388	-126.77084567329	-28.8363695913066}
+cr_res438 = createResidue CRWD
+add cacb_unit cr_res438
+add cr_res438 cr_mon438
+cr_mon439 = createAtom ZZ ZZ 0.0
+set cr_mon439 position { 140.102995050104	72.3010886083916	55.0973053887567}
+cr_res439 = createResidue CRWD
+add cacb_unit cr_res439
+add cr_res439 cr_mon439
+cr_mon440 = createAtom ZZ ZZ 0.0
+set cr_mon440 position { -136.892891610013	-66.7852954103523	-140.494807369918}
+cr_res440 = createResidue CRWD
+add cacb_unit cr_res440
+add cr_res440 cr_mon440
+cr_mon441 = createAtom ZZ ZZ 0.0
+set cr_mon441 position { -69.9174918994864	-63.1741456910422	-38.1893267673448}
+cr_res441 = createResidue CRWD
+add cacb_unit cr_res441
+add cr_res441 cr_mon441
+cr_mon442 = createAtom ZZ ZZ 0.0
+set cr_mon442 position { 106.485493889737	-115.984132505971	-34.6527973211483}
+cr_res442 = createResidue CRWD
+add cacb_unit cr_res442
+add cr_res442 cr_mon442
+cr_mon443 = createAtom ZZ ZZ 0.0
+set cr_mon443 position { -108.029343642059	48.9084469907741	102.057315033235}
+cr_res443 = createResidue CRWD
+add cacb_unit cr_res443
+add cr_res443 cr_mon443
+cr_mon444 = createAtom ZZ ZZ 0.0
+set cr_mon444 position { -9.98913870120681	135.484057345094	141.87087981389}
+cr_res444 = createResidue CRWD
+add cacb_unit cr_res444
+add cr_res444 cr_mon444
+cr_mon445 = createAtom ZZ ZZ 0.0
+set cr_mon445 position { 127.485442528434	-29.3142054184006	71.8276221864755}
+cr_res445 = createResidue CRWD
+add cacb_unit cr_res445
+add cr_res445 cr_mon445
+cr_mon446 = createAtom ZZ ZZ 0.0
+set cr_mon446 position { 18.5581246359281	-25.3635443932588	29.4162178258627}
+cr_res446 = createResidue CRWD
+add cacb_unit cr_res446
+add cr_res446 cr_mon446
+cr_mon447 = createAtom ZZ ZZ 0.0
+set cr_mon447 position { -19.3282492935978	78.1078157311914	28.7313853416812}
+cr_res447 = createResidue CRWD
+add cacb_unit cr_res447
+add cr_res447 cr_mon447
+cr_mon448 = createAtom ZZ ZZ 0.0
+set cr_mon448 position { -7.20623278650585	84.7198019433705	-130.643004676207}
+cr_res448 = createResidue CRWD
+add cacb_unit cr_res448
+add cr_res448 cr_mon448
+cr_mon449 = createAtom ZZ ZZ 0.0
+set cr_mon449 position { -38.742255625349	-21.0285746714366	-51.7330296521592}
+cr_res449 = createResidue CRWD
+add cacb_unit cr_res449
+add cr_res449 cr_mon449
+cr_mon450 = createAtom ZZ ZZ 0.0
+set cr_mon450 position { -114.507316202274	66.1324065123161	-91.9653065077018}
+cr_res450 = createResidue CRWD
+add cacb_unit cr_res450
+add cr_res450 cr_mon450
+cr_mon451 = createAtom ZZ ZZ 0.0
+set cr_mon451 position { 110.844725341667	-3.60978503120997	77.0158451072511}
+cr_res451 = createResidue CRWD
+add cacb_unit cr_res451
+add cr_res451 cr_mon451
+cr_mon452 = createAtom ZZ ZZ 0.0
+set cr_mon452 position { -34.1083460574996	-7.63859177431669	-50.5819932706583}
+cr_res452 = createResidue CRWD
+add cacb_unit cr_res452
+add cr_res452 cr_mon452
+cr_mon453 = createAtom ZZ ZZ 0.0
+set cr_mon453 position { -49.9892957257451	-103.161699396587	0.61483615926079}
+cr_res453 = createResidue CRWD
+add cacb_unit cr_res453
+add cr_res453 cr_mon453
+cr_mon454 = createAtom ZZ ZZ 0.0
+set cr_mon454 position { 80.4581252430669	-54.1157830882391	136.838680644217}
+cr_res454 = createResidue CRWD
+add cacb_unit cr_res454
+add cr_res454 cr_mon454
+cr_mon455 = createAtom ZZ ZZ 0.0
+set cr_mon455 position { -27.0183582801664	-29.4773991574669	-78.5840566633674}
+cr_res455 = createResidue CRWD
+add cacb_unit cr_res455
+add cr_res455 cr_mon455
+cr_mon456 = createAtom ZZ ZZ 0.0
+set cr_mon456 position { 25.1083239608686	90.2110471314415	-28.7429403827385}
+cr_res456 = createResidue CRWD
+add cacb_unit cr_res456
+add cr_res456 cr_mon456
+cr_mon457 = createAtom ZZ ZZ 0.0
+set cr_mon457 position { -142.811097148627	-83.9810121131311	14.9858033792711}
+cr_res457 = createResidue CRWD
+add cacb_unit cr_res457
+add cr_res457 cr_mon457
+cr_mon458 = createAtom ZZ ZZ 0.0
+set cr_mon458 position { 127.374440124384	118.000126495398	75.3052535938547}
+cr_res458 = createResidue CRWD
+add cacb_unit cr_res458
+add cr_res458 cr_mon458
+cr_mon459 = createAtom ZZ ZZ 0.0
+set cr_mon459 position { 14.3655848519785	-45.8515365423377	-61.8598086634883}
+cr_res459 = createResidue CRWD
+add cacb_unit cr_res459
+add cr_res459 cr_mon459
+cr_mon460 = createAtom ZZ ZZ 0.0
+set cr_mon460 position { 26.1388225325273	61.1911886252599	-47.0472891762579}
+cr_res460 = createResidue CRWD
+add cacb_unit cr_res460
+add cr_res460 cr_mon460
+cr_mon461 = createAtom ZZ ZZ 0.0
+set cr_mon461 position { -34.6578763149061	-47.6281803615297	-57.5180872313126}
+cr_res461 = createResidue CRWD
+add cacb_unit cr_res461
+add cr_res461 cr_mon461
+cr_mon462 = createAtom ZZ ZZ 0.0
+set cr_mon462 position { -27.1722704530472	19.6773993117453	-17.899141364197}
+cr_res462 = createResidue CRWD
+add cacb_unit cr_res462
+add cr_res462 cr_mon462
+cr_mon463 = createAtom ZZ ZZ 0.0
+set cr_mon463 position { 4.97144887325902	-132.495870194169	-145.282658130738}
+cr_res463 = createResidue CRWD
+add cacb_unit cr_res463
+add cr_res463 cr_mon463
+cr_mon464 = createAtom ZZ ZZ 0.0
+set cr_mon464 position { -72.9285926356102	91.0549891094178	-42.5497558542727}
+cr_res464 = createResidue CRWD
+add cacb_unit cr_res464
+add cr_res464 cr_mon464
+cr_mon465 = createAtom ZZ ZZ 0.0
+set cr_mon465 position { 42.7062450117909	128.166951383474	-30.8950137155293}
+cr_res465 = createResidue CRWD
+add cacb_unit cr_res465
+add cr_res465 cr_mon465
+cr_mon466 = createAtom ZZ ZZ 0.0
+set cr_mon466 position { 48.5321936624661	-119.680262082095	-61.4130640838727}
+cr_res466 = createResidue CRWD
+add cacb_unit cr_res466
+add cr_res466 cr_mon466
+cr_mon467 = createAtom ZZ ZZ 0.0
+set cr_mon467 position { -23.4144146756023	-118.106767538034	81.0074968100473}
+cr_res467 = createResidue CRWD
+add cacb_unit cr_res467
+add cr_res467 cr_mon467
+cr_mon468 = createAtom ZZ ZZ 0.0
+set cr_mon468 position { 22.0263132448078	-86.4258648920341	3.73661932008424}
+cr_res468 = createResidue CRWD
+add cacb_unit cr_res468
+add cr_res468 cr_mon468
+cr_mon469 = createAtom ZZ ZZ 0.0
+set cr_mon469 position { 30.3300953704515	-40.6199213014123	68.7878593808733}
+cr_res469 = createResidue CRWD
+add cacb_unit cr_res469
+add cr_res469 cr_mon469
+cr_mon470 = createAtom ZZ ZZ 0.0
+set cr_mon470 position { -55.1719138543458	-54.3301965669038	73.7982871372648}
+cr_res470 = createResidue CRWD
+add cacb_unit cr_res470
+add cr_res470 cr_mon470
+cr_mon471 = createAtom ZZ ZZ 0.0
+set cr_mon471 position { 5.30768332432245	144.653830637755	-43.0137952673469}
+cr_res471 = createResidue CRWD
+add cacb_unit cr_res471
+add cr_res471 cr_mon471
+cr_mon472 = createAtom ZZ ZZ 0.0
+set cr_mon472 position { 28.3380470865932	-116.130153004019	-62.8510508242581}
+cr_res472 = createResidue CRWD
+add cacb_unit cr_res472
+add cr_res472 cr_mon472
+cr_mon473 = createAtom ZZ ZZ 0.0
+set cr_mon473 position { -16.1511704353934	-75.5362648377318	-32.4727429482849}
+cr_res473 = createResidue CRWD
+add cacb_unit cr_res473
+add cr_res473 cr_mon473
+cr_mon474 = createAtom ZZ ZZ 0.0
+set cr_mon474 position { 137.557939237375	90.9473057058541	83.1375028880711}
+cr_res474 = createResidue CRWD
+add cacb_unit cr_res474
+add cr_res474 cr_mon474
+cr_mon475 = createAtom ZZ ZZ 0.0
+set cr_mon475 position { -77.9779973562114	-76.9505677433838	-108.020960387919}
+cr_res475 = createResidue CRWD
+add cacb_unit cr_res475
+add cr_res475 cr_mon475
+cr_mon476 = createAtom ZZ ZZ 0.0
+set cr_mon476 position { -3.44109478426766	145.401058925394	33.8652615582266}
+cr_res476 = createResidue CRWD
+add cacb_unit cr_res476
+add cr_res476 cr_mon476
+cr_mon477 = createAtom ZZ ZZ 0.0
+set cr_mon477 position { -85.2431315029257	-130.467491259408	101.979390922446}
+cr_res477 = createResidue CRWD
+add cacb_unit cr_res477
+add cr_res477 cr_mon477
+cr_mon478 = createAtom ZZ ZZ 0.0
+set cr_mon478 position { 123.660419591289	30.2636911598817	70.1804815280322}
+cr_res478 = createResidue CRWD
+add cacb_unit cr_res478
+add cr_res478 cr_mon478
+cr_mon479 = createAtom ZZ ZZ 0.0
+set cr_mon479 position { 78.1264204114891	-145.155992121915	69.0945101083379}
+cr_res479 = createResidue CRWD
+add cacb_unit cr_res479
+add cr_res479 cr_mon479
+cr_mon480 = createAtom ZZ ZZ 0.0
+set cr_mon480 position { 73.925769370943	-21.3714023826213	-149.34197435152}
+cr_res480 = createResidue CRWD
+add cacb_unit cr_res480
+add cr_res480 cr_mon480
+cr_mon481 = createAtom ZZ ZZ 0.0
+set cr_mon481 position { -148.657181618027	129.440368938105	-144.644403233922}
+cr_res481 = createResidue CRWD
+add cacb_unit cr_res481
+add cr_res481 cr_mon481
+cr_mon482 = createAtom ZZ ZZ 0.0
+set cr_mon482 position { 124.864372793072	33.769560253689	-83.8902396025691}
+cr_res482 = createResidue CRWD
+add cacb_unit cr_res482
+add cr_res482 cr_mon482
+cr_mon483 = createAtom ZZ ZZ 0.0
+set cr_mon483 position { 147.110898546464	-107.37814670922	-58.5117955621804}
+cr_res483 = createResidue CRWD
+add cacb_unit cr_res483
+add cr_res483 cr_mon483
+cr_mon484 = createAtom ZZ ZZ 0.0
+set cr_mon484 position { -11.5263955436294	58.0472021004582	113.732850398434}
+cr_res484 = createResidue CRWD
+add cacb_unit cr_res484
+add cr_res484 cr_mon484
+cr_mon485 = createAtom ZZ ZZ 0.0
+set cr_mon485 position { 3.04551030232929	-148.53331489541	-61.2713069768716}
+cr_res485 = createResidue CRWD
+add cacb_unit cr_res485
+add cr_res485 cr_mon485
+cr_mon486 = createAtom ZZ ZZ 0.0
+set cr_mon486 position { 109.169798381092	117.498560624872	141.942633421155}
+cr_res486 = createResidue CRWD
+add cacb_unit cr_res486
+add cr_res486 cr_mon486
+cr_mon487 = createAtom ZZ ZZ 0.0
+set cr_mon487 position { 40.3686507635499	-138.161808837564	61.8962973963171}
+cr_res487 = createResidue CRWD
+add cacb_unit cr_res487
+add cr_res487 cr_mon487
+cr_mon488 = createAtom ZZ ZZ 0.0
+set cr_mon488 position { 66.1935433699949	0.192677523301654	37.0167397345259}
+cr_res488 = createResidue CRWD
+add cacb_unit cr_res488
+add cr_res488 cr_mon488
+cr_mon489 = createAtom ZZ ZZ 0.0
+set cr_mon489 position { 26.6673488110875	-107.30396869669	0.192940002385456}
+cr_res489 = createResidue CRWD
+add cacb_unit cr_res489
+add cr_res489 cr_mon489
+cr_mon490 = createAtom ZZ ZZ 0.0
+set cr_mon490 position { 121.895011235556	66.1820946412639	5.27094067285923}
+cr_res490 = createResidue CRWD
+add cacb_unit cr_res490
+add cr_res490 cr_mon490
+cr_mon491 = createAtom ZZ ZZ 0.0
+set cr_mon491 position { 118.352703892165	-141.899452967058	60.7699024209147}
+cr_res491 = createResidue CRWD
+add cacb_unit cr_res491
+add cr_res491 cr_mon491
+cr_mon492 = createAtom ZZ ZZ 0.0
+set cr_mon492 position { 88.8295959637158	-88.973922388395	-141.995341312825}
+cr_res492 = createResidue CRWD
+add cacb_unit cr_res492
+add cr_res492 cr_mon492
+cr_mon493 = createAtom ZZ ZZ 0.0
+set cr_mon493 position { 135.493997018467	-49.0783911358921	-92.4642648233657}
+cr_res493 = createResidue CRWD
+add cacb_unit cr_res493
+add cr_res493 cr_mon493
+cr_mon494 = createAtom ZZ ZZ 0.0
+set cr_mon494 position { -77.210066930672	17.9657199981811	-46.1374210816562}
+cr_res494 = createResidue CRWD
+add cacb_unit cr_res494
+add cr_res494 cr_mon494
+cr_mon495 = createAtom ZZ ZZ 0.0
+set cr_mon495 position { -52.1305729670942	96.5615349119378	-17.446288583087}
+cr_res495 = createResidue CRWD
+add cacb_unit cr_res495
+add cr_res495 cr_mon495
+cr_mon496 = createAtom ZZ ZZ 0.0
+set cr_mon496 position { 69.2069541276123	15.969780919508	-139.065229560802}
+cr_res496 = createResidue CRWD
+add cacb_unit cr_res496
+add cr_res496 cr_mon496
+cr_mon497 = createAtom ZZ ZZ 0.0
+set cr_mon497 position { -71.1639758806747	117.081667915584	-66.4357888846197}
+cr_res497 = createResidue CRWD
+add cacb_unit cr_res497
+add cr_res497 cr_mon497
+cr_mon498 = createAtom ZZ ZZ 0.0
+set cr_mon498 position { 24.216663197986	-72.4339220664028	64.187291312275}
+cr_res498 = createResidue CRWD
+add cacb_unit cr_res498
+add cr_res498 cr_mon498
+cr_mon499 = createAtom ZZ ZZ 0.0
+set cr_mon499 position { 31.5031625012296	-149.859413453799	-95.5241028195935}
+cr_res499 = createResidue CRWD
+add cacb_unit cr_res499
+add cr_res499 cr_mon499
+cr_mon500 = createAtom ZZ ZZ 0.0
+set cr_mon500 position { 46.3201768805131	-139.41661550232	-24.331109800762}
+cr_res500 = createResidue CRWD
+add cacb_unit cr_res500
+add cr_res500 cr_mon500
+cr_mon501 = createAtom ZZ ZZ 0.0
+set cr_mon501 position { -20.1910316594159	-77.2762324353483	-125.066072134811}
+cr_res501 = createResidue CRWD
+add cacb_unit cr_res501
+add cr_res501 cr_mon501
+cr_mon502 = createAtom ZZ ZZ 0.0
+set cr_mon502 position { -55.8549554608785	-134.365475668668	52.5297430307884}
+cr_res502 = createResidue CRWD
+add cacb_unit cr_res502
+add cr_res502 cr_mon502
+cr_mon503 = createAtom ZZ ZZ 0.0
+set cr_mon503 position { -93.9709466770566	148.487699803913	112.006826367259}
+cr_res503 = createResidue CRWD
+add cacb_unit cr_res503
+add cr_res503 cr_mon503
+cr_mon504 = createAtom ZZ ZZ 0.0
+set cr_mon504 position { -1.4726780582027	-38.2552962874911	94.5453115474724}
+cr_res504 = createResidue CRWD
+add cacb_unit cr_res504
+add cr_res504 cr_mon504
+cr_mon505 = createAtom ZZ ZZ 0.0
+set cr_mon505 position { -27.6537074192625	74.4666747188685	54.7615897474245}
+cr_res505 = createResidue CRWD
+add cacb_unit cr_res505
+add cr_res505 cr_mon505
+cr_mon506 = createAtom ZZ ZZ 0.0
+set cr_mon506 position { 123.480212641481	-94.3291668038022	-128.537628565975}
+cr_res506 = createResidue CRWD
+add cacb_unit cr_res506
+add cr_res506 cr_mon506
+cr_mon507 = createAtom ZZ ZZ 0.0
+set cr_mon507 position { -110.106257997748	-73.6286906671491	-6.68028615503786}
+cr_res507 = createResidue CRWD
+add cacb_unit cr_res507
+add cr_res507 cr_mon507
+cr_mon508 = createAtom ZZ ZZ 0.0
+set cr_mon508 position { 62.6549373052338	-122.87044254624	-142.701461779772}
+cr_res508 = createResidue CRWD
+add cacb_unit cr_res508
+add cr_res508 cr_mon508
+cr_mon509 = createAtom ZZ ZZ 0.0
+set cr_mon509 position { 107.600400321105	27.390257577262	-27.4566136570172}
+cr_res509 = createResidue CRWD
+add cacb_unit cr_res509
+add cr_res509 cr_mon509
+cr_mon510 = createAtom ZZ ZZ 0.0
+set cr_mon510 position { -47.8790637767414	33.5503584645487	-135.497391882697}
+cr_res510 = createResidue CRWD
+add cacb_unit cr_res510
+add cr_res510 cr_mon510
+cr_mon511 = createAtom ZZ ZZ 0.0
+set cr_mon511 position { -26.3124668701849	-50.957759562375	109.127410665239}
+cr_res511 = createResidue CRWD
+add cacb_unit cr_res511
+add cr_res511 cr_mon511
+cr_mon512 = createAtom ZZ ZZ 0.0
+set cr_mon512 position { 134.9898315847	-119.787347388373	29.8694429475663}
+cr_res512 = createResidue CRWD
+add cacb_unit cr_res512
+add cr_res512 cr_mon512
+cr_mon513 = createAtom ZZ ZZ 0.0
+set cr_mon513 position { 77.198204461714	67.0384752987271	-0.418122375963037}
+cr_res513 = createResidue CRWD
+add cacb_unit cr_res513
+add cr_res513 cr_mon513
+cr_mon514 = createAtom ZZ ZZ 0.0
+set cr_mon514 position { 64.5442709556864	-59.553652391218	49.019899677408}
+cr_res514 = createResidue CRWD
+add cacb_unit cr_res514
+add cr_res514 cr_mon514
+cr_mon515 = createAtom ZZ ZZ 0.0
+set cr_mon515 position { -13.1789131144387	-111.063761262687	0.719026562222069}
+cr_res515 = createResidue CRWD
+add cacb_unit cr_res515
+add cr_res515 cr_mon515
+cr_mon516 = createAtom ZZ ZZ 0.0
+set cr_mon516 position { 80.2002991037593	115.952479238267	30.8373186835059}
+cr_res516 = createResidue CRWD
+add cacb_unit cr_res516
+add cr_res516 cr_mon516
+cr_mon517 = createAtom ZZ ZZ 0.0
+set cr_mon517 position { -37.4898296764194	-55.6094059563794	-71.5534674761244}
+cr_res517 = createResidue CRWD
+add cacb_unit cr_res517
+add cr_res517 cr_mon517
+cr_mon518 = createAtom ZZ ZZ 0.0
+set cr_mon518 position { -138.661502186974	68.5636677550995	141.946097941371}
+cr_res518 = createResidue CRWD
+add cacb_unit cr_res518
+add cr_res518 cr_mon518
+cr_mon519 = createAtom ZZ ZZ 0.0
+set cr_mon519 position { -15.2585396310641	-11.0188826408415	38.4835125636933}
+cr_res519 = createResidue CRWD
+add cacb_unit cr_res519
+add cr_res519 cr_mon519
+cr_mon520 = createAtom ZZ ZZ 0.0
+set cr_mon520 position { -117.811921393634	82.3499069837396	68.882030122251}
+cr_res520 = createResidue CRWD
+add cacb_unit cr_res520
+add cr_res520 cr_mon520
+cr_mon521 = createAtom ZZ ZZ 0.0
+set cr_mon521 position { 140.45825491363	-3.32533477618178	26.7178074575881}
+cr_res521 = createResidue CRWD
+add cacb_unit cr_res521
+add cr_res521 cr_mon521
+cr_mon522 = createAtom ZZ ZZ 0.0
+set cr_mon522 position { -84.0101530268452	-124.36849918981	127.449342529134}
+cr_res522 = createResidue CRWD
+add cacb_unit cr_res522
+add cr_res522 cr_mon522
+cr_mon523 = createAtom ZZ ZZ 0.0
+set cr_mon523 position { -143.074442292183	-75.7640260535222	-104.647361248934}
+cr_res523 = createResidue CRWD
+add cacb_unit cr_res523
+add cr_res523 cr_mon523
+cr_mon524 = createAtom ZZ ZZ 0.0
+set cr_mon524 position { 40.5313668243362	100.319852961668	96.0323585256351}
+cr_res524 = createResidue CRWD
+add cacb_unit cr_res524
+add cr_res524 cr_mon524
+cr_mon525 = createAtom ZZ ZZ 0.0
+set cr_mon525 position { 46.7842064186364	-120.988821860728	-149.283764831341}
+cr_res525 = createResidue CRWD
+add cacb_unit cr_res525
+add cr_res525 cr_mon525
+cr_mon526 = createAtom ZZ ZZ 0.0
+set cr_mon526 position { 9.7089617441501	12.5735571344926	41.1401126986529}
+cr_res526 = createResidue CRWD
+add cacb_unit cr_res526
+add cr_res526 cr_mon526
+cr_mon527 = createAtom ZZ ZZ 0.0
+set cr_mon527 position { 31.0855068065095	37.386545359492	128.1534651677}
+cr_res527 = createResidue CRWD
+add cacb_unit cr_res527
+add cr_res527 cr_mon527
+cr_mon528 = createAtom ZZ ZZ 0.0
+set cr_mon528 position { -65.8402163012102	-9.51281009397746	99.6905043469472}
+cr_res528 = createResidue CRWD
+add cacb_unit cr_res528
+add cr_res528 cr_mon528
+cr_mon529 = createAtom ZZ ZZ 0.0
+set cr_mon529 position { -54.4567604697114	-74.857760024992	27.9831035294606}
+cr_res529 = createResidue CRWD
+add cacb_unit cr_res529
+add cr_res529 cr_mon529
+cr_mon530 = createAtom ZZ ZZ 0.0
+set cr_mon530 position { 94.812778061608	-72.7094836426822	-4.91522479773785}
+cr_res530 = createResidue CRWD
+add cacb_unit cr_res530
+add cr_res530 cr_mon530
+cr_mon531 = createAtom ZZ ZZ 0.0
+set cr_mon531 position { -5.41563085695884	-8.15756762347597	-22.3766108953903}
+cr_res531 = createResidue CRWD
+add cacb_unit cr_res531
+add cr_res531 cr_mon531
+set cacb_unit box 300
+myforce = loadamberparams frc.go
+saveAmberParm cacb_unit cacb.prmtop cacb.crd
+quit

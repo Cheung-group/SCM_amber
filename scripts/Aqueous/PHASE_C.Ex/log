@@ -1,0 +1,882 @@
+
+Total number of Q read: 128.
+1
+-I: Adding /home/dirar/amber10/dat/leap/prep to search path.
+-I: Adding /home/dirar/amber10/dat/leap/lib to search path.
+-I: Adding /home/dirar/amber10/dat/leap/parm to search path.
+-I: Adding /home/dirar/amber10/dat/leap/cmd to search path.
+-f: Source leap_script.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: ./leap_script
+Loading parameters: ./frc.go
+Reading title:
+
+Checking Unit.
+WARNING: There is a bond of 0.404683 angstroms between: 
+-------  .R<R0 1>.A<A0 1> and .R<R0 1>.A<N0 2>
+WARNING: There is a bond of 0.399481 angstroms between: 
+-------  .R<R1 2>.A<A1 1> and .R<R1 2>.A<N1 2>
+WARNING: There is a bond of 0.408097 angstroms between: 
+-------  .R<R2 3>.A<A2 1> and .R<R2 3>.A<N2 2>
+WARNING: There is a bond of 0.410307 angstroms between: 
+-------  .R<R3 4>.A<A3 1> and .R<R3 4>.A<N3 2>
+WARNING: There is a bond of 0.408657 angstroms between: 
+-------  .R<R4 5>.A<A4 1> and .R<R4 5>.A<N4 2>
+WARNING: There is a bond of 0.401215 angstroms between: 
+-------  .R<R5 6>.A<A5 1> and .R<R5 6>.A<N5 2>
+WARNING: There is a bond of 0.417374 angstroms between: 
+-------  .R<R6 7>.A<A6 1> and .R<R6 7>.A<N6 2>
+WARNING: There is a bond of 0.394049 angstroms between: 
+-------  .R<R7 8>.A<A7 1> and .R<R7 8>.A<N7 2>
+WARNING: There is a bond of 0.399981 angstroms between: 
+-------  .R<R9 10>.A<A9 1> and .R<R9 10>.A<N9 2>
+WARNING: There is a bond of 0.397650 angstroms between: 
+-------  .R<R10 11>.A<AA 1> and .R<R10 11>.A<NA 2>
+WARNING: There is a bond of 0.405517 angstroms between: 
+-------  .R<R11 12>.A<AB 1> and .R<R11 12>.A<NB 2>
+WARNING: There is a bond of 0.406119 angstroms between: 
+-------  .R<R12 13>.A<AC 1> and .R<R12 13>.A<NC 2>
+WARNING: There is a bond of 0.403197 angstroms between: 
+-------  .R<R13 14>.A<AD 1> and .R<R13 14>.A<ND 2>
+WARNING: There is a bond of 0.400412 angstroms between: 
+-------  .R<R14 15>.A<AE 1> and .R<R14 15>.A<NE 2>
+WARNING: There is a bond of 0.406776 angstroms between: 
+-------  .R<R15 16>.A<AF 1> and .R<R15 16>.A<NF 2>
+WARNING: There is a bond of 0.404651 angstroms between: 
+-------  .R<R16 17>.A<AG 1> and .R<R16 17>.A<NG 2>
+WARNING: There is a bond of 0.403746 angstroms between: 
+-------  .R<R17 18>.A<AH 1> and .R<R17 18>.A<NH 2>
+WARNING: There is a bond of 0.398613 angstroms between: 
+-------  .R<R18 19>.A<AI 1> and .R<R18 19>.A<NI 2>
+WARNING: There is a bond of 0.409847 angstroms between: 
+-------  .R<R19 20>.A<AJ 1> and .R<R19 20>.A<NJ 2>
+WARNING: There is a bond of 0.399474 angstroms between: 
+-------  .R<R20 21>.A<AK 1> and .R<R20 21>.A<NK 2>
+WARNING: There is a bond of 0.406248 angstroms between: 
+-------  .R<R21 22>.A<AL 1> and .R<R21 22>.A<NL 2>
+WARNING: There is a bond of 0.399690 angstroms between: 
+-------  .R<R22 23>.A<AM 1> and .R<R22 23>.A<NM 2>
+WARNING: There is a bond of 0.400409 angstroms between: 
+-------  .R<R23 24>.A<AN 1> and .R<R23 24>.A<NN 2>
+WARNING: There is a bond of 0.400594 angstroms between: 
+-------  .R<R24 25>.A<AO 1> and .R<R24 25>.A<NO 2>
+WARNING: There is a bond of 0.399087 angstroms between: 
+-------  .R<R25 26>.A<AP 1> and .R<R25 26>.A<NP 2>
+WARNING: There is a bond of 0.403069 angstroms between: 
+-------  .R<R26 27>.A<AQ 1> and .R<R26 27>.A<NQ 2>
+WARNING: There is a bond of 0.399860 angstroms between: 
+-------  .R<R27 28>.A<AR 1> and .R<R27 28>.A<NR 2>
+WARNING: There is a bond of 0.400727 angstroms between: 
+-------  .R<R28 29>.A<AS 1> and .R<R28 29>.A<NS 2>
+WARNING: There is a bond of 0.409821 angstroms between: 
+-------  .R<R29 30>.A<AT 1> and .R<R29 30>.A<NT 2>
+WARNING: There is a bond of 0.405035 angstroms between: 
+-------  .R<R30 31>.A<AU 1> and .R<R30 31>.A<NU 2>
+WARNING: There is a bond of 0.399654 angstroms between: 
+-------  .R<R31 32>.A<AV 1> and .R<R31 32>.A<NV 2>
+WARNING: There is a bond of 0.405815 angstroms between: 
+-------  .R<R32 33>.A<AW 1> and .R<R32 33>.A<NW 2>
+WARNING: There is a bond of 0.400181 angstroms between: 
+-------  .R<R33 34>.A<AX 1> and .R<R33 34>.A<NX 2>
+WARNING: There is a bond of 0.393358 angstroms between: 
+-------  .R<R34 35>.A<AY 1> and .R<R34 35>.A<NY 2>
+WARNING: There is a bond of 0.399249 angstroms between: 
+-------  .R<R35 36>.A<AZ 1> and .R<R35 36>.A<NZ 2>
+WARNING: There is a bond of 0.400108 angstroms between: 
+-------  .R<R37 38>.A<B1 1> and .R<R37 38>.A<O1 2>
+WARNING: There is a bond of 0.398543 angstroms between: 
+-------  .R<R38 39>.A<B2 1> and .R<R38 39>.A<O2 2>
+WARNING: There is a bond of 0.402449 angstroms between: 
+-------  .R<R39 40>.A<B3 1> and .R<R39 40>.A<O3 2>
+WARNING: There is a bond of 0.402687 angstroms between: 
+-------  .R<R40 41>.A<B4 1> and .R<R40 41>.A<O4 2>
+WARNING: There is a bond of 0.405470 angstroms between: 
+-------  .R<R41 42>.A<B5 1> and .R<R41 42>.A<O5 2>
+WARNING: There is a bond of 0.410849 angstroms between: 
+-------  .R<R42 43>.A<B6 1> and .R<R42 43>.A<O6 2>
+WARNING: There is a bond of 0.408675 angstroms between: 
+-------  .R<R43 44>.A<B7 1> and .R<R43 44>.A<O7 2>
+WARNING: There is a bond of 0.404394 angstroms between: 
+-------  .R<R45 46>.A<B9 1> and .R<R45 46>.A<O9 2>
+WARNING: There is a bond of 0.406006 angstroms between: 
+-------  .R<R46 47>.A<BA 1> and .R<R46 47>.A<OA 2>
+WARNING: There is a bond of 0.401830 angstroms between: 
+-------  .R<R47 48>.A<BB 1> and .R<R47 48>.A<OB 2>
+WARNING: There is a bond of 0.407352 angstroms between: 
+-------  .R<R48 49>.A<BC 1> and .R<R48 49>.A<OC 2>
+WARNING: There is a bond of 0.402529 angstroms between: 
+-------  .R<R49 50>.A<BD 1> and .R<R49 50>.A<OD 2>
+WARNING: There is a bond of 0.403513 angstroms between: 
+-------  .R<R50 51>.A<BE 1> and .R<R50 51>.A<OE 2>
+WARNING: There is a bond of 0.396007 angstroms between: 
+-------  .R<R51 52>.A<BF 1> and .R<R51 52>.A<OF 2>
+WARNING: There is a bond of 0.395859 angstroms between: 
+-------  .R<R52 53>.A<BG 1> and .R<R52 53>.A<OG 2>
+WARNING: There is a bond of 0.395544 angstroms between: 
+-------  .R<R53 54>.A<BH 1> and .R<R53 54>.A<OH 2>
+WARNING: There is a bond of 0.392724 angstroms between: 
+-------  .R<R54 55>.A<BI 1> and .R<R54 55>.A<OI 2>
+WARNING: There is a bond of 0.404726 angstroms between: 
+-------  .R<R55 56>.A<BJ 1> and .R<R55 56>.A<OJ 2>
+WARNING: There is a bond of 0.405363 angstroms between: 
+-------  .R<R56 57>.A<BK 1> and .R<R56 57>.A<OK 2>
+WARNING: There is a bond of 0.397573 angstroms between: 
+-------  .R<R58 59>.A<BM 1> and .R<R58 59>.A<OM 2>
+WARNING: There is a bond of 0.408803 angstroms between: 
+-------  .R<R59 60>.A<BN 1> and .R<R59 60>.A<ON 2>
+WARNING: There is a bond of 0.403961 angstroms between: 
+-------  .R<R60 61>.A<BO 1> and .R<R60 61>.A<OO 2>
+WARNING: There is a bond of 0.398322 angstroms between: 
+-------  .R<R61 62>.A<BP 1> and .R<R61 62>.A<OP 2>
+WARNING: There is a bond of 0.401313 angstroms between: 
+-------  .R<R63 64>.A<BR 1> and .R<R63 64>.A<OR 2>
+WARNING: There is a bond of 0.396616 angstroms between: 
+-------  .R<R64 65>.A<BS 1> and .R<R64 65>.A<OS 2>
+WARNING: There is a bond of 0.397731 angstroms between: 
+-------  .R<R65 66>.A<BT 1> and .R<R65 66>.A<OT 2>
+WARNING: There is a bond of 0.406060 angstroms between: 
+-------  .R<R67 68>.A<BV 1> and .R<R67 68>.A<OV 2>
+WARNING: There is a bond of 0.409618 angstroms between: 
+-------  .R<R68 69>.A<BW 1> and .R<R68 69>.A<OW 2>
+WARNING: There is a bond of 0.403539 angstroms between: 
+-------  .R<R69 70>.A<BX 1> and .R<R69 70>.A<OX 2>
+WARNING: There is a bond of 0.413225 angstroms between: 
+-------  .R<R70 71>.A<BY 1> and .R<R70 71>.A<OY 2>
+WARNING: There is a bond of 0.410523 angstroms between: 
+-------  .R<R71 72>.A<BZ 1> and .R<R71 72>.A<OZ 2>
+WARNING: There is a bond of 0.401747 angstroms between: 
+-------  .R<R72 73>.A<C0 1> and .R<R72 73>.A<P0 2>
+WARNING: There is a bond of 0.403923 angstroms between: 
+-------  .R<R73 74>.A<C1 1> and .R<R73 74>.A<P1 2>
+WARNING: There is a bond of 0.395780 angstroms between: 
+-------  .R<R74 75>.A<C2 1> and .R<R74 75>.A<P2 2>
+WARNING: There is a bond of 0.408777 angstroms between: 
+-------  .R<R75 76>.A<C3 1> and .R<R75 76>.A<P3 2>
+WARNING: There is a bond of 0.402321 angstroms between: 
+-------  .R<R76 77>.A<C4 1> and .R<R76 77>.A<P4 2>
+WARNING: There is a bond of 0.398473 angstroms between: 
+-------  .R<R77 78>.A<C5 1> and .R<R77 78>.A<P5 2>
+WARNING: There is a bond of 0.395348 angstroms between: 
+-------  .R<R78 79>.A<C6 1> and .R<R78 79>.A<P6 2>
+WARNING: There is a bond of 0.404808 angstroms between: 
+-------  .R<R79 80>.A<C7 1> and .R<R79 80>.A<P7 2>
+WARNING: There is a bond of 0.410855 angstroms between: 
+-------  .R<R80 81>.A<C8 1> and .R<R80 81>.A<P8 2>
+WARNING: There is a bond of 0.398670 angstroms between: 
+-------  .R<R81 82>.A<C9 1> and .R<R81 82>.A<P9 2>
+WARNING: There is a bond of 0.398107 angstroms between: 
+-------  .R<R82 83>.A<CA 1> and .R<R82 83>.A<PA 2>
+WARNING: There is a bond of 0.409641 angstroms between: 
+-------  .R<R83 84>.A<CB 1> and .R<R83 84>.A<PB 2>
+WARNING: There is a bond of 0.407587 angstroms between: 
+-------  .R<R84 85>.A<CC 1> and .R<R84 85>.A<PC 2>
+WARNING: There is a bond of 0.402936 angstroms between: 
+-------  .R<R85 86>.A<CD 1> and .R<R85 86>.A<PD 2>
+WARNING: There is a bond of 0.418592 angstroms between: 
+-------  .R<R86 87>.A<CE 1> and .R<R86 87>.A<PE 2>
+WARNING: There is a bond of 0.401661 angstroms between: 
+-------  .R<R88 89>.A<CG 1> and .R<R88 89>.A<PG 2>
+WARNING: There is a bond of 0.396601 angstroms between: 
+-------  .R<R90 91>.A<CI 1> and .R<R90 91>.A<PI 2>
+WARNING: There is a bond of 0.407647 angstroms between: 
+-------  .R<R91 92>.A<CJ 1> and .R<R91 92>.A<PJ 2>
+WARNING: There is a bond of 0.404484 angstroms between: 
+-------  .R<R92 93>.A<CK 1> and .R<R92 93>.A<PK 2>
+WARNING: There is a bond of 0.399926 angstroms between: 
+-------  .R<R93 94>.A<CL 1> and .R<R93 94>.A<PL 2>
+WARNING: There is a bond of 0.416080 angstroms between: 
+-------  .R<R94 95>.A<CM 1> and .R<R94 95>.A<PM 2>
+WARNING: There is a bond of 0.407122 angstroms between: 
+-------  .R<R95 96>.A<CN 1> and .R<R95 96>.A<PN 2>
+WARNING: There is a bond of 0.410687 angstroms between: 
+-------  .R<R96 97>.A<CO 1> and .R<R96 97>.A<PO 2>
+WARNING: There is a bond of 0.403596 angstroms between: 
+-------  .R<R97 98>.A<CP 1> and .R<R97 98>.A<PP 2>
+WARNING: There is a bond of 0.407885 angstroms between: 
+-------  .R<R98 99>.A<CQ 1> and .R<R98 99>.A<PQ 2>
+WARNING: There is a bond of 0.403129 angstroms between: 
+-------  .R<R99 100>.A<CR 1> and .R<R99 100>.A<PR 2>
+WARNING: There is a bond of 0.397766 angstroms between: 
+-------  .R<R100 101>.A<CS 1> and .R<R100 101>.A<PS 2>
+WARNING: There is a bond of 0.405538 angstroms between: 
+-------  .R<R101 102>.A<CT 1> and .R<R101 102>.A<PT 2>
+WARNING: There is a bond of 0.401823 angstroms between: 
+-------  .R<R102 103>.A<CU 1> and .R<R102 103>.A<PU 2>
+WARNING: There is a bond of 0.400923 angstroms between: 
+-------  .R<R103 104>.A<CV 1> and .R<R103 104>.A<PV 2>
+WARNING: There is a bond of 0.398232 angstroms between: 
+-------  .R<R105 106>.A<CX 1> and .R<R105 106>.A<PX 2>
+WARNING: There is a bond of 0.406093 angstroms between: 
+-------  .R<R106 107>.A<CY 1> and .R<R106 107>.A<PY 2>
+WARNING: There is a bond of 0.399231 angstroms between: 
+-------  .R<R107 108>.A<CZ 1> and .R<R107 108>.A<PZ 2>
+WARNING: There is a bond of 0.404528 angstroms between: 
+-------  .R<R108 109>.A<D0 1> and .R<R108 109>.A<Q0 2>
+WARNING: There is a bond of 0.405965 angstroms between: 
+-------  .R<R109 110>.A<D1 1> and .R<R109 110>.A<Q1 2>
+WARNING: There is a bond of 0.407573 angstroms between: 
+-------  .R<R110 111>.A<D2 1> and .R<R110 111>.A<Q2 2>
+WARNING: There is a bond of 0.408964 angstroms between: 
+-------  .R<R111 112>.A<D3 1> and .R<R111 112>.A<Q3 2>
+WARNING: There is a bond of 0.405817 angstroms between: 
+-------  .R<R112 113>.A<D4 1> and .R<R112 113>.A<Q4 2>
+WARNING: There is a bond of 0.411236 angstroms between: 
+-------  .R<R113 114>.A<D5 1> and .R<R113 114>.A<Q5 2>
+WARNING: There is a bond of 0.392054 angstroms between: 
+-------  .R<R114 115>.A<D6 1> and .R<R114 115>.A<Q6 2>
+WARNING: There is a bond of 0.407079 angstroms between: 
+-------  .R<R116 117>.A<D8 1> and .R<R116 117>.A<Q8 2>
+WARNING: There is a bond of 0.405453 angstroms between: 
+-------  .R<R117 118>.A<D9 1> and .R<R117 118>.A<Q9 2>
+WARNING: There is a bond of 0.394881 angstroms between: 
+-------  .R<R118 119>.A<DA 1> and .R<R118 119>.A<QA 2>
+WARNING: There is a bond of 0.402997 angstroms between: 
+-------  .R<R119 120>.A<DB 1> and .R<R119 120>.A<QB 2>
+WARNING: There is a bond of 0.405215 angstroms between: 
+-------  .R<R120 121>.A<DC 1> and .R<R120 121>.A<QC 2>
+WARNING: There is a bond of 0.403694 angstroms between: 
+-------  .R<R121 122>.A<DD 1> and .R<R121 122>.A<QD 2>
+WARNING: There is a bond of 0.410317 angstroms between: 
+-------  .R<R123 124>.A<DF 1> and .R<R123 124>.A<QF 2>
+WARNING: There is a bond of 0.411269 angstroms between: 
+-------  .R<R124 125>.A<DG 1> and .R<R124 125>.A<QG 2>
+WARNING: There is a bond of 0.406250 angstroms between: 
+-------  .R<R125 126>.A<DH 1> and .R<R125 126>.A<QH 2>
+WARNING: There is a bond of 0.396778 angstroms between: 
+-------  .R<R126 127>.A<DI 1> and .R<R126 127>.A<QI 2>
+WARNING: There is a bond of 0.405431 angstroms between: 
+-------  .R<R127 128>.A<DJ 1> and .R<R127 128>.A<QJ 2>
+
+ -- ignoring the warnings.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 0 improper torsions applied
+Building H-Bond parameters.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	R0	1
+	R1	1
+	R10	1
+	R100	1
+	R101	1
+	R102	1
+	R103	1
+	R105	1
+	R106	1
+	R107	1
+	R108	1
+	R109	1
+	R11	1
+	R110	1
+	R111	1
+	R112	1
+	R113	1
+	R114	1
+	R116	1
+	R117	1
+	R118	1
+	R119	1
+	R12	1
+	R120	1
+	R121	1
+	R123	1
+	R124	1
+	R125	1
+	R126	1
+	R127	1
+	R13	1
+	R14	1
+	R15	1
+	R16	1
+	R17	1
+	R18	1
+	R19	1
+	R2	1
+	R20	1
+	R21	1
+	R22	1
+	R23	1
+	R24	1
+	R25	1
+	R26	1
+	R27	1
+	R28	1
+	R29	1
+	R3	1
+	R30	1
+	R31	1
+	R32	1
+	R33	1
+	R34	1
+	R35	1
+	R37	1
+	R38	1
+	R39	1
+	R4	1
+	R40	1
+	R41	1
+	R42	1
+	R43	1
+	R45	1
+	R46	1
+	R47	1
+	R48	1
+	R49	1
+	R5	1
+	R50	1
+	R51	1
+	R52	1
+	R53	1
+	R54	1
+	R55	1
+	R56	1
+	R58	1
+	R59	1
+	R6	1
+	R60	1
+	R61	1
+	R63	1
+	R64	1
+	R65	1
+	R67	1
+	R68	1
+	R69	1
+	R7	1
+	R70	1
+	R71	1
+	R72	1
+	R73	1
+	R74	1
+	R75	1
+	R76	1
+	R77	1
+	R78	1
+	R79	1
+	R80	1
+	R81	1
+	R82	1
+	R83	1
+	R84	1
+	R85	1
+	R86	1
+	R88	1
+	R9	1
+	R90	1
+	R91	1
+	R92	1
+	R93	1
+	R94	1
+	R95	1
+	R96	1
+	R97	1
+	R98	1
+	R99	1
+  )
+ (no restraints)
+	Quit
+a.out: native.crd atomfile pairfile kchi>>
+native.crd: AZU.min.crd, atomfile: INDEX.AZU.ATOM, pairfile INDEX.AZU.PAIR, kchi 20.000000
+
+Total number of Q read: 128.
+0 0 ALA 1
+0 1 ALA 2
+1 0 GLU 3
+1 1 GLU 4
+2 0 CYS 5
+2 1 CYS 6
+3 0 SER 7
+3 1 SER 8
+4 0 VAL 9
+4 1 VAL 10
+5 0 ASP 11
+5 1 ASP 12
+6 0 ILE 13
+6 1 ILE 14
+7 0 GLN 15
+7 1 GLN 16
+8 0 GLY 17
+9 0 ASN 18
+9 1 ASN 19
+10 0 ASP 20
+10 1 ASP 21
+11 0 GLN 22
+11 1 GLN 23
+12 0 MET 24
+12 1 MET 25
+13 0 GLN 26
+13 1 GLN 27
+14 0 PHE 28
+14 1 PHE 29
+15 0 ASN 30
+15 1 ASN 31
+16 0 THR 32
+16 1 THR 33
+17 0 ASN 34
+17 1 ASN 35
+18 0 ALA 36
+18 1 ALA 37
+19 0 ILE 38
+19 1 ILE 39
+20 0 THR 40
+20 1 THR 41
+21 0 VAL 42
+21 1 VAL 43
+22 0 ASP 44
+22 1 ASP 45
+23 0 LYS 46
+23 1 LYS 47
+24 0 SER 48
+24 1 SER 49
+25 0 CYS 50
+25 1 CYS 51
+26 0 LYS 52
+26 1 LYS 53
+27 0 GLN 54
+27 1 GLN 55
+28 0 PHE 56
+28 1 PHE 57
+29 0 THR 58
+29 1 THR 59
+30 0 VAL 60
+30 1 VAL 61
+31 0 ASN 62
+31 1 ASN 63
+32 0 LEU 64
+32 1 LEU 65
+33 0 SER 66
+33 1 SER 67
+34 0 HIS 68
+34 1 HIS 69
+35 0 PRO 70
+35 1 PRO 71
+36 0 GLY 72
+37 0 ASN 73
+37 1 ASN 74
+38 0 LEU 75
+38 1 LEU 76
+39 0 PRO 77
+39 1 PRO 78
+40 0 LYS 79
+40 1 LYS 80
+41 0 ASN 81
+41 1 ASN 82
+42 0 VAL 83
+42 1 VAL 84
+43 0 MET 85
+43 1 MET 86
+44 0 GLY 87
+45 0 HIS 88
+45 1 HIS 89
+46 0 ASN 90
+46 1 ASN 91
+47 0 TRP 92
+47 1 TRP 93
+48 0 VAL 94
+48 1 VAL 95
+49 0 LEU 96
+49 1 LEU 97
+50 0 SER 98
+50 1 SER 99
+51 0 THR 100
+51 1 THR 101
+52 0 ALA 102
+52 1 ALA 103
+53 0 ALA 104
+53 1 ALA 105
+54 0 ASP 106
+54 1 ASP 107
+55 0 MET 108
+55 1 MET 109
+56 0 GLN 110
+56 1 GLN 111
+57 0 GLY 112
+58 0 VAL 113
+58 1 VAL 114
+59 0 VAL 115
+59 1 VAL 116
+60 0 THR 117
+60 1 THR 118
+61 0 ASP 119
+61 1 ASP 120
+62 0 GLY 121
+63 0 MET 122
+63 1 MET 123
+64 0 ALA 124
+64 1 ALA 125
+65 0 SER 126
+65 1 SER 127
+66 0 GLY 128
+67 0 LEU 129
+67 1 LEU 130
+68 0 ASP 131
+68 1 ASP 132
+69 0 LYS 133
+69 1 LYS 134
+70 0 ASP 135
+70 1 ASP 136
+71 0 TYR 137
+71 1 TYR 138
+72 0 LEU 139
+72 1 LEU 140
+73 0 LYS 141
+73 1 LYS 142
+74 0 PRO 143
+74 1 PRO 144
+75 0 ASP 145
+75 1 ASP 146
+76 0 ASP 147
+76 1 ASP 148
+77 0 SER 149
+77 1 SER 150
+78 0 ARG 151
+78 1 ARG 152
+79 0 VAL 153
+79 1 VAL 154
+80 0 ILE 155
+80 1 ILE 156
+81 0 ALA 157
+81 1 ALA 158
+82 0 HIS 159
+82 1 HIS 160
+83 0 THR 161
+83 1 THR 162
+84 0 LYS 163
+84 1 LYS 164
+85 0 LEU 165
+85 1 LEU 166
+86 0 ILE 167
+86 1 ILE 168
+87 0 GLY 169
+88 0 SER 170
+88 1 SER 171
+89 0 GLY 172
+90 0 GLU 173
+90 1 GLU 174
+91 0 LYS 175
+91 1 LYS 176
+92 0 ASP 177
+92 1 ASP 178
+93 0 SER 179
+93 1 SER 180
+94 0 VAL 181
+94 1 VAL 182
+95 0 THR 183
+95 1 THR 184
+96 0 PHE 185
+96 1 PHE 186
+97 0 ASP 187
+97 1 ASP 188
+98 0 VAL 189
+98 1 VAL 190
+99 0 SER 191
+99 1 SER 192
+100 0 LYS 193
+100 1 LYS 194
+101 0 LEU 195
+101 1 LEU 196
+102 0 LYS 197
+102 1 LYS 198
+103 0 GLU 199
+103 1 GLU 200
+104 0 GLY 201
+105 0 GLU 202
+105 1 GLU 203
+106 0 GLN 204
+106 1 GLN 205
+107 0 TYR 206
+107 1 TYR 207
+108 0 MET 208
+108 1 MET 209
+109 0 PHE 210
+109 1 PHE 211
+110 0 PHE 212
+110 1 PHE 213
+111 0 CYS 214
+111 1 CYS 215
+112 0 THR 216
+112 1 THR 217
+113 0 PHE 218
+113 1 PHE 219
+114 0 PRO 220
+114 1 PRO 221
+115 0 GLY 222
+116 0 HIS 223
+116 1 HIS 224
+117 0 SER 225
+117 1 SER 226
+118 0 ALA 227
+118 1 ALA 228
+119 0 LEU 229
+119 1 LEU 230
+120 0 MET 231
+120 1 MET 232
+121 0 LYS 233
+121 1 LYS 234
+122 0 GLY 235
+123 0 THR 236
+123 1 THR 237
+124 0 LEU 238
+124 1 LEU 239
+125 0 THR 240
+125 1 THR 241
+126 0 LEU 242
+126 1 LEU 243
+127 0 LYS 244
+127 1 LYS 245
+0 0  1 1
+0 1  2 2
+1 0  3 3
+1 1  4 4
+2 0  5 5
+2 1  6 6
+3 0  7 7
+3 1  8 8
+4 0  9 9
+4 1  10 10
+5 0  11 11
+5 1  12 12
+6 0  13 13
+6 1  14 14
+7 0  15 15
+7 1  16 16
+8 0  17 17
+9 0  18 18
+9 1  19 19
+10 0  20 20
+10 1  21 21
+11 0  22 22
+11 1  23 23
+12 0  24 24
+12 1  25 25
+13 0  26 26
+13 1  27 27
+14 0  28 28
+14 1  29 29
+15 0  30 30
+15 1  31 31
+16 0  32 32
+16 1  33 33
+17 0  34 34
+17 1  35 35
+18 0  36 36
+18 1  37 37
+19 0  38 38
+19 1  39 39
+20 0  40 40
+20 1  41 41
+21 0  42 42
+21 1  43 43
+22 0  44 44
+22 1  45 45
+23 0  46 46
+23 1  47 47
+24 0  48 48
+24 1  49 49
+25 0  50 50
+25 1  51 51
+26 0  52 52
+26 1  53 53
+27 0  54 54
+27 1  55 55
+28 0  56 56
+28 1  57 57
+29 0  58 58
+29 1  59 59
+30 0  60 60
+30 1  61 61
+31 0  62 62
+31 1  63 63
+32 0  64 64
+32 1  65 65
+33 0  66 66
+33 1  67 67
+34 0  68 68
+34 1  69 69
+35 0  70 70
+35 1  71 71
+36 0  72 72
+37 0  73 73
+37 1  74 74
+38 0  75 75
+38 1  76 76
+39 0  77 77
+39 1  78 78
+40 0  79 79
+40 1  80 80
+41 0  81 81
+41 1  82 82
+42 0  83 83
+42 1  84 84
+43 0  85 85
+43 1  86 86
+44 0  87 87
+45 0  88 88
+45 1  89 89
+46 0  90 90
+46 1  91 91
+47 0  92 92
+47 1  93 93
+48 0  94 94
+48 1  95 95
+49 0  96 96
+49 1  97 97
+50 0  98 98
+50 1  99 99
+51 0  100 100
+51 1  101 101
+52 0  102 102
+52 1  103 103
+53 0  104 104
+53 1  105 105
+54 0  106 106
+54 1  107 107
+55 0  108 108
+55 1  109 109
+56 0  110 110
+56 1  111 111
+57 0  112 112
+58 0  113 113
+58 1  114 114
+59 0  115 115
+59 1  116 116
+60 0  117 117
+60 1  118 118
+61 0  119 119
+61 1  120 120
+62 0  121 121
+63 0  122 122
+63 1  123 123
+64 0  124 124
+64 1  125 125
+65 0  126 126
+65 1  127 127
+66 0  128 128
+67 0  129 129
+67 1  130 130
+68 0  131 131
+68 1  132 132
+69 0  133 133
+69 1  134 134
+70 0  135 135
+70 1  136 136
+71 0  137 137
+71 1  138 138
+72 0  139 139
+72 1  140 140
+73 0  141 141
+73 1  142 142
+74 0  143 143
+74 1  144 144
+75 0  145 145
+75 1  146 146
+76 0  147 147
+76 1  148 148
+77 0  149 149
+77 1  150 150
+78 0  151 151
+78 1  152 152
+79 0  153 153
+79 1  154 154
+80 0  155 155
+80 1  156 156
+81 0  157 157
+81 1  158 158
+82 0  159 159
+82 1  160 160
+83 0  161 161
+83 1  162 162
+84 0  163 163
+84 1  164 164
+85 0  165 165
+85 1  166 166
+86 0  167 167
+86 1  168 168
+87 0  169 169
+88 0  170 170
+88 1  171 171
+89 0  172 172
+90 0  173 173
+90 1  174 174
+91 0  175 175
+91 1  176 176
+92 0  177 177
+92 1  178 178
+93 0  179 179
+93 1  180 180
+94 0  181 181
+94 1  182 182
+95 0  183 183
+95 1  184 184
+96 0  185 185
+96 1  186 186
+97 0  187 187
+97 1  188 188
+98 0  189 189
+98 1  190 190
+99 0  191 191
+99 1  192 192
+100 0  193 193
+100 1  194 194
+101 0  195 195
+101 1  196 196
+102 0  197 197
+102 1  198 198
+103 0  199 199
+103 1  200 200
+104 0  201 201
+105 0  202 202
+105 1  203 203
+106 0  204 204
+106 1  205 205
+107 0  206 206
+107 1  207 207
+108 0  208 208
+108 1  209 209
+109 0  210 210
+109 1  211 211
+110 0  212 212
+110 1  213 213
+111 0  214 214
+111 1  215 215
+112 0  216 216
+112 1  217 217
+113 0  218 218
+113 1  219 219
+114 0  220 220
+114 1  221 221
+115 0  222 222
+116 0  223 223
+116 1  224 224
+117 0  225 225
+117 1  226 226
+118 0  227 227
+118 1  228 228
+119 0  229 229
+119 1  230 230
+120 0  231 231
+120 1  232 232
+121 0  233 233
+121 1  234 234
+122 0  235 235
+123 0  236 236
+123 1  237 237
+124 0  238 238
+124 1  239 239
+125 0  240 240
+125 1  241 241
+126 0  242 242
+126 1  243 243
+127 0  244 244
+127 1  245 245

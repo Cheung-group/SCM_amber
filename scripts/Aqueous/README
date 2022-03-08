@@ -1,0 +1,4 @@
+PHASE_A_B	One script to generate crd and prmtop for PHASE_A (testing with HOMO)
+		or PHASE_B (to produce the minimized structure)
+PHASE_C		One script to generate crd and prmtop based on the minimized structure
+		obtained from PHASE_B

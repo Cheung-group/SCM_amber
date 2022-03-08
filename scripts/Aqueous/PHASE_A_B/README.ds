@@ -1,0 +1,2 @@
+1	# number of DS bonds (if 0 the rest will be ignored)
+2 25	# 1st bond residue index (C) starting from 0

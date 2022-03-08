@@ -1,0 +1,1240 @@
+cacb_unit = createUnit CACB
+mon0 = createAtom A0 A0 0.0
+set mon0 position {-2.66526315789474	14.1236842105263	6.90263157894737}
+cacb_res0 = createResidue R0
+add cacb_res0 mon0
+mon1 = createAtom N0 N0 0.0
+set mon1 position {-2.54315789473684	14.4910526315789	7.02052631578947}
+add cacb_res0 mon1
+add cacb_unit cacb_res0
+bond mon1 mon0
+mon2 = createAtom A1 A1 0.0
+set mon2 position {-3.07394736842105	14.3963157894737	6.01026315789474}
+cacb_res1 = createResidue R1
+add cacb_res1 mon2
+bond mon2 mon0
+mon3 = createAtom N1 N1 0.0
+set mon3 position {-3.34578947368421	14.6847368421053	5.96026315789474}
+add cacb_res1 mon3
+add cacb_unit cacb_res1
+bond mon3 mon2
+mon4 = createAtom A2 A2 0.0
+set mon4 position {-2.26473684210526	14.2578947368421	5.40605263157895}
+cacb_res2 = createResidue R2
+add cacb_res2 mon4
+bond mon4 mon2
+mon5 = createAtom N2 N2 0.0
+set mon5 position {-2.34	14.4405263157895	5.04894736842105}
+add cacb_res2 mon5
+add cacb_unit cacb_res2
+bond mon5 mon4
+mon6 = createAtom A3 A3 0.0
+set mon6 position {-1.67394736842105	14.6	6.13552631578947}
+cacb_res3 = createResidue R3
+add cacb_res3 mon6
+bond mon6 mon4
+mon7 = createAtom N3 N3 0.0
+set mon7 position {-1.73789473684211	14.9960526315789	6.22157894736842}
+add cacb_res3 mon7
+add cacb_unit cacb_res3
+bond mon7 mon6
+mon8 = createAtom A4 A4 0.0
+set mon8 position {-1.28342105263158	14.2371052631579	6.97}
+cacb_res4 = createResidue R4
+add cacb_res4 mon8
+bond mon8 mon6
+mon9 = createAtom N4 N4 0.0
+set mon9 position {-1.11657894736842	13.87	6.90368421052632}
+add cacb_res4 mon9
+add cacb_unit cacb_res4
+bond mon9 mon8
+mon10 = createAtom A5 A5 0.0
+set mon10 position {-0.870526315789474	14.7184210526316	7.74526315789474}
+cacb_res5 = createResidue R5
+add cacb_res5 mon10
+bond mon10 mon8
+mon11 = createAtom N5 N5 0.0
+set mon11 position {-1.09710526315789	14.9376315789474	7.99342105263158}
+add cacb_res5 mon11
+add cacb_unit cacb_res5
+bond mon11 mon10
+mon12 = createAtom A6 A6 0.0
+set mon12 position {-0.105526315789474	14.2042105263158	8.12894736842105}
+cacb_res6 = createResidue R6
+add cacb_res6 mon12
+bond mon12 mon10
+mon13 = createAtom N6 N6 0.0
+set mon13 position {0.0557894736842105	13.9431578947368	7.84605263157895}
+add cacb_res6 mon13
+add cacb_unit cacb_res6
+bond mon13 mon12
+mon14 = createAtom A7 A7 0.0
+set mon14 position {0.525	14.3828947368421	8.87552631578947}
+cacb_res7 = createResidue R7
+add cacb_res7 mon14
+bond mon14 mon12
+mon15 = createAtom N7 N7 0.0
+set mon15 position {0.375526315789474	14.4231578947368	9.23789473684211}
+add cacb_res7 mon15
+add cacb_unit cacb_res7
+bond mon15 mon14
+mon16 = createAtom A8 A8 0.0
+set mon16 position {1.46078947368421	14.1157894736842	9.05552631578947}
+cacb_res8 = createResidue R8
+add cacb_res8 mon16
+add cacb_unit cacb_res8
+bond mon16 mon14
+mon17 = createAtom A9 A9 0.0
+set mon17 position {1.71763157894737	14.1289473684211	10.0507894736842}
+cacb_res9 = createResidue R9
+add cacb_res9 mon17
+bond mon17 mon16
+mon18 = createAtom N9 N9 0.0
+set mon18 position {1.51578947368421	13.9207894736842	10.3263157894737}
+add cacb_res9 mon18
+add cacb_unit cacb_res9
+bond mon18 mon17
+mon19 = createAtom AA AA 0.0
+set mon19 position {2.60921052631579	14.1497368421053	10.5210526315789}
+cacb_res10 = createResidue R10
+add cacb_res10 mon19
+bond mon19 mon17
+mon20 = createAtom NA NA 0.0
+set mon20 position {2.68736842105263	14.3747368421053	10.8394736842105}
+add cacb_res10 mon20
+add cacb_unit cacb_res10
+bond mon20 mon19
+mon21 = createAtom AB AB 0.0
+set mon21 position {2.63421052631579	13.1602631578947	10.6247368421053}
+cacb_res11 = createResidue R11
+add cacb_res11 mon21
+bond mon21 mon19
+mon22 = createAtom NB NB 0.0
+set mon22 position {2.37815789473684	12.9618421052632	10.8686842105263}
+add cacb_res11 mon22
+add cacb_unit cacb_res11
+bond mon22 mon21
+mon23 = createAtom AC AC 0.0
+set mon23 position {2.73210526315789	13.0260526315789	9.62473684210526}
+cacb_res12 = createResidue R12
+add cacb_res12 mon23
+bond mon23 mon21
+mon24 = createAtom NC NC 0.0
+set mon24 position {3.06868421052632	12.8018421052632	9.58763157894737}
+add cacb_res12 mon24
+add cacb_unit cacb_res12
+bond mon24 mon23
+mon25 = createAtom AD AD 0.0
+set mon25 position {1.78473684210526	12.7515789473684	9.47868421052632}
+cacb_res13 = createResidue R13
+add cacb_res13 mon25
+bond mon25 mon23
+mon26 = createAtom ND ND 0.0
+set mon26 position {1.60710526315789	12.6076315789474	9.81078947368421}
+add cacb_res13 mon26
+add cacb_unit cacb_res13
+bond mon26 mon25
+mon27 = createAtom AE AE 0.0
+set mon27 position {1.09473684210526	13.0481578947368	8.81289473684211}
+cacb_res14 = createResidue R14
+add cacb_res14 mon27
+bond mon27 mon25
+mon28 = createAtom NE NE 0.0
+set mon28 position {1.07631578947368	12.9444736842105	8.42657894736842}
+add cacb_res14 mon28
+add cacb_unit cacb_res14
+bond mon28 mon27
+mon29 = createAtom AF AF 0.0
+set mon29 position {0.163947368421053	12.9997368421053	9.15236842105263}
+cacb_res15 = createResidue R15
+add cacb_res15 mon29
+bond mon29 mon27
+mon30 = createAtom NF NF 0.0
+set mon30 position {-0.0402631578947368	13.3055263157895	9.32631578947368}
+add cacb_res15 mon30
+add cacb_unit cacb_res15
+bond mon30 mon29
+mon31 = createAtom AG AG 0.0
+set mon31 position {-0.139210526315789	12.4344736842105	8.3971052631579}
+cacb_res16 = createResidue R16
+add cacb_res16 mon31
+bond mon31 mon29
+mon32 = createAtom NG NG 0.0
+set mon32 position {-0.391578947368421	12.615	8.13736842105263}
+add cacb_res16 mon32
+add cacb_unit cacb_res16
+bond mon32 mon31
+mon33 = createAtom AH AH 0.0
+set mon33 position {0.263947368421053	11.6763157894737	7.89026315789474}
+cacb_res17 = createResidue R17
+add cacb_res17 mon33
+bond mon33 mon31
+mon34 = createAtom NH NH 0.0
+set mon34 position {0.391842105263158	11.3713157894737	8.12184210526316}
+add cacb_res17 mon34
+add cacb_unit cacb_res17
+bond mon34 mon33
+mon35 = createAtom AI AI 0.0
+set mon35 position {-0.371052631578947	11.5384210526316	7.13578947368421}
+cacb_res18 = createResidue R18
+add cacb_res18 mon35
+bond mon35 mon33
+mon36 = createAtom NI NI 0.0
+set mon36 position {-0.621842105263158	11.2413157894737	7.22368421052632}
+add cacb_res18 mon36
+add cacb_unit cacb_res18
+bond mon36 mon35
+mon37 = createAtom AJ AJ 0.0
+set mon37 position {-0.752631578947368	12.2415789473684	6.51684210526316}
+cacb_res19 = createResidue R19
+add cacb_res19 mon37
+bond mon37 mon35
+mon38 = createAtom NJ NJ 0.0
+set mon38 position {-0.512368421052632	12.5515789473684	6.39789473684211}
+add cacb_res19 mon38
+add cacb_unit cacb_res19
+bond mon38 mon37
+mon39 = createAtom AK AK 0.0
+set mon39 position {-1.48052631578947	12.0334210526316	5.86736842105263}
+cacb_res20 = createResidue R20
+add cacb_res20 mon39
+bond mon39 mon37
+mon40 = createAtom NK NK 0.0
+set mon40 position {-1.79552631578947	11.8244736842105	5.99657894736842}
+add cacb_res20 mon40
+add cacb_unit cacb_res20
+bond mon40 mon39
+mon41 = createAtom AL AL 0.0
+set mon41 position {-1.60263157894737	12.6576315789474	5.08631578947368}
+cacb_res21 = createResidue R21
+add cacb_res21 mon41
+bond mon41 mon39
+mon42 = createAtom NL NL 0.0
+set mon42 position {-1.28657894736842	12.7473684210526	4.84736842105263}
+add cacb_res21 mon42
+add cacb_unit cacb_res21
+bond mon42 mon41
+mon43 = createAtom AM AM 0.0
+set mon43 position {-2.50026315789474	12.5621052631579	4.66552631578947}
+cacb_res22 = createResidue R22
+add cacb_res22 mon43
+bond mon43 mon41
+mon44 = createAtom NM NM 0.0
+set mon44 position {-2.84263157894737	12.7115789473684	4.80763157894737}
+add cacb_res22 mon44
+add cacb_unit cacb_res22
+bond mon44 mon43
+mon45 = createAtom AN AN 0.0
+set mon45 position {-2.47684210526316	12.4939473684211	3.66184210526316}
+cacb_res23 = createResidue R23
+add cacb_res23 mon45
+bond mon45 mon43
+mon46 = createAtom NN NN 0.0
+set mon46 position {-2.61815789473684	12.1781578947368	3.46026315789474}
+add cacb_res23 mon46
+add cacb_unit cacb_res23
+bond mon46 mon45
+mon47 = createAtom AO AO 0.0
+set mon47 position {-3.15315789473684	13.2260526315789	3.56789473684211}
+cacb_res24 = createResidue R24
+add cacb_res24 mon47
+bond mon47 mon45
+mon48 = createAtom NO NO 0.0
+set mon48 position {-3.49368421052632	13.2352631578947	3.77868421052632}
+add cacb_res24 mon48
+add cacb_unit cacb_res24
+bond mon48 mon47
+mon49 = createAtom AP AP 0.0
+set mon49 position {-2.48368421052632	13.8918421052632	3.91657894736842}
+cacb_res25 = createResidue R25
+add cacb_res25 mon49
+bond mon49 mon47
+mon50 = createAtom NP NP 0.0
+set mon50 position {-2.24578947368421	13.8457894736842	4.23368421052632}
+add cacb_res25 mon50
+add cacb_unit cacb_res25
+bond mon50 mon49
+mon51 = createAtom AQ AQ 0.0
+set mon51 position {-2.05789473684211	14.4563157894737	3.21763157894737}
+cacb_res26 = createResidue R26
+add cacb_res26 mon51
+bond mon51 mon49
+mon52 = createAtom NQ NQ 0.0
+set mon52 position {-2.20815789473684	14.7905263157895	3.04973684210526}
+add cacb_res26 mon52
+add cacb_unit cacb_res26
+bond mon52 mon51
+mon53 = createAtom AR AR 0.0
+set mon53 position {-1.36605263157895	14.7528947368421	3.90394736842105}
+cacb_res27 = createResidue R27
+add cacb_res27 mon53
+bond mon53 mon51
+mon54 = createAtom NR NR 0.0
+set mon54 position {-1.32157894736842	15.1478947368421	3.94736842105263}
+add cacb_res27 mon54
+add cacb_unit cacb_res27
+bond mon54 mon53
+mon55 = createAtom AS AS 0.0
+set mon55 position {-1.12473684210526	14.4528947368421	4.81131578947369}
+cacb_res28 = createResidue R28
+add cacb_res28 mon55
+bond mon55 mon53
+mon56 = createAtom NS NS 0.0
+set mon56 position {-0.995526315789474	14.075	4.84421052631579}
+add cacb_res28 mon56
+add cacb_unit cacb_res28
+bond mon56 mon55
+mon57 = createAtom AT AT 0.0
+set mon57 position {-0.760526315789474	15.0281578947368	5.54131578947368}
+cacb_res29 = createResidue R29
+add cacb_res29 mon57
+bond mon57 mon55
+mon58 = createAtom NT NT 0.0
+set mon58 position {-0.965	15.3747368421053	5.61894736842105}
+add cacb_res29 mon58
+add cacb_unit cacb_res29
+bond mon58 mon57
+mon59 = createAtom AU AU 0.0
+set mon59 position {-0.208947368421053	14.7710526315789	6.335}
+cacb_res30 = createResidue R30
+add cacb_res30 mon59
+bond mon59 mon57
+mon60 = createAtom NU NU 0.0
+set mon60 position {0.101052631578947	14.5144736842105	6.28894736842105}
+add cacb_res30 mon60
+add cacb_unit cacb_res30
+bond mon60 mon59
+mon61 = createAtom AV AV 0.0
+set mon61 position {-0.122894736842105	15.4147368421053	7.09078947368421}
+cacb_res31 = createResidue R31
+add cacb_res31 mon61
+bond mon61 mon59
+mon62 = createAtom NV NV 0.0
+set mon62 position {-0.452105263157895	15.5992105263158	7.22236842105263}
+add cacb_res31 mon62
+add cacb_unit cacb_res31
+bond mon62 mon61
+mon63 = createAtom AW AW 0.0
+set mon63 position {0.650263157894737	15.2042105263158	7.67578947368421}
+cacb_res32 = createResidue R32
+add cacb_res32 mon63
+bond mon63 mon61
+mon64 = createAtom NW NW 0.0
+set mon64 position {0.999736842105263	15.0828947368421	7.50894736842105}
+add cacb_res32 mon64
+add cacb_unit cacb_res32
+bond mon64 mon63
+mon65 = createAtom AX AX 0.0
+set mon65 position {0.808947368421053	15.5944736842105	8.59263157894737}
+cacb_res33 = createResidue R33
+add cacb_res33 mon65
+bond mon65 mon63
+mon66 = createAtom NX NX 0.0
+set mon66 position {0.493684210526316	15.7126315789474	8.80894736842105}
+add cacb_res33 mon66
+add cacb_unit cacb_res33
+bond mon66 mon65
+mon67 = createAtom AY AY 0.0
+set mon67 position {1.51263157894737	15.4028947368421	9.27342105263158}
+cacb_res34 = createResidue R34
+add cacb_res34 mon67
+bond mon67 mon65
+mon68 = createAtom NY NY 0.0
+set mon68 position {1.88368421052632	15.4715789473684	9.16236842105263}
+add cacb_res34 mon68
+add cacb_unit cacb_res34
+bond mon68 mon67
+mon69 = createAtom AZ AZ 0.0
+set mon69 position {1.19368421052632	15.4073684210526	10.2315789473684}
+cacb_res35 = createResidue R35
+add cacb_res35 mon69
+bond mon69 mon67
+mon70 = createAtom NZ NZ 0.0
+set mon70 position {0.893421052631579	15.1663157894737	10.3371052631579}
+add cacb_res35 mon70
+add cacb_unit cacb_res35
+bond mon70 mon69
+mon71 = createAtom B0 B0 0.0
+set mon71 position {1.95105263157895	15.4160526315789	10.8910526315789}
+cacb_res36 = createResidue R36
+add cacb_res36 mon71
+add cacb_unit cacb_res36
+bond mon71 mon69
+mon72 = createAtom B1 B1 0.0
+set mon72 position {2.77631578947368	15.9318421052632	11.1305263157895}
+cacb_res37 = createResidue R37
+add cacb_res37 mon72
+bond mon72 mon71
+mon73 = createAtom O1 O1 0.0
+set mon73 position {2.88263157894737	15.9194736842105	11.5160526315789}
+add cacb_res37 mon73
+add cacb_unit cacb_res37
+bond mon73 mon72
+mon74 = createAtom B2 B2 0.0
+set mon74 position {3.53368421052632	15.5555263157895	10.6215789473684}
+cacb_res38 = createResidue R38
+add cacb_res38 mon74
+bond mon74 mon72
+mon75 = createAtom O2 O2 0.0
+set mon75 position {3.58894736842105	15.1626315789474	10.5839473684211}
+add cacb_res38 mon75
+add cacb_unit cacb_res38
+bond mon75 mon74
+mon76 = createAtom B3 B3 0.0
+set mon76 position {3.99578947368421	16.1063157894737	9.91105263157895}
+cacb_res39 = createResidue R39
+add cacb_res39 mon76
+bond mon76 mon74
+mon77 = createAtom O3 O3 0.0
+set mon77 position {4.33184210526316	16.2989473684211	10.0202631578947}
+add cacb_res39 mon77
+add cacb_unit cacb_res39
+bond mon77 mon76
+mon78 = createAtom B4 B4 0.0
+set mon78 position {4.07894736842105	15.8510526315789	8.94868421052632}
+cacb_res40 = createResidue R40
+add cacb_res40 mon78
+bond mon78 mon76
+mon79 = createAtom O4 O4 0.0
+set mon79 position {4.015	16.1386842105263	8.67421052631579}
+add cacb_res40 mon79
+add cacb_unit cacb_res40
+bond mon79 mon78
+mon80 = createAtom B5 B5 0.0
+set mon80 position {5.04184210526316	15.5363157894737	8.97631578947368}
+cacb_res41 = createResidue R41
+add cacb_res41 mon80
+bond mon80 mon78
+mon81 = createAtom O5 O5 0.0
+set mon81 position {5.35789473684211	15.7652631578947	9.08631578947368}
+add cacb_res41 mon81
+add cacb_unit cacb_res41
+bond mon81 mon80
+mon82 = createAtom B6 B6 0.0
+set mon82 position {4.78078947368421	14.8423684210526	9.65289473684211}
+cacb_res42 = createResidue R42
+add cacb_res42 mon82
+bond mon82 mon80
+mon83 = createAtom O6 O6 0.0
+set mon83 position {4.78473684210526	14.9965789473684	10.0336842105263}
+add cacb_res42 mon83
+add cacb_unit cacb_res42
+bond mon83 mon82
+mon84 = createAtom B7 B7 0.0
+set mon84 position {3.83315789473684	14.6357894736842	9.42368421052632}
+cacb_res43 = createResidue R43
+add cacb_res43 mon84
+bond mon84 mon82
+mon85 = createAtom O7 O7 0.0
+set mon85 position {3.64289473684211	14.6521052631579	9.785}
+add cacb_res43 mon85
+add cacb_unit cacb_res43
+bond mon85 mon84
+mon86 = createAtom B8 B8 0.0
+set mon86 position {3.60105263157895	15.0710526315789	8.54631578947368}
+cacb_res44 = createResidue R44
+add cacb_res44 mon86
+add cacb_unit cacb_res44
+bond mon86 mon84
+mon87 = createAtom B9 B9 0.0
+set mon87 position {2.83078947368421	14.5855263157895	8.09815789473684}
+cacb_res45 = createResidue R45
+add cacb_res45 mon87
+bond mon87 mon86
+mon88 = createAtom O9 O9 0.0
+set mon88 position {2.49184210526316	14.5197368421053	8.30868421052632}
+add cacb_res45 mon88
+add cacb_unit cacb_res45
+bond mon88 mon87
+mon89 = createAtom BA BA 0.0
+set mon89 position {2.52815789473684	14.5926315789474	7.1378947368421}
+cacb_res46 = createResidue R46
+add cacb_res46 mon89
+bond mon89 mon87
+mon90 = createAtom OA OA 0.0
+set mon90 position {2.83052631578947	14.6452631578947	6.87210526315789}
+add cacb_res46 mon90
+add cacb_unit cacb_res46
+bond mon90 mon89
+mon91 = createAtom BB BB 0.0
+set mon91 position {1.82394736842105	14.0313157894737	6.6871052631579}
+cacb_res47 = createResidue R47
+add cacb_res47 mon91
+bond mon91 mon89
+mon92 = createAtom OB OB 0.0
+set mon92 position {1.44052631578947	14.1465789473684	6.72131578947368}
+add cacb_res47 mon92
+add cacb_unit cacb_res47
+bond mon92 mon91
+mon93 = createAtom BC BC 0.0
+set mon93 position {2.18815789473684	13.6526315789474	5.82684210526316}
+cacb_res48 = createResidue R48
+add cacb_res48 mon93
+bond mon93 mon91
+mon94 = createAtom OC OC 0.0
+set mon94 position {2.58684210526316	13.5702631578947	5.84105263157895}
+add cacb_res48 mon94
+add cacb_unit cacb_res48
+bond mon94 mon93
+mon95 = createAtom BD BD 0.0
+set mon95 position {1.67078947368421	13.0713157894737	5.175}
+cacb_res49 = createResidue R49
+add cacb_res49 mon95
+bond mon95 mon93
+mon96 = createAtom OD OD 0.0
+set mon96 position {1.30789473684211	13.1952631578947	5.05263157894737}
+add cacb_res49 mon96
+add cacb_unit cacb_res49
+bond mon96 mon95
+mon97 = createAtom BE BE 0.0
+set mon97 position {2.04	12.4071052631579	4.51657894736842}
+cacb_res50 = createResidue R50
+add cacb_res50 mon97
+bond mon97 mon95
+mon98 = createAtom OE OE 0.0
+set mon98 position {2.44078947368421	12.38	4.55473684210526}
+add cacb_res50 mon98
+add cacb_unit cacb_res50
+bond mon98 mon97
+mon99 = createAtom BF BF 0.0
+set mon99 position {1.84131578947368	11.4813157894737	4.19473684210526}
+cacb_res51 = createResidue R51
+add cacb_res51 mon99
+bond mon99 mon97
+mon100 = createAtom OF OF 0.0
+set mon100 position {1.93447368421053	11.315	3.84763157894737}
+add cacb_res51 mon100
+add cacb_unit cacb_res51
+bond mon100 mon99
+mon101 = createAtom BG BG 0.0
+set mon101 position {2.10552631578947	10.7710526315789	4.84026315789474}
+cacb_res52 = createResidue R52
+add cacb_res52 mon101
+bond mon101 mon99
+mon102 = createAtom OG OG 0.0
+set mon102 position {1.87921052631579	10.4502631578947	4.89105263157895}
+add cacb_res52 mon102
+add cacb_unit cacb_res52
+bond mon102 mon101
+mon103 = createAtom BH BH 0.0
+set mon103 position {2.85289473684211	10.5334210526316	4.20078947368421}
+cacb_res53 = createResidue R53
+add cacb_res53 mon103
+bond mon103 mon101
+mon104 = createAtom OH OH 0.0
+set mon104 position {2.79947368421053	10.4334210526316	3.82184210526316}
+add cacb_res53 mon104
+add cacb_unit cacb_res53
+bond mon104 mon103
+mon105 = createAtom BI BI 0.0
+set mon105 position {3.26631578947368	11.44	4.18684210526316}
+cacb_res54 = createResidue R54
+add cacb_res54 mon105
+bond mon105 mon103
+mon106 = createAtom OI OI 0.0
+set mon106 position {3.11947368421053	11.7286842105263	3.96473684210526}
+add cacb_res54 mon106
+add cacb_unit cacb_res54
+bond mon106 mon105
+mon107 = createAtom BJ BJ 0.0
+set mon107 position {3.22578947368421	11.6297368421053	5.15894736842105}
+cacb_res55 = createResidue R55
+add cacb_res55 mon107
+bond mon107 mon105
+mon108 = createAtom OJ OJ 0.0
+set mon108 position {2.98052631578947	11.4507894736842	5.42657894736842}
+add cacb_res55 mon108
+add cacb_unit cacb_res55
+bond mon108 mon107
+mon109 = createAtom BK BK 0.0
+set mon109 position {4.12131578947368	11.2334210526316	5.38973684210526}
+cacb_res56 = createResidue R56
+add cacb_res56 mon109
+bond mon109 mon107
+mon110 = createAtom OK OK 0.0
+set mon110 position {4.25289473684211	10.8507894736842	5.36526315789474}
+add cacb_res56 mon110
+add cacb_unit cacb_res56
+bond mon110 mon109
+mon111 = createAtom BL BL 0.0
+set mon111 position {4.60526315789474	11.7586842105263	4.68921052631579}
+cacb_res57 = createResidue R57
+add cacb_res57 mon111
+add cacb_unit cacb_res57
+bond mon111 mon109
+mon112 = createAtom BM BM 0.0
+set mon112 position {4.10736842105263	12.5884210526316	4.915}
+cacb_res58 = createResidue R58
+add cacb_res58 mon112
+bond mon112 mon111
+mon113 = createAtom OM OM 0.0
+set mon113 position {3.71131578947368	12.6231578947368	4.915}
+add cacb_res58 mon113
+add cacb_unit cacb_res58
+bond mon113 mon112
+mon114 = createAtom BN BN 0.0
+set mon114 position {4.39105263157895	12.4352631578947	5.88}
+cacb_res59 = createResidue R59
+add cacb_res59 mon114
+bond mon114 mon112
+mon115 = createAtom ON ON 0.0
+set mon115 position {4.28631578947368	12.1189473684211	6.11684210526316}
+add cacb_res59 mon115
+add cacb_unit cacb_res59
+bond mon115 mon114
+mon116 = createAtom BO BO 0.0
+set mon116 position {5.36105263157895	12.2473684210526	5.65552631578947}
+cacb_res60 = createResidue R60
+add cacb_res60 mon116
+bond mon116 mon114
+mon117 = createAtom OO OO 0.0
+set mon117 position {5.50078947368421	11.9313157894737	5.44631578947368}
+add cacb_res60 mon117
+add cacb_unit cacb_res60
+bond mon117 mon116
+mon118 = createAtom BP BP 0.0
+set mon118 position {5.45552631578947	13.0452631578947	5.06921052631579}
+cacb_res61 = createResidue R61
+add cacb_res61 mon118
+bond mon118 mon116
+mon119 = createAtom OP OP 0.0
+set mon119 position {5.31394736842105	13.0639473684211	4.69736842105263}
+add cacb_res61 mon119
+add cacb_unit cacb_res61
+bond mon119 mon118
+mon120 = createAtom BQ BQ 0.0
+set mon120 position {4.95973684210526	13.6497368421053	5.69736842105263}
+cacb_res62 = createResidue R62
+add cacb_res62 mon120
+add cacb_unit cacb_res62
+bond mon120 mon118
+mon121 = createAtom BR BR 0.0
+set mon121 position {5.61342105263158	13.4113157894737	6.41394736842105}
+cacb_res63 = createResidue R63
+add cacb_res63 mon121
+bond mon121 mon120
+mon122 = createAtom OR OR 0.0
+set mon122 position {5.70394736842105	13.0368421052632	6.52631578947368}
+add cacb_res63 mon122
+add cacb_unit cacb_res63
+bond mon122 mon121
+mon123 = createAtom BS BS 0.0
+set mon123 position {6.37	13.6773684210526	5.82236842105263}
+cacb_res64 = createResidue R64
+add cacb_res64 mon123
+bond mon123 mon121
+mon124 = createAtom OS OS 0.0
+set mon124 position {6.49052631578947	13.4923684210526	5.49289473684211}
+add cacb_res64 mon124
+add cacb_unit cacb_res64
+bond mon124 mon123
+mon125 = createAtom BT BT 0.0
+set mon125 position {5.92289473684211	14.5671052631579	5.58368421052632}
+cacb_res65 = createResidue R65
+add cacb_res65 mon125
+bond mon125 mon123
+mon126 = createAtom OT OT 0.0
+set mon126 position {5.56184210526316	14.6115789473684	5.4228947368421}
+add cacb_res65 mon126
+add cacb_unit cacb_res65
+bond mon126 mon125
+mon127 = createAtom BU BU 0.0
+set mon127 position {5.995	14.9665789473684	6.49815789473684}
+cacb_res66 = createResidue R66
+add cacb_res66 mon127
+add cacb_unit cacb_res66
+bond mon127 mon125
+mon128 = createAtom BV BV 0.0
+set mon128 position {5.45394736842105	15.4886842105263	7.15552631578947}
+cacb_res67 = createResidue R67
+add cacb_res67 mon128
+bond mon128 mon127
+mon129 = createAtom OV OV 0.0
+set mon129 position {5.59921052631579	15.5923684210526	7.52026315789474}
+add cacb_res67 mon129
+add cacb_unit cacb_res67
+bond mon129 mon128
+mon130 = createAtom BW BW 0.0
+set mon130 position {5.54236842105263	16.3192105263158	6.61421052631579}
+cacb_res68 = createResidue R68
+add cacb_res68 mon130
+bond mon130 mon128
+mon131 = createAtom OW OW 0.0
+set mon131 position {5.89921052631579	16.4902631578947	6.50842105263158}
+add cacb_res68 mon131
+add cacb_unit cacb_res68
+bond mon131 mon130
+mon132 = createAtom BX BX 0.0
+set mon132 position {5.09394736842105	15.8242105263158	5.85578947368421}
+cacb_res69 = createResidue R69
+add cacb_res69 mon132
+bond mon132 mon130
+mon133 = createAtom OX OX 0.0
+set mon133 position {5.27210526315789	15.5823684210526	5.58631578947368}
+add cacb_res69 mon133
+add cacb_unit cacb_res69
+bond mon133 mon132
+mon134 = createAtom BY BY 0.0
+set mon134 position {4.41184210526316	15.4557894736842	6.52052631578947}
+cacb_res70 = createResidue R70
+add cacb_res70 mon134
+bond mon134 mon132
+mon135 = createAtom OY OY 0.0
+set mon135 position {4.04578947368421	15.6044736842105	6.39947368421053}
+add cacb_res70 mon135
+add cacb_unit cacb_res70
+bond mon135 mon134
+mon136 = createAtom BZ BZ 0.0
+set mon136 position {4.78342105263158	14.5307894736842	6.36263157894737}
+cacb_res71 = createResidue R71
+add cacb_res71 mon136
+bond mon136 mon134
+mon137 = createAtom OZ OZ 0.0
+set mon137 position {4.71421052631579	14.3223684210526	6.70947368421053}
+add cacb_res71 mon137
+add cacb_unit cacb_res71
+bond mon137 mon136
+mon138 = createAtom C0 C0 0.0
+set mon138 position {4.36947368421053	14.4571052631579	5.45447368421053}
+cacb_res72 = createResidue R72
+add cacb_res72 mon138
+bond mon138 mon136
+mon139 = createAtom P0 P0 0.0
+set mon139 position {4.00921052631579	14.6313157894737	5.41894736842105}
+add cacb_res72 mon139
+add cacb_unit cacb_res72
+bond mon139 mon138
+mon140 = createAtom C1 C1 0.0
+set mon140 position {4.89473684210526	14.4023684210526	4.60684210526316}
+cacb_res73 = createResidue R73
+add cacb_res73 mon140
+bond mon140 mon138
+mon141 = createAtom P1 P1 0.0
+set mon141 position {4.98184210526316	14.0578947368421	4.41473684210526}
+add cacb_res73 mon141
+add cacb_unit cacb_res73
+bond mon141 mon140
+mon142 = createAtom C2 C2 0.0
+set mon142 position {4.60842105263158	15.2147368421053	4.07736842105263}
+cacb_res74 = createResidue R74
+add cacb_res74 mon142
+bond mon142 mon140
+mon143 = createAtom P2 P2 0.0
+set mon143 position {4.86052631578947	15.5168421052632	4.03473684210526}
+add cacb_res74 mon143
+add cacb_unit cacb_res74
+bond mon143 mon142
+mon144 = createAtom C3 C3 0.0
+set mon144 position {3.97421052631579	15.0281578947368	3.32368421052632}
+cacb_res75 = createResidue R75
+add cacb_res75 mon144
+bond mon144 mon142
+mon145 = createAtom P3 P3 0.0
+set mon145 position {4.13315789473684	15.2152631578947	2.99684210526316}
+add cacb_res75 mon145
+add cacb_unit cacb_res75
+bond mon145 mon144
+mon146 = createAtom C4 C4 0.0
+set mon146 position {3.95921052631579	14.0513157894737	3.54421052631579}
+cacb_res76 = createResidue R76
+add cacb_res76 mon146
+bond mon146 mon144
+mon147 = createAtom P4 P4 0.0
+set mon147 position {3.94894736842105	13.89	3.91263157894737}
+add cacb_res76 mon147
+add cacb_unit cacb_res76
+bond mon147 mon146
+mon148 = createAtom C5 C5 0.0
+set mon148 position {3.41368421052632	13.6052631578947	2.81868421052632}
+cacb_res77 = createResidue R77
+add cacb_res77 mon148
+bond mon148 mon146
+mon149 = createAtom P5 P5 0.0
+set mon149 position {3.60052631578947	13.4273684210526	2.515}
+add cacb_res77 mon149
+add cacb_unit cacb_res77
+bond mon149 mon148
+mon150 = createAtom C6 C6 0.0
+set mon150 position {3.08447368421053	12.9	3.43710526315789}
+cacb_res78 = createResidue R78
+add cacb_res78 mon150
+bond mon150 mon148
+mon151 = createAtom P6 P6 0.0
+set mon151 position {3.33368421052632	12.645	3.60789473684211}
+add cacb_res78 mon151
+add cacb_unit cacb_res78
+bond mon151 mon150
+mon152 = createAtom C7 C7 0.0
+set mon152 position {2.66973684210526	13.5371052631579	4.08657894736842}
+cacb_res79 = createResidue R79
+add cacb_res79 mon152
+bond mon152 mon150
+mon153 = createAtom P7 P7 0.0
+set mon153 position {2.88184210526316	13.8234210526316	4.27868421052632}
+add cacb_res79 mon153
+add cacb_unit cacb_res79
+bond mon153 mon152
+mon154 = createAtom C8 C8 0.0
+set mon154 position {1.69657894736842	13.6397368421053	3.85684210526316}
+cacb_res80 = createResidue R80
+add cacb_res80 mon154
+bond mon154 mon152
+mon155 = createAtom P8 P8 0.0
+set mon155 position {1.41394736842105	13.35	3.92736842105263}
+add cacb_res80 mon155
+add cacb_unit cacb_res80
+bond mon155 mon154
+mon156 = createAtom C9 C9 0.0
+set mon156 position {1.53842105263158	14.35	4.53710526315789}
+cacb_res81 = createResidue R81
+add cacb_res81 mon156
+bond mon156 mon154
+mon157 = createAtom P9 P9 0.0
+set mon157 position {1.15078947368421	14.3571052631579	4.63}
+add cacb_res81 mon157
+add cacb_unit cacb_res81
+bond mon157 mon156
+mon158 = createAtom CA CA 0.0
+set mon158 position {1.97526315789474	14.6773684210526	5.37947368421053}
+cacb_res82 = createResidue R82
+add cacb_res82 mon158
+bond mon158 mon156
+mon159 = createAtom PA PA 0.0
+set mon159 position {2.36894736842105	14.6260526315789	5.35}
+add cacb_res82 mon159
+add cacb_unit cacb_res82
+bond mon159 mon158
+mon160 = createAtom CB CB 0.0
+set mon160 position {1.95973684210526	15.375	6.09631578947368}
+cacb_res83 = createResidue R83
+add cacb_res83 mon160
+bond mon160 mon158
+mon161 = createAtom PB PB 0.0
+set mon161 position {1.76105263157895	15.3310526315789	6.45184210526316}
+add cacb_res83 mon161
+add cacb_unit cacb_res83
+bond mon161 mon160
+mon162 = createAtom CC CC 0.0
+set mon162 position {2.76421052631579	15.8615789473684	6.43342105263158}
+cacb_res84 = createResidue R84
+add cacb_res84 mon162
+bond mon162 mon160
+mon163 = createAtom PC PC 0.0
+set mon163 position {2.79605263157895	16.2607894736842	6.50921052631579}
+add cacb_res84 mon163
+add cacb_unit cacb_res84
+bond mon163 mon162
+mon164 = createAtom CD CD 0.0
+set mon164 position {3.23210526315789	15.5410526315789	7.27605263157895}
+cacb_res85 = createResidue R85
+add cacb_res85 mon164
+bond mon164 mon162
+mon165 = createAtom PD PD 0.0
+set mon165 position {3.62684210526316	15.4618421052632	7.29236842105263}
+add cacb_res85 mon165
+add cacb_unit cacb_res85
+bond mon165 mon164
+mon166 = createAtom CE CE 0.0
+set mon166 position {2.77684210526316	15.9760526315789	8.07210526315789}
+cacb_res86 = createResidue R86
+add cacb_res86 mon166
+bond mon166 mon164
+mon167 = createAtom PE PE 0.0
+set mon167 position {2.36394736842105	16.0423684210526	8.05368421052632}
+add cacb_res86 mon167
+add cacb_unit cacb_res86
+bond mon167 mon166
+mon168 = createAtom CF CF 0.0
+set mon168 position {3.07736842105263	16.0571052631579	9.01473684210526}
+cacb_res87 = createResidue R87
+add cacb_res87 mon168
+add cacb_unit cacb_res87
+bond mon168 mon166
+mon169 = createAtom CG CG 0.0
+set mon169 position {2.43815789473684	16.1147368421053	9.76526315789474}
+cacb_res88 = createResidue R88
+add cacb_res88 mon169
+bond mon169 mon168
+mon170 = createAtom PG PG 0.0
+set mon170 position {2.49868421052632	15.9986842105263	10.145}
+add cacb_res88 mon170
+add cacb_unit cacb_res88
+bond mon170 mon169
+mon171 = createAtom CH CH 0.0
+set mon171 position {1.78947368421053	16.8481578947368	9.76210526315789}
+cacb_res89 = createResidue R89
+add cacb_res89 mon171
+add cacb_unit cacb_res89
+bond mon171 mon169
+mon172 = createAtom CI CI 0.0
+set mon172 position {1.76736842105263	16.8710526315789	8.75421052631579}
+cacb_res90 = createResidue R90
+add cacb_res90 mon172
+bond mon172 mon171
+mon173 = createAtom PI PI 0.0
+set mon173 position {2.10263157894737	16.8747368421053	8.54236842105263}
+add cacb_res90 mon173
+add cacb_unit cacb_res90
+bond mon173 mon172
+mon174 = createAtom CJ CJ 0.0
+set mon174 position {1.10105263157895	16.5815789473684	8.05736842105263}
+cacb_res91 = createResidue R91
+add cacb_res91 mon174
+bond mon174 mon172
+mon175 = createAtom PJ PJ 0.0
+set mon175 position {0.752631578947368	16.7847368421053	8.11657894736842}
+add cacb_res91 mon175
+add cacb_unit cacb_res91
+bond mon175 mon174
+mon176 = createAtom CK CK 0.0
+set mon176 position {1.17236842105263	16.3694736842105	7.07131578947368}
+cacb_res92 = createResidue R92
+add cacb_res92 mon176
+bond mon176 mon174
+mon177 = createAtom PK PK 0.0
+set mon177 position {1.52578947368421	16.2276315789474	6.935}
+add cacb_res92 mon177
+add cacb_unit cacb_res92
+bond mon177 mon176
+mon178 = createAtom CL CL 0.0
+set mon178 position {0.514736842105263	15.9894736842105	6.41973684210526}
+cacb_res93 = createResidue R93
+add cacb_res93 mon178
+bond mon178 mon176
+mon179 = createAtom PL PL 0.0
+set mon179 position {0.161842105263158	16.1776315789474	6.42131578947368}
+add cacb_res93 mon179
+add cacb_unit cacb_res93
+bond mon179 mon178
+mon180 = createAtom CM CM 0.0
+set mon180 position {0.582894736842105	15.5978947368421	5.49289473684211}
+cacb_res94 = createResidue R94
+add cacb_res94 mon180
+bond mon180 mon178
+mon181 = createAtom PM PM 0.0
+set mon181 position {0.892631578947368	15.3226315789474	5.45526315789474}
+add cacb_res94 mon181
+add cacb_unit cacb_res94
+bond mon181 mon180
+mon182 = createAtom CN CN 0.0
+set mon182 position {-0.143157894736842	15.4915789473684	4.80342105263158}
+cacb_res95 = createResidue R95
+add cacb_res95 mon182
+bond mon182 mon180
+mon183 = createAtom PN PN 0.0
+set mon183 position {-0.376052631578947	15.8139473684211	4.71631578947368}
+add cacb_res95 mon183
+add cacb_unit cacb_res95
+bond mon183 mon182
+mon184 = createAtom CO CO 0.0
+set mon184 position {0.0392105263157895	14.88	4.015}
+cacb_res96 = createResidue R96
+add cacb_res96 mon184
+bond mon184 mon182
+mon185 = createAtom PO PO 0.0
+set mon185 position {0.319473684210526	14.5939473684211	4.10605263157895}
+add cacb_res96 mon185
+add cacb_unit cacb_res96
+bond mon185 mon184
+mon186 = createAtom CP CP 0.0
+set mon186 position {-0.508947368421053	14.5515789473684	3.23368421052632}
+cacb_res97 = createResidue R97
+add cacb_res97 mon186
+bond mon186 mon184
+mon187 = createAtom PP PP 0.0
+set mon187 position {-0.455263157894737	14.645	2.84473684210526}
+add cacb_res97 mon187
+add cacb_unit cacb_res97
+bond mon187 mon186
+mon188 = createAtom CQ CQ 0.0
+set mon188 position {-0.893947368421053	13.6552631578947	3.34631578947368}
+cacb_res98 = createResidue R98
+add cacb_res98 mon188
+bond mon188 mon186
+mon189 = createAtom PQ PQ 0.0
+set mon189 position {-1.25842105263158	13.6005263157895	3.52105263157895}
+add cacb_res98 mon189
+add cacb_unit cacb_res98
+bond mon189 mon188
+mon190 = createAtom CR CR 0.0
+set mon190 position {-0.713947368421053	13.4565789473684	2.37052631578947}
+cacb_res99 = createResidue R99
+add cacb_res99 mon190
+bond mon190 mon188
+mon191 = createAtom PR PR 0.0
+set mon191 position {-0.772631578947368	13.7028947368421	2.05684210526316}
+add cacb_res99 mon191
+add cacb_unit cacb_res99
+bond mon191 mon190
+mon192 = createAtom CS CS 0.0
+set mon192 position {0.241842105263158	13.2642105263158	2.63815789473684}
+cacb_res100 = createResidue R100
+add cacb_res100 mon192
+bond mon192 mon190
+mon193 = createAtom PS PS 0.0
+set mon193 position {0.485789473684211	13.5134210526316	2.82947368421053}
+add cacb_res100 mon193
+add cacb_unit cacb_res100
+bond mon193 mon192
+mon194 = createAtom CT CT 0.0
+set mon194 position {-0.0663157894736842	12.4334210526316	3.11394736842105}
+cacb_res101 = createResidue R101
+add cacb_res101 mon194
+bond mon194 mon192
+mon195 = createAtom PT PT 0.0
+set mon195 position {-0.258684210526316	12.4686842105263	3.46921052631579}
+add cacb_res101 mon195
+add cacb_unit cacb_res101
+bond mon195 mon194
+mon196 = createAtom CU CU 0.0
+set mon196 position {-0.391578947368421	11.6144736842105	2.63131578947368}
+cacb_res102 = createResidue R102
+add cacb_res102 mon196
+bond mon196 mon194
+mon197 = createAtom PU PU 0.0
+set mon197 position {-0.176315789473684	11.4965789473684	2.31315789473684}
+add cacb_res102 mon197
+add cacb_unit cacb_res102
+bond mon197 mon196
+mon198 = createAtom CV CV 0.0
+set mon198 position {-0.920526315789474	10.8086842105263	2.90052631578947}
+cacb_res103 = createResidue R103
+add cacb_res103 mon198
+bond mon198 mon196
+mon199 = createAtom PV PV 0.0
+set mon199 position {-1.22684210526316	10.6834210526316	2.67421052631579}
+add cacb_res103 mon199
+add cacb_unit cacb_res103
+bond mon199 mon198
+mon200 = createAtom CW CW 0.0
+set mon200 position {-0.403421052631579	10.01	3.23447368421053}
+cacb_res104 = createResidue R104
+add cacb_res104 mon200
+add cacb_unit cacb_res104
+bond mon200 mon198
+mon201 = createAtom CX CX 0.0
+set mon201 position {0.444736842105263	10.4760526315789	3.4721052631579}
+cacb_res105 = createResidue R105
+add cacb_res105 mon201
+bond mon201 mon200
+mon202 = createAtom PX PX 0.0
+set mon202 position {0.543684210526316	10.7984210526316	3.26026315789474}
+add cacb_res105 mon202
+add cacb_unit cacb_res105
+bond mon202 mon201
+mon203 = createAtom CY CY 0.0
+set mon203 position {0.733684210526316	10.5005263157895	4.43947368421053}
+cacb_res106 = createResidue R106
+add cacb_res106 mon203
+bond mon203 mon201
+mon204 = createAtom PY PY 0.0
+set mon204 position {0.944473684210526	10.1989473684211	4.61131578947368}
+add cacb_res106 mon204
+add cacb_unit cacb_res106
+bond mon204 mon203
+mon205 = createAtom CZ CZ 0.0
+set mon205 position {0.980789473684211	11.4010526315789	4.83631578947368}
+cacb_res107 = createResidue R107
+add cacb_res107 mon205
+bond mon205 mon203
+mon206 = createAtom PZ PZ 0.0
+set mon206 position {0.773157894736842	11.7281578947368	4.74}
+add cacb_res107 mon206
+add cacb_unit cacb_res107
+bond mon206 mon205
+mon207 = createAtom D0 D0 0.0
+set mon207 position {1.46894736842105	11.6118421052632	5.67526315789474}
+cacb_res108 = createResidue R108
+add cacb_res108 mon207
+bond mon207 mon205
+mon208 = createAtom Q0 Q0 0.0
+set mon208 position {1.82394736842105	11.4226315789474	5.71789473684211}
+add cacb_res108 mon208
+add cacb_unit cacb_res108
+bond mon208 mon207
+mon209 = createAtom D1 D1 0.0
+set mon209 position {1.49763157894737	12.4797368421053	6.18184210526316}
+cacb_res109 = createResidue R109
+add cacb_res109 mon209
+bond mon209 mon207
+mon210 = createAtom Q1 Q1 0.0
+set mon210 position {1.17868421052632	12.6944736842105	6.3121052631579}
+add cacb_res109 mon210
+add cacb_unit cacb_res109
+bond mon210 mon209
+mon211 = createAtom D2 D2 0.0
+set mon211 position {2.29263157894737	12.6078947368421	6.78078947368421}
+cacb_res110 = createResidue R110
+add cacb_res110 mon211
+bond mon211 mon209
+mon212 = createAtom Q2 Q2 0.0
+set mon212 position {2.56026315789474	12.3384210526316	6.6328947368421}
+add cacb_res110 mon212
+add cacb_unit cacb_res110
+bond mon212 mon211
+mon213 = createAtom D3 D3 0.0
+set mon213 position {2.87894736842105	13.2884210526316	7.19684210526316}
+cacb_res111 = createResidue R111
+add cacb_res111 mon213
+bond mon213 mon211
+mon214 = createAtom Q3 Q3 0.0
+set mon214 position {2.87368421052632	13.3584210526316	7.59973684210526}
+add cacb_res111 mon214
+add cacb_unit cacb_res111
+bond mon214 mon213
+mon215 = createAtom D4 D4 0.0
+set mon215 position {3.82315789473684	13.3431578947368	6.83973684210526}
+cacb_res112 = createResidue R112
+add cacb_res112 mon215
+bond mon215 mon213
+mon216 = createAtom Q4 Q4 0.0
+set mon216 position {3.90973684210526	13.4726315789474	6.465}
+add cacb_res112 mon216
+add cacb_unit cacb_res112
+bond mon216 mon215
+mon217 = createAtom D5 D5 0.0
+set mon217 position {4.28368421052632	13.7136842105263	7.65921052631579}
+cacb_res113 = createResidue R113
+add cacb_res113 mon217
+bond mon217 mon215
+mon218 = createAtom Q5 Q5 0.0
+set mon218 position {4.105	13.8642105263158	7.99763157894737}
+add cacb_res113 mon218
+add cacb_unit cacb_res113
+bond mon218 mon217
+mon219 = createAtom D6 D6 0.0
+set mon219 position {5.095	13.1005263157895	7.78842105263158}
+cacb_res114 = createResidue R114
+add cacb_res114 mon219
+bond mon219 mon217
+mon220 = createAtom Q6 Q6 0.0
+set mon220 position {5.44473684210526	13.2702631578947	7.83921052631579}
+add cacb_res114 mon220
+add cacb_unit cacb_res114
+bond mon220 mon219
+mon221 = createAtom D7 D7 0.0
+set mon221 position {4.88763157894737	12.2734210526316	8.34078947368421}
+cacb_res115 = createResidue R115
+add cacb_res115 mon221
+add cacb_unit cacb_res115
+bond mon221 mon219
+mon222 = createAtom D8 D8 0.0
+set mon222 position {3.91815789473684	12.5152631578947	8.45684210526316}
+cacb_res116 = createResidue R116
+add cacb_res116 mon222
+bond mon222 mon221
+mon223 = createAtom Q8 Q8 0.0
+set mon223 position {3.79815789473684	12.8984210526316	8.52394736842105}
+add cacb_res116 mon223
+add cacb_unit cacb_res116
+bond mon223 mon222
+mon224 = createAtom D9 D9 0.0
+set mon224 position {3.46894736842105	12.1307894736842	7.62210526315789}
+cacb_res117 = createResidue R117
+add cacb_res117 mon224
+bond mon224 mon222
+mon225 = createAtom Q9 Q9 0.0
+set mon225 position {3.62052631578947	12.1310526315789	7.24605263157895}
+add cacb_res117 mon225
+add cacb_unit cacb_res117
+bond mon225 mon224
+mon226 = createAtom DA DA 0.0
+set mon226 position {3.41894736842105	11.1984210526316	8.01473684210526}
+cacb_res118 = createResidue R118
+add cacb_res118 mon226
+bond mon226 mon224
+mon227 = createAtom QA QA 0.0
+set mon227 position {3.71710526315789	10.9986842105263	8.17947368421053}
+add cacb_res118 mon227
+add cacb_unit cacb_res118
+bond mon227 mon226
+mon228 = createAtom DB DB 0.0
+set mon228 position {2.84868421052632	11.6044736842105	8.73052631578947}
+cacb_res119 = createResidue R119
+add cacb_res119 mon228
+bond mon228 mon226
+mon229 = createAtom QB QB 0.0
+set mon229 position {2.99473684210526	11.815	9.04157894736842}
+add cacb_res119 mon229
+add cacb_unit cacb_res119
+bond mon229 mon228
+mon230 = createAtom DC DC 0.0
+set mon230 position {2.33736842105263	12.2594736842105	8.17315789473684}
+cacb_res120 = createResidue R120
+add cacb_res120 mon230
+bond mon230 mon228
+mon231 = createAtom QC QC 0.0
+set mon231 position {2.47842105263158	12.6376315789474	8.20921052631579}
+add cacb_res120 mon231
+add cacb_unit cacb_res120
+bond mon231 mon230
+mon232 = createAtom DD DD 0.0
+set mon232 position {1.92763157894737	11.8213157894737	7.38973684210526}
+cacb_res121 = createResidue R121
+add cacb_res121 mon232
+bond mon232 mon230
+mon233 = createAtom QD QD 0.0
+set mon233 position {2.21	11.5607894736842	7.26578947368421}
+add cacb_res121 mon233
+add cacb_unit cacb_res121
+bond mon233 mon232
+mon234 = createAtom DE DE 0.0
+set mon234 position {1.03578947368421	11.4915789473684	7.10947368421053}
+cacb_res122 = createResidue R122
+add cacb_res122 mon234
+add cacb_unit cacb_res122
+bond mon234 mon232
+mon235 = createAtom DF DF 0.0
+set mon235 position {0.504736842105263	11.2321052631579	6.31394736842105}
+cacb_res123 = createResidue R123
+add cacb_res123 mon235
+bond mon235 mon234
+mon236 = createAtom QF QF 0.0
+set mon236 position {0.34	10.8563157894737	6.31184210526316}
+add cacb_res123 mon236
+add cacb_unit cacb_res123
+bond mon236 mon235
+mon237 = createAtom DG DG 0.0
+set mon237 position {-0.0176315789473684	11.7992105263158	5.6728947368421}
+cacb_res124 = createResidue R124
+add cacb_res124 mon237
+bond mon237 mon235
+mon238 = createAtom QG QG 0.0
+set mon238 position {0.153684210526316	12.1405263157895	5.52026315789474}
+add cacb_res124 mon238
+add cacb_unit cacb_res124
+bond mon238 mon237
+mon239 = createAtom DH DH 0.0
+set mon239 position {-0.724210526315789	11.3344736842105	5.13342105263158}
+cacb_res125 = createResidue R125
+add cacb_res125 mon239
+bond mon239 mon237
+mon240 = createAtom QH QH 0.0
+set mon240 position {-0.915263157894737	11.0742105263158	5.38}
+add cacb_res125 mon240
+add cacb_unit cacb_res125
+bond mon240 mon239
+mon241 = createAtom DI DI 0.0
+set mon241 position {-1.29684210526316	11.6847368421053	4.35842105263158}
+cacb_res126 = createResidue R126
+add cacb_res126 mon241
+bond mon241 mon239
+mon242 = createAtom QI QI 0.0
+set mon242 position {-1.17026315789474	11.7218421052632	3.98421052631579}
+add cacb_res126 mon242
+add cacb_unit cacb_res126
+bond mon242 mon241
+mon243 = createAtom DJ DJ 0.0
+set mon243 position {-2.23921052631579	11.3131578947368	4.48947368421053}
+cacb_res127 = createResidue R127
+add cacb_res127 mon243
+bond mon243 mon241
+mon244 = createAtom QJ QJ 0.0
+set mon244 position {-2.37105263157895	11.25	4.86763157894737}
+add cacb_res127 mon244
+add cacb_unit cacb_res127
+bond mon244 mon243
+bond mon5 mon50
+myforce = loadamberparams frc.go
+saveAmberParm cacb_unit cacb.prmtop cacb.crd
+quit

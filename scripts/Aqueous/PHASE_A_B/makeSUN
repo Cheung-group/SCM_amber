@@ -1,0 +1,4 @@
+#!/bin/sh
+cc -c resc.c -w
+f77 -o resc resc.o prep.f rescprep.f resccal.f
+rm *.o
