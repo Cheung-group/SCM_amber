@@ -1,0 +1,236 @@
+_amoeba_interface.f:                           evdw,eelt,epolar,evdw_14,eelt_14, &
+_amoeba_interface.f:  double precision,intent(out) :: evdw,eelt,epolar,evdw_14,eelt_14,dipiter,diprms
+_amoeba_interface.f:  evdw = 0.d0
+_amoeba_interface.f:  evdw_14 = 0.d0
+_amoeba_interface.f:                          eelt,epolar,evdw,evdw_14,frc,vir_tensor)
+amoeba_interface.f:                           evdw,eelt,epolar,evdw_14,eelt_14, &
+amoeba_interface.f:  _REAL_,intent(out) :: evdw,eelt,epolar,evdw_14,eelt_14,dipiter,diprms
+amoeba_interface.f:  evdw = 0.d0
+amoeba_interface.f:  evdw_14 = 0.d0
+amoeba_interface.f:                          eelt,epolar,evdw,evdw_14,frc,vir_tensor)
+apbs.f:         evdw_upd_limit, pqr, dime_updates
+apbs.f:    evdw_upd_limit = 0.0
+apbs.f:  SUBROUTINE apbs_force(natom, x, f, evdw, eelt, enpol)
+apbs.f:!  evdw: van der Waals energy
+apbs.f:    _REAL_, INTENT(in) :: evdw
+apbs.f:    IF (geom_upd_limit > 0.0d0 .OR. evdw_upd_limit > 0.0d0) THEN
+apbs.f:       CALL check_apbs_update(cx, cy, cz, natom, evdw, do_apbs_update)
+apbs.f:       IF (geom_upd_limit > 0.0d0 .OR. evdw_upd_limit > 0.0d0) THEN
+apbs.f:  SUBROUTINE check_apbs_update(cx, cy, cz, natom, evdw, do_apbs_update)
+apbs.f:    _REAL_ :: dx, dy, dz, dis, maxdis, evdw, evdwDelta
+apbs.f:       evdwDelta = evdw - saveevdw
+apbs.f:            (ABS(evdwDelta) > evdw_upd_limit)
+apbs.f:               'iAPBS: evdw, saveevdw, evdwDelta, evdw_upd_limit:', &
+apbs.f:               evdw, saveevdw, evdwDelta, evdw_upd_limit
+apbs.f:    saveevdw = evdw
+apbs_vars.f:  _REAL_ :: geom_upd_limit, evdw_upd_limit, saveevdw
+_debug.f:double precision eer,eed,evdw,evdwr,ehb, &
+_debug.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_debug.f:double precision eer,eed,evdw,evdwr,ehb, &
+_debug.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_debug.f:      call compare(evdw-evdwr,tevd,'Direct vdw:            ')
+_debug.f:      call compare(evdwr,tevr,'Long-range vdw:        ')
+_debug.f:double precision eer,eed,evdw,evdwr,ehb, &
+_debug.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_debug.f:      write(30,301)ees,evdw-evdwr,evdwr
+debug.f:      call compare(evdw-evdwr,tevd,'Direct vdw:            ')
+debug.f:      call compare(evdwr,tevr,'Long-range vdw:        ')
+debug.f:      write(30,301)ees,evdw-evdwr,evdwr
+_decomp.f:            sidevdwsel =  3, &  ! DECOMP -ene vdw sel
+_decomp.f:            sidevdwind =  4, &  ! DECOMP  ene vdw ind
+_decomp.f:            sidevdwdir =  5, &  ! DECOMP  ene vdw dir
+_decomp.f:      nssel = ndecind(sidevdwsel)
+_decomp.f:      nsind = ndecind(sidevdwind)
+_decomp.f:      nsdir = ndecind(sidevdwdir)
+_decomp.f:   nsvdwsel = ndecind(sidevdwsel)
+_decomp.f:   nsvdwind = ndecind(sidevdwind)
+_decomp.f:   nsvdwdir = ndecind(sidevdwdir)
+_decomp.f:   nssel(2) = ndecind(sidevdwsel)
+_decomp.f:   nsind(2) = ndecind(sidevdwind)
+_decomp.f:   nsdir(2) = ndecind(sidevdwdir)
+_decomp.f:   nssel(2) = ndecind(sidevdwsel)
+_decomp.f:   nsind(2) = ndecind(sidevdwind)
+_decomp.f:   nsdir(2) = ndecind(sidevdwdir)
+decomp.f:            sidevdwsel =  3, &  ! DECOMP -ene vdw sel
+decomp.f:            sidevdwind =  4, &  ! DECOMP  ene vdw ind
+decomp.f:            sidevdwdir =  5, &  ! DECOMP  ene vdw dir
+decomp.f:      nssel = ndecind(sidevdwsel)
+decomp.f:      nsind = ndecind(sidevdwind)
+decomp.f:      nsdir = ndecind(sidevdwdir)
+decomp.f:   nsvdwsel = ndecind(sidevdwsel)
+decomp.f:   nsvdwind = ndecind(sidevdwind)
+decomp.f:   nsvdwdir = ndecind(sidevdwdir)
+decomp.f:   nssel(2) = ndecind(sidevdwsel)
+decomp.f:   nsind(2) = ndecind(sidevdwind)
+decomp.f:   nsdir(2) = ndecind(sidevdwdir)
+decomp.f:   nssel(2) = ndecind(sidevdwsel)
+decomp.f:   nsind(2) = ndecind(sidevdwind)
+decomp.f:   nsdir(2) = ndecind(sidevdwdir)
+_egb.f:      epol,eelt,evdw,esurf,dvdl,vdwrad,ineighbor,p1,p2,p3,p4, &
+_egb.f:   !     "evdw".
+_egb.f:         epol,eelt,evdw,esurf,vdwrad,p1,p2,p3,p4, &
+_egb.f:   evdw = zero
+_egb.f:! templfac is not one only for les:les pairs and used for epol, eel and evdw
+_egb.f:               evdw = evdw + (f12 - f6)
+_egb.f:               evdw = evdw + (f12 - f6)
+egb.f:      epol,eelt,evdw,esurf,dvdl,vdwrad,ineighbor,p1,p2,p3,p4, &
+egb.f:   !     "evdw".
+egb.f:         epol,eelt,evdw,esurf,vdwrad,p1,p2,p3,p4, &
+egb.f:   evdw = zero
+egb.f:! templfac is not one only for les:les pairs and used for epol, eel and evdw
+egb.f:               evdw = evdw + (f12 - f6)
+egb.f:               evdw = evdw + f12 -f10
+egb.f:               evdw = evdw + (f12 - f6)
+egb.f:               evdw = evdw + f12 -f10
+_ene.f:double precision eer,eed,evdw,evdwr,ehb, &
+_ene.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_ew_force.f:double precision eer,eed,evdw,evdwr,ehb, &
+_ew_force.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_ew_force.f:   evdw = 0.d0
+_ew_force.f:   evdwr = 0.d0
+_ew_force.f:               volume,evdwr,rec_vird,cn2,cutoffnb)
+_ew_force.f:               volume,evdwr,rec_vird,cn2,cutoffnb)
+_ew_force.f:            maxnblst,eed,evdw,ehb,dir_vir,eedvir, &
+_ew_force.f:!AS mpi-debug write(72,*)evdw Partial output
+_ew_force.f:write(72,*)"up",evdw
+_ew_force.f:!AS mpi-debug write(72,*)evdw Total output
+_ew_force.f:write(72,*)"down",evdw 
+_ew_force.f:!AS mpi-debug write(72,*)evdw Total output
+_ew_force.f:   evdw = evdw + evdwr 
+_ew_force.f:!AS mpi-debug      write(72,*)evdw Output is total
+_ew_force.f:!  |  NOTE: evdwr (which is only calculated for the master) has    |
+_ew_force.f:!  |  accumulate evdwr on the master PE.                           | 
+_ew_force.f:!   if(ipimd>0.or.ineb>0) nrg_all(:) = nrg_all(:) + evdwr/ncopy
+_ew_force.f:      nrg_all(:) = nrg_all(:) + evdwr/ncopy
+_ew_force.f:         evdw,ehb,eelt,virvsene,molvir,eedvir, &
+_ew_force.f:double precision eer,eed,evdw,evdwr,ehb, &
+_ew_force.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_ew_force.f:      evdw,ehb,eelt,virvsene,molvir,eedvir, &
+_ew_force.f:   double precision ees,eer,eed,eea,evdw,ehb,eelt, &
+_ew_force.f:            'Evdw                   = ', evdw, &
+ew_force.f:   evdw = 0.d0
+ew_force.f:   evdwr = 0.d0
+ew_force.f:               volume,evdwr,rec_vird,cn2,cutoffnb)
+ew_force.f:               volume,evdwr,rec_vird,cn2,cutoffnb)
+ew_force.f:            maxnblst,eed,evdw,ehb,dir_vir,eedvir, &
+ew_force.f:!AS mpi-debug write(72,*)evdw Partial output
+ew_force.f:!write(72,*)evdw No output...
+ew_force.f:write(72,*)"up",evdw
+ew_force.f:!AS mpi-debug write(72,*)evdw Total output
+ew_force.f:write(72,*)"down",evdw 
+ew_force.f:!AS mpi-debug write(72,*)evdw Total output
+ew_force.f:   evdw = evdw + evdwr 
+ew_force.f:!AS mpi-debug      write(72,*)evdw Output is total
+ew_force.f:!  |  NOTE: evdwr (which is only calculated for the master) has    |
+ew_force.f:!  |  accumulate evdwr on the master PE.                           | 
+ew_force.f:!   if(ipimd>0.or.ineb>0) nrg_all(:) = nrg_all(:) + evdwr/ncopy
+ew_force.f:      nrg_all(:) = nrg_all(:) + evdwr/ncopy
+ew_force.f:         evdw,ehb,eelt,virvsene,molvir,eedvir, &
+ew_force.f:      evdw,ehb,eelt,virvsene,molvir,eedvir, &
+ew_force.f:   _REAL_ ees,eer,eed,eea,evdw,ehb,eelt, &
+ew_force.f:            'Evdw                   = ', evdw, &
+_ew_handle_dips.f:double precision eer,eed,evdw,evdwr,ehb, &
+_ew_handle_dips.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_ew_recip.f:double precision eer,eed,evdw,evdwr,ehb, &
+_ew_recip.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_ew_setup.f:      volume,evdwr,rec_vird,cn2,cutoffnb)
+_ew_setup.f:   double precision volume,evdwr,rec_vird(3,3),cn2(*),cutoffnb
+_ew_setup.f:   evdwr = -prefac*term
+_ew_setup.f:      rec_vird(j,j) = -2.d0*evdwr
+ew_setup.f:      volume,evdwr,rec_vird,cn2,cutoffnb)
+ew_setup.f:   _REAL_ volume,evdwr,rec_vird(3,3),cn2(*),cutoffnb
+ew_setup.f:   evdwr = -prefac*term
+ew_setup.f:      rec_vird(j,j) = -2.d0*evdwr
+_force.f:double precision eer,eed,evdw,evdwr,ehb, &
+_force.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_force.f:   double precision evdwex, eelex, virex(3,3)
+_force.f:      call eexips(evdwex,eelex,istart,iend, ntb, &
+_force.f:                               evdw,eelt,epolar,&
+_force.f:         ene(2) = evdw
+_force.f:         ene(2)=ene(2)+evdwex
+_force.f:                 cn1,cn2,xx(l15),x,f,evdw,eelt,epol)
+_force.f:         ene(2) = evdw
+_force.f:            cut,ntypes,natom,natbel,epol,eelt,evdw, &
+_force.f:      ene(2) = evdw
+force.f:   _REAL_ evdwex, eelex, virex(3,3)
+force.f:      call eexips(evdwex,eelex,istart,iend, ntb, &
+force.f:                               evdw,eelt,epolar,&
+force.f:         ene(2) = evdw
+force.f:         ene(2)=ene(2)+evdwex
+force.f:                 cn1,cn2,xx(l15),x,f,evdw,eelt,epol)
+force.f:         ene(2) = evdw
+force.f:            cut,ntypes,natom,natbel,epol,eelt,evdw, &
+force.f:      ene(2) = evdw
+_mod_vdw.f:   double precision  :: evdw(nbead), fvdw(ndim)
+_mod_vdw.f:   evdw(:) = 0.0d0
+_mod_vdw.f:         evdw(1:nbead) = evdw(1:nbead) + ( f12 - f6 ) / nbead
+_mod_vdw.f:            evdw( cnum(i) ) = evdw( cnum(i) ) + f12 - f6
+_mod_vdw.f:            evdw( cnum(j) ) = evdw( cnum(j) ) + f12 - f6
+_mod_vdw.f:   nrg_vdw(:) = - evdw(:)
+mod_vdw.f:   _REAL_  :: evdw(nbead), fvdw(ndim)
+mod_vdw.f:   evdw(:) = 0.0d0
+mod_vdw.f:         evdw(1:nbead) = evdw(1:nbead) + ( f12 - f6 ) / nbead
+mod_vdw.f:            evdw( cnum(i) ) = evdw( cnum(i) ) + f12 - f6
+mod_vdw.f:            evdw( cnum(j) ) = evdw( cnum(j) ) + f12 - f6
+mod_vdw.f:      evdw(1) = evdw(1) + f12 - f6
+mod_vdw.f:   nrg_vdw(:) = - evdw(:)
+_runmd.f:double precision eer,eed,evdw,evdwr,ehb, &
+_runmd.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+_sander.f:double precision eer,eed,evdw,evdwr,ehb, &
+_sander.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+short_ene.antonios.f:      maxnblst,eelt,evdw,ehb,dir_vir,eedvir, &
+short_ene.antonios.f:   _REAL_ force(3,numatoms),eelt,epol,evdw,ehb
+short_ene.antonios.f:   evdw = zero
+short_ene.antonios.f:                        eelt,evdw,ehb,force,dir_vir,ee_type,eedmeth,dxdr, &
+short_ene.antonios.f:                        eelt,epol,evdw,ehb,force,field,dir_vir, &
+short_ene.antonios.f:      maxnblst,eelt,evdw,ehb,dir_vir,eedvir, &
+short_ene.antonios.f:   _REAL_ force(3,numatoms),eelt,epol,evdw,ehb
+short_ene.antonios.f:   evdw = zero
+short_ene.antonios.f:                        eelt,evdw,ehb,force,dir_vir,ee_type,eedmeth,dxdr, &
+short_ene.antonios.f:                        eelt,epol,evdw,ehb,force,field,dir_vir, &
+short_ene.antonios.f:      eelt,evdw,ehb,force,dir_vir, &
+short_ene.antonios.f:         eelt,evdw,ehb,force(3,*)
+short_ene.antonios.f:      eelt,evdw,ehb,force,dir_vir, &
+short_ene.antonios.f:         eelt,evdw,ehb,force(3,*)
+short_ene.antonios.f:      eelt,epol,evdw,ehb,frc,field,dir_vir, &
+short_ene.antonios.f:         eelt,epol,evdw,ehb,frc(3,*),field(3,*)
+short_ene.antonios.f:         evdw = evdw + f12 - f6
+_short_ene.f:      maxnblst,eelt,evdw,ehb,dir_vir,eedvir, &
+_short_ene.f:   double precision force(3,numatoms),eelt,epol,evdw,ehb
+_short_ene.f:   evdw = zero
+_short_ene.f:                        eelt,evdw,ehb,force,dir_vir,ee_type,eedmeth,dxdr, &
+_short_ene.f:                        eelt,epol,evdw,ehb,force,field,dir_vir, &
+_short_ene.f:!AS mpi-debug write(72,*)evdw Output is partial
+_short_ene.f:      eelt,evdw,ehb,force,dir_vir, &
+_short_ene.f:         eelt,evdw,ehb,force(3,*)
+_short_ene.f:   evdw = evdw + f12 - f6  &
+_short_ene.f:      evdw = evdw + foureps(ic) * ( denom2 - denom ) ! softcore potential is part of van der Waals energy
+_short_ene.f:      evdw = evdw + foureps(ic) * ( denom2 - denom ) ! softcore potential is part of van der Waals energy
+_short_ene.f:   evdw = evdw + f12 - f6  &
+_short_ene.f:   evdw = evdw + f12 - f6  &
+_short_ene.f:   evdw = evdw + f12 - f6  &
+_short_ene.f:      evdw = evdw + foureps(ic) * ( denom2 - denom ) ! softcore potential is part of van der Waals energy
+_short_ene.f:      evdw = evdw + foureps(ic) * ( denom2 - denom ) ! softcore potential is part of van der Waals energy
+_short_ene.f:   evdw = evdw + f12 - f6  &
+_short_ene.f:   evdw = evdw + f12 - f6  &
+_short_ene.f:      eelt,epol,evdw,ehb,frc,field,dir_vir, &
+_short_ene.f:         eelt,epol,evdw,ehb,frc(3,*),field(3,*)
+_short_ene.f:         evdw = evdw + f12 - f6
+short_ene.f:      maxnblst,eelt,evdw,ehb,dir_vir,eedvir, &
+short_ene.f:   _REAL_ force(3,numatoms),eelt,epol,evdw,ehb
+short_ene.f:   evdw = zero
+short_ene.f:                        eelt,evdw,ehb,force,dir_vir,ee_type,eedmeth,dxdr, &
+short_ene.f:                        eelt,epol,evdw,ehb,force,field,dir_vir, &
+short_ene.f:!AS mpi-debug write(72,*)evdw Output is partial
+short_ene.f:      eelt,evdw,ehb,force,dir_vir, &
+short_ene.f:         eelt,evdw,ehb,force(3,*)
+short_ene.f:      eelt,epol,evdw,ehb,frc,field,dir_vir, &
+short_ene.f:         eelt,epol,evdw,ehb,frc(3,*),field(3,*)
+short_ene.f:         evdw = evdw + f12 - f6
+_spatial_recip.f:double precision eer,eed,evdw,evdwr,ehb, &
+_spatial_recip.f:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+yammpnb.f:      cut,cn1,cn2,ntypes,natom,evdw)
+yammpnb.f:   _REAL_  evdw
+yammpnb.f:   evdw = 0.0d0
+yammpnb.f:               evdw = evdw + cn1(ic)*diff*diff
+yammpnb.f:               !             write(6,*) i,j,dis, cn2(ic),evdw

@@ -1,0 +1,98 @@
+amoeba_mpole_index.h:integer,parameter :: Ind_000=1,Ind_100=2,Ind_010=3,Ind_001=4,Ind_200=5, &
+amoeba_mpole_index.h:                                        (/Ind_100,Ind_200,Ind_110, &
+box.h:      rwell,rad(100),wel(100),radhb(200),welhb(200)
+copyright.h:!                        Copyright (c) 2003                            **
+dynph.h:#define TITR_STATES_C 200
+gbneck.h:         2.86152,2.91826,2.97489,3.0314,3.08781,3.1441,3.20031,3.25638, &
+gbneck.h:         0.030983,0.0282614,0.0258441,0.0236896,0.0217634,0.020036, &
+HB.h:common/HYDROB/NXI(92000),NXI1(92000),NXI2(92000),NXI3(92000)
+HB.h:common/DELMAP1/delx_ixi_ixj(92000),dely_ixi_ixj(92000),delz_ixi_ixj(92000)
+HB.h:common/DELMAP2/delx_ixk_ixl(92000),dely_ixk_ixl(92000),delz_ixk_ixl(92000)
+HB.h:common/DELMAP3/delx_ixj_ixk(92000),dely_ixj_ixk(92000),delz_ixj_ixk(92000)
+is_copyright.h:! dynamics simulations. See J. Chem. Phys. 119:11035-11047, 2003
+is_copyright.h:! and J. Comp. Chem. 23:1244-1253, 2002 for implementation details.
+is_copyright.h:! Copyright (c) 2004-2006. The Regents of the University of
+is_copyright.h:! California. Portions Copyright (c) 1989-2006. University of
+new_time.h:parameter (maxtime = 200)
+nmr.h:parameter (maxdip=2000)
+nmr.h:parameter (maxcsa=200)
+pcshift.h:parameter (mshfd=12000, maxfe=5, &
+qm2_array_locations.h:!Ross Walker (TSRI, 2005)
+qm2_parameters.h:! Written by: Ross Walker (TSRI 2005)
+qm2_parameters.h:  core_chg( 50) = 4; natomic_orbs( 50) = 4; heat_of_form( 50) = 72.200D0 !Sn
+qm2_parameters.h:  core_chg( 51) = 5; natomic_orbs( 51) = 4; heat_of_form( 51) = 63.200D0 !Sb
+qm2_parameters.h:  core_chg( 78) =10; natomic_orbs( 78) = 9; heat_of_form( 78) =135.200D0 !Pt
+qm2_parameters.h: ! USS = -47.2703200D0
+qm2_parameters.h: ! GSS = 11.2007080D0
+qm2_parameters.h: ! GSS = 11.2007080D0
+qm2_parameters.h:     FN3_am1(1,atomic_number) = 1.2000000D0
+qm2_parameters.h:   ! Reference Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:     USS_pddgpm3(atomic_number) = -12.893272003385D0
+qm2_parameters.h:   ! Reference: Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (index 29)
+qm2_parameters.h:     PDDGE1_mndo(atomic_number) = 0.46072116172000D0
+qm2_parameters.h:  !           2004, Chem Phys Lett, 394, 429-436 (Index 28)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     GSP_mndo(atomic_number) = 5.4200000D0
+qm2_parameters.h:     GP2_mndo(atomic_number) = 4.5200000D0
+qm2_parameters.h:     UPP_mndo(atomic_number) = -2.7212000D0
+qm2_parameters.h:     FN1_am1(3,atomic_number) =-0.0200610D0
+qm2_parameters.h:     GSS_pm3(atomic_number) = 11.2007080D0
+qm2_parameters.h:     USS_pm3(atomic_number) = -47.2703200D0
+qm2_parameters.h:   ! Reference Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:     p_orb_exp_pddgpm3(atomic_number) = 1.84665852120070D0
+qm2_parameters.h:     GSS_pddgpm3(atomic_number) = 11.2007080D0
+qm2_parameters.h:     PDDGE2_pm3(atomic_number) = 1.58523608520060D0
+qm2_parameters.h:   ! Reference: Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:   ! Reference Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:   ! Reference: Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     GSS_am1(atomic_number) = 15.4200000D0
+qm2_parameters.h:     GPP_am1(atomic_number) = 14.5200000D0
+qm2_parameters.h:   ! Reference Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:   ! Reference: Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 29)
+qm2_parameters.h:     alp_pddgmndo(atomic_number) = 3.23884200872830D0
+qm2_parameters.h:  !           2004, Chem Phys Lett, 394, 429-436 (Index 28)
+qm2_parameters.h:    UPP_PM3CARB1(atomic_number) = -76.932200D0
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     GSS_am1(atomic_number) = 16.9200000D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:     alp_pddgpm3(atomic_number) = 3.200571D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     GSS_am1(atomic_number) = 9.8200000D0
+qm2_parameters.h:     HSP_am1(atomic_number) = 1.3200000D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Guimaraes and Jorgensen, 2005, J Chem Theory Comput., 1: 817-823
+qm2_parameters.h:     s_orb_exp_mndo(atomic_number) = 2.1087200D0
+qm2_parameters.h:     GP2_pm3(atomic_number) = 6.0620020D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Guimaraes and Jorgensen, 2005, J Chem Theory Comput., 1: 817-823 (Index 31)
+qm2_parameters.h:     GP2_pddgpm3(atomic_number) = 6.0620020D0
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:   ! Reference Tubert-Brohman, Guimaraes and Jorgensen, 2005, J Chem Theory Comput., 1: 817-823 (Index 31)
+qm2_parameters.h:     s_orb_exp_pddgpm3(atomic_number) = 1.0120020000D0
+qm2_parameters.h:     betas_pddgpm3(atomic_number) = -2.9539120000D0
+qm2_parameters.h:     FN1_pddgpm3(1,atomic_number) = -0.330692000D0
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     FN3_rm1(2,atomic_number) = 1.29492008d0
+qm2_parameters.h:     betas_mndo(atomic_number) = -14.2623200D0
+qm2_parameters.h:     betap_mndo(atomic_number) = -14.2623200D0
+qm2_parameters.h:     HSP_am1(atomic_number) = 2.4200000D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:   ! Reference: J.P. McNamara et al., J. Mol. Gra. Mod., 24, 128, (2005) (Index 32)
+qm2_parameters.h:     GP2_mndo(atomic_number) = 12.9305200D0
+qm2_parameters.h:     GP2_am1(atomic_number) = 12.9305200D0
+qm2_parameters.h:     FN1_pm3(2,atomic_number) = 0.1147200D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:   ! Reference: Repasky, Chandrasekhar and Jorgensen, 2002, J Comp Chem, 23: 1601-1622 (Index 30)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     UPP_rm1(atomic_number) = -76.18720023d0
+qm2_parameters.h:     alp_mndo(atomic_number) = 2.2073200D0
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:   ! Reference Tubert-Brohman, Werneck, Repasky and Jorgensen, 2003, J Comp Chem, 25: 138-150 (Index 30)
+qm2_parameters.h:   ! Reference: G.B.ROCHA et al. J. COMP. CHEM., 27, 1101, (2006)
+qm2_parameters.h:     FN1_pm3(1,atomic_number) = 1.0827200D0
+qm2_parameters.h:     GSS_pm3(atomic_number) = 6.6247200D0
+qm2_parameters.h:     alp_pm3(atomic_number) = 1.6200450D0
+qm2_parameters.h:     FN1_pm3(2,atomic_number) = 0.0603200D0

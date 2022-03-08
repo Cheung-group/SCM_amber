@@ -1,0 +1,288 @@
+
+! epilogue: 12-6 LF terms
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+   write(72,*)i,j,m
+!          write(72,*)itran,xktran(1,itran)
+!          write(72,*)n
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+!  write(72,*)delx
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+#ifdef LES 
+   lfac=lesfac(lestmp+lestyp(j))
+   f6 = cn2(ic)*r6*lfac
+   f12 = cn1(ic)*(r6*r6)*lfac
+   if(ipimd>0.or.ineb>0) then
+      if(cnum(i).eq.0.and.cnum(j).eq.0) then
+         nrg_all(1:nbead)=nrg_all(1:nbead) + (f12-f6)/nbead
+      else
+         if(cnum(i).ne.0) then
+            nrg_all(cnum(i)) = nrg_all(cnum(i)) + f12-f6
+         else
+            nrg_all(cnum(j)) = nrg_all(cnum(j)) + f12-f6
+         endif
+      endif
+   endif
+#else
+#  ifdef TVDW
+   !         "truncated" LJ repulsion:
+   r6pinv = 1.d0/(1.d0/r6 + 0.01d0)
+   f12 = cn1(ic)*r6pinv*r6pinv
+   f6 = cn2(ic)*r6pinv
+#  else
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+
+!    write(72,*)iac(i),j,n
+!    write(72,*)iac(i),i,iac(j),j
+!    write(72,*)ic,cn2(ic), iaci, iac(i),iac(j)
+!   write(80,*)maphb(i,j),i,maphb(im_new,j),im_new,j,icount
+!   write(80,*)eedmeth
+!   write(72,*)f12,f6
+!Antonios added here 3/15/2010 HB
+   if(maphb(iac(i),iac(j)).lt.1) then
+	EHBV=EHBV+f12-f6
+   ! -- ti decomp
+!   write(80,*)idecomp
+	   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+	evdw = evdw + f12 - f6
+        df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+	dfx = delx*df
+	dfy = dely*df
+	dfz = delz*df
+	vxx = vxx - dfx*delx
+	vxy = vxy - dfx*dely
+	vxz = vxz - dfx*delz
+	vyy = vyy - dfy*dely
+	vyz = vyz - dfy*delz
+	vzz = vzz - dfz*delz
+!        XKJ = imagcrds(1,im_new) - xk + tranvec(1,m)
+!        XKJ = imagcrds(1,n) + xktran(1,itran)
+!        write(72,*)XKJ,delx
+	dumx = dumx + dfx
+	dumy = dumy + dfy
+	dumz = dumz + dfz
+	force(1,j) = force(1,j) + dfx
+	force(2,j) = force(2,j) + dfy
+	force(3,j) = force(3,j) + dfz
+
+!          write(72,*)xk,yk,zk
+!       write(72,*)j,force(1,j),force(2,j),force(3,j)
+
+                  else
+
+!   write(72,*)maphb(i,j),i,j
+! Yes HB for non-periodic	
+        num= maphb(iac(i),iac(j))
+        U=f12-f6
+
+!   write(72,*)f12,f6
+        df =  dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+        dfx = delx*df
+        dfy = dely*df
+        dfz = delz*df
+        vxx = vxx - dfx*delx
+        vxy = vxy - dfx*dely
+        vxz = vxz - dfx*delz
+        vyy = vyy - dfy*dely
+        vyz = vyz - dfy*delz
+        vzz = vzz - dfz*delz
+        dumx = dumx + dfx
+        dumy = dumy + dfy
+        dumz = dumz + dfz
+
+              ixi=NXI(num)
+              ixj=NXI1(num)
+              ixk=NXI2(num)
+              ixl=NXI3(num)
+
+!         write(72,*)im_new,j,ixi,ixj,ixk,ixl 
+!!         check if ixk=i,ixj=j
+
+
+!          write(72,*)imagcrds(1,ixi),imagcrds(2,ixi),imagcrds(3,ixi)
+!          write(72,*)x
+
+
+                      XIJ = imagcrds(1,ixi) - imagcrds(1,ixj) 
+                      YIJ = imagcrds(2,ixi) - imagcrds(2,ixj) 
+                      ZIJ = imagcrds(3,ixi) - imagcrds(3,ixj)
+!                      XKJ = imagcrds(1,i) - imagcrds(1,j) + tranvec(1,m)
+!                      YKJ = imagcrds(1,i) - imagcrds(1,j)
+!                      ZKJ = imagcrds(1,i) - imagcrds(1,j)
+!                      XKJ = delx
+                      YKJ = dely
+                      ZKJ = delz
+                      XLK = imagcrds(1,ixl) - imagcrds(1,ixk) 
+                      YLK = imagcrds(2,ixl) - imagcrds(2,ixk) 
+                      ZLK = imagcrds(3,ixl) - imagcrds(3,ixk) 
+
+
+          write(72,*)XKJ,delx
+!          write(72,*)XIJ,YIJ,ZIJ
+!          write(72,*)XLK,YLK,ZLK
+
+        TX=(YIJ*ZKJ-YKJ*ZIJ)
+        TY=(XKJ*ZIJ-XIJ*ZKJ)
+        TZ=(XIJ*YKJ-XKJ*YIJ)
+
+!	write(72,*)TX,TY,TZ
+
+        UX=(YLK*ZKJ-YKJ*ZLK)
+        UY=(XKJ*ZLK-XLK*ZKJ)
+        UZ=(XLK*YKJ-XKJ*YLK)
+
+!	write(72,*)UX,UY,UZ
+
+        temp=TX*UX+TY*UY+TZ*UZ
+        RT=TX*TX+TY*TY+TZ*TZ
+        RT=sqrt(RT)
+        RU=UX*UX+UY*UY+UZ*UZ
+        RU=sqrt(RU)
+        cosphi=temp/(RT*RU)
+
+!	write(72,*)TX,TY,TZ,RT,temp,cosphi
+!! ----- calculate structural factor
+!!        energy
+!! the unperturbed cosphi
+!!           sinphi=(1-cosphi**2)
+!!           sinphi=sqrt(sinphi)
+
+
+       tempA=1-cosphi
+       tempB=cosphi+1
+       tempC=cosphi/cosphia
+       tempC=1-tempC
+
+       dummy=tempA*tempB*tempC
+       dummy=1+Amp*dummy*dummy
+       Chi=1/dummy
+
+!! Antonios (evdw does not seem to have a - sign anywhere so we do evdw+chi*U)
+
+               evdw = evdw+Chi*U
+
+!	write(72,*)evdw
+!	write(72,*)Chi,U
+
+              EHBA = EHBA+Chi*U
+
+!	write(72,*)EHBA
+!!  Forces
+
+!! dChi/dcosphi
+  
+       temp=-tempB*tempC+tempA*tempC-tempA*tempB/cosphia
+       temp=temp*tempA*tempB*tempC
+       temp=temp*2*Amp
+       dChi=-temp/(dummy**2)
+
+!	write(72,*)temp
+!! partial derivatives
+
+        RT2=RT*RT
+        RU2=RU*RU
+        RTU=RT*RU
+        DTXX=UX/RTU-cosphi*TX/RT2
+        DTY=UY/RTU-cosphi*TY/RT2
+        DTZ=UZ/RTU-cosphi*TZ/RT2
+
+        DUX=TX/RTU-cosphi*UX/RU2
+        DUY=TY/RTU-cosphi*UY/RU2
+        DUZ=TZ/RTU-cosphi*UZ/RU2
+
+!! force dcos/dxi 
+        FXI=DTY*(-ZKJ)+DTZ*(YKJ)
+
+!! force dcos/dyi
+        FYI=DTXX*(ZKJ)+DTZ*(-XKJ)
+
+!! force dcos/dzi
+        FZI=DTXX*(-YKJ)+DTY*(XKJ)
+
+
+!! force dcos/dxj
+        FXJ=DTY*(ZKJ-ZIJ)+DTZ*(-YKJ+YIJ)+DUY*(-ZLK) + DUZ*(YLK)
+
+!! force dcos/dyj
+        FYJ=DTXX*(ZIJ-ZKJ)+DTZ*(XKJ-XIJ)+DUX*(ZLK) + DUZ*(-XLK)
+
+!! force dcos/dzj
+        FZJ=DTXX*(YKJ-YIJ)+DTY*(XIJ-XKJ)+DUX*(-YLK) + DUY*(XLK)
+
+
+
+!! force dcos/dxk
+        FXK=DTY*(ZIJ)+DTZ*(-YIJ)+DUY*(ZKJ+ZLK) + DUZ*(-YKJ-YLK)
+
+!! force dcos/dyk
+        FYK=DTXX*(-ZIJ)+DTZ*(XIJ)+DUX*(-ZKJ-ZLK) + DUZ*(XLK+XKJ)
+
+!! force dcos/dzk
+       FZK=DTXX*(YIJ)+DTY*(-XIJ)+DUX*(YLK+YKJ) + DUY*(-XLK-XKJ)
+
+
+!! force dcos/dxl
+        FXl= DUY*(-ZKJ) + DUZ*(YKJ)
+
+!! force dcos/dyl
+       FYl= DUX*(ZKJ) + DUZ*(-XKJ)
+
+!! force dcos/dzl
+        FZl= DUX*(-YKJ) + DUY*(XKJ)
+
+!! force -dP/dx
+
+        FFxi=-U*dChi*FXI
+        FFyi=-U*dChi*FYI
+        FFzi=-U*dChi*FZI
+        FFxj=-U*dChi*FXJ
+        FFyj=-U*dChi*FYJ
+        FFzj=-U*dChi*FZJ
+        FFxk=-U*dChi*FXK
+        FFyk=-U*dChi*FYK
+        FFzk=-U*dChi*FZK
+        FFxl=-U*dChi*FXL
+        FFyl=-U*dChi*FYL
+        FFzl=-U*dChi*FZL
+
+!! -dp/dxi
+                      N_HB=NXI(num)
+!       write(72,*)N,eedmeth,force(1,99),force(2,99),force(3,99)
+
+                       force(1,N_HB) = force(1,N_HB) + FFxi
+                       force(2,N_HB) = force(2,N_HB) + FFyi
+                       force(3,N_HB) = force(3,N_HB) + FFzi
+
+!	write(72,*)N_HB,force(1,N_HB),force(2,N_HB),force(3,N_HB)
+!! -dp/dxj
+                      N_HB=NXI1(num)
+                       force(1,N_HB) = force(1,N_HB) + FFxj + Chi*dfx
+                       force(2,N_HB) = force(2,N_HB) + FFyj + Chi*dfy
+                       force(3,N_HB) = force(3,N_HB) + FFzj + Chi*dfz
+!! -dp/dxk
+                      N_HB=NXI2(num)
+                       force(1,N_HB) = force(1,N_HB) + FFxk - Chi*dfx
+                       force(2,N_HB) = force(2,N_HB) + FFyk - Chi*dfy
+                       force(3,N_HB) = force(3,N_HB) + FFzk - Chi*dfz
+
+!! dp/dxl
+                      N_HB=NXI3(num)
+                       force(1,N_HB) = force(1,N_HB) + FFxl
+                       force(2,N_HB) = force(2,N_HB) + FFyl
+                       force(3,N_HB) = force(3,N_HB) + FFzl
+	
+  	   endif
+
+!Antonios end 
+
+
+#  endif
+#endif
+end do  !  im_new = 1,icount

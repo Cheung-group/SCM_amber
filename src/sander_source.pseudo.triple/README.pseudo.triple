@@ -1,0 +1,290 @@
+09.2.2010
+Antonios Samiotakis
+
+This file contains the additional changes made to the code sander_source.pseudo.triple in order to
+include the triple scalar product energy for the chiral term.
+Every file that was changed now includes and additional header file called CHI.h
+(Look for it in the beginning of different routinesi - if a file has more than 1 routines).
+
+----------------------------------------------------------------------------------------------------
+>> extra_pts.f
+
+added the following routine that calculates the vectors needed in the
+triple scalar product calculation in short_ene.f
+
+      do n = 1,ICHI
+         delx_xax(n) = crd(1,ICB(n)) - crd(1,ICA(n))
+         dely_xay(n) = crd(2,ICB(n)) - crd(2,ICA(n))
+         delz_xaz(n) = crd(3,ICB(n)) - crd(3,ICA(n))
+         delx_xbx(n) = crd(1,INC(n)) - crd(1,ICA(n))
+         dely_xby(n) = crd(2,INC(n)) - crd(2,ICA(n))
+         delz_xbz(n) = crd(3,INC(n)) - crd(3,ICA(n))
+         delx_xcx(n) = crd(1,ICC(n)) - crd(1,ICA(n))
+         dely_xcy(n) = crd(2,ICC(n)) - crd(2,ICA(n))
+         delz_xcz(n) = crd(3,ICC(n)) - crd(3,ICA(n))
+      end do
+------------------------------------------------------------------------------------------------------
+
+>> short_ene.f
+
+>>Added the following at the bottom of subroutine get_nb_energy()
+>>NOTE: 2.14.2010 It cannot be in the short_ene() subroutine because this routine is called for each atom i in every time
+>>step. The chiral calculation code has to be called only once every time step!!!
+
+!9.2.2010
+!Antonios added the calculation of the triple scalar product that
+!         accounts for the correct chirality in amino acid pairs.
+
+! Margaret
+! add chiral term
+! U(chiral)=0.5*xkchi*(triple-triple_o)^2
+! triple is the triple scaler product
+! triple=(AxB)*C, where A=CB-CA,B=NC-CA, C=CC-CA
+! CA=xi,CB=x(i+1),NC=x(i+2),CC=x(i+3)
+! Ax=x(i+1)-xi
+! Ay=y(i+1)-yi
+! Az=z(i+1)-zi
+! Bx=x(i+2)-xi
+! By=y(i+2)-yi
+! Bz=z(i+2)-zi
+! Cx=x(i+3)-xi
+! Cy=y(i+3)-yi
+! Cz=z(i+3)-zi
+! F_xi=-dU(chiral)/dxi
+!     =-dU/dAx * dAx/dxi - dU/dBx* dBx/dxi - dU/dCx* dCx/dxi
+!     = dU/dAx+dU/dBx+dU/dCx
+! F_xi1=-dU(chiral)/dxi1
+!       = -dU/dAx * dAx/dxi1
+!       = -dU/dAx 
+! F_xi+2=-dU(chiral)/dxi2
+!       = -dU/dBx * dBx/dxi2
+!       = -dU/dBx 
+! F_xi+3=-dU(chiral)/dxi3
+!       = -dU/dCx * dCx/dxi3
+!       = -dU/dCx 
+
+        do i=1,ICHI
+
+        ixi=ICA(i)
+        ixi1=ICB(i)
+        ixi2=INC(i)
+        ixi3=ICC(i)
+
+        XAX = delx_xax(i)
+        XAY = dely_xay(i)
+        XAZ = delz_xaz(i)
+
+        XBX = delx_xbx(i)
+        XBY = dely_xby(i)
+        XBZ = delz_xbz(i)
+
+        XCX = delx_xcx(i)
+        XCY = dely_xcy(i)
+        XCZ = delz_xcz(i)
+
+
+        xtriple=  XAX*XBY*XCZ+ XAZ*XBX*XCY + XAY*XBZ*XCX- XAZ*XBY*XCX - XAY*XBX*XCZ- XAX*XBZ*XCY
+
+! calculate energy
+
+        temp_chi=xkchi*(xtriple-XCHI(i))
+
+!        write(85,*) 'temp_chi ', xkchi, xtriple, XCHI(i) 
+
+
+        ECHII=0.5*temp_chi*(xtriple-XCHI(i))
+        ECHI=ECHII+ECHI
+
+!       if(i.eq.1) then
+!       write(81,*)xchi(i),xtriple,ECHII,temp_chi
+!       write(81,*)ixi,ixi1,ixi2,ixi3
+!       endif
+! calculate force
+
+        Fxi1_chi= -(XBY*XCZ-XBZ*XCY)*temp_chi
+        Fxi2_chi= -(XAZ*XCY-XAY*XCZ)*temp_chi
+        Fxi3_chi= -(XAY*XBZ-XAZ*XBY)*temp_chi
+
+!       if(i.eq.1) then
+!       write(82,*)fxi1,fxi2,fxi3
+!       endif
+
+        Fxi_chi = -(Fxi1_chi+Fxi2_chi+Fxi3_chi)
+
+        Fyi1_chi= -(XBZ*XCX-XBX*XCZ)*temp_chi
+        Fyi2_chi= -(XAX*XCZ-XAZ*XCX)*temp_chi
+        Fyi3_chi= -(XAZ*XBX-XAX*XBZ)*temp_chi
+        Fyi_chi=   -(Fyi1_chi+Fyi2_chi+Fyi3_chi)
+
+!       if(i.eq.1) then
+!       write(83,*)fyi1,fyi2,fyi3
+!       endif
+
+        Fzi1_chi= -(XBX*XCY-XBY*XCX)*temp_chi
+        Fzi2_chi= -(XAY*XCX-XAX*XCY)*temp_chi
+        Fzi3_chi= -(XAX*XBY-XAY*XBX)*temp_chi
+        Fzi_chi = -(Fzi1_chi+Fzi2_chi+Fzi3_chi)
+
+!!      if(i.eq.1) then
+!       write(79,*)fzi1,fzi2,fzi3
+!       endif
+
+       if(Fxi_chi.gt.MAXLIM) then
+        write(84,*) 'ixi,x ', ixi,fxi_chi,temp_chi,xtriple
+        Fxi_chi=MAXLIM
+        endif
+        if(Fyi_chi.gt.MAXLIM) then
+        write(84,*) 'ixi,y ', ixi,fyi_chi,temp_chi,xtriple
+        Fyi_chi=MAXLIM
+        endif
+        if(Fzi_chi.gt.MAXLIM) then
+        Fzi_chi=MAXLIM
+        write(84,*) 'ixi,z ', ixi,fzi_chi,temp_chi,xtriple
+        endif
+
+        if(Fxi1_chi.gt.MAXLIM) then
+        write(84,*) 'ixi1,x ', ixi1,fxi1_chi,temp_chi,xtriple
+        Fxi1_chi=MAXLIM
+        endif
+        if(Fyi1_chi.gt.MAXLIM) then
+        write(84,*) 'ixi1,y ', ixi1,fyi1_chi,temp_chi,xtriple
+        Fyi1_chi=MAXLIM
+        endif
+        if(Fzi1_chi.gt.MAXLIM) then
+        write(84,*) 'ixi1,z ', ixi1,fzi1_chi,temp_chi,xtriple
+        Fzi1_chi=MAXLIM
+        endif
+
+        if(Fxi2_chi.gt.MAXLIM) then
+        write(84,*) 'ixi2,x ', ixi2,fxi2_chi,temp_chi,xtriple
+        Fxi2_chi=MAXLIM
+        endif
+        if(Fyi2_chi.gt.MAXLIM) then
+        write(84,*) 'ixi2,y ', ixi2,fyi2_chi,temp_chi,xtriple
+        Fyi2_chi=MAXLIM
+        endif
+        if(Fzi2_chi.gt.MAXLIM) then
+        write(84,*) 'ixi2,z ', ixi2,fzi2_chi,temp_chi,xtriple
+        Fzi2_chi=MAXLIM
+        endif
+
+        if(Fxi3_chi.gt.MAXLIM) then
+        write(84,*) 'ixi3,x ', ixi3,fxi3_chi,temp_chi,xtriple
+        Fxi3_chi=MAXLIM
+        endif
+        if(Fyi3_chi.gt.MAXLIM) then
+        write(84,*) 'ixi3,y ', ixi3,fyi3_chi,temp_chi,xtriple
+        Fyi3_chi=MAXLIM
+        endif
+        if(Fzi3_chi.gt.MAXLIM) then
+        write(84,*) 'ixi3,z ', ixi3,fzi3_chi,temp_chi,xtriple
+        Fzi3_chi=MAXLIM
+        endif
+
+
+        force(1,ixi) = force(1,ixi)+Fxi_chi
+        force(2,ixi) = force(2,ixi)+Fyi_chi
+        force(3,ixi) = force(3,ixi)+Fzi_chi
+        force(1,ixi1) = force(1,ixi1)+Fxi1_chi
+        force(2,ixi1) = force(2,ixi1)+Fyi1_chi
+        force(3,ixi1) = force(3,ixi1)+Fzi1_chi
+        force(1,ixi2) = force(1,ixi2)+Fxi2_chi
+        force(2,ixi2) = force(2,ixi2)+Fyi2_chi
+        force(3,ixi2) = force(3,ixi2)+Fzi2_chi
+        force(1,ixi3) = force(1,ixi3)+Fxi3_chi
+        force(2,ixi3) = force(2,ixi3)+Fyi3_chi
+        force(3,ixi3) = force(3,ixi3)+Fzi3_chi
+
+        enddo
+! Antonios end
+-------------------------------------------------------------------------------------------
+
+>> files.h had already been changed for the pseudo dihedral code
+-------------------------------------------------------------------------------------------
+
+>> mdfil.f had already been changed for the pseudo dihedral code
+-------------------------------------------------------------------------------------------
+
+>> dynlib.f had already been changed for the pseudo dihedral code
+-------------------------------------------------------------------------------------------
+>> sander.f
+
+! Antonios added 9/2/10
+! Reading triple.inp for Chiral term
+
+      open(78,file='triple.inp')
+      read(78,*)nbeta,xxkchi
+
+        XKCHI=xxkchi
+        ICHI=nbeta
+      write(80,*)ICHI,XKCHI
+
+      do j=1,nbeta
+        read(78,*)IICA,IICB,IINC,IICC,xxchi
+        write(80,*)IICA,IICB,IINC,IICC,xxchi
+       ICA(j) = iica
+       ICB(j) = iicb
+       INC(j) = iinc
+       ICC(j) = iicc
+       XCHI(j) = xxchi
+      enddo
+--------------------------------------------------------------------------------------------
+
+>> runmd.f
+
+!Antonios added:
+        ENER(23)=ENER(23)+ECHI
+!        write(72,*)ECHI   This is the one that works. Prints one value for every step. 
+!Antonios end
+
+--------------------------------------------------------------------------------------------
+
+
+
+
+############################################################################################
+
+09.17.2013
+Jianfa Chen
+
+--------------------------------------------------------------------------------------------
+>>short_ene.f
+
+line 96-98
+!! 09/05/2013, Jianfa commented out the line below.
+!!            if ( ntot > 0 )then
+!!End Jianfa
+
+line 151-154
+!! 09/05 Jianfa commented out the line below to fix a bug in the chiral energy
+!!term
+!!            end if  ! ( ntot > 0 )
+!! End Jianfa
+
+This modification is to fix the bug related to the chiral term.
+Qian wrote:
+
+The chiral calculation is in the code "ew_directe.h". In the current version, we wrote:
+ 
+if (atom index .eq. 1) then
+calculate the chiral
+end
+ 
+The reason we did the above "if statement" is to prevent double counting. 
+To help understand, let us assume there are only three beads 1, 2, 3 in the system.
+ 
+There are totally three pair interactions, i=1 and j=2; i=1 and j=3; i=2 and j=3; 
+For each i, the "ew_directe.h" will be called once. Here i can be 1 or 2 so totally this code will be called twice. 
+If we do not write the above if statement, the chiral energy will be calculated  twice, which is wrong. 
+So we added the if statement, the chiral energy calculation will be only performed once, when i = 1
+ 
+This is OK for Amber 6. Unfortunately, Amber 10 is different. Amber 10 has a unique loop sequence, depending on the structure!!! 
+For example, the pair can be i=3 and j=2, i=3 and j=1, i=2 and j=1. 
+See, in this situation, i cannot be 1 and so the chiral energy calculation is omitted due to the above if statement. 
+That is why occasionally the chiral is zero....
+ 
+Solution:
+The easiest solution I can think of:
+ 
+the 96th line in short_ene.f:  delete the line "if ( ntot > 0 )then"
+the 149th line in short_ene.f: delete this line "end if  ! ( ntot > 0 )"

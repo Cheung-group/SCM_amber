@@ -1,0 +1,2542 @@
+
+
+!<compile=optimized>
+
+!************************************************************************
+!                              AMBER                                   **
+!                                                                      **
+!                        Copyright (c) 2003                            **
+!                Regents of the University of California               **
+!                       All Rights Reserved.                           **
+!                                                                      **
+!  This software provided pursuant to a license agreement containing   **
+!  restrictions on its disclosure, duplication, and use. This software **
+!  contains confidential and proprietary information, and may not be   **
+!  extracted or distributed, in whole or in part, for any purpose      **
+!  whatsoever, without the express written permission of the authors.  **
+!  This notice, and the associated author list, must be attached to    **
+!  all copies, or extracts, of this software. Any additional           **
+!  restrictions set forth in the license agreement also apply to this  **
+!  software.                                                           **
+!************************************************************************
+
+
+!+ Specification and control of Amber's working precision
+
+
+! Description:
+! Preprocessor directives that characterize the floating-point
+! working precision as single or double precision.
+! The current scheme guarantees internal consistency at the expense
+! of flexibility.  A need for flexibility has yet to appear.
+! The preprocessor guard  prevents multiple, and thus
+! inconsistent, definitions.
+! The default working precision is double precision.
+! User control of the working precision at build time should be
+! exercised via the preprocessor name _REAL_.
+! To build a single precision Amber use
+!     make -e AMBERBUILDFLAGS=' -D_REAL_ '
+! The preprocessor names that characterize the precision are
+
+!   _REAL_     precision type specifier.
+!              Use  _REAL_ foo  as the precision independent
+!              notation for  double precision foo  and  real foo.
+
+!   AMBER_MPI_REAL
+!              MPI precision type specifier.
+!              Use AMBER_MPI_REAL as the precision independent
+!              notation for MPI_DOUBLE_PRECISION and MPI_REAL.
+
+!   D_OR_S()   precision prefix for the BLAS and LAPACK Library routines.
+!              Use, e.g.,  D_OR_S()axpy(...)  as the precision independent
+!              notation for daxpy(...) and saxpy(...).
+
+!   DPREC      defined when the working precision is double;
+!              undefined when the working precision is single.
+
+!   VD_OR_VS() precision prefix for the Intel Vector Math Library routines.
+!              Use, e.g.,  VD_OR_VS()exp(...)  as the precision independent
+!              notation for vdexp(...) and vsexp(...).
+
+
+
+
+
+
+
+
+
+
+!----------------------------------------------------------------------------
+!     --- GET_NB_ENERGY --
+!----------------------------------------------------------------------------
+!     ...the main routine for non bond energy (vdw and hbond)
+!     as well as direct part of ewald sum. It is structured for parallelism.
+!----------------------------------------------------------------------------
+subroutine get_nb_energy(iac,ico,ntypes,charge, &
+      cn1,cn2,asol,bsol,force,numatoms, &
+      nucgrd, &
+      ipairs, &
+      ewaldcof,eedtbdns,eed_cub,eed_lin, &
+      maxnblst,eelt,evdw,ehb,dir_vir,eedvir, &
+      filter_cut,ee_type,eedmeth,dxdr, &
+      epol,dipole,field,mpoltype)
+
+   use nblist, only: imagcrds,bckptr,nlogrid,nhigrid,numvdw,numhbnd, &
+                      myindexlo,myindexhi,numimg, numsc
+   use constants, only : zero
+   use stack
+   implicit none
+   character(kind=1,len=13) :: routine="get_nb_energy"
+integer do_dir,do_rec,do_adj,do_self
+integer do_bond,do_angle,do_ephi,doxconst,do_cap, &
+      do_14,do_tgt
+common/flocntrl/do_dir,do_rec,do_adj,do_self,do_bond, &
+      do_angle,do_ephi,doxconst,do_cap,do_14,do_tgt
+
+!     Head file for the self-guided Langevin Dynamics simulation  
+!
+!      variables for SGLD simulation
+!
+      integer BC_SGLDI,BC_SGLDR,BC_SGLDL
+      parameter( BC_SGLDI=5,BC_SGLDR=39,BC_SGLDL=4)
+!
+! ... integers:
+!
+!
+!    SGLD applying rang
+!      ISGSTA      Begining atom index applying SGLD
+!      ISGEND      Ending atom index applying SGLD
+!
+!
+!      variables for Isotropic Periodic Sum (IPS) calculation
+!
+!      IPS         IPS options: 1--for both ele and l-j
+!                               2--for ele only
+!                               3--for l-j only
+!      NNBIPS      Number of nonbonded atom pairs
+!      NNBIPST     Provious Number of nonbonded atom pairs
+!
+      integer ISGSTA,ISGEND,IPS,NNBIPST,NNBIPS
+      COMMON/DTSGI/ISGSTA,ISGEND,IPS,NNBIPST,NNBIPS
+!
+! ... floats:
+!
+!
+!    SGMD VARIABLES
+!     TSGAVG  !  Local average time, ps
+!     SGAVG0  !  Local average remains
+!     SGAVG1  !  Local average factor, SGAVG1=1-SGAVG0
+!     SGFT    !  Guiding factor 
+!     TEMPSG  !  Guiding temperature, K
+!     GAMMAS  !  friction coefficient
+!     GAMMAT  !  Guiding temperature constant
+!     AVGGG   !  Local Average of guiding effect
+!
+!    IPS parameters
+!    BIPSE*    Electrostatic
+!    BIPSVA*   Lennard-Jones repulsion
+!    BIPSVC*   Lennard-Jones dispersion
+!    RIPS*     Radius of IPS local region 
+!    PIPS*0    Self IPS pair energies 
+!    PIPS*C    IPS system energie components 
+!    EIPSS*C   IPS system energies 
+!    VIRIPS*C  IPS system virials 
+!    VBOXIPS   IPS local region volume
+!
+
+      double precision  TSGAVG,SGAVG0,SGAVG1,SGFT,TEMPSG,TEMPSGI, &
+       GAMMAS,GAMMAT,AVGGG, &
+       AIPSE,BIPSE0,BIPSE1,BIPSE2,BIPSE3, & 
+       AIPSVA,BIPSVA0,BIPSVA1,BIPSVA2,BIPSVA3, &
+       AIPSVC,BIPSVC0,BIPSVC1,BIPSVC2,BIPSVC3, &
+       RIPS,RIPS2,RIPS4,oneRIPS6,oneRIPS12,  &
+       PIPSE0,PIPSVA0,PIPSVC0,PIPSEC,PIPSVAC,PIPSVCC,  &
+       VBOXIPS,EIPSSNB,EIPSSEL,VIRIPS,ripsinv,rips2inv
+      COMMON/DTSGR/TSGAVG,SGAVG0,SGAVG1,SGFT,TEMPSG,TEMPSGI, &
+       GAMMAS,GAMMAT,AVGGG, &
+       AIPSE,BIPSE0,BIPSE1,BIPSE2,BIPSE3, & 
+       AIPSVA,BIPSVA0,BIPSVA1,BIPSVA2,BIPSVA3, &
+       AIPSVC,BIPSVC0,BIPSVC1,BIPSVC2,BIPSVC3, &
+       RIPS,RIPS2,RIPS4,oneRIPS6,oneRIPS12,  &
+       PIPSE0,PIPSVA0,PIPSVC0,PIPSEC,PIPSVAC,PIPSVCC,  &
+       VBOXIPS,EIPSSNB,EIPSSEL,VIRIPS,ripsinv,rips2inv
+
+       
+!
+! ... flags:
+!
+!
+!     TSGLD   ! Perform SGLD
+!     TLANGV  ! The simulation is a Langevin dynamics simulation
+!
+!     TEIPS   ! Perform IPS for electrostatic interaction
+!     TVIPS   ! Perform IPS for Lennard-Jones interaction
+!
+      LOGICAL TSGLD,TLANGV,TEIPS,TVIPS
+      COMMON/DTSGL/TSGLD,TLANGV,TEIPS,TVIPS
+
+   
+   integer l_real_df,l_real_x,l_real_y,l_real_z,l_real_r2,l_int
+   integer numatoms,maxnblst,mpoltype
+   integer iac(*),ico(*),ntypes,nucgrd,ee_type,eedmeth
+   double precision charge(*),cn1(*),cn2(*),asol(*),bsol(*)
+   double precision ewaldcof,eedtbdns,dxdr, &
+         eed_cub(4,*),eed_lin(2,*),dir_vir(3,3)
+   integer ipairs(maxnblst)
+   double precision force(3,numatoms),eelt,epol,evdw,ehb
+   double precision eedvir,filter_cut, &
+         dipole(3,*),field(3,*)
+   
+   integer index,numpack,i,k,l,ncell_lo,ncell_hi,ntot,nvdw,nhbnd
+   double precision xk,yk,zk
+   integer nn,ncache
+   
+   !     ---FLOW CONTROL FLAG (debug and future respa)
+   
+   if ( do_dir == 0 )return
+   
+   eelt = zero
+   epol = zero
+   evdw = zero
+   ehb = zero
+   eedvir = zero
+   dir_vir(1:3,1:3) = zero
+   numpack = 1
+   call timer_start(80)
+   do index = myindexlo,myindexhi
+      if ( numimg(index) > 0 )then
+         ncell_lo = nlogrid(index)
+         ncell_hi = nhigrid(index)
+         do k = ncell_lo,ncell_hi
+            i = bckptr(k)
+            xk = imagcrds(1,k)
+            yk = imagcrds(2,k)
+            zk = imagcrds(3,k)
+            ntot = numvdw(i) + numhbnd(i)
+            nvdw = numvdw(i)
+            nhbnd = numhbnd(i)
+            if ( ntot > 0 )then
+               if ( mpoltype == 0 )then
+                  ! allocate 6 temporary caches for performance optimizations
+                     ncache = max( nvdw, numhbnd(i) )
+                  call get_stack(l_real_df,ncache,routine)
+                  call get_stack(l_real_x,ncache,routine)
+                  call get_stack(l_real_y,ncache,routine)
+                  call get_stack(l_real_z,ncache,routine)
+                  call get_stack(l_real_r2,ncache,routine)
+                  call get_istack(l_int,ncache,routine)
+                  if(.not. rstack_ok)then
+                     deallocate(r_stack)
+                     allocate(r_stack(1:lastrst),stat=alloc_ier)
+                     call reassign_rstack(routine)
+                  endif
+                  if(.not. istack_ok)then
+                     deallocate(i_stack)
+                     allocate(i_stack(1:lastist),stat=alloc_ier)
+                     call reassign_istack(routine)
+                  endif
+                  if(.not.(rstack_ok))call Aass('rstack_ok',"short_ene.f",114)
+                  if(.not.(istack_ok))call Aass('istack_ok',"short_ene.f",115)
+                  call short_ene(i,xk,yk,zk,ipairs(numpack),ntot,nvdw,nhbnd, &
+                        ewaldcof,eedtbdns, &
+                        eed_cub,eed_lin,charge, &
+                        ntypes,iac,ico,cn1,cn2,asol,bsol,filter_cut, &
+                        eelt,evdw,ehb,force,dir_vir,ee_type,eedmeth,dxdr, &
+                        eedvir,r_stack(l_real_df),r_stack(l_real_x), &
+                        r_stack(l_real_y),r_stack(l_real_z), &
+                        r_stack(l_real_r2),i_stack(l_int) )
+                  call free_stack(l_real_r2,routine)
+                  call free_stack(l_real_z,routine)
+                  call free_stack(l_real_y,routine)
+                  call free_stack(l_real_x,routine)
+                  call free_stack(l_real_df,routine)
+                  call free_istack(l_int,routine)
+               else if ( mpoltype == 1 )then
+                  call short_ene_dip(i,xk,yk,zk,ipairs(numpack),ntot,nvdw, &
+                        ewaldcof,eedtbdns, &
+                        eed_cub,eed_lin,charge,dipole, &
+                        ntypes,iac,ico,cn1,cn2,asol,bsol,filter_cut, &
+                        eelt,epol,evdw,ehb,force,field,dir_vir, &
+                        ee_type,eedmeth,dxdr,eedvir)
+               end if
+               numpack = numpack + ntot
+            end if  ! ( ntot > 0 )
+         end do  !  k = ncell_lo,ncell_hi
+      end if  ! ( numimg(k) > 0 )
+   end do  !  index = myindexlo,myindexhi
+   call timer_stop(80)
+   return
+end subroutine get_nb_energy 
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!+ Calculate the direct Ewald component of the potentials.
+!
+!-----------------------------------------------------------------------
+!     --- SHORT_ENE ---
+!-----------------------------------------------------------------------
+! short_ene subroutine modified by Nathalie Godbout, sgi 04/26/00.
+! additional optimizations aimed at IA32 SSE2, Scott Brozell, TSRI Oct 2002.
+! more tweaks, Ross Walker, TSRI 2005.
+
+subroutine short_ene(i,xk,yk,zk,ipairs,ntot,nvdw,nhbnd, &
+      ewaldcof,eedtbdns, &
+      eed_cub,eed_lin,charge, &
+      ntypes,iac,ico,cn1,cn2,asol,bsol,filter_cut, &
+      eelt,evdw,ehb,force,dir_vir, &
+      ee_type,eedmeth,dxdr,eedvir, &
+      cache_df,cache_x,cache_y,cache_z,cache_r2,cache_bckptr )
+   use nblist, only: imagcrds,bckptr,tranvec,cutoffnb,volume
+   use constants, only : zero, one, two, half, third, TWOPI
+   use pimd_vars, only : ipimd,ineb, nrg_all,nbead,nbead_inv
+   use decomp, only: decpr, decpair
+   implicit none
+!+ Specification and control of Amber's working precision
+
+
+!!HB.h modified by Antonios for amber10
+!! margaret added. 9.18.01 Hydrogen Bond. real.
+!! input GO hydrogen bonds
+!! store atom number of theta,phi angles 
+!! H-B between JTHEI-JPHII, JTHEI<JPHII
+
+double precision amp,EHBA,EHBV,ECHI,XKCHI,maphb,NXI,NXI1,NXI2,NXI3,THE0,PHI0
+integer nhb_pair,IXI,IXI1,IXI2,IXI3
+
+
+common/HYDROB/NXI(92000),NXI1(92000),NXI2(92000),NXI3(92000)
+!! store the native Go phi,psi angles 
+common/HBANG/THE0(10000),PHI0(10000)
+!!     check contact HB map
+common/MAP/maphb(10000,10000)
+!!     output ener 
+common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+!!     input Amp 
+common/DISPLACE/amp,nhb_pair
+   double precision xk,yk,zk
+   integer i,nvdw,nhbnd,ntot
+   integer ipairs(*),ee_type,eedmeth
+   double precision ewaldcof,eed_cub(*),eed_lin(2,*), &
+         charge(*),dir_vir(3,3),eedvir
+   double precision eedtbdns,filter_cut,dxdr
+   integer ntypes,iac(*),ico(*)
+   double precision cn1(*),cn2(*),asol(*),bsol(*), &
+         eelt,evdw,ehb,force(3,*)
+   integer ic,j,m,n,ind,iaci
+   double precision del,delrinv
+   double precision switch,d_switch_dx
+   double precision b0,b1
+   double precision ee_vir_iso
+   double precision filter_cut2,xx
+   double precision comm1
+   double precision xktran(3,18)
+   double precision e3dx,e4dx
+   ! SOFT CORE
+   double precision rfour,denom, denom2, denom3
+   double precision ecur
+   integer, parameter :: mask27 = 2**27 - 1
+   integer nprefetch
+   double precision delx,dely,delz,delr, delr2,    f10,   r10,  cgi, &
+        delr2inv, r6,    f6,   f12, df,       dfee,  dx,   x, &
+        dfx,      vxx,   vxy,  vxz, dfy,      vyy,   vyz,  dumy, &
+        dfz,      vzz,   dumz, dumx
+
+!+ Specification and control of Amber's working precision
+
+
+!-------------BEGIN    md.h  ------------------------------------------------
+integer BC_MDI  ! size in integers of common block mdi
+integer BC_MDR  ! size in Reals of common block mdr
+
+! ... integer variables:
+
+integer nrp,nspm,ig,ntx,ntcx,           &!5
+      ntxo,ntt,ntp,ntr,init,             &!10
+      ntcm,nscm,isolvp,nsolut,klambda,   &!15
+      ntc,ntcc,ntf,ntid,ntn,             &!20
+      ntnb,nsnb,ndfmin,nstlim,nrc,       &!25
+      ntrx,npscal,imin,maxcyc,ncyc,      &!30
+      ntmin,irest,jfastw,                &!33
+      ibgwat,ienwat,iorwat,              &!36
+      iwatpr,nsolw,igb,alpb,iyammp,           &!41
+      gbsa,vrand,iwrap,nrespa,irespa,nrespai,icfe,  &!48
+      rbornstat,ivcap,iconstreff,        &!51
+      neb,vv,tmode,ipol,iesp,ievb,nodeid,num_noshake,    &!59
+      idecomp,icnstph,ntcnstph,maxdup,numexchg,repcrd,numwatkeep,hybridgb,  &!67
+      ibgion,ienion,profile_mpi                      !70
+parameter (BC_MDI=70)
+
+common/mdi/nrp,nspm,ig, &
+      ntx,ntcx,ntxo,ntt,ntp,ntr,init,ntcm,nscm, &
+      isolvp,nsolut,ntc,ntcc,ntf,ntid,ntn,ntnb,nsnb,ndfmin, &
+      nstlim,nrc,ntrx,npscal,imin,maxcyc,ncyc,ntmin, &
+      irest,jfastw,ibgwat,ienwat,iorwat, &
+      iwatpr,nsolw,igb,alpb,iyammp,gbsa,vrand,numexchg,repcrd,numwatkeep,hybridgb, &
+      iwrap,nrespa,irespa,nrespai,icfe,rbornstat, &
+      ivcap,iconstreff,idecomp,klambda,icnstph,ntcnstph,maxdup,neb,vv, &
+  tmode,ipol,iesp,ievb,nodeid,num_noshake,ibgion,ienion, profile_mpi
+
+! ... floats:
+
+double precision t,dt,temp0,tautp,pres0,comp,taup,temp,tempi, & !9
+      tol,taur,dx0,drms,vlimit,rbtarg(9),tmass,tmassinv,  & !25
+      kappa,offset,surften,gamma_ln,extdiel,intdiel,rdt,  & !32
+      gbalpha,gbbeta,gbgamma,cut_inner,clambda,saltcon,  & !38
+      solvph,rgbmax,fsmax,restraint_wt, &  !42
+      skmin,skmax,vfac,gbneckscale,v11,v12,v22,kevb,evbt,Arad   !52
+parameter (BC_MDR=52)
+common/mdr/t,dt,temp0,tautp,pres0,comp,taup,temp,tempi, &
+      tol,taur,dx0,drms,vlimit,rbtarg,tmass,tmassinv, &
+      kappa,offset,surften,gamma_ln,extdiel,intdiel,rdt, &
+      gbalpha,gbbeta,gbgamma,cut_inner,clambda,saltcon, &
+      solvph,rgbmax,fsmax,restraint_wt,skmin,skmax,vfac,gbneckscale, &
+      v11,v12,v22,kevb,evbt,Arad
+
+! ... strings:
+
+character(len=4) iwtnm,iowtnm,ihwtnm
+  character(len=256) restraintmask,bellymask,tgtfitmask,tgtrmsmask,noshakemask,crgmask
+common/mds/ restraintmask,bellymask,tgtfitmask,tgtrmsmask,noshakemask,crgmask,  &
+            iwtnm,iowtnm,ihwtnm(2)
+
+!-------------END    md.h  ------------------------------------------------
+
+!+ Specification and control of Amber's Input/Output
+
+!Antonios added
+! File names
+character(len=4096) groupbuffer
+character(len=256) mdin, mdout, inpcrd, parm, restrt, &
+      refc, mdvel, mden, mdcrd, mdinfo, nmrf, mincor, &
+      vecs, radii, freqe,redir(9),rstdip,mddip,inpdip,groups,gpes, &
+      cpin, cpout, cprestrt, evbin, evbout, mmtsb_setup_file,pimdout, &
+      inptraj,twhb,twvdw,twchi
+
+character owrite, facc
+common /files/ groupbuffer, mdin, mdout, inpcrd, parm, restrt, &
+      refc, mdvel, mden, mdcrd, mdinfo, nmrf, mincor, &
+      vecs, radii, freqe, owrite, facc,rstdip,mddip,inpdip,groups,gpes, &
+      cpin, cpout, cprestrt, evbin, evbout, mmtsb_setup_file,pimdout, &
+      inptraj,twhb,twvdw,twchi
+!Antonios end
+
+! put this in a separate common block to stop the compiler from
+! complaining about misalignment
+integer numgroup, nslice
+common/nmgrp/ numgroup, nslice
+
+! File units
+! An I/O Unit resource manager does not exist.
+integer     MDCRD_UNIT
+integer     INPTRAJ_UNIT
+integer     MDEN_UNIT
+integer     MDINFO_UNIT
+integer     MDVEL_UNIT
+!Antonios added
+integer     TWHB_UNIT
+integer     TWVDW_UNIT
+integer     TWCHI_UNIT
+!Antonios end
+parameter ( MDINFO_UNIT =  7 )
+parameter ( MDCRD_UNIT  = 12 )
+parameter ( INPTRAJ_UNIT = 24 )
+parameter ( MDEN_UNIT   = 15 )
+parameter ( MDVEL_UNIT  = 13 )
+!Antonios added
+parameter ( TWHB_UNIT  = 37 )
+parameter ( TWVDW_UNIT  = 36 )
+parameter ( TWCHI_UNIT  = 38 )
+!Antonios end
+integer, parameter :: CNSTPH_UNIT = 18, CPOUT_UNIT = 19
+
+! 18 was picked because CNSTPH uses it; conflicts are not expected.
+integer     MMTSB_UNIT
+parameter ( MMTSB_UNIT = 18 )
+
+!!
+!! EVB I/O unit
+!!
+   integer, parameter :: evb_unit = 75
+   integer, parameter :: schlegel_unit = 80
+
+!! FULL PIMD I/O unit
+   integer, parameter :: pimd_unit = 277
+! File related controls and options
+character(len=80) title,title1
+common/runhed/ title, title1
+
+logical mdin_ewald,mdin_pb,mdin_amoeba
+
+common/mdin_flags/mdin_ewald,mdin_pb,mdin_amoeba
+
+integer BC_HULP  ! size in integers of common HULP
+parameter ( BC_HULP = 9 )
+
+integer     ntpr,ntwr,ntwx,ntwv,ntwe,ntpp,ioutfm,ntwprt,ntave
+common/hulp/ntpr,ntwr,ntwx,ntwv,ntwe,ntpp,ioutfm,ntwprt,ntave
+
+!      NMRRDR : Contains information about input/output file redirection
+!               REDIR and IREDIR contain information regarding
+!               LISTIN, LISTOUT, READNMR, NOESY, SHIFTS, DUMPAVE,
+!               PCSHIFT and DIPOLE respectively. If IREDIR(I) > 0,
+!               then that input/output has been redirected.
+
+integer iredir(9)
+common/nmrrdr/redir,iredir
+!     Head file for the self-guided Langevin Dynamics simulation  
+!
+!      variables for SGLD simulation
+!
+      integer BC_SGLDI,BC_SGLDR,BC_SGLDL
+      parameter( BC_SGLDI=5,BC_SGLDR=39,BC_SGLDL=4)
+!
+! ... integers:
+!
+!
+!    SGLD applying rang
+!      ISGSTA      Begining atom index applying SGLD
+!      ISGEND      Ending atom index applying SGLD
+!
+!
+!      variables for Isotropic Periodic Sum (IPS) calculation
+!
+!      IPS         IPS options: 1--for both ele and l-j
+!                               2--for ele only
+!                               3--for l-j only
+!      NNBIPS      Number of nonbonded atom pairs
+!      NNBIPST     Provious Number of nonbonded atom pairs
+!
+      integer ISGSTA,ISGEND,IPS,NNBIPST,NNBIPS
+      COMMON/DTSGI/ISGSTA,ISGEND,IPS,NNBIPST,NNBIPS
+!
+! ... floats:
+!
+!
+!    SGMD VARIABLES
+!     TSGAVG  !  Local average time, ps
+!     SGAVG0  !  Local average remains
+!     SGAVG1  !  Local average factor, SGAVG1=1-SGAVG0
+!     SGFT    !  Guiding factor 
+!     TEMPSG  !  Guiding temperature, K
+!     GAMMAS  !  friction coefficient
+!     GAMMAT  !  Guiding temperature constant
+!     AVGGG   !  Local Average of guiding effect
+!
+!    IPS parameters
+!    BIPSE*    Electrostatic
+!    BIPSVA*   Lennard-Jones repulsion
+!    BIPSVC*   Lennard-Jones dispersion
+!    RIPS*     Radius of IPS local region 
+!    PIPS*0    Self IPS pair energies 
+!    PIPS*C    IPS system energie components 
+!    EIPSS*C   IPS system energies 
+!    VIRIPS*C  IPS system virials 
+!    VBOXIPS   IPS local region volume
+!
+
+      double precision  TSGAVG,SGAVG0,SGAVG1,SGFT,TEMPSG,TEMPSGI, &
+       GAMMAS,GAMMAT,AVGGG, &
+       AIPSE,BIPSE0,BIPSE1,BIPSE2,BIPSE3, & 
+       AIPSVA,BIPSVA0,BIPSVA1,BIPSVA2,BIPSVA3, &
+       AIPSVC,BIPSVC0,BIPSVC1,BIPSVC2,BIPSVC3, &
+       RIPS,RIPS2,RIPS4,oneRIPS6,oneRIPS12,  &
+       PIPSE0,PIPSVA0,PIPSVC0,PIPSEC,PIPSVAC,PIPSVCC,  &
+       VBOXIPS,EIPSSNB,EIPSSEL,VIRIPS,ripsinv,rips2inv
+      COMMON/DTSGR/TSGAVG,SGAVG0,SGAVG1,SGFT,TEMPSG,TEMPSGI, &
+       GAMMAS,GAMMAT,AVGGG, &
+       AIPSE,BIPSE0,BIPSE1,BIPSE2,BIPSE3, & 
+       AIPSVA,BIPSVA0,BIPSVA1,BIPSVA2,BIPSVA3, &
+       AIPSVC,BIPSVC0,BIPSVC1,BIPSVC2,BIPSVC3, &
+       RIPS,RIPS2,RIPS4,oneRIPS6,oneRIPS12,  &
+       PIPSE0,PIPSVA0,PIPSVC0,PIPSEC,PIPSVAC,PIPSVCC,  &
+       VBOXIPS,EIPSSNB,EIPSSEL,VIRIPS,ripsinv,rips2inv
+
+       
+!
+! ... flags:
+!
+!
+!     TSGLD   ! Perform SGLD
+!     TLANGV  ! The simulation is a Langevin dynamics simulation
+!
+!     TEIPS   ! Perform IPS for electrostatic interaction
+!     TVIPS   ! Perform IPS for Lennard-Jones interaction
+!
+      LOGICAL TSGLD,TLANGV,TEIPS,TVIPS
+      COMMON/DTSGL/TSGLD,TLANGV,TEIPS,TVIPS
+
+   double precision uips,uips2,uips6,twou,twou2,twou6,twou12
+   double precision pipse,dpipse,eipse,dipse,pvc,pvcu,dvcu,pva,pvau,dvau
+
+   integer itran
+
+   ! variables for conditionally cached data.
+   double precision cache_df(*),cache_x(*),cache_y(*)
+   double precision cache_z(*),cache_r2(*)
+   integer im_new,icount
+   integer cache_bckptr(*)
+
+
+   vxx = zero
+   vxy = zero
+   vxz = zero
+   vyy = zero
+   vyz = zero
+   vzz = zero
+   ee_vir_iso = zero
+   del = one / eedtbdns
+   dumx = zero
+   dumy = zero
+   dumz = zero
+   filter_cut2 = filter_cut*filter_cut
+   cgi = charge(i)
+   iaci = ntypes * (iac(i) - 1)
+   
+   do m=1,18
+      xktran(1,m) = tranvec(1,m) - xk
+      xktran(2,m) = tranvec(2,m) - yk
+      xktran(3,m) = tranvec(3,m) - zk
+   end do
+
+   
+   ! The "eedmeth" decision is unrolled here, since this provides
+   ! significant efficiency improvements, in spite of greatly
+   ! increasing the code length.
+   ! Each eedmeth case calculates the 12-6 LJ terms and 12-10 LJ terms
+   ! in separate sets of fissioned loops.
+   ! Each loop set consists of three loop fission fragments:
+   ! prologue, electrostatic, and epilogue.
+   ! The prologue loop computes delta r**2 and conditionally caches it,
+   ! delta x, delta y, delta z, and the bckptr index.
+   ! The electrostatic loop calculates and caches the direct Ewald sum.
+   ! The epilogue loop computes the van der Waals interaction and updates
+   ! the forces using the previously cached data.
+   ! This substantial code tuning is designed to enable software
+   ! pipelining of loops for superscalar and similar architectures.
+   
+   ! For eedmeth = 1 12-6 LJ, the most common case, the electrostatic loop
+   ! is fissioned into two fragments. The first loop calculates and
+   ! caches principally the reciprocal square root of delta r**2.
+   ! The ambsecond loop completes the electrostatic work.
+   ! This code tuning is designed to enable SIMD vectorization of the
+   ! reciprocal square root on IA32 SSE2 compatible platforms.
+   
+
+   if ( eedmeth == 1 )then
+      
+      !-------------------------------------------------------------
+      !     Loop over the 12-6 LJ terms for eedmeth = 1
+      !-------------------------------------------------------------
+      icount = 0
+      do m = 1,nvdw
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      !
+      !  calculation starts: loop over the data gathered in the temporary
+      !  array caches.
+      call vdinvsqrt( icount, cache_r2, cache_df )
+      cache_r2(1:icount) = dxdr*cache_df(1:icount)*cache_r2(1:icount)
+      !
+      ! the df cache now stores the reciprocal of delta r, variable delrinv.
+      ! the r2 cache contains delta r times the derivative;
+      ! this product, dxdr*delr, is denoted as variable x below.
+      !
+      do im_new = 1,icount
+         j = cache_bckptr(im_new)
+         delrinv = cache_df(im_new)
+         x = cache_r2(im_new)
+         !
+         ! -- cubic spline on switch:
+         !
+         ind = eedtbdns*x
+         dx = x - ind*del
+         ind = 4*ind
+
+         e3dx = dx*eed_cub(3+ind)
+         e4dx = dx*dx*eed_cub(4+ind)
+         switch = eed_cub(1+ind) + dx*(eed_cub(2+ind) + &
+               (e3dx + e4dx*third)*half)
+         d_switch_dx = eed_cub(2+ind) + e3dx+ e4dx*half
+         
+         !---TD Got the idea for B_l from Walter Smith's CCP5 article 1982
+         !   Ewald for point multipoles
+         
+         b0 = switch*delrinv
+         b1 = b0 - d_switch_dx*dxdr
+         comm1 = cgi*charge(j)
+         ecur = comm1*b0
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = comm1*b1
+
+
+         ee_vir_iso = ee_vir_iso - dfee
+         delr2inv = delrinv*delrinv
+         dfee = dfee*delr2inv
+
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+      end do  !  im_new = 1,icount
+
+      if( tvips )then
+         ! Use IPS for L-J energy:
+
+! epilogue: 12-6 LF IPS terms  by Xiongwu Wu
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+!  L-J r6 term
+        UIPS2=1.0D0/(DELR2INV*RIPS2)
+        UIPS6=UIPS2*UIPS2*UIPS2
+        TWOU2=2.0D0-UIPS2
+        TWOU6=TWOU2*TWOU2*TWOU2
+        TWOU12=TWOU6*TWOU6
+        PVC=BIPSVC0+UIPS2*(BIPSVC1    &
+             +UIPS2*(BIPSVC2+UIPS2*BIPSVC3))
+            PVCU=2.0D0*BIPSVC1+       &
+                  UIPS2*(4.0D0*BIPSVC2+6.0D0*BIPSVC3*UIPS2)
+            DVCU=(PVCU+6.0D0*PVC/TWOU2)/TWOU6
+!  L-J r12 term 
+            PVA=BIPSVA0+UIPS2*(BIPSVA1    &
+             +UIPS2*(BIPSVA2+UIPS2*BIPSVA3))
+            PVAU=2.0D0*BIPSVA1+           &
+             UIPS2*(4.0D0*BIPSVA2+6.0D0*BIPSVA3*UIPS2)
+            DVAU=(PVAU+12.0D0*PVA/TWOU2)/TWOU12
+   evdw = evdw + f12 - f6  &
+         +(f12*(PVA/TWOU12-PIPSVAC)*UIPS6-f6*(PVC/TWOU6-PIPSVCC))*UIPS6
+   df = dfee + (12.d0*f12 - 6.d0*f6  &
+         -(f12*DVAU*uips6-f6*DVCU)*uips6*UIPS2)*delr2inv
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      else
+         ! regular epilogue:
+
+! epilogue: 12-6 LF terms
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+! Antonios added here 2/15/2010 HB
+   if(maphb(i,j).lt.1) then
+	   EHBV=EHBV+f12-f6
+   endif
+! Antonios end 
+
+
+   ! -- ti decomp
+   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+   evdw = evdw + f12 - f6
+   df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      end if
+      
+      !--------------------------------------------------------
+      !     Now loop over the 12-10 LJ terms for eedmeth = 1
+      !--------------------------------------------------------
+      
+      icount = 0
+      do m = nvdw+1,nvdw+nhbnd
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      call vdinvsqrt( icount, cache_r2, cache_df )
+      cache_r2(1:icount) = dxdr*cache_df(1:icount)*cache_r2(1:icount)
+
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1, icount
+
+         j = cache_bckptr(im_new)
+         delrinv = cache_df(im_new)
+         x = cache_r2(im_new)
+         
+         !           -- cubic spline on switch:
+         
+         ind = eedtbdns*x
+         dx = x - ind*del
+         ind = 4*ind
+
+         e3dx = dx*eed_cub(3+ind)
+         e4dx = dx*dx*eed_cub(4+ind)
+         switch = eed_cub(1+ind) + dx*(eed_cub(2+ind) + &
+               (e3dx + e4dx*third)*half)
+         d_switch_dx = eed_cub(2+ind) + e3dx+ e4dx*half
+         
+         !---TD Got the idea for B_l from Walter Smith's CCP5 article 1982
+         !   Ewald for point multipoles
+         
+         b0 = switch*delrinv
+         b1 = b0 - d_switch_dx*dxdr
+         comm1 = cgi*charge(j)
+         ecur = comm1*b0  
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = comm1*b1
+
+
+
+         ee_vir_iso = ee_vir_iso - dfee
+         delr2inv = delrinv*delrinv
+         dfee = dfee*delr2inv
+         
+         cache_df(im_new)=dfee
+
+      end do  !  im_new = 1, icount
+
+
+! epilogue: 12-10 LJ terms.
+
+
+!  --- this code allows 10-12 terms; in many (most?) (all?) cases, the
+!       only "nominal" 10-12 terms are on waters, where the asol and bsol
+!       parameters are always zero; hence we can skip this part.
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   df =   cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+
+
+   else if ( eedmeth == 2 )then
+      !--------------------------------------------------
+      !     Loop over the 12-6 LJ terms for eedmeth = 2
+      !--------------------------------------------------
+      icount = 0
+      do m = 1,nvdw
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      !  calculation starts: loop over the data gathered in the temporary
+      !  array caches.
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1,icount
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         !---- linear lookup on switch:
+         delrinv = one/sqrt(delr2)
+         delr = delr2*delrinv
+         delr2inv = delrinv*delrinv
+         x = dxdr*delr
+         xx = eedtbdns*x + 1
+         ind = xx
+         dx = xx - ind
+         switch = (one - dx)*eed_lin(1,ind) + &
+               dx*eed_lin(1,ind+1)
+         d_switch_dx = (one - dx)*eed_lin(2,ind) + &
+               dx*eed_lin(2,ind+1)
+         b0 = switch*delrinv
+         b1 = (b0 - d_switch_dx*dxdr)*delr2inv
+         comm1 = cgi*charge(j)
+         ecur = comm1*b0       
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = comm1*b1
+
+
+
+         ee_vir_iso = ee_vir_iso - dfee*delr2
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+
+      end do  !  im_new = 1,icount
+
+      if( tvips )then
+         ! Use IPS for L-J energy:
+
+! epilogue: 12-6 LF IPS terms  by Xiongwu Wu
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+!  L-J r6 term
+        UIPS2=1.0D0/(DELR2INV*RIPS2)
+        UIPS6=UIPS2*UIPS2*UIPS2
+        TWOU2=2.0D0-UIPS2
+        TWOU6=TWOU2*TWOU2*TWOU2
+        TWOU12=TWOU6*TWOU6
+        PVC=BIPSVC0+UIPS2*(BIPSVC1    &
+             +UIPS2*(BIPSVC2+UIPS2*BIPSVC3))
+            PVCU=2.0D0*BIPSVC1+       &
+                  UIPS2*(4.0D0*BIPSVC2+6.0D0*BIPSVC3*UIPS2)
+            DVCU=(PVCU+6.0D0*PVC/TWOU2)/TWOU6
+!  L-J r12 term 
+            PVA=BIPSVA0+UIPS2*(BIPSVA1    &
+             +UIPS2*(BIPSVA2+UIPS2*BIPSVA3))
+            PVAU=2.0D0*BIPSVA1+           &
+             UIPS2*(4.0D0*BIPSVA2+6.0D0*BIPSVA3*UIPS2)
+            DVAU=(PVAU+12.0D0*PVA/TWOU2)/TWOU12
+   evdw = evdw + f12 - f6  &
+         +(f12*(PVA/TWOU12-PIPSVAC)*UIPS6-f6*(PVC/TWOU6-PIPSVCC))*UIPS6
+   df = dfee + (12.d0*f12 - 6.d0*f6  &
+         -(f12*DVAU*uips6-f6*DVCU)*uips6*UIPS2)*delr2inv
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      else
+         ! regular epilogue:
+
+! epilogue: 12-6 LF terms
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+! Antonios added here 2/15/2010 HB
+   if(maphb(i,j).lt.1) then
+	   EHBV=EHBV+f12-f6
+   endif
+! Antonios end 
+
+
+   ! -- ti decomp
+   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+   evdw = evdw + f12 - f6
+   df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      end if
+
+      !---------------------------------------------------------
+      !     Now loop over the 12-10 LJ terms for eedmeth = 2
+      !---------------------------------------------------------
+      icount = 0
+      do m = nvdw+1,ntot
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1, icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !            -- linear lookup on switch:
+         
+         delrinv = one/sqrt(delr2)
+         delr = delr2*delrinv
+         delr2inv = delrinv*delrinv
+         x = dxdr*delr
+         xx = eedtbdns*x + 1
+         ind = xx
+         dx = xx - ind
+         switch = (one - dx)*eed_lin(1,ind) + &
+               dx*eed_lin(1,ind+1)
+         d_switch_dx = (one - dx)*eed_lin(2,ind) + &
+               dx*eed_lin(2,ind+1)
+         b0 = switch*delrinv
+         b1 = (b0 - d_switch_dx*dxdr)*delr2inv
+         comm1 = cgi*charge(j)
+         ecur = comm1*b0        
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = comm1*b1
+
+         ee_vir_iso = ee_vir_iso - dfee*delr2
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+
+      end do  !  im_new = 1, icount
+
+
+! epilogue: 12-10 LJ terms.
+
+
+!  --- this code allows 10-12 terms; in many (most?) (all?) cases, the
+!       only "nominal" 10-12 terms are on waters, where the asol and bsol
+!       parameters are always zero; hence we can skip this part.
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   df =   cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+
+   else if ( eedmeth == 3 )then
+
+      !---------------------------------------------------
+      !     Loop over the 12-6 LJ terms for eedmeth = 3
+      !---------------------------------------------------
+      
+      icount = 0
+      do m = 1,nvdw
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      !  calculation starts: loop over the data gathered in the temporary
+      !  array caches.
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1,icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !            -- explicit function call:
+         
+         delrinv = one/sqrt(delr2)
+         delr = delr2*delrinv
+         delr2inv = delrinv*delrinv
+         x = dxdr*delr
+         call get_ee_func(x,switch,d_switch_dx,ee_type)
+         
+         b0 = switch*delrinv
+         b1 = (b0 - d_switch_dx*dxdr)*delr2inv
+         comm1 = cgi*charge(j)
+         ecur = comm1*b0        
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = comm1*b1
+
+         ee_vir_iso = ee_vir_iso - dfee*delr2
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+      end do  !  im_new = 1,icount
+
+      if( tvips )then
+         ! Use IPS for L-J energy:
+
+! epilogue: 12-6 LF IPS terms  by Xiongwu Wu
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+!  L-J r6 term
+        UIPS2=1.0D0/(DELR2INV*RIPS2)
+        UIPS6=UIPS2*UIPS2*UIPS2
+        TWOU2=2.0D0-UIPS2
+        TWOU6=TWOU2*TWOU2*TWOU2
+        TWOU12=TWOU6*TWOU6
+        PVC=BIPSVC0+UIPS2*(BIPSVC1    &
+             +UIPS2*(BIPSVC2+UIPS2*BIPSVC3))
+            PVCU=2.0D0*BIPSVC1+       &
+                  UIPS2*(4.0D0*BIPSVC2+6.0D0*BIPSVC3*UIPS2)
+            DVCU=(PVCU+6.0D0*PVC/TWOU2)/TWOU6
+!  L-J r12 term 
+            PVA=BIPSVA0+UIPS2*(BIPSVA1    &
+             +UIPS2*(BIPSVA2+UIPS2*BIPSVA3))
+            PVAU=2.0D0*BIPSVA1+           &
+             UIPS2*(4.0D0*BIPSVA2+6.0D0*BIPSVA3*UIPS2)
+            DVAU=(PVAU+12.0D0*PVA/TWOU2)/TWOU12
+   evdw = evdw + f12 - f6  &
+         +(f12*(PVA/TWOU12-PIPSVAC)*UIPS6-f6*(PVC/TWOU6-PIPSVCC))*UIPS6
+   df = dfee + (12.d0*f12 - 6.d0*f6  &
+         -(f12*DVAU*uips6-f6*DVCU)*uips6*UIPS2)*delr2inv
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      else
+         ! regular epilogue:
+
+! epilogue: 12-6 LF terms
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+! Antonios added here 2/15/2010 HB
+   if(maphb(i,j).lt.1) then
+	   EHBV=EHBV+f12-f6
+   endif
+! Antonios end 
+
+
+   ! -- ti decomp
+   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+   evdw = evdw + f12 - f6
+   df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      end if
+      
+      !---------------------------------------------------------------
+      !     Now loop over the 12-10 LJ terms for eedmeth = 3
+      !---------------------------------------------------------------
+      
+      icount = 0
+      do m = nvdw+1,ntot
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1, icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !            -- explicit function call:
+         
+         delrinv = one/sqrt(delr2)
+         delr = delr2*delrinv
+         delr2inv = delrinv*delrinv
+         x = dxdr*delr
+         call get_ee_func(x,switch,d_switch_dx,ee_type)
+         
+         b0 = switch*delrinv
+         b1 = (b0 - d_switch_dx*dxdr)*delr2inv
+         comm1 = cgi*charge(j)
+         ecur = comm1*b0        
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = comm1*b1
+
+         ee_vir_iso = ee_vir_iso - dfee*delr2
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+
+      end do  !  im_new = 1, icount
+
+
+! epilogue: 12-10 LJ terms.
+
+
+!  --- this code allows 10-12 terms; in many (most?) (all?) cases, the
+!       only "nominal" 10-12 terms are on waters, where the asol and bsol
+!       parameters are always zero; hence we can skip this part.
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   df =   cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+
+   else if ( eedmeth == 4 )then
+
+      !-------------------------------------------------------
+      !     Loop over the 12-6 LJ terms for eedmeth = 4
+      !-------------------------------------------------------
+      
+      icount = 0
+      do m = 1,nvdw
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      !  calculation starts: loop over the data gathered in the temporary
+      !  array caches.
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1,icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !             -- don't use a switch:
+         !             -- straight Coulomb
+         
+         delrinv = one/sqrt(delr2)
+         delr2inv = delrinv*delrinv
+         b0 = cgi*charge(j)*delrinv
+         ecur = b0
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = b0*delr2inv
+        
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+      end do
+
+      if( tvips )then
+         ! Use IPS for L-J energy:
+
+! epilogue: 12-6 LF IPS terms  by Xiongwu Wu
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+!  L-J r6 term
+        UIPS2=1.0D0/(DELR2INV*RIPS2)
+        UIPS6=UIPS2*UIPS2*UIPS2
+        TWOU2=2.0D0-UIPS2
+        TWOU6=TWOU2*TWOU2*TWOU2
+        TWOU12=TWOU6*TWOU6
+        PVC=BIPSVC0+UIPS2*(BIPSVC1    &
+             +UIPS2*(BIPSVC2+UIPS2*BIPSVC3))
+            PVCU=2.0D0*BIPSVC1+       &
+                  UIPS2*(4.0D0*BIPSVC2+6.0D0*BIPSVC3*UIPS2)
+            DVCU=(PVCU+6.0D0*PVC/TWOU2)/TWOU6
+!  L-J r12 term 
+            PVA=BIPSVA0+UIPS2*(BIPSVA1    &
+             +UIPS2*(BIPSVA2+UIPS2*BIPSVA3))
+            PVAU=2.0D0*BIPSVA1+           &
+             UIPS2*(4.0D0*BIPSVA2+6.0D0*BIPSVA3*UIPS2)
+            DVAU=(PVAU+12.0D0*PVA/TWOU2)/TWOU12
+   evdw = evdw + f12 - f6  &
+         +(f12*(PVA/TWOU12-PIPSVAC)*UIPS6-f6*(PVC/TWOU6-PIPSVCC))*UIPS6
+   df = dfee + (12.d0*f12 - 6.d0*f6  &
+         -(f12*DVAU*uips6-f6*DVCU)*uips6*UIPS2)*delr2inv
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      else
+         ! regular epilogue:
+
+! epilogue: 12-6 LF terms
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+! Antonios added here 2/15/2010 HB
+   if(maphb(i,j).lt.1) then
+	   EHBV=EHBV+f12-f6
+   endif
+! Antonios end 
+
+
+   ! -- ti decomp
+   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+   evdw = evdw + f12 - f6
+   df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      end if
+      
+      !--------------------------------------------------------
+      !     Now loop over the 12-10 LJ terms for eedmeth = 4
+      !--------------------------------------------------------
+      
+      icount = 0
+      do m = nvdw+1,nvdw+nhbnd
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1, icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !             -- don't use a switch:
+         !             -- straight Coulomb
+         
+         delrinv = one/sqrt(delr2)
+         delr2inv = delrinv*delrinv
+         b0 = cgi*charge(j)*delrinv
+         ecur = b0
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = b0*delr2inv
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+
+      end do
+
+
+! epilogue: 12-10 LJ terms.
+
+
+!  --- this code allows 10-12 terms; in many (most?) (all?) cases, the
+!       only "nominal" 10-12 terms are on waters, where the asol and bsol
+!       parameters are always zero; hence we can skip this part.
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   df =   cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+
+
+   else if ( eedmeth == 5 )then
+
+      !---------------------------------------------------
+      !     Loop over the 12-6 LJ terms for eedmeth = 5
+      !---------------------------------------------------
+      
+      icount = 0
+      do m = 1,nvdw
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      !  calculation starts: loop over the data gathered in the temporary
+      !  array caches.
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1,icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !             -- use dielectric of 1/r:
+         
+         delr2inv = one/delr2
+         b0 = cgi*charge(j)*delr2inv
+         ecur = b0
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = two*b0*delr2inv
+
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+      end do
+
+      if( tvips )then
+         ! Use IPS for L-J energy:
+
+! epilogue: 12-6 LF IPS terms  by Xiongwu Wu
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+!  L-J r6 term
+        UIPS2=1.0D0/(DELR2INV*RIPS2)
+        UIPS6=UIPS2*UIPS2*UIPS2
+        TWOU2=2.0D0-UIPS2
+        TWOU6=TWOU2*TWOU2*TWOU2
+        TWOU12=TWOU6*TWOU6
+        PVC=BIPSVC0+UIPS2*(BIPSVC1    &
+             +UIPS2*(BIPSVC2+UIPS2*BIPSVC3))
+            PVCU=2.0D0*BIPSVC1+       &
+                  UIPS2*(4.0D0*BIPSVC2+6.0D0*BIPSVC3*UIPS2)
+            DVCU=(PVCU+6.0D0*PVC/TWOU2)/TWOU6
+!  L-J r12 term 
+            PVA=BIPSVA0+UIPS2*(BIPSVA1    &
+             +UIPS2*(BIPSVA2+UIPS2*BIPSVA3))
+            PVAU=2.0D0*BIPSVA1+           &
+             UIPS2*(4.0D0*BIPSVA2+6.0D0*BIPSVA3*UIPS2)
+            DVAU=(PVAU+12.0D0*PVA/TWOU2)/TWOU12
+   evdw = evdw + f12 - f6  &
+         +(f12*(PVA/TWOU12-PIPSVAC)*UIPS6-f6*(PVC/TWOU6-PIPSVCC))*UIPS6
+   df = dfee + (12.d0*f12 - 6.d0*f6  &
+         -(f12*DVAU*uips6-f6*DVCU)*uips6*UIPS2)*delr2inv
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      else
+         ! regular epilogue:
+
+! epilogue: 12-6 LF terms
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+! Antonios added here 2/15/2010 HB
+   if(maphb(i,j).lt.1) then
+	   EHBV=EHBV+f12-f6
+   endif
+! Antonios end 
+
+
+   ! -- ti decomp
+   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+   evdw = evdw + f12 - f6
+   df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      end if
+      
+      !---------------------------------------------------------
+      !     Now loop over the 12-10 LJ terms for eedmeth = 5
+      !---------------------------------------------------------
+      
+      icount = 0
+      do m = nvdw+1,ntot
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      ! SGI compiler directive to prevent compiler loop fusioning.
+      !*$* NO FUSION
+      do im_new = 1, icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         
+         !             -- use dielectric of 1/r:
+         
+         delr2inv = one/delr2
+         b0 = cgi*charge(j)*delr2inv
+         ecur = b0
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = two*b0*delr2inv
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+
+      end do
+
+
+! epilogue: 12-10 LJ terms.
+
+
+!  --- this code allows 10-12 terms; in many (most?) (all?) cases, the
+!       only "nominal" 10-12 terms are on waters, where the asol and bsol
+!       parameters are always zero; hence we can skip this part.
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   df =   cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+
+   else if ( eedmeth == 6 )then
+
+      !-------------------------------------------------------
+      !     Loop over the 12-6 LJ terms for eedmeth = 6
+      !-------------------------------------------------------
+      
+      icount = 0
+      do m = 1,nvdw
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      
+      call vdinvsqrt( icount, cache_r2, cache_df )
+      ! the df cache now stores the reciprocal of delta r, variable delrinv.
+
+      if( teips .or. tvips ) nnbips=nnbips+icount*2
+
+      do im_new = 1,icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         delrinv = cache_df(im_new)
+         delr2inv = delrinv*delrinv
+
+         !  -- use a ipse long range potential:
+         !          eipse=e0+(b0+b1r^2+b2r^4+b3r^6)/sqrt(2-r^2)
+         ! compare: ele=1/r  fele=-1/r^2
+
+         uips=ripsinv*delr2*delrinv
+         uips2=delr2*rips2inv
+         twou2=1.d0/(2.0d0-uips2)
+         twou=sqrt(twou2)
+         b0 = cgi*charge(j)*delrinv
+         pipse = bipse0 + uips2*(bipse1 + uips2*(bipse2 + uips2*bipse3))
+         dpipse = 2.0d0*bipse1 + uips2*(4.0d0*bipse2 + 6.0d0*uips2*bipse3)
+         dipse = uips*(dpipse + pipse*twou2)*twou*rips2inv
+         eipse = b0*uips*(pipse*twou - pipsec)
+         ecur = b0 + eipse
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = b0*(delr2inv - dipse)
+         cache_r2(im_new)=delr2inv
+         cache_df(im_new)=dfee
+
+      end do
+
+      if(TVIPS)then
+         ! Use IPS for L-J energy
+
+! epilogue: 12-6 LF IPS terms  by Xiongwu Wu
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+!  L-J r6 term
+        UIPS2=1.0D0/(DELR2INV*RIPS2)
+        UIPS6=UIPS2*UIPS2*UIPS2
+        TWOU2=2.0D0-UIPS2
+        TWOU6=TWOU2*TWOU2*TWOU2
+        TWOU12=TWOU6*TWOU6
+        PVC=BIPSVC0+UIPS2*(BIPSVC1    &
+             +UIPS2*(BIPSVC2+UIPS2*BIPSVC3))
+            PVCU=2.0D0*BIPSVC1+       &
+                  UIPS2*(4.0D0*BIPSVC2+6.0D0*BIPSVC3*UIPS2)
+            DVCU=(PVCU+6.0D0*PVC/TWOU2)/TWOU6
+!  L-J r12 term 
+            PVA=BIPSVA0+UIPS2*(BIPSVA1    &
+             +UIPS2*(BIPSVA2+UIPS2*BIPSVA3))
+            PVAU=2.0D0*BIPSVA1+           &
+             UIPS2*(4.0D0*BIPSVA2+6.0D0*BIPSVA3*UIPS2)
+            DVAU=(PVAU+12.0D0*PVA/TWOU2)/TWOU12
+   evdw = evdw + f12 - f6  &
+         +(f12*(PVA/TWOU12-PIPSVAC)*UIPS6-f6*(PVC/TWOU6-PIPSVCC))*UIPS6
+   df = dfee + (12.d0*f12 - 6.d0*f6  &
+         -(f12*DVAU*uips6-f6*DVCU)*uips6*UIPS2)*delr2inv
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      else
+         ! epilogue
+
+! epilogue: 12-6 LF terms
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   dfee = cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+   delr2inv = cache_r2(im_new)
+
+   ic = ico(iaci+iac(j))
+   r6 = delr2inv*delr2inv*delr2inv
+   f6 = cn2(ic)*r6
+   f12 = cn1(ic)*(r6*r6)
+! Antonios added here 2/15/2010 HB
+   if(maphb(i,j).lt.1) then
+	   EHBV=EHBV+f12-f6
+   endif
+! Antonios end 
+
+
+   ! -- ti decomp
+   if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+   evdw = evdw + f12 - f6
+   df = dfee + (12.d0*f12 - 6.d0*f6)*delr2inv
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+      endif
+
+      !--------------------------------------------------------
+      !     Now loop over the 12-10 LJ terms for eedmeth = 6
+      !--------------------------------------------------------
+      
+      icount = 0
+      do m = nvdw+1,ntot
+
+! prologue: gather the data and put it in temporary arrays.
+
+   n=ipairs(m)
+   itran=ishft(n,-27)
+   n = iand(n,mask27)
+   j = bckptr(n)
+   delx = imagcrds(1,n) + xktran(1,itran)
+   dely = imagcrds(2,n) + xktran(2,itran)
+   delz = imagcrds(3,n) + xktran(3,itran)
+   delr2 = delx*delx + dely*dely+delz*delz
+   
+   if ( delr2 < filter_cut2 )then
+      icount = icount + 1
+      cache_x(icount) = delx
+      cache_y(icount) = dely
+      cache_z(icount) = delz
+      cache_r2(icount) = delr2
+      cache_bckptr(icount) = j
+   end if
+      end do
+      call vdinvsqrt( icount, cache_r2, cache_df )
+      
+      if( teips .or. tvips ) nnbips=nnbips+icount*2
+
+      do im_new = 1, icount
+
+         j = cache_bckptr(im_new)
+         delr2 = cache_r2(im_new)
+         delrinv = cache_df(im_new)
+         delr2inv = delrinv*delrinv
+         b0 = cgi*charge(j)*delrinv
+
+         !  -- use a ipse long range potential:
+         !           eipse=e0+(b0+b1r^2+b2r^4+b3r^6)/sqrt(2-r^2)
+         !  compare: ele=1/r  fele=-1/r^2
+
+         uips = ripsinv*delr2*delrinv
+         uips2 = delr2*rips2inv
+         twou2 = 1.d0/(2.0d0 - uips2)
+         twou = sqrt(twou2)
+         pipse = bipse0 + uips2*(bipse1 + uips2*(bipse2 + uips2*bipse3))
+         dpipse = 2.0d0*bipse1 + uips2*(4.0d0*bipse2 + 6.0d0*uips2*bipse3)
+         dipse = uips*(dpipse + pipse*twou2)*twou*rips2inv
+         eipse = b0*uips*(pipse*twou - pipsec)
+         ecur = b0 + eipse
+         eelt = eelt + ecur
+         ! -- ti decomp
+         if(decpr .and. idecomp > 0) call decpair(2,i,j,ecur/(nstlim/ntpr))
+         dfee = b0*(delr2inv - dipse)
+
+         cache_df(im_new)=dfee
+
+      end do
+
+
+! epilogue: 12-10 LJ terms.
+
+
+!  --- this code allows 10-12 terms; in many (most?) (all?) cases, the
+!       only "nominal" 10-12 terms are on waters, where the asol and bsol
+!       parameters are always zero; hence we can skip this part.
+
+do im_new = 1,icount
+   j = cache_bckptr(im_new)
+
+   df =   cache_df(im_new)
+   delx = cache_x(im_new)
+   dely = cache_y(im_new)
+   delz = cache_z(im_new)
+
+   dfx = delx*df
+   dfy = dely*df
+   dfz = delz*df
+   vxx = vxx - dfx*delx
+   vxy = vxy - dfx*dely
+   vxz = vxz - dfx*delz
+   vyy = vyy - dfy*dely
+   vyz = vyz - dfy*delz
+   vzz = vzz - dfz*delz
+   dumx = dumx + dfx
+   dumy = dumy + dfy
+   dumz = dumz + dfz
+   force(1,j) = force(1,j) + dfx
+   force(2,j) = force(2,j) + dfy
+   force(3,j) = force(3,j) + dfz
+end do  !  im_new = 1,icount
+
+   end if  ! ( eedmeth )
+
+   force(1,i) = force(1,i) - dumx
+   force(2,i) = force(2,i) - dumy
+   force(3,i) = force(3,i) - dumz
+   dir_vir(1,1) = dir_vir(1,1) + vxx
+   dir_vir(1,2) = dir_vir(1,2) + vxy
+   dir_vir(2,1) = dir_vir(2,1) + vxy
+   dir_vir(1,3) = dir_vir(1,3) + vxz
+   dir_vir(3,1) = dir_vir(3,1) + vxz
+   dir_vir(2,2) = dir_vir(2,2) + vyy
+   dir_vir(2,3) = dir_vir(2,3) + vyz
+   dir_vir(3,2) = dir_vir(3,2) + vyz
+   dir_vir(3,3) = dir_vir(3,3) + vzz
+   eedvir = eedvir + ee_vir_iso
+
+   return
+end subroutine short_ene 
+
+
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!+ Calculate the direct Ewald component of the potentials 
+!+     with polarizabilities.
+!
+!-----------------------------------------------------------------------
+!     --- SHORT_ENE_DIP ---
+!-----------------------------------------------------------------------
+
+subroutine short_ene_dip(i,xk,yk,zk,ipairs,numtot,numvdw, &
+      ewaldcof,eedtbdns, &
+      eed_cub,eed_lin,charge,dipole, &
+      ntypes,iac,ico,cn1,cn2,asol,bsol,filter_cut, &
+      eelt,epol,evdw,ehb,frc,field,dir_vir, &
+      ee_type,eedmeth,dxdr,eedvir)
+
+   use nblist, only: bckptr,imagcrds,tranvec
+   use constants, only : zero, one, two, three, five, six, twelve, third, half
+   implicit none
+   double precision xk,yk,zk
+   integer i,numvdw,numtot
+   integer ipairs(*),ee_type,eedmeth
+   double precision ewaldcof,eed_cub(4,*),eed_lin(2,*), &
+         charge(*),dipole(3,*),dir_vir(3,3),eedvir
+   double precision eedtbdns,filter_cut,dxdr
+   integer ntypes,iac(*),ico(*)
+   double precision cn1(*),cn2(*),asol(*),bsol(*), &
+         eelt,epol,evdw,ehb,frc(3,*),field(3,*)
+   integer ic,j,m,n,ind,iaci
+   double precision del
+   double precision switch,d_switch_dx
+   double precision ee_vir_iso
+   double precision edx,edy,edz
+   double precision b0,b1,b2,b3,fac,dotir,dotjr,dotij,fact
+   double precision dphii_dx,dphii_dy,dphii_dz, &
+         dphij_dx,dphij_dy,dphij_dz
+   double precision  term,term0,term1,termi,termj,cgj
+
+   double precision filter_cut2,xx
+   double precision xktran(3,18)
+   integer, parameter :: mask27 = 2**27 - 1
+   double precision delx,dely,delz,delr, delr2,    f10,   r10,  cgi, &
+        delr2inv, r6,    f6,   f12, df,       dfee,  dx,   x, &
+        dfx,      vxx,   vxy,  vxz, dfy,      vyy,   vyz,  dumy, &
+        dfz,      vzz,   dumz, dumx
+   integer itran
+   
+   fac = two*ewaldcof*ewaldcof
+   ee_vir_iso = zero
+   del = one / eedtbdns
+   dumx = zero
+   dumy = zero
+   dumz = zero
+   edx = zero
+   edy = zero
+   edz = zero
+   filter_cut2 = filter_cut*filter_cut
+   cgi = charge(i)
+   iaci = ntypes * (iac(i) - 1)
+
+   do m=1,18
+      xktran(1,m) = tranvec(1,m) - xk
+      xktran(2,m) = tranvec(2,m) - yk
+      xktran(3,m) = tranvec(3,m) - zk
+   end do
+   do m = 1,numvdw
+      n = ipairs(m)
+      itran=ishft(n,-27)
+      n = iand(n,mask27)
+      j = bckptr(n)
+      delx = imagcrds(1,n) + xktran(1,itran)
+      dely = imagcrds(2,n) + xktran(2,itran)
+      delz = imagcrds(3,n) + xktran(3,itran)
+      delr2 = delx*delx + dely*dely+delz*delz
+      if ( delr2 < filter_cut2 )then
+         delr = sqrt(delr2)
+         delr2inv = one/delr2
+         x = dxdr*delr
+         cgj = charge(j)
+         if ( eedmeth == 1 )then
+            
+            !           -- cubic spline on switch
+            
+            ind = eedtbdns*x + 1
+            dx = x - (ind-one)*del
+            switch = eed_cub(1,ind)+dx*(eed_cub(2,ind)+ &
+                  dx*(eed_cub(3,ind)+dx*eed_cub(4,ind)*third)*half)
+            d_switch_dx = eed_cub(2,ind)+dx*(eed_cub(3,ind)+ &
+                  dx*eed_cub(4,ind)*half)
+            
+         else if ( eedmeth == 2 )then
+            
+            !           ---linear lookup on switch, deriv
+            
+            xx = eedtbdns*x + 1
+            ind = xx
+            dx = xx - ind
+            switch = (one - dx)*eed_lin(1,ind) + &
+                  dx*eed_lin(1,ind+1)
+            d_switch_dx = (one - dx)*eed_lin(2,ind) + &
+                  dx*eed_lin(2,ind+1)
+            
+         else if ( eedmeth == 3 )then
+            
+            !           ---direct function call:
+            
+            call get_ee_func(x,switch,d_switch_dx,ee_type)
+            
+         else if ( eedmeth == 4 ) then
+            
+            !            ---use un-modified Coulomb interaction, no switch
+            
+            switch = one
+            d_switch_dx = zero
+            
+         else
+            
+            write(6,*) 'bad eedmeth in ew_short_dip: ',eedmeth
+            call mexit( 6,1 )
+            
+         end if  ! ( eedmeth == 1 )
+         
+         ! TD Got the idea for B_l from Walter Smith's CCP5 article 1982
+         ! Ewald for point multipoles
+         ! B_l satisfies grad_i B_l(|r_j - r_i|) = (r_j - r_i)B_{l+1}(|r_j-r_i|)
+         ! grad_j B_l(|r_j - r_i|) = -grad_i B_l(|r_j - r_i|)
+         
+         b0 = switch*delr*delr2inv
+         fact = d_switch_dx*dxdr
+         b1 = (b0 - fact)*delr2inv
+         fact = fac*fact
+         b2 = (three*b1 - fact)*delr2inv
+         fact = fac*fact
+         b3 = (five*b2 - fact)*delr2inv
+         
+         ! B1 = (B0 - d_switch_dx*dxdr)*delr2inv
+         ! B2 = (Three*B1 - fac*ewaldcof*d_switch_dx)*delr2inv
+         ! B3 = (Five*B2 - fac*fac*ewaldcof*d_switch_dx)*delr2inv
+         
+         ! epol = dip_i dot grad_i of phii
+         ! phii is direct sum electrostatic potential at i due to j
+         ! so phii = cgj*B0 + dipj dot gradj of B0 = cgj*B0 - dotjr*B1
+         ! dphii_dx etc are derivatives with respect to r_i
+         ! phij is direct sum electrostatic potential at j due to i
+         ! dphij_dx etc are derivatives with respect to r_j
+         
+         dotjr = dipole(1,j)*delx+dipole(2,j)*dely+dipole(3,j)*delz
+         dotir = dipole(1,i)*delx+dipole(2,i)*dely+dipole(3,i)*delz
+         dotij = dipole(1,i)*dipole(1,j)+dipole(2,i)*dipole(2,j)+ &
+               dipole(3,i)*dipole(3,j)
+         
+         ! gradi phii = cgj*rij*B1 + dipj*B1 - dotjr*rij*B2
+         ! so epol = -cgi*dotjr*B1 + (cgj*B1 - dotjr*B2)*dotir + dotij*B1
+         
+         eelt = eelt + cgi*cgj*b0
+         term = cgj*dotir-cgi*dotjr+dotij
+         epol = epol + term*b1 - dotir*dotjr*b2
+         term0 = cgi*cgj*b0 + term*b1 - dotir*dotjr*b2
+         
+         ! so ene = ene + term0; dfx = dterm0_dx etc
+         ! grad term0 = term1*rij + B1*grad_i term - grad_i dotir*dotjr*B2
+         ! grad_i term = -cgj*dip_i + cgi*dip_j
+         ! grad_i dotir = -dip_i; similar for dotjr
+         ! grad_i term0 = term1*rij + (-cgj*B1+dotjr*B2)*dip_i +
+         !                (cgi*B1+dotir*B2)*dip_j
+         
+         term1 = cgi*cgj*b1 + term*b2 - dotir*dotjr*b3
+         termi = cgi*b1+dotir*b2
+         termj = cgj*b1-dotjr*b2
+         dfx = term1*delx + termi*dipole(1,j) - termj*dipole(1,i)
+         dfy = term1*dely + termi*dipole(2,j) - termj*dipole(2,i)
+         dfz = term1*delz + termi*dipole(3,j) - termj*dipole(3,i)
+         ee_vir_iso = ee_vir_iso - dfx*delx - dfy*dely - dfz*delz
+         ic = ico(iaci+iac(j))
+         r6 = delr2inv*delr2inv*delr2inv
+         f6 = cn2(ic)*r6
+         f12 = cn1(ic)*(r6*r6)
+         evdw = evdw + f12 - f6
+         
+         !         ---force related quantities
+         
+         df = (twelve*f12 - six*f6)*delr2inv
+         dfx = dfx + df*delx
+         dfy = dfy + df*dely
+         dfz = dfz + df*delz
+         dir_vir(1,1) = dir_vir(1,1) - dfx*delx
+         dir_vir(1,2) = dir_vir(1,2) - dfx*dely
+         dir_vir(1,3) = dir_vir(1,3) - dfx*delz
+         dir_vir(2,1) = dir_vir(2,1) - dfy*delx
+         dir_vir(2,2) = dir_vir(2,2) - dfy*dely
+         dir_vir(2,3) = dir_vir(2,3) - dfy*delz
+         dir_vir(3,1) = dir_vir(3,1) - dfz*delx
+         dir_vir(3,2) = dir_vir(3,2) - dfz*dely
+         dir_vir(3,3) = dir_vir(3,3) - dfz*delz
+         frc(1,j) = frc(1,j) + dfx
+         frc(2,j) = frc(2,j) + dfy
+         frc(3,j) = frc(3,j) + dfz
+         dumx = dumx + dfx
+         dumy = dumy + dfy
+         dumz = dumz + dfz
+         
+         !         ---field related quantities
+         
+         dphii_dx = termj*delx + b1*dipole(1,j)
+         dphii_dy = termj*dely + b1*dipole(2,j)
+         dphii_dz = termj*delz + b1*dipole(3,j)
+         dphij_dx = -termi*delx + b1*dipole(1,i)
+         dphij_dy = -termi*dely + b1*dipole(2,i)
+         dphij_dz = -termi*delz + b1*dipole(3,i)
+         edx = edx + dphii_dx
+         edy = edy + dphii_dy
+         edz = edz + dphii_dz
+         field(1,j) = field(1,j) - dphij_dx
+         field(2,j) = field(2,j) - dphij_dy
+         field(3,j) = field(3,j) - dphij_dz
+      end if  ! ( delr2 < filter_cut2 )
+   end do  !  m = 1,numvdw
+   
+   do m = numvdw+1,numtot
+      n = ipairs(m)
+      itran=ishft(n,-27)
+      n = iand(n,mask27)
+      j = bckptr(n)
+      delx = imagcrds(1,n) + xktran(1,itran)
+      dely = imagcrds(2,n) + xktran(2,itran)
+      delz = imagcrds(3,n) + xktran(3,itran)
+      delr2 = delx*delx + dely*dely+delz*delz
+      if ( delr2 < filter_cut2 )then
+         delr = sqrt(delr2)
+         delr2inv = one/delr2
+         x = dxdr*delr
+         cgj = charge(j)
+
+         if ( eedmeth == 1 )then
+            
+            !           -- cubic spline on switch
+            
+            ind = eedtbdns*x + 1
+            dx = x - (ind-one)*del
+            switch = eed_cub(1,ind)+dx*(eed_cub(2,ind)+ &
+                  dx*(eed_cub(3,ind)+dx*eed_cub(4,ind)*third)*half)
+            d_switch_dx = eed_cub(2,ind)+dx*(eed_cub(3,ind)+ &
+                  dx*eed_cub(4,ind)*half)
+            
+         else if ( eedmeth == 2 )then
+            
+            !           ---linear lookup on switch, deriv
+            
+            xx = eedtbdns*x + 1
+            ind = xx
+            dx = xx - ind
+            switch = (one - dx)*eed_lin(1,ind) + &
+                  dx*eed_lin(1,ind+1)
+            d_switch_dx = (one - dx)*eed_lin(2,ind) + &
+                  dx*eed_lin(2,ind+1)
+            
+         else if ( eedmeth == 3 )then
+            
+            !           ---direct function call:
+            
+            call get_ee_func(x,switch,d_switch_dx,ee_type)
+            
+         else if ( eedmeth == 4 ) then
+            
+            !            ---use un-modified Coulomb interaction, no switch
+            
+            switch = one
+            d_switch_dx = zero
+            
+         else
+            
+            write(6,*) 'bad eedmeth in ew_short_dip: ',eedmeth
+            call mexit( 6,1 )
+            
+         end if  ! ( eedmeth == 1 )
+         
+         b0 = switch*delr*delr2inv
+         fact = d_switch_dx*dxdr
+         b1 = (b0 - fact)*delr2inv
+         fact = fac*fact
+         b2 = (three*b1 - fact)*delr2inv
+         fact = fac*fact
+         b3 = (five*b2 - fact)*delr2inv
+         !         B0 = switch*delr*delr2inv
+         !         B1 = (B0 - d_switch_dx*dxdr)*delr2inv
+         !         B2 = (Three*B1 - fac*ewaldcof*d_switch_dx)*delr2inv
+         !         B3 = (Five*B2 - fac*fac*ewaldcof*d_switch_dx)*delr2inv
+         
+         dotjr = dipole(1,j)*delx+dipole(2,j)*dely+dipole(3,j)*delz
+         dotir = dipole(1,i)*delx+dipole(2,i)*dely+dipole(3,i)*delz
+         dotij = dipole(1,i)*dipole(1,j)+dipole(2,i)*dipole(2,j)+ &
+               dipole(3,i)*dipole(3,j)
+         eelt = eelt + cgi*cgj*b0
+         term = cgj*dotir-cgi*dotjr+dotij
+         epol = epol + term*b1 - dotir*dotjr*b2
+         term0 = cgi*cgj*b0 + term*b1 - dotir*dotjr*b2
+         term1 = cgi*cgj*b1 + term*b2 - dotir*dotjr*b3
+         termi = cgi*b1+dotir*b2
+         termj = cgj*b1-dotjr*b2
+         dfx = (term1)*delx + termi*dipole(1,j) - termj*dipole(1,i)
+         dfy = (term1)*dely + termi*dipole(2,j) - termj*dipole(2,i)
+         dfz = (term1)*delz + termi*dipole(3,j) - termj*dipole(3,i)
+         ee_vir_iso = ee_vir_iso - dfx*delx - dfy*dely - dfz*delz
+         df = zero
+         
+         !         ---force related quantities
+         
+         dfx = dfx + df*delx
+         dfy = dfy + df*dely
+         dfz = dfz + df*delz
+         dir_vir(1,1) = dir_vir(1,1) - dfx*delx
+         dir_vir(1,2) = dir_vir(1,2) - dfx*dely
+         dir_vir(1,3) = dir_vir(1,3) - dfx*delz
+         dir_vir(2,1) = dir_vir(2,1) - dfy*delx
+         dir_vir(2,2) = dir_vir(2,2) - dfy*dely
+         dir_vir(2,3) = dir_vir(2,3) - dfy*delz
+         dir_vir(3,1) = dir_vir(3,1) - dfz*delx
+         dir_vir(3,2) = dir_vir(3,2) - dfz*dely
+         dir_vir(3,3) = dir_vir(3,3) - dfz*delz
+         frc(1,j) = frc(1,j) + dfx
+         frc(2,j) = frc(2,j) + dfy
+         frc(3,j) = frc(3,j) + dfz
+         dumx = dumx + dfx
+         dumy = dumy + dfy
+         dumz = dumz + dfz
+         
+         !         ---field related quantities
+         
+         dphii_dx = termj*delx + b1*dipole(1,j)
+         dphii_dy = termj*dely + b1*dipole(2,j)
+         dphii_dz = termj*delz + b1*dipole(3,j)
+         dphij_dx = -termi*delx + b1*dipole(1,i)
+         dphij_dy = -termi*dely + b1*dipole(2,i)
+         dphij_dz = -termi*delz + b1*dipole(3,i)
+         edx = edx + dphii_dx
+         edy = edy + dphii_dy
+         edz = edz + dphii_dz
+         field(1,j) = field(1,j) - dphij_dx
+         field(2,j) = field(2,j) - dphij_dy
+         field(3,j) = field(3,j) - dphij_dz
+      end if  ! ( delr2 < filter_cut2 )
+   end do  !  m = numvdw+1,numtot
+   frc(1,i) = frc(1,i) - dumx
+   frc(2,i) = frc(2,i) - dumy
+   frc(3,i) = frc(3,i) - dumz
+   field(1,i) = field(1,i) - edx
+   field(2,i) = field(2,i) - edy
+   field(3,i) = field(3,i) - edz
+   eedvir = eedvir + ee_vir_iso
+   return
+end subroutine short_ene_dip 
+

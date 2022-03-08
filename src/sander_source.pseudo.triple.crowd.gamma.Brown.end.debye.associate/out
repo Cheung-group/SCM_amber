@@ -1,0 +1,225 @@
+42c42
+< !	EHBV=EHBV+f12-f6
+---
+> !	EHBV=EHBV+f12-f6 Commented out to avoid double count
+62c62
+< !                    write(73,*)i,j,NPP
+---
+> !                     write(73,*)i,j,NPP
+254c254,327
+< 
+---
+> ! Qian add, cap the HB energy
+>         if(FFxi .gt. 100.0) then
+>         FFxi = 100.0
+>         endif
+>         if(FFxi .lt. -100.0) then
+>         FFxi = -100.0
+>         endif
+>         if(FFyi .gt. 100.0) then
+>         FFyi = 100.0
+>         endif
+>         if(FFyi .lt. -100.0) then
+>         FFyi = -100.0
+>         endif
+>         if(FFzi .gt. 100.0) then
+>         FFzi = 100.0
+>         endif
+>         if(FFzi .lt. -100.0) then
+>         FFzi = -100.0
+>         endif
+>         if(FFxj .gt. 100.0) then
+>         FFxj = 100.0
+>         endif
+>         if(FFxj .lt. -100.0) then
+>         FFxj = -100.0
+>         endif
+>         if(FFyj .gt. 100.0) then
+>         FFyj = 100.0
+>         endif
+>         if(FFyj .lt. -100.0) then
+>         FFyj = -100.0
+>         endif
+>         if(FFzj .gt. 100.0) then
+>         FFzj = 100.0
+>         endif
+>         if(FFzj .lt. -100.0) then
+>         FFzj = -100.0
+>         endif
+>         if(FFxk .gt. 100.0) then
+>         FFxk = 100.0
+>         endif
+>         if(FFxk .lt. -100.0) then
+>         FFxk = -100.0
+>         endif
+>         if(FFyk .gt. 100.0) then
+>         FFyk = 100.0
+>         endif
+>         if(FFyk .lt. -100.0) then
+>         FFyk = -100.0
+>         endif
+>         if(FFzk .gt. 100.0) then
+>         FFzk = 100.0
+>         endif
+>         if(FFzk .lt. -100.0) then
+>         FFzk = -100.0
+>         endif
+>         if(FFxl .gt. 100.0) then
+>         FFxl = 100.0
+>         endif
+>         if(FFxl .lt. -100.0) then
+>         FFxl = -100.0
+>         endif
+>         if(FFyl .gt. 100.0) then
+>         FFyl = 100.0
+>         endif
+>         if(FFyl .lt. -100.0) then
+>         FFyl = -100.0
+>         endif
+>         if(FFzl .gt. 100.0) then
+>         FFzl = 100.0
+>         endif
+>         if(FFzl .lt. -100.0) then
+>         FFzl = -100.0
+>         endif
+> ! Qian add end
+261,276c334,366
+< 
+< !! -dp/dxj
+< !                      N_HB=NXI1(num)
+<                       N_HB=j
+<                        force(1,N_HB) = force(1,N_HB) + FFxj + Chi*dfx
+<                        force(2,N_HB) = force(2,N_HB) + FFyj + Chi*dfy
+<                        force(3,N_HB) = force(3,N_HB) + FFzj + Chi*dfz
+< 
+< !              write(72,*)N_HB,i,j
+< 
+< !! -dp/dxk
+< !                      N_HB=NXI2(num)
+<                       N_HB=i
+<                        force(1,N_HB) = force(1,N_HB) + FFxk - Chi*dfx
+<                        force(2,N_HB) = force(2,N_HB) + FFyk - Chi*dfy
+<                        force(3,N_HB) = force(3,N_HB) + FFzk - Chi*dfz
+---
+> ! Qian change
+> !!! -dp/dxj
+> !!                      N_HB=NXI1(num)
+> !                      N_HB=j
+> !                       force(1,N_HB) = force(1,N_HB) + FFxj + Chi*dfx
+> !                       force(2,N_HB) = force(2,N_HB) + FFyj + Chi*dfy
+> !                       force(3,N_HB) = force(3,N_HB) + FFzj + Chi*dfz
+> 
+> !!              write(72,*)N_HB,i,j
+> 
+> !!! -dp/dxk
+> !!                      N_HB=NXI2(num)
+> !                      N_HB=i
+> !                       force(1,N_HB) = force(1,N_HB) + FFxk - Chi*dfx
+> !                       force(2,N_HB) = force(2,N_HB) + FFyk - Chi*dfy
+> !                       force(3,N_HB) = force(3,N_HB) + FFzk - Chi*dfz
+> 
+>                         if(i .gt. j) then
+>                         force(1,i) = force(1,i) + FFxj - Chi*dfx
+>                         force(2,i) = force(2,i) + FFyj - Chi*dfy
+>                         force(3,i) = force(3,i) + FFzj - Chi*dfz
+>                         force(1,j) = force(1,j) + FFxk + Chi*dfx
+>                         force(2,j) = force(2,j) + FFyk + Chi*dfy
+>                         force(3,j) = force(3,j) + FFzk + Chi*dfz
+>                         else
+>                         force(1,i) = force(1,i) + FFxk - Chi*dfx
+>                         force(2,i) = force(2,i) + FFyk - Chi*dfy
+>                         force(3,i) = force(3,i) + FFzk - Chi*dfz
+>                         force(1,j) = force(1,j) + FFxj + Chi*dfx
+>                         force(2,j) = force(2,j) + FFyj + Chi*dfy
+>                         force(3,j) = force(3,j) + FFzj + Chi*dfz
+>                         endif
+> ! Qian change end
+358c448
+< 
+---
+> ! Qian add, cap the negative triple force
+360d449
+<         write(84,*) 'ixi,x ', ixi,fxi_chi,temp_chi,xtriple
+362a452,455
+>         if(Fxi_chi.lt.-MAXLIM) then
+>         Fxi_chi=-MAXLIM
+>         endif
+> 
+364d456
+<         write(84,*) 'ixi,y ', ixi,fyi_chi,temp_chi,xtriple
+366a459,462
+>         if(Fyi_chi.lt.-MAXLIM) then
+>         Fyi_chi=-MAXLIM
+>         endif
+> 
+369d464
+<         write(84,*) 'ixi,z ', ixi,fzi_chi,temp_chi,xtriple
+371c466,468
+< 
+---
+>         if(Fzi_chi.lt.-MAXLIM) then
+>         Fzi_chi=-MAXLIM
+>         endif
+373d469
+<         write(84,*) 'ixi1,x ', ixi1,fxi1_chi,temp_chi,xtriple
+375a472,475
+>         if(Fxi1_chi.lt.-MAXLIM) then
+>         Fxi1_chi=-MAXLIM
+>         endif
+> 
+377d476
+<         write(84,*) 'ixi1,y ', ixi1,fyi1_chi,temp_chi,xtriple
+379a479,482
+>         if(Fyi1_chi.lt.-MAXLIM) then
+>         Fyi1_chi=-MAXLIM
+>         endif
+> 
+381d483
+<         write(84,*) 'ixi1,z ', ixi1,fzi1_chi,temp_chi,xtriple
+384,385c486,489
+< 	if(Fxi2_chi.gt.MAXLIM) then
+<         write(84,*) 'ixi2,x ', ixi2,fxi2_chi,temp_chi,xtriple
+---
+>         if(Fzi1_chi.lt.-MAXLIM) then
+>         Fzi1_chi=-MAXLIM
+>         endif
+>         if(Fxi2_chi.gt.MAXLIM) then
+387a492,495
+>         if(Fxi2_chi.lt.-MAXLIM) then
+>         Fxi2_chi=-MAXLIM
+>         endif
+> 
+389d496
+<         write(84,*) 'ixi2,y ', ixi2,fyi2_chi,temp_chi,xtriple
+391a499,502
+>         if(Fyi2_chi.lt.-MAXLIM) then
+>         Fyi2_chi=-MAXLIM
+>         endif
+> 
+393d503
+<         write(84,*) 'ixi2,z ', ixi2,fzi2_chi,temp_chi,xtriple
+395a506,508
+>         if(Fzi2_chi.lt.-MAXLIM) then
+>         Fzi2_chi=-MAXLIM
+>         endif
+398d510
+<         write(84,*) 'ixi3,x ', ixi3,fxi3_chi,temp_chi,xtriple
+400a513,516
+>         if(Fxi3_chi.lt.-MAXLIM) then
+>         Fxi3_chi=-MAXLIM
+>         endif
+> 
+402d517
+<         write(84,*) 'ixi3,y ', ixi3,fyi3_chi,temp_chi,xtriple
+404a520,523
+>         if(Fyi3_chi.lt.-MAXLIM) then
+>         Fyi3_chi=-MAXLIM
+>         endif
+> 
+406d524
+<         write(84,*) 'ixi3,z ', ixi3,fzi3_chi,temp_chi,xtriple
+408a527,530
+>         if(Fzi3_chi.lt.-MAXLIM) then
+>         Fzi3_chi=-MAXLIM
+>         endif
+> ! Qian add end

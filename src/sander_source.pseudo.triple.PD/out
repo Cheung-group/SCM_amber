@@ -1,0 +1,70 @@
+_ew_force.f:double precision XAX,XAY,XAZ,XBX,XBY,XBZ,XCX,XCY,XCZ,xtriple,echii
+_ew_force.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_ew_force.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_ew_force.f:   call mpi_allreduce(ECHI,rl_temp,1, &
+_ew_force.f:   call putm_back(ECHI,rl_temp,1)
+_ew_force.f:   write(84,*)echi
+ew_force.f:   call mpi_allreduce(ECHI,rl_temp,1, &
+ew_force.f:   call putm_back(ECHI,rl_temp,1)
+ew_force.f:   write(84,*)echi
+_extra_pts.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_extra_pts.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_extra_pts.f:double precision XAX,XAY,XAZ,XBX,XBY,XBZ,XCX,XCY,XCZ,xtriple,echii
+_force.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_force.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_runmd.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_runmd.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_runmd.f:double precision XAX,XAY,XAZ,XBX,XBY,XBZ,XCX,XCY,XCZ,xtriple,echii
+_runmd.f:!        ENER(23)=ENER(23)+ECHI
+_runmd.f:!        write(72,*)ECHI   This is the one that works. Prints one value for every step.
+_runmd.f:! It was used for the serial version before we decided to add the echi at evdw in ew_directe.h 
+_runmd.f:              write(38,*)ECHI
+_runmd.f:              ener(42) = ECHI
+_runmd.f:              write(85,*)echi
+runmd.f:!        ENER(23)=ENER(23)+ECHI
+runmd.f:!        write(72,*)ECHI   This is the one that works. Prints one value for every step.
+runmd.f:! It was used for the serial version before we decided to add the echi at evdw in ew_directe.h 
+runmd.f:              write(38,*)ECHI
+runmd.f:              ener(42) = ECHI
+runmd.f:              write(85,*)echi
+_sander.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_sander.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_sander.f:double precision XAX,XAY,XAZ,XBX,XBY,XBZ,XCX,XCY,XCZ,xtriple,echii
+_short_ene.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_short_ene.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_short_ene.f:double precision XAX,XAY,XAZ,XBX,XBY,XBZ,XCX,XCY,XCZ,xtriple,echii
+_short_ene.f:   ECHI = zero
+_short_ene.f:double precision amp,EHBA,EHBV,ECHI,XKCHI,THE0,PHI0,U,ENBT
+_short_ene.f:common/ENERTW/EHBA,EHBV,ECHI,XKCHI
+_short_ene.f:double precision XAX,XAY,XAZ,XBX,XBY,XBZ,XCX,XCY,XCZ,xtriple,echii
+_short_ene.f:        ECHII=0.5*temp_chi*(xtriple-XCHI(i_chi))
+_short_ene.f:        ECHI=ECHII+ECHI
+_short_ene.f:!       evdw = evdw + ECHI
+_short_ene.f:!       write(81,*)xchi(i_chi),xtriple,ECHII,temp_chi
+_short_ene.f:    evdw = evdw + echi
+_short_ene.f:        ECHII=0.5*temp_chi*(xtriple-XCHI(i_chi))
+_short_ene.f:        ECHI=ECHII+ECHI
+_short_ene.f:!       evdw = evdw + ECHI
+_short_ene.f:!       write(81,*)xchi(i_chi),xtriple,ECHII,temp_chi
+_short_ene.f:    evdw = evdw + echi
+_short_ene.f:        ECHII=0.5*temp_chi*(xtriple-XCHI(i_chi))
+_short_ene.f:        ECHI=ECHII+ECHI
+_short_ene.f:!       evdw = evdw + ECHI
+_short_ene.f:!       write(81,*)xchi(i_chi),xtriple,ECHII,temp_chi
+_short_ene.f:    evdw = evdw + echi
+_short_ene.f:        ECHII=0.5*temp_chi*(xtriple-XCHI(i_chi))
+_short_ene.f:        ECHI=ECHII+ECHI
+_short_ene.f:!       evdw = evdw + ECHI
+_short_ene.f:!       write(81,*)xchi(i_chi),xtriple,ECHII,temp_chi
+_short_ene.f:    evdw = evdw + echi
+_short_ene.f:        ECHII=0.5*temp_chi*(xtriple-XCHI(i_chi))
+_short_ene.f:        ECHI=ECHII+ECHI
+_short_ene.f:!       evdw = evdw + ECHI
+_short_ene.f:!       write(81,*)xchi(i_chi),xtriple,ECHII,temp_chi
+_short_ene.f:    evdw = evdw + echi
+_short_ene.f:        ECHII=0.5*temp_chi*(xtriple-XCHI(i_chi))
+_short_ene.f:        ECHI=ECHII+ECHI
+_short_ene.f:!       evdw = evdw + ECHI
+_short_ene.f:!       write(81,*)xchi(i_chi),xtriple,ECHII,temp_chi
+_short_ene.f:    evdw = evdw + echi
+short_ene.f:   ECHI = zero

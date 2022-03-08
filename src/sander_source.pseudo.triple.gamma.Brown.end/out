@@ -1,0 +1,135 @@
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_cmd_matrix.f:double precision scaltles,tempsules,ekeles,rsdles
+_dynlib.f:double precision scaltles,tempsules,ekeles,rsdles
+_dynlib.f:double precision scaltles,tempsules,ekeles,rsdles
+_egb.f:double precision scaltles,tempsules,ekeles,rsdles
+_egb.f:double precision scaltles,tempsules,ekeles,rsdles
+_ene.f:double precision scaltles,tempsules,ekeles,rsdles
+_ene.f:double precision scaltles,tempsules,ekeles,rsdles
+_ene.f:double precision scaltles,tempsules,ekeles,rsdles
+_evb_pimd_init.f:double precision scaltles,tempsules,ekeles,rsdles
+_ew_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_ew_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_ew_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_ew_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_ew_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_ew_setup.f:double precision scaltles,tempsules,ekeles,rsdles
+_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_mdread.f:double precision scaltles,tempsules,ekeles,rsdles
+_mdread.f:double precision GAMMA_BD,RRADIUS,gamma_array,gammai_as,sdfac_as,rsd_as
+_mdread.f:integer nrsize,gamma_index,rsd_index,natom_as
+_mdread.f:COMMON/xfriction/gamma_array(10000),gammai_as(10000),sdfac_as(10000),rsd_as(10000)
+_mdread.f:double precision scaltles,tempsules,ekeles,rsdles
+_nmr.f:double precision scaltles,tempsules,ekeles,rsdles
+_nmr.f:         irsdif = abs(ires2-ires1)
+_nmr.f:         if (iwtstp(1,ishrtb) <= irsdif .and. &
+_nmr.f:               irsdif <= iwtstp(2,ishrtb)) nmrshb(i) = 1
+_nmr.f:double precision scaltles,tempsules,ekeles,rsdles
+nmr.f:         irsdif = abs(ires2-ires1)
+nmr.f:         if (iwtstp(1,ishrtb) <= irsdif .and. &
+nmr.f:               irsdif <= iwtstp(2,ishrtb)) nmrshb(i) = 1
+_nonbond_list.f:double precision scaltles,tempsules,ekeles,rsdles
+_nose_hoover_init.f:double precision scaltles,tempsules,ekeles,rsdles
+_nose_hoover_init_LES.f:double precision scaltles,tempsules,ekeles,rsdles
+_pimd_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_pimd_force.f:double precision scaltles,tempsules,ekeles,rsdles
+_pimd_init.f:double precision scaltles,tempsules,ekeles,rsdles
+_pimd_init.f:double precision scaltles,tempsules,ekeles,rsdles
+_pimd_init.f:double precision scaltles,tempsules,ekeles,rsdles
+_rdparm.f:double precision scaltles,tempsules,ekeles,rsdles
+_rdparm.f:double precision scaltles,tempsules,ekeles,rsdles
+_runmd.f:double precision scaltles,tempsules,ekeles,rsdles
+_runmd.f:double precision GAMMA_BD,RRADIUS,gamma_array,gammai_as,sdfac_as,rsd_as
+_runmd.f:integer nrsize,gamma_index,rsd_index,natom_as
+_runmd.f:COMMON/xfriction/gamma_array(10000),gammai_as(10000),sdfac_as(10000),rsd_as(10000)
+_runmd.f:   double precision winf,aamass,rterm,ekmh,ekph,ekpht,wfac,rsd,ekav
+_runmd.f:rsd_index=1.d0
+_runmd.f:               rsd = sdfac*sqrt(aamass)
+_runmd.f:               call gauss( 0.d0, rsd, fln )
+_runmd.f:               call gauss( 0.d0, rsd, fln )
+_runmd.f:               call gauss( 0.d0, rsd, fln )
+_runmd.f:               rsdles = sdfacles*sqrt(aamass)
+_runmd.f:               call gauss( 0.d0, rsdles, fln )
+_runmd.f:               call gauss( 0.d0, rsdles, fln )
+_runmd.f:               call gauss( 0.d0, rsdles, fln )
+_runmd.f:            rsd = sdfac*sqrt(aamass)
+_runmd.f:            call gauss( 0.d0, rsd, fln )
+_runmd.f:            call gauss( 0.d0, rsd, fln )
+_runmd.f:            call gauss( 0.d0, rsd, fln )
+_runmd.f:         rsd_index = rsd_index+1
+_runmd.f:!         call gauss( 0.d0, rsd, fln )
+_runmd.f:!         call gauss( 0.d0, rsd, fln )
+_runmd.f:!         call gauss( 0.d0, rsd, fln )
+runmd.f:   _REAL_ winf,aamass,rterm,ekmh,ekph,ekpht,wfac,rsd,ekav
+runmd.f:rsd_index=1.d0
+runmd.f:               rsd = sdfac*sqrt(aamass)
+runmd.f:               call gauss( 0.d0, rsd, fln )
+runmd.f:               call gauss( 0.d0, rsd, fln )
+runmd.f:               call gauss( 0.d0, rsd, fln )
+runmd.f:               rsdles = sdfacles*sqrt(aamass)
+runmd.f:               call gauss( 0.d0, rsdles, fln )
+runmd.f:               call gauss( 0.d0, rsdles, fln )
+runmd.f:               call gauss( 0.d0, rsdles, fln )
+runmd.f:            rsd = sdfac*sqrt(aamass)
+runmd.f:            call gauss( 0.d0, rsd, fln )
+runmd.f:            call gauss( 0.d0, rsd, fln )
+runmd.f:            call gauss( 0.d0, rsd, fln )
+runmd.f:         rsd = sdfac*sqrt(aamass)
+runmd.f:         rsd_as(rsd_index) = sdfac_as(rsd_index)*sqrt(aamass)
+runmd.f:!         write(72,*)rsd,rsd_as(rsd_index),rsd_index
+runmd.f:         call gauss( 0.d0, rsd_as(rsd_index), fln )
+runmd.f:         call gauss( 0.d0, rsd_as(rsd_index), fln )
+runmd.f:         call gauss( 0.d0, rsd_as(rsd_index), fln )
+runmd.f:         rsd_index = rsd_index+1
+runmd.f:!         call gauss( 0.d0, rsd, fln )
+runmd.f:!         call gauss( 0.d0, rsd, fln )
+runmd.f:!         call gauss( 0.d0, rsd, fln )
+_runmin.f:   integer irsdx,irsdg,iginit,ixopt,igopt,iterc,n_force_calls
+_runmin.f:   irsdx = n
+_runmin.f:   irsdg = irsdx+n
+_runmin.f:   iginit = irsdg+n
+_runmin.f:   gama = ddot(n,fg,1,w(irsdg+1),1)
+_runmin.f:   sum  = ddot(n,fg,1,w(irsdx+1),1)
+_runmin.f:   w(1:n) = -fg(1:n)+betax*w(1:n)+gama*w(irsdx+1:irsdx+n)
+_runmin.f:      w(irsdx+i) = w(i)
+_runmin.f:      w(irsdg+i) = fg(i)-w(iginit+i)
+runmin.f:   integer irsdx,irsdg,iginit,ixopt,igopt,iterc,n_force_calls
+runmin.f:   irsdx = n
+runmin.f:   irsdg = irsdx+n
+runmin.f:   iginit = irsdg+n
+runmin.f:   gama = ddot(n,fg,1,w(irsdg+1),1)
+runmin.f:   sum  = ddot(n,fg,1,w(irsdx+1),1)
+runmin.f:   w(1:n) = -fg(1:n)+betax*w(1:n)+gama*w(irsdx+1:irsdx+n)
+runmin.f:      w(irsdx+i) = w(i)
+runmin.f:      w(irsdg+i) = fg(i)-w(iginit+i)
+_sander.f:double precision scaltles,tempsules,ekeles,rsdles
+_sander.f:double precision GAMMA_BD,RRADIUS,gamma_array,gammai_as,sdfac_as,rsd_as
+_sander.f:integer nrsize,gamma_index,rsd_index,natom_as
+_sander.f:COMMON/xfriction/gamma_array(10000),gammai_as(10000),sdfac_as(10000),rsd_as(10000)
+_short_ene.f:double precision scaltles,tempsules,ekeles,rsdles
+_short_ene.f:double precision scaltles,tempsules,ekeles,rsdles
+_softcore.f:      double precision wfac, aamass, rsd, fln, fln_buffer(3*nsoftcore)
+_softcore.f:            rsd = sdfac*sqrt(aamass)
+_softcore.f:            call gauss( 0.d0, rsd, fln )
+_softcore.f:            call gauss( 0.d0, rsd, fln )
+_softcore.f:            call gauss( 0.d0, rsd, fln )
+_softcore.f:         rsd = sdfac*sqrt(aamass)
+_softcore.f:            call gauss( 0.d0, rsd, fln )
+_softcore.f:            call gauss( 0.d0, rsd, fln )
+_softcore.f:            call gauss( 0.d0, rsd, fln )
+softcore.f:      _REAL_ wfac, aamass, rsd, fln, fln_buffer(3*nsoftcore)
+softcore.f:            rsd = sdfac*sqrt(aamass)
+softcore.f:            call gauss( 0.d0, rsd, fln )
+softcore.f:            call gauss( 0.d0, rsd, fln )
+softcore.f:            call gauss( 0.d0, rsd, fln )
+softcore.f:         rsd = sdfac*sqrt(aamass)
+softcore.f:            call gauss( 0.d0, rsd, fln )
+softcore.f:            call gauss( 0.d0, rsd, fln )
+softcore.f:            call gauss( 0.d0, rsd, fln )

@@ -1,0 +1,152 @@
+GFORTRAN module version '10' created from _pupildata.f
+MD5:f5430d842783211123ad7a0597dceacf -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () () () () () () () () () () () () () () ()
+() () ())
+
+()
+
+()
+
+()
+
+()
+
+()
+
+(2 'bs1' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+3 'bs2' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+4 'ihstack' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (CHARACTER 1 0 0 0
+CHARACTER ((CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '4'))) 0 0 () (1 0
+DEFERRED () ()) 0 () () () 0 0)
+5 'ipup' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+6 'irespup' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+7 'ixstack' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+8 'jpup' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+9 'keymm' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (CHARACTER 1 0 0 0
+CHARACTER ((CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '20'))) 0 0 () (1 0
+DEFERRED () ()) 0 () () () 0 0)
+10 'keyres' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (CHARACTER 1 0 0 0
+CHARACTER ((CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '10'))) 0 0 () (1 0
+DEFERRED () ()) 0 () () () 0 0)
+11 'l_puptmp' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+12 'pupactive' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (LOGICAL 4 0 0 0 LOGICAL ()) 0 0 () () 0 () () () 0
+0)
+13 'pupatm' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+14 'pupbona' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+15 'pupbonh' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+16 'pupchg' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
+0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+17 'puperror' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+18 'pupildata' 'pupildata' '' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0
+0)
+19 'pupleveldata' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () ()
+0 () () () 0 0)
+20 'pupmask' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+21 'pupnb14' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+22 'pupnbona' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+23 'pupnbonh' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+24 'pupnphia' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+25 'pupnphih' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+26 'pupntheta' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+27 'pupntheth' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+28 'pupnumnb14' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+29 'pupphia' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+30 'pupphih' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+31 'pupqatoms' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+32 'pupqlist' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+33 'pupqzchange' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+34 'pupres' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+35 'pupstep' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0
+0)
+36 'puptheta' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+37 'puptheth' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (INTEGER 4 0 0 0
+INTEGER ()) 0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+38 'qcdata' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
+0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+39 'qcell' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
+0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+40 'qfpup' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
+0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+41 'qmenergy' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+42 'realstack' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
+0 0 () (1 0 DEFERRED () ()) 0 () () () 0 0)
+43 'straux' 'pupildata' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0) (CHARACTER 1 0 0 0 CHARACTER ((CONSTANT (INTEGER 4
+0 0 0 INTEGER ()) 0 '20'))) 0 0 () () 0 () () () 0 0)
+)
+
+('bs1' 0 2 'bs2' 0 3 'ihstack' 0 4 'ipup' 0 5 'irespup' 0 6 'ixstack' 0
+7 'jpup' 0 8 'keymm' 0 9 'keyres' 0 10 'l_puptmp' 0 11 'pupactive' 0 12
+'pupatm' 0 13 'pupbona' 0 14 'pupbonh' 0 15 'pupchg' 0 16 'puperror' 0
+17 'pupildata' 0 18 'pupleveldata' 0 19 'pupmask' 0 20 'pupnb14' 0 21
+'pupnbona' 0 22 'pupnbonh' 0 23 'pupnphia' 0 24 'pupnphih' 0 25
+'pupntheta' 0 26 'pupntheth' 0 27 'pupnumnb14' 0 28 'pupphia' 0 29
+'pupphih' 0 30 'pupqatoms' 0 31 'pupqlist' 0 32 'pupqzchange' 0 33
+'pupres' 0 34 'pupstep' 0 35 'puptheta' 0 36 'puptheth' 0 37 'qcdata' 0
+38 'qcell' 0 39 'qfpup' 0 40 'qmenergy' 0 41 'realstack' 0 42 'straux' 0
+43)

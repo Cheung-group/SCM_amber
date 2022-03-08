@@ -1,0 +1,144 @@
+#!/usr/bin/perl -w
+
+#  cycle through fortran files, determine which headers are included;
+#      the "used" array eliminates duplicate enties
+
+#  for LES and PUPIL copies, add these dependencies as well to the list
+
+#  Be sure do to a "make clean" before running this script!
+
+printf <<EOF;
+#
+#   Please do not edit the "depend" file directly, since it is created by the
+#   "makedepend" script.  If changes are needed, edit "makedepend" itself.
+#
+EOF
+
+$LES{"multisander"} = $LES{"rdparm"} = $LES{"mdread"} = $LES{"r6ave"} = $LES{"parallel" } =
+	$LES{"jnrg"} = $LES{"ene"} = $LES{"locmem"} = $LES{"ew_force"} = $LES{"ew_setup"} =
+	$LES{"ew_direct"} = $LES{"enb"} = $LES{"egb"} = $LES{"pimd_verlet"} =
+	$LES{"force"} = $LES{"dynlib"} = $LES{"extra_pts"} = $LES{"short_ene"} =
+	$LES{"degcnt"} = $LES{"sander"} = $LES{"nmr"} = $LES{"runmd"} =
+	$LES{"ew_recip"} = $LES{"egb"} = $LES{"pimd_init"} = $LES{"cmd_init"}= 
+	$LES{"cmd_matrix"} = $LES{"nonbond_list"} = $LES{"evb_input"} =
+	$LES{"evb_alloc"} = $LES{"evb_matrix"} = $LES{"morsify"} =
+	$LES{"mod_vdw"} = $LES{"evb_ntrfc"} = $LES{"evb_force"} =
+	$LES{"evb_umb"} = $LES{"evb_pimd_init"} = $LES{"pimd_force"} = 
+	$LES{"evb_umb_primitive"} = $LES{"out_evb"} = $LES{"remd"} = 1;
+
+$PUPIL{"sander"} = $PUPIL{"force"} = $PUPIL{"mexit"} = $PUPIL{"mdfil"} = 
+	$PUPIL{"printe"} = $PUPIL{"dynlib"} = 1;
+
+#  in order to get a mapping between module names and file names, we have
+#  have to set up the following hash. 
+
+$modulefile{"netcdf"} = "netcdf";  #special case, since source is elsewhere
+
+foreach $file ( <*.f> ){
+	next if $file =~ /^_/;
+	($fileroot) = $file =~ /(.+)\.f$/;
+	$optimized{$fileroot} = 0;
+	open( F, "$file" ) || die "unable to open $file\n";
+	while( <F> ){
+		if( /^ *module /i ){
+			($head,$modulename) = /( *[Mm][Oo][Dd][Uu][Ll][Ee]) +(\w*)/;
+			$modulefile{$modulename} = $fileroot;
+#			printf STDERR "modulefile:  $modulename  $fileroot\n";
+		}
+		if( /compile=optimized/ ){
+			$optimized{$fileroot} = 1;
+		}
+	}
+	close( F );
+}
+
+#  Now, cycle over all source files to create the compilation rules and 
+#  dependencies.  Check for "compile=optimized" comments and do the right 
+#  thing:
+
+foreach $file ( <*.f> ){
+
+	next if $file =~ /^_/;
+
+	$deps = $depsLES = $depsPUPIL = "";
+
+	($fileroot) = $file =~ /(.+)\.f$/;
+
+	#  construct the header and module dependency rules:
+
+	open( F, "$file" ) || die "unable to open $file\n";
+	while( <F> ){
+
+		if( /^ *use / ){
+			($head,$usee) = /( *use) +(\w*)/;
+#			printf STDERR "     usee: $usee; modulefile is $modulefile{$usee}\n";
+			if( !defined $modulefile{$usee} ){
+				printf STDERR "No file name associated with module $usee\n";
+				exit(1);
+			}
+			if( !defined $used{ $fileroot,$modulefile{$usee} } ){
+
+				#  remove any circular references:
+				next if $fileroot eq $modulefile{$usee};
+
+				$deps .= "\\\n                    " . $modulefile{$usee} .  ".o" ;
+				if( defined $LES{$modulefile{$usee}} ){
+					$depsLES .= "\\\n                    " . $modulefile{$usee} .  ".LES.o" ;
+				} else {
+					$depsLES .= "\\\n                    " . $modulefile{$usee} .  ".o" ;
+				}
+
+				if( defined $PUPIL{$modulefile{$usee}} ){
+					$depsPUPIL .= "\\\n                    " . $modulefile{$usee} .  ".PUPIL.o" ;
+				} else {
+					$depsPUPIL .= "\\\n                    " . $modulefile{$usee} .  ".o" ;
+				}
+
+				$used{ $fileroot,$modulefile{$usee} } = 1;
+			}
+		}
+		if (/^# *include/) {
+			($head,$included) = /(# *include) +"(.*)"/;
+			next if $included eq "mpif.h";
+			if( !defined $used{ $fileroot,$included } ){
+				$deps .= "\\\n                    " . $included ;
+				$depsLES .= "\\\n                    " . $included ;
+				$depsPUPIL .= "\\\n                    " . $included ;
+				$used{ $fileroot,$included } = 1;
+			}
+		}
+	}
+	printf "$fileroot.o: $deps\n\n" unless $deps eq "";
+
+	#  construct the compilation rules:
+
+	if( $optimized{$fileroot} ){
+		printf "\n$fileroot.o:   $fileroot.f\n";
+		printf "\t\$(FPP) $fileroot.f > _$fileroot.f\n";
+		printf "\t\$(FC) -c \$(FOPTFLAGS) -o \$@ _$fileroot.f\n\n";
+	}
+	if( defined $LES{$fileroot} ){
+		printf "$fileroot.LES.o: $depsLES\n" unless $depsLES eq "";
+		printf "\n$fileroot.LES.o:   $fileroot.f\n";
+		printf "\t\$(FPP) -DLES $fileroot.f > _$fileroot.f\n";
+		if( $optimized{$fileroot} ){
+			printf "\t\$(FC) -c \$(FOPTFLAGS) -o \$@ _$fileroot.f\n\n";
+		} else {
+			printf "\t\$(FC) -c \$(FFLAGS) -o \$@ _$fileroot.f\n\n";
+		}
+	}
+	if( defined $PUPIL{$fileroot} ){
+		printf "$fileroot.PUPIL.o: $depsPUPIL\n" unless $depsPUPIL eq "";
+		printf "\n$fileroot.PUPIL.o:   $fileroot.f\n";
+		printf "\t\$(FPP) -DPUPIL_SUPPORT $fileroot.f > _$fileroot.f\n";
+		if( $optimized{$fileroot} ){
+			printf "\t\$(FC) -c \$(FOPTFLAGS) -o \$@ _$fileroot.f\n\n";
+		} else {
+			printf "\t\$(FC) -c \$(FFLAGS) -o \$@ _$fileroot.f\n\n";
+		}
+	}
+}
+
+#  special "compilation" rule for netcdf.o:
+printf "netcdf.o:  \$(NETCDF)\n\ttouch netcdf.o\n\n";
+

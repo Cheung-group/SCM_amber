@@ -1,0 +1,35 @@
+40a41,43
+> ! Qian added
+> #  include "debye.h"
+> ! Qian end
+257,259d259
+< ! Qian added
+< #  include "debye.h"
+< ! Qian end
+868c868
+< ! Qian change end
+---
+> ! Qian change end         
+880,892c880
+< ! Qian change, debye-huckel potential
+<          !ecur = b0
+<          reladielecinv = ONE/reladielec
+<          if(tempdebye .lt. 0.1) then
+<          R7 = 0.0
+<          R8 = 1.0
+<          else
+<          tempdebyeinv = ONE/tempdebye
+<          R7 = SQRT(2523.23*strength*reladielecinv*tempdebyeinv)*3.8
+<          R8 = EXP(-R7*R5)
+<          endif
+<          ecur = b0*reladielecinv*R8*0.263157895 ! 0.263157895=1/3.8
+< ! Qian change end
+---
+>          ecur = b0
+896,899c884
+< ! Qian change, debye-huckel potentail
+<          !dfee = b0*delr2inv
+<          dfee = b0*(R7/R5+delr2inv)*R8*reladielecinv*0.263157895
+< ! Qian add end
+---
+>          dfee = b0*delr2inv

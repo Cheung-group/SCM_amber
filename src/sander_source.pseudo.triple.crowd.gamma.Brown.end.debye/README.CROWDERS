@@ -1,0 +1,202 @@
+09.1.2010
+Antonios Samiotakis
+
+This file contains the additional changes made to the code sander_source.pseudo in order to 
+print out the protein-crowder energy and crowder-crowder energy when running amber 10.
+Every file that was changed now includes and additional header file called CROWD.h
+(Look for it in the beginning of different routinesi - if a file has more than 1 routines).
+
+---------------------------------------------------------------------------------------------
+4.4.2011
+Antonios Samiotakis
+
+In addition to all the changes made for the Langevin code, here we apply some additional 
+changes for the gamma.Brown.end version
+ 
+
+! A new assignment of the mass is needed before the Verlet loop. Otherwise the mass will have
+! the latest value used in the presvious loop which is the one for the crowders.
+
+>> runmd.f
+
+rsd_index = 1
+      do i3 = istart3,iend3
+          aamass = amass(rsd_index)
+...
+...
+...
+      goto 245
+
+
+!Need to use ntypes for the calculationi of chi because nsolut will loop the crowders too.
+
+          DO i_olap = 1,(ntypes-1)
+           DO j_olap = i_olap+2,(ntypes-1)
+
+
+
+
+
+
+
+
+The rest of the changes are applied as to all the crowd versions of amber 10
+
+>>files.h
+
+
+!Antonios added
+! File names
+character(len=4096) groupbuffer
+character(len=256) mdin, mdout, inpcrd, parm, restrt, &
+      refc, mdvel, mden, mdcrd, mdinfo, nmrf, mincor, &
+      vecs, radii, freqe,redir(9),rstdip,mddip,inpdip,groups,gpes, &
+      cpin, cpout, cprestrt, evbin, evbout, mmtsb_setup_file,pimdout, &
+      inptraj,twhb,twvdw,twchi,fencc,fenpc
+
+character owrite, facc
+common /files/ groupbuffer, mdin, mdout, inpcrd, parm, restrt, &
+      refc, mdvel, mden, mdcrd, mdinfo, nmrf, mincor, &
+      vecs, radii, freqe, owrite, facc,rstdip,mddip,inpdip,groups,gpes, &
+      cpin, cpout, cprestrt, evbin, evbout, mmtsb_setup_file,pimdout, &
+      inptraj,twhb,twvdw,twchi,fencc,fenpc
+!Antonios end
+
+! Antonios added:
+
+ integer     FENCC_UNIT
+ integer     FENPC_UNIT
+
+!Antonios end
+
+! Antonios added:
+
+ parameter ( FENCC_UNIT  = 40 )
+ parameter ( FENPC_UNIT  = 39 )
+
+! Antonios end
+
+-----------------------------------------------------------------------------------------------
+
+>>short_ene.f
+
+added:
+
+    ENPC = zero
+    ENCC = zero
+
+    NPP  = ntypes -1 
+-----------------------------------------------------------------------------------------------
+
+>> runmd.f
+
+! Antonios modified
+      if (ntwe > 0) then
+         if (mod(total_nstep,ntwe) == 0.and.onstep) then
+               call mdeng(15,nstep,t,ener,onefac,ntp)
+              write(37,*)EHBA
+              write(36,*)EHBV
+              write(39,*)ENPC
+              write(40,*)ENCC
+         end if
+      end if
+! Antonios end.
+
+-------------------------------------------------------------------------------------------------
+
+>>ew_directe.h
+
+   if(maphb(iac(i),iac(j)).lt.1) then
+!       EHBV=EHBV+f12-f6   Commented out so we will not double count
+   ! -- ti decomp
+!   write(80,*)idecomp
+           if(decpr .and. idecomp > 0) call decpair(3,i,j,(f12 - f6)/(nstlim/ntpr))
+        evdw = evdw + f12 - f6
+
+                     if (i.le.NPP.and.j.gt.NPP) then
+                     ENPC = ENPC + f12 - f6
+!                    write(71,*)i,j,ENPC
+
+                     elseif (i.gt.NPP.and.j.le.NPP) then
+                     ENPC = ENPC + f12 - f6
+!                    write(72,*)i,j,ENPC
+
+                     elseif (i.gt.NPP.and.j.gt.NPP) then
+                     ENCC = ENCC + f12 - f6
+!                    write(73,*)i,j,ENCC
+
+                     elseif (i.le.NPP.and.j.le.NPP) then
+                     EHBV=EHBV + f12-f6
+!                     write(73,*)i,j,NPP
+
+
+                     endif
+
+
+---------------------------------------------------------------------------------------------------
+
+>>mdfil.f
+
+!Antonios added. 9.1.10
+   twhb = 'twhb'
+   twvdw = 'twvdw'
+   twchi = 'twchi'
+   fenpc = 'fenpc'
+   fencc = 'fencc'
+!Antonios end
+
+
+!Antonios added
+      else if (arg == '-b') then
+         iarg = iarg + 1
+         call getarg_wrap(iarg,twhb)
+      else if (arg == '-d') then
+         iarg = iarg + 1
+         call getarg_wrap(iarg,twvdw)
+      else if (arg == '-chi') then
+         iarg = iarg + 1
+         call getarg_wrap(iarg,twchi)
+      else if (arg == '-cc') then
+         iarg = iarg + 1
+         call getarg_wrap(iarg,fencc)
+      else if (arg == '-pc') then
+         iarg = iarg + 1
+         call getarg_wrap(iarg,fenpc)
+!Antonios end
+
+-------------------------------------------------------------------------------------------------------
+
+>>dynlib.f
+
+
+!Antonios added
+      if (ntwe > 0) then
+         call amopen(TWHB_UNIT,twhb,owrite,'F','W')
+      end if
+      if (ntwe > 0) then
+         call amopen(TWVDW_UNIT,twvdw,owrite,'F','W')
+      end if
+      if (ntwe > 0) then
+         call amopen(TWCHI_UNIT,twchi,owrite,'F','W')
+      end if
+      if (ntwe > 0) then
+         call amopen(FENPC_UNIT,fenpc,owrite,'F','W')
+      end if
+      if (ntwe > 0) then
+         call amopen(FENCC_UNIT,fencc,owrite,'F','W')
+      end if
+!Antonios end
+
+
+! Antonios added
+      if ( ntwe > 0 ) close( TWHB_UNIT )
+      if ( ntwe > 0 ) close( TWVDW_UNIT )
+      if ( ntwe > 0 ) close( TWCHI_UNIT )
+      if ( ntwe > 0 ) close( FENPC_UNIT )
+      if ( ntwe > 0 ) close( FENCC_UNIT )
+! Antonios end
+
+---------------------------------------------------------------------------------------------
+
+
+

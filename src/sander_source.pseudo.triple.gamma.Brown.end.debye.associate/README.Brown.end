@@ -1,0 +1,254 @@
+Antonios Samiotakis 
+4.4.2011
+
+This file contains the additional changes made in the sander.pseudo.triple code in order to include the following:
+
+
+gamma: a gamma.inp file is read that defines the friction for the Brownian simulations. (given in ps-1).
+Brown: The verlet for Langevin that initially exists in amber10 is changed to Brownian Dynamics.
+end:  The overlap function chi is calculated as in amber 6 in order to stop the simulation when a specific value of chi is reached.
+
+
+In the following routines new header files are included: OLAP.h, GAMMA.h
+
+
+>> sander.f
+
+
+! Antonios added 9.15.2010
+! Reading olap.inp for folding a protein.
+
+      open(81,file='olap.inp')
+      read(81,*)iolap,xolapcut,xener,xoverlap
+      write(80,*)iolap,xolapcut,xener,xoverlap
+
+      if(iolap.gt.350000) then
+      write(755,*) 'error:iolap gt 350000,check OLAP.h'
+      endif
+
+        do i=1,iolap
+        read(81,*) dummy_olap, xx_olap
+        xdist_olap(dummy_olap)= xx_olap
+        write(80,*)dummy_olap, xx_olap
+        enddo
+
+! Antonios added 12.1.2020
+! Reading GAMMA.inp for size dependence in Langevin
+
+      open(77,file='gamma.inp')
+      read(77,*)nrsize
+      write(80,*)nrsize
+
+      if(nrsize.lt.natom.or.nrsize.gt.natom) then
+      write(756,*) 'error: nrsize not equal natom, check - if MPI then it is ok'
+      endif
+
+        do i=1,nrsize
+        read(77,*)gamma_bd
+        gamma_array(i)= gamma_bd
+        write(80,*)gamma_array(i)
+        enddo
+
+
+
+
+! Antonios end
+
+---------------------------------------------------------------------------------------------------------------
+>> runmd.f
+
+!Antonios added here 11.19.2010
+   do gamma_index=1,nrsize
+   gammai_as(gamma_index) = gamma_array(gamma_index)/20.455d0
+   sdfac_as(gamma_index) = sqrt( 4.d0*gammai_as(gamma_index)*boltz2*temp0/dtx)
+!   write(72,*)gammai,gammai_as(gamma_index),gamma_index
+!   write(72,*)sdfac_as(gamma_index),gamma_index
+!write(72,*)nrsize
+
+   c_implic_as(gamma_index) = 1.d0/(1.d0+gammai_as(gamma_index)*dt5)
+   c_explic_as(gamma_index) = 1.d0 - gammai_as(gamma_index)*dt5
+   enddo
+!   c_implic = 1.d0/(1.d0+gammai*dt5)
+!   c_explic = 1.d0 - gammai*dt5
+   c_ave    = 1.d0+gammai*dt5
+!Antonios end
+
+
+...
+...
+...
+...
+
+
+!Antonios changed here 12/1/2010
+        do gamma_index=1,nrsize
+        sdfac_as(gamma_index) = sqrt( 4.d0*gammai_as(gamma_index)*boltz2*temp0/dtx)
+!   write(72,*)gammai,gammai_as(gamma_index),gamma_index
+!   write(72,*)sdfac_as(gamma_index),gamma_index
+   enddo
+!Antonios end
+
+
+...
+...
+...
+
+
+
+!Antonios added 11/20/2010
+rsd_index=1.d0
+!Antonios end
+
+
+
+...
+...
+...
+
+!Antonios changed 11/20/2010
+         rsd_as(rsd_index) = sdfac_as(rsd_index)*sqrt(aamass)
+
+!         write(72,*)rsd,rsd_as(rsd_index),rsd_index
+         call gauss( 0.d0, rsd_as(rsd_index), fln )
+         fln_as(i3+1) = fln
+!         v(i3+1) = (v(i3+1)*c_explic_as(rsd_index) + (f(i3+1)+fln)*wfac) * c_implic_as(rsd_index)
+         call gauss( 0.d0, rsd_as(rsd_index), fln )
+         fln_as(i3+2) = fln
+!         v(i3+2) = (v(i3+2)*c_explic_as(rsd_index) + (f(i3+2)+fln)*wfac) * c_implic_as(rsd_index)
+         call gauss( 0.d0, rsd_as(rsd_index), fln )
+         fln_as(i3+3) = fln
+!         v(i3+3) = (v(i3+3)*c_explic_as(rsd_index) + (f(i3+3)+fln)*wfac) * c_implic_as(rsd_index)
+#  endif
+
+         i3 = i3+3
+         rsd_index = rsd_index+1
+!         write(72,*)rsd_index
+      end do
+! Antonios commented out
+!         call gauss( 0.d0, rsd, fln )
+!         v(i3+1) = (v(i3+1)*c_explic + (f(i3+1)+fln)*wfac) * c_implic
+!         call gauss( 0.d0, rsd, fln )
+!         v(i3+2) = (v(i3+2)*c_explic + (f(i3+2)+fln)*wfac) * c_implic
+!         call gauss( 0.d0, rsd, fln )
+!         v(i3+3) = (v(i3+3)*c_explic + (f(i3+3)+fln)*wfac) * c_implic
+!#  endif
+!      
+!         i3 = i3+3
+!      end do
+
+
+rsd_index = 1
+      do i3 = istart3,iend3
+!          write(72,*)rsd_index,i3,aamass,gammai_as(rsd_index),f(i3),dtx,x(i3)
+          f(i3) = f(i3)*dtx/(aamass*gammai_as(rsd_index))
+!          write(72,*)gammai_as(rsd_index),f(i3),x(i3),fln_as(i3)
+!         f(i3) = x(i3)
+         x(i3) = x(i3) + f(i3) + dtx*fln_as(i3)/(gammai_as(rsd_index)*aamass)
+         if(mod(i3,3)==0) then
+            rsd_index = rsd_index+1
+         endif
+      end do
+
+      goto 245
+
+!Antonios making sure that goto works and skips all the rest up to 245
+do i3 = istart3,iend3
+write(72,*)"hello",fln_as(i3)
+end do
+! Antonios end
+
+
+...
+...
+...
+
+
+!Antonios adds continue
+   245  continue
+
+!Antonios copied this from step 5 (necessary for output of mdcrd,rst,en, etc.)
+
+   itdump = .false.             ! Write coordinates this step?
+   ivdump = .false.             ! Write velocities this step?
+   ixdump = .false.             ! Write restart this step?
+   ivscm  = .false.             ! Do com removal this step?
+
+   !  --- Determine if trajectory, velocity, or restart
+   !      writing is imminent, or if the center of mass
+   !      motion will be removed.
+   !      These require xdist of velocities or dipoles in parallel runs:
+   !
+   ! Modified so that when running REMD, writing can occur less often
+   !  than exchanges (e.g. ntwx > nstlim)
+   ! DAN ROE: Added two new variables, total_nstep and total_nstlim.
+   !          For non-REMD runs, total_nstep=nstep+1 and total_nstlim=nstlim 
+   !           just like before.
+   !          For REMD runs, total_nstep=(mdloop-1)*nstlim+nstep+1, where
+   !           mdloop is the current exchange - this is the current
+   !           replica exchange MD step. total_nstlim=numexchg*nstlim, which is
+   !           the maximum number of REMD steps.
+   total_nstep=nstep+1
+   total_nstlim=nstlim
+
+   if (ntwx>0) itdump = mod(total_nstep,ntwx) == 0 ! Trajectory coords
+   if (ntwv>0) ivdump = mod(total_nstep,ntwv) == 0 ! Velocity
+   if( ntwr /= 0 ) then
+      if ( mod(total_nstep, ntwr ) == 0 ) ixdump = .true. ! Restart
+   endif
+   if( total_nstep >= total_nstlim ) ixdump = .true. ! Final restart
+   if( mod(total_nstep,nscm) == 0 ) ivscm =.true. ! C.o.M. removal
+   if (ntwv == -1 .and. itdump) ivdump = .true. !Combined crdvel file
+
+
+!Antonios end
+
+
+...
+...
+...
+
+! Antonios 9.15.2010
+! Folding condition and stop
+
+! check overlap
+       temp_olap=EHBV+EHBA
+!       write(75,*)EHBV, EHBA, temp_olap,nsolut
+        if(temp_olap.lt.xener) then
+        count_olap=0
+        Q=0
+          DO i_olap = 1,nsolut
+           DO j_olap = i_olap+2,nsolut
+           dist=0
+             do M_olap=1,3
+              ii_olap = (i_olap-1)*3+M_olap
+              jj_olap = (j_olap-1)*3+M_olap
+              dist= dist + (x(ii_olap)-x(jj_olap))**2
+!       write(75,*)i_olap,ii_olap,j_olap,jj_olap,nsolut
+             enddo
+           count_olap = count_olap + 1
+           dist=sqrt(dist)
+           dist=dist/xolapcut
+!       write(75,*)i,j,dist,xdist_olap(count_olap),count_olap
+            if(dist.le.xdist_olap(count_olap)) then
+            Q = Q + 1
+            endif
+
+           enddo
+          enddo
+               xdummy_olap=Q/real(count_olap)
+!       write(78,*)Q,count_olap,xdummy_olap
+               xdummy_olap=1.0-xdummy_olap
+!       write(75,*)count_olap,Q,xdummy_olap,xoverlap
+!       write(75,*)count_olap,Q,xdummy_olap,xoverlap,temp_olap,NSTEP
+                if(xdummy_olap.lt.xoverlap) then
+       write(75,*)count_olap,Q,xdummy_olap,xoverlap,temp_olap,NSTEP
+                NSTEP = NSTLIM
+!                NRU = NRUN
+                endif
+
+      endif
+
+
+! Antonios end
+
+

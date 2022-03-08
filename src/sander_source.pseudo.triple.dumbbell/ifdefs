@@ -1,0 +1,48 @@
+ABSOFT_WINDOWS             compiler-specific workaround
+APBS                       alternative to Ray's PB(?)
+BINTRAJ                    binary trajectory file format
+CRAY_PVP                   used to replace MPI_DOUBLE_PRECISION with MPI_REAL8
+CRAY_X1                    only used in nonbond_list
+DEBUG_EVB                  extra printout for EVB
+DEBUG_NMR                  extra printout for NMR refinements
+DEBUG_PSANDER              only used in spatial_comm.f
+DEBUG_STACK                for stack debugging
+DNA_SHIFT                  do shifts refinements for DNA, not proteins
+DPREC                      double precision
+HAS_10_12                  allows old Amber force fields with 10-12's
+ICFE                       only in decomp.f, looks broken anyway
+ISTAR2                     machine supports 16-bit integers for pairlist
+LES                        locally-enchanced sampling
+MASSLIB                    IBM Math library, only in veclib.f
+MMTSB                      support the MMTSB toolkit connection
+MPI                        parallel
+MPI_BUFFER_SIZE
+MPI_DOUBLE_PRECISION
+NCSU_ENABLE_BBMD           hope all these can go soon
+NCSU_ENABLE_NODE_PRINT
+NCSU_ENABLE_RMSD_CANNED
+NCSU_NO_NETCDF
+NCSU_REAL_IS_DOUBLE
+NCSU_RMSD_CANNED
+NDEBUG                     skip assert()'s if this is active
+NMODE                      rarely used option for NMR relaxation matrix code
+NO_RED_SCAT_INPLACE	       Do not do a mpi_reduce_scatter inplace - do it via 
+                              a temporary array.
+ORIGDERIV                  old way of doing NMR relaxation matrix analysis
+PSANDER                    spatial decomposition parallel
+PUPIL_SUPPORT              just for safety?
+QMMM_OMP                   Protection for initial OpenMP threaded QMMM (experimental at present)
+REM                        only in nmr.f, needed(?)
+SQM                        support for "stand-alone" QM code
+TEST_CLOSEATOMS            checks for and prints atoms too close(list build)
+THIRDO                     old option for NMR relaxation matrix analysis
+TRACE                      turn on code tracing, mostly to analyze MPI calls
+TVDW                       use a truncated vdW interaction
+USE_MPI_IN_PLACE	       This uses the more efficient in place methods of 
+                           mpi v2 to do mpi operations rather than doing 
+                           it with the less efficient temporary array method 
+                           of mpi v1. This should be set if your MPI 
+                           implementation supports it.
+XLF90                      only for mexit.f
+XREF                       safety(?) for x-ray refinement
+noVIRIAL                   save time in constant V by not computing virial

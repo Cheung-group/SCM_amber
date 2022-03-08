@@ -1,0 +1,3981 @@
+#
+#   Please do not edit the "depend" file directly, since it is created by the
+#   "makedepend" script.  If changes are needed, edit "makedepend" itself.
+#
+align.o: \
+                    copyright.h\
+                    dprec.h\
+                    nmr.h\
+                    files.h\
+                    extra.h\
+                    md.h
+
+
+align.o:   align.f
+	$(FPP) align.f > _align.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _align.f
+
+ambmask.o: \
+                    dprec.h\
+                    findmask.o\
+                    constants.o
+
+amoeba_adjust.o: \
+                    dprec.h\
+                    assert.h\
+                    amoeba_mpole_index.h\
+                    do_flag.h\
+                    extra.h\
+                    parallel.h\
+                    amoeba_multipoles.o\
+                    amoeba_induced.o\
+                    amoeba_mdin.o\
+                    def_time.h\
+                    ew_erfc_spline.h\
+                    ew_pme_recip.h\
+                    constants.o\
+                    amoeba_vdw.o
+
+amoeba_direct.o: \
+                    dprec.h\
+                    assert.h\
+                    amoeba_mpole_index.h\
+                    parallel.h\
+                    do_flag.h\
+                    nonbond_list.o\
+                    amoeba_multipoles.o\
+                    amoeba_induced.o\
+                    amoeba_mdin.o\
+                    extra.h\
+                    def_time.h\
+                    ew_erfc_spline.h\
+                    ew_pme_recip.h\
+                    amoeba_vdw.o\
+                    constants.o
+
+amoeba_induced.o: \
+                    dprec.h\
+                    assert.h\
+                    do_flag.h\
+                    extra.h\
+                    parallel.h\
+                    ew_cntrl.h\
+                    ew_mpole.h\
+                    amoeba_mdin.o
+
+amoeba_interface.o: \
+                    dprec.h\
+                    amoeba_multipoles.o\
+                    amoeba_adjust.o\
+                    amoeba_vdw.o\
+                    amoeba_induced.o\
+                    amoeba_recip.o\
+                    amoeba_runmd.o\
+                    amoeba_valence.o\
+                    amoeba_mdin.o\
+                    extra.h\
+                    nonbond_list.o\
+                    amoeba_direct.o\
+                    amoeba_self.o\
+                    parallel.h\
+                    ew_parallel.h
+
+amoeba_mdin.o: \
+                    dprec.h\
+                    assert.h\
+                    files.h
+
+amoeba_multipoles.o: \
+                    dprec.h\
+                    assert.h\
+                    extra.h\
+                    parallel.h\
+                    do_flag.h\
+                    stack.o\
+                    constants.o
+
+amoeba_recip.o: \
+                    dprec.h\
+                    assert.h\
+                    amoeba_mpole_index.h\
+                    parallel.h\
+                    do_flag.h\
+                    ew_pme_recip.h\
+                    amoeba_multipoles.o\
+                    amoeba_induced.o\
+                    nonbond_list.o\
+                    stack.o\
+                    def_time.h
+
+amoeba_runmd.o: \
+                    dprec.h\
+                    assert.h\
+                    amoeba_mdin.o\
+                    nonbond_list.o\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    box.h\
+                    constants.o
+
+amoeba_self.o: \
+                    dprec.h\
+                    assert.h\
+                    amoeba_mpole_index.h\
+                    parallel.h\
+                    do_flag.h\
+                    amoeba_multipoles.o\
+                    constants.o\
+                    ew_pme_recip.h
+
+amoeba_valence.o: \
+                    dprec.h\
+                    assert.h\
+                    extra.h\
+                    do_flag.h\
+                    parallel.h
+
+amoeba_vdw.o: \
+                    dprec.h\
+                    assert.h\
+                    do_flag.h\
+                    box.h\
+                    extra.h\
+                    parallel.h\
+                    amoeba_mdin.o\
+                    constants.o\
+                    nonbond_list.o
+
+amopen.o: \
+                    copyright.h
+
+ang_bend.o: \
+                    dprec.h
+
+apbs.o: \
+                    dprec.h\
+                    files.h
+
+apbs_vars.o: \
+                    dprec.h
+
+assert.o: \
+                    copyright.h\
+                    assert.h
+
+bintraj.o: \
+                    copyright.h\
+                    dprec.h\
+                    netcdf.o\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    box.h\
+                    nonbond_list.o
+
+
+bintraj.o:   bintraj.f
+	$(FPP) bintraj.f > _bintraj.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _bintraj.f
+
+bmat_debug.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+bmat_grad.o: \
+                    dprec.h\
+                    evb_vars.o
+
+bmat_inv.o: \
+                    dprec.h\
+                    evb_vars.o
+
+bmat_inv_debug.o: \
+                    dprec.h
+
+bnd_strtch.o: \
+                    dprec.h\
+                    evb_mathf.o
+
+bond_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+cart2internal.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    evb_mathf.o
+
+check_input.o: \
+                    files.h\
+                    parallel.h
+
+cmd_matrix.o: \
+                    dprec.h\
+                    constants.o\
+                    cmd_vars.o\
+                    md.h\
+                    extra.h\
+                    pimd_vars.o\
+                    memory.h\
+                    les.h\
+                    parallel.h
+
+cmd_matrix.LES.o: \
+                    dprec.h\
+                    constants.o\
+                    cmd_vars.o\
+                    md.h\
+                    extra.h\
+                    pimd_vars.o\
+                    memory.h\
+                    les.h\
+                    parallel.h
+
+cmd_matrix.LES.o:   cmd_matrix.f
+	$(FPP) -DLES cmd_matrix.f > _cmd_matrix.f
+	$(FC) -c $(FFLAGS) -o $@ _cmd_matrix.f
+
+cmd_matrix_a1st.o: \
+                    dprec.h\
+                    pimd_vars.o\
+                    les.h\
+                    memory.h\
+                    parallel.h\
+                    cmd_vars.o\
+                    constants.o\
+                    md.h
+
+cmd_vars.o: \
+                    dprec.h
+
+constantph.o: \
+                    copyright.h\
+                    dprec.h\
+                    dynph.h\
+                    random.h\
+                    md.h\
+                    constants.o\
+                    files.h\
+                    extra.h
+
+
+constantph.o:   constantph.f
+	$(FPP) constantph.f > _constantph.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _constantph.f
+
+constants.o: \
+                    copyright.h\
+                    dprec.h
+
+
+constants.o:   constants.f
+	$(FPP) constants.f > _constants.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _constants.f
+
+crossv.o: \
+                    assert.h\
+                    dprec.h
+
+csa.o: \
+                    copyright.h\
+                    dprec.h\
+                    nmr.h\
+                    files.h\
+                    extra.h\
+                    md.h
+
+cshf.o: \
+                    copyright.h\
+                    dprec.h\
+                    nmr.h\
+                    md.h\
+                    files.h\
+                    def_time.h
+
+
+cshf.o:   cshf.f
+	$(FPP) cshf.f > _cshf.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _cshf.f
+
+dbonds_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+debug.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    debug.h\
+                    nonbond_list.o\
+                    flocntrl.h\
+                    md.h\
+                    memory.h\
+                    extra.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    stack.o\
+                    parallel.h\
+                    ew_recip.o
+
+
+debug.o:   debug.f
+	$(FPP) debug.f > _debug.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _debug.f
+
+decnvh.o: \
+                    copyright.h\
+                    dprec.h
+
+decomp.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    softcore.o\
+                    memory.h\
+                    parallel.h\
+                    md.h
+
+
+decomp.o:   decomp.f
+	$(FPP) decomp.f > _decomp.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _decomp.f
+
+degcnt.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    softcore.o
+
+
+degcnt.o:   degcnt.f
+	$(FPP) degcnt.f > _degcnt.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _degcnt.f
+
+degcnt.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    softcore.o
+
+degcnt.LES.o:   degcnt.f
+	$(FPP) -DLES degcnt.f > _degcnt.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _degcnt.f
+
+dg_debug.o: \
+                    dprec.h\
+                    evb_vars.o
+
+dg_grad2cart.o: \
+                    assert.h\
+                    dprec.h
+
+dg_grad_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+dihed_tors.o: \
+                    dprec.h
+
+dssp.o: \
+                    dprec.h
+
+dynlib.o: \
+                    copyright.h\
+                    dprec.h\
+                    bintraj.o\
+                    constants.o\
+                    box.h\
+                    files.h\
+                    md.h\
+                    extra.h\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    evb_vars.o\
+                    remd.o\
+                    evb_pimd_init.o\
+                    qmmm_module.o\
+                    xref.o\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    sgld.h\
+                    tgtmd.h\
+                    les.h\
+                    amoeba_mdin.o\
+                    memory.h\
+                    parallel.h
+
+
+dynlib.o:   dynlib.f
+	$(FPP) dynlib.f > _dynlib.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _dynlib.f
+
+dynlib.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    bintraj.o\
+                    constants.o\
+                    box.h\
+                    files.h\
+                    md.h\
+                    extra.h\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    evb_vars.o\
+                    remd.LES.o\
+                    evb_pimd_init.LES.o\
+                    qmmm_module.o\
+                    xref.o\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    sgld.h\
+                    tgtmd.h\
+                    les.h\
+                    amoeba_mdin.o\
+                    memory.h\
+                    parallel.h
+
+dynlib.LES.o:   dynlib.f
+	$(FPP) -DLES dynlib.f > _dynlib.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _dynlib.f
+
+dynlib.PUPIL.o: \
+                    copyright.h\
+                    dprec.h\
+                    bintraj.o\
+                    constants.o\
+                    box.h\
+                    files.h\
+                    md.h\
+                    extra.h\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    evb_vars.o\
+                    remd.o\
+                    evb_pimd_init.o\
+                    qmmm_module.o\
+                    xref.o\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    sgld.h\
+                    tgtmd.h\
+                    les.h\
+                    amoeba_mdin.o\
+                    memory.h\
+                    parallel.h
+
+dynlib.PUPIL.o:   dynlib.f
+	$(FPP) -DPUPIL_SUPPORT dynlib.f > _dynlib.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _dynlib.f
+
+egap_umb_2stdebug.o: \
+                    dprec.h\
+                    evb_vars.o
+
+egb.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    icosasurf.o\
+                    decomp.o\
+                    qmmm_module.o\
+                    parms.o\
+                    constants.o\
+                    pimd_vars.o\
+                    remd.o\
+                    parallel.h\
+                    md.h\
+                    def_time.h\
+                    les.h\
+                    sgld.h\
+                    gbneck.h\
+                    gbsa.h
+
+
+egb.o:   egb.f
+	$(FPP) egb.f > _egb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _egb.f
+
+egb.LES.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    icosasurf.o\
+                    decomp.o\
+                    qmmm_module.o\
+                    parms.o\
+                    constants.o\
+                    pimd_vars.o\
+                    remd.LES.o\
+                    parallel.h\
+                    md.h\
+                    def_time.h\
+                    les.h\
+                    sgld.h\
+                    gbneck.h\
+                    gbsa.h
+
+egb.LES.o:   egb.f
+	$(FPP) -DLES egb.f > _egb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _egb.f
+
+ene.o: \
+                    copyright.h\
+                    dprec.h\
+                    decomp.o\
+                    parms.o\
+                    pb_force.o\
+                    pimd_vars.o\
+                    remd.o\
+                    softcore.o\
+                    parallel.h\
+                    nmr.h\
+                    md.h\
+                    files.h\
+                    box.h\
+                    flocntrl.h\
+                    les.h\
+                    constants.o\
+                    memory.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    ew_erfc_spline.h\
+                    extra_pts.h\
+                    tgtmd.h\
+                    extra.h
+
+
+ene.o:   ene.f
+	$(FPP) ene.f > _ene.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ene.f
+
+ene.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    decomp.o\
+                    parms.o\
+                    pb_force.o\
+                    pimd_vars.o\
+                    remd.LES.o\
+                    softcore.o\
+                    parallel.h\
+                    nmr.h\
+                    md.h\
+                    files.h\
+                    box.h\
+                    flocntrl.h\
+                    les.h\
+                    constants.o\
+                    memory.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    ew_erfc_spline.h\
+                    extra_pts.h\
+                    tgtmd.h\
+                    extra.h
+
+ene.LES.o:   ene.f
+	$(FPP) -DLES ene.f > _ene.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ene.f
+
+erfcfun.o: \
+                    copyright.h\
+                    dprec.h\
+                    constants.o
+
+
+erfcfun.o:   erfcfun.f
+	$(FPP) erfcfun.f > _erfcfun.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _erfcfun.f
+
+evb_2stdebug.o: \
+                    dprec.h\
+                    evb_vars.o
+
+evb_alloc.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    pimd_vars.o\
+                    evb_pimd_init.o\
+                    parallel.h\
+                    files.h\
+                    memory.h\
+                    md.h
+
+evb_alloc.LES.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    pimd_vars.o\
+                    evb_pimd_init.LES.o\
+                    parallel.h\
+                    files.h\
+                    memory.h\
+                    md.h
+
+evb_alloc.LES.o:   evb_alloc.f
+	$(FPP) -DLES evb_alloc.f > _evb_alloc.f
+	$(FC) -c $(FFLAGS) -o $@ _evb_alloc.f
+
+evb_bcast.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_dealloc.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h\
+                    files.h
+
+evb_force.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    constants.o\
+                    pimd_vars.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+
+evb_force.o:   evb_force.f
+	$(FPP) evb_force.f > _evb_force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_force.f
+
+evb_force.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    constants.o\
+                    pimd_vars.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+evb_force.LES.o:   evb_force.f
+	$(FPP) -DLES evb_force.f > _evb_force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_force.f
+
+evb_gfchk.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_init.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_input.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    memory.h\
+                    files.h
+
+evb_input.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    memory.h\
+                    files.h
+
+evb_input.LES.o:   evb_input.f
+	$(FPP) -DLES evb_input.f > _evb_input.f
+	$(FC) -c $(FFLAGS) -o $@ _evb_input.f
+
+evb_io.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_io_debug.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_io_debug2.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_keywrd.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h
+
+evb_mathf.o: \
+                    assert.h\
+                    dprec.h
+
+evb_matrix.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    evb_pimd_init.o
+
+
+evb_matrix.o:   evb_matrix.f
+	$(FPP) evb_matrix.f > _evb_matrix.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_matrix.f
+
+evb_matrix.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    evb_pimd_init.LES.o
+
+evb_matrix.LES.o:   evb_matrix.f
+	$(FPP) -DLES evb_matrix.f > _evb_matrix.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_matrix.f
+
+evb_ntrfc.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    constants.o\
+                    pimd_vars.o\
+                    evb_pimd_init.o\
+                    parallel.h\
+                    extra.h\
+                    memory.h\
+                    les.h
+
+evb_ntrfc.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    constants.o\
+                    pimd_vars.o\
+                    evb_pimd_init.LES.o\
+                    parallel.h\
+                    extra.h\
+                    memory.h\
+                    les.h
+
+evb_ntrfc.LES.o:   evb_ntrfc.f
+	$(FPP) -DLES evb_ntrfc.f > _evb_ntrfc.f
+	$(FC) -c $(FFLAGS) -o $@ _evb_ntrfc.f
+
+evb_outoptions.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    memory.h\
+                    files.h
+
+evb_pimd_init.o: \
+                    assert.h\
+                    dprec.h\
+                    pimd_vars.o\
+                    evb_vars.o\
+                    les.h\
+                    memory.h\
+                    parallel.h\
+                    extra.h
+
+evb_pimd_init.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    pimd_vars.o\
+                    evb_vars.o\
+                    les.h\
+                    memory.h\
+                    parallel.h\
+                    extra.h
+
+evb_pimd_init.LES.o:   evb_pimd_init.f
+	$(FPP) -DLES evb_pimd_init.f > _evb_pimd_init.f
+	$(FC) -c $(FFLAGS) -o $@ _evb_pimd_init.f
+
+evb_umb.o: \
+                    dprec.h\
+                    constants.o\
+                    evb_vars.o\
+                    evb_pimd_init.o\
+                    md.h
+
+
+evb_umb.o:   evb_umb.f
+	$(FPP) evb_umb.f > _evb_umb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_umb.f
+
+evb_umb.LES.o: \
+                    dprec.h\
+                    constants.o\
+                    evb_vars.o\
+                    evb_pimd_init.LES.o\
+                    md.h
+
+evb_umb.LES.o:   evb_umb.f
+	$(FPP) -DLES evb_umb.f > _evb_umb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_umb.f
+
+evb_umb_primitive.o: \
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    evb_vars.o\
+                    pimd_vars.o\
+                    evb_pimd_init.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+
+evb_umb_primitive.o:   evb_umb_primitive.f
+	$(FPP) evb_umb_primitive.f > _evb_umb_primitive.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_umb_primitive.f
+
+evb_umb_primitive.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    evb_vars.o\
+                    pimd_vars.o\
+                    evb_pimd_init.LES.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+evb_umb_primitive.LES.o:   evb_umb_primitive.f
+	$(FPP) -DLES evb_umb_primitive.f > _evb_umb_primitive.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _evb_umb_primitive.f
+
+evb_vars.o: \
+                    assert.h\
+                    dprec.h
+
+ew_box.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    nonbond_list.o\
+                    ew_cntrl.h\
+                    box.h\
+                    constants.o\
+                    extra.h\
+                    ew_parallel.h\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+
+ew_box.o:   ew_box.f
+	$(FPP) ew_box.f > _ew_box.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_box.f
+
+ew_bspline.o: \
+                    copyright.h\
+                    dprec.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    constants.o
+
+
+ew_bspline.o:   ew_bspline.f
+	$(FPP) ew_bspline.f > _ew_bspline.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_bspline.f
+
+ew_dipole_recip.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ew_bspline.o\
+                    stack.o\
+                    flocntrl.h\
+                    ew_pme_recip.h\
+                    def_time.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    constants.o\
+                    extra.h
+
+
+ew_dipole_recip.o:   ew_dipole_recip.f
+	$(FPP) ew_dipole_recip.f > _ew_dipole_recip.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_dipole_recip.f
+
+ew_fft.o: \
+                    copyright.h\
+                    dprec.h\
+                    trace.o\
+                    parallel.h\
+                    ew_parallel.h\
+                    constants.o\
+                    def_time.h\
+                    pubfft.f
+
+
+ew_fft.o:   ew_fft.f
+	$(FPP) ew_fft.f > _ew_fft.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_fft.f
+
+ew_force.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    trace.o\
+                    ew_recip.o\
+                    ew_dipole_recip.o\
+                    stack.o\
+                    decomp.o\
+                    nonbond_list.o\
+                    constants.o\
+                    qmmm_module.o\
+                    parms.o\
+                    pimd_vars.o\
+                    extra.h\
+                    ew_cntrl.h\
+                    def_time.h\
+                    ew_time.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    ew_erfc_spline.h\
+                    memory.h\
+                    md.h\
+                    files.h\
+                    extra_pts.h\
+                    box.h\
+                    sgld.h\
+                    les.h\
+                    ew_frc.h\
+                    ew_parallel.h\
+                    parallel.h\
+                    spatial_recip.o\
+                    spatial_fft.o\
+                    flocntrl.h
+
+
+ew_force.o:   ew_force.f
+	$(FPP) ew_force.f > _ew_force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_force.f
+
+ew_force.LES.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    trace.o\
+                    ew_recip.LES.o\
+                    ew_dipole_recip.o\
+                    stack.o\
+                    decomp.o\
+                    nonbond_list.LES.o\
+                    constants.o\
+                    qmmm_module.o\
+                    parms.o\
+                    pimd_vars.o\
+                    extra.h\
+                    ew_cntrl.h\
+                    def_time.h\
+                    ew_time.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    ew_erfc_spline.h\
+                    memory.h\
+                    md.h\
+                    files.h\
+                    extra_pts.h\
+                    box.h\
+                    sgld.h\
+                    les.h\
+                    ew_frc.h\
+                    ew_parallel.h\
+                    parallel.h\
+                    spatial_recip.o\
+                    spatial_fft.o\
+                    flocntrl.h
+
+ew_force.LES.o:   ew_force.f
+	$(FPP) -DLES ew_force.f > _ew_force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_force.f
+
+ew_handle_dips.o: \
+                    copyright.h\
+                    dprec.h\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    ew_frc.h\
+                    def_time.h\
+                    parallel.h\
+                    constants.o\
+                    debug.h\
+                    files.h
+
+
+ew_handle_dips.o:   ew_handle_dips.f
+	$(FPP) ew_handle_dips.f > _ew_handle_dips.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_handle_dips.f
+
+ew_recip.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    nonbond_list.o\
+                    stack.o\
+                    ew_bspline.o\
+                    flocntrl.h\
+                    ew_pme_recip.h\
+                    ew_frc.h\
+                    def_time.h\
+                    box.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    constants.o\
+                    qmmm_module.o\
+                    decomp.o\
+                    md.h\
+                    files.h\
+                    extra.h
+
+
+ew_recip.o:   ew_recip.f
+	$(FPP) ew_recip.f > _ew_recip.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_recip.f
+
+ew_recip.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    nonbond_list.LES.o\
+                    stack.o\
+                    ew_bspline.o\
+                    flocntrl.h\
+                    ew_pme_recip.h\
+                    ew_frc.h\
+                    def_time.h\
+                    box.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    constants.o\
+                    qmmm_module.o\
+                    decomp.o\
+                    md.h\
+                    files.h\
+                    extra.h
+
+ew_recip.LES.o:   ew_recip.f
+	$(FPP) -DLES ew_recip.f > _ew_recip.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_recip.f
+
+ew_recip_reg.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    nonbond_list.o\
+                    stack.o\
+                    flocntrl.h\
+                    constants.o\
+                    def_time.h
+
+
+ew_recip_reg.o:   ew_recip_reg.f
+	$(FPP) ew_recip_reg.f > _ew_recip_reg.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_recip_reg.f
+
+ew_setup.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    box.h\
+                    ew_cntrl.h\
+                    extra.h\
+                    nonbond_list.o\
+                    ew_pme_recip.h\
+                    memory.h\
+                    ew_erfc_spline.h\
+                    ew_mpole.h\
+                    md.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    stack.o\
+                    def_time.h\
+                    pimd_vars.o\
+                    les.h\
+                    amoeba_runmd.o\
+                    ew_bspline.o\
+                    spatial_fft.o\
+                    qmmm_module.o\
+                    ew_legal.h\
+                    files.h\
+                    decomp.o
+
+
+ew_setup.o:   ew_setup.f
+	$(FPP) ew_setup.f > _ew_setup.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_setup.f
+
+ew_setup.LES.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    box.h\
+                    ew_cntrl.h\
+                    extra.h\
+                    nonbond_list.LES.o\
+                    ew_pme_recip.h\
+                    memory.h\
+                    ew_erfc_spline.h\
+                    ew_mpole.h\
+                    md.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    stack.o\
+                    def_time.h\
+                    pimd_vars.o\
+                    les.h\
+                    amoeba_runmd.o\
+                    ew_bspline.o\
+                    spatial_fft.o\
+                    qmmm_module.o\
+                    ew_legal.h\
+                    files.h\
+                    decomp.o
+
+ew_setup.LES.o:   ew_setup.f
+	$(FPP) -DLES ew_setup.f > _ew_setup.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ew_setup.f
+
+exchange_gauss.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o
+
+exchange_warshel.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o
+
+extra_pts.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    memory.h\
+                    extra_pts.h\
+                    ew_cntrl.h\
+                    constants.o\
+                    decomp.o\
+                    softcore.o\
+                    flocntrl.h\
+                    md.h\
+                    files.h\
+                    qmmm_module.o
+
+
+extra_pts.o:   extra_pts.f
+	$(FPP) extra_pts.f > _extra_pts.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _extra_pts.f
+
+extra_pts.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    memory.h\
+                    extra_pts.h\
+                    ew_cntrl.h\
+                    constants.o\
+                    decomp.o\
+                    softcore.o\
+                    flocntrl.h\
+                    md.h\
+                    files.h\
+                    qmmm_module.o
+
+extra_pts.LES.o:   extra_pts.f
+	$(FPP) -DLES extra_pts.f > _extra_pts.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _extra_pts.f
+
+fastwt.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    parallel.h\
+                    md.h\
+                    constants.o
+
+
+fastwt.o:   fastwt.f
+	$(FPP) fastwt.f > _fastwt.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _fastwt.f
+
+findmask.o: \
+                    dprec.h
+
+force.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    remd.o\
+                    ncsu-sander-proxy.o\
+                    egb.o\
+                    pb_force.o\
+                    np_force.o\
+                    apbs.o\
+                    trace.o\
+                    stack.o\
+                    pimd_vars.o\
+                    qmmm_module.o\
+                    constants.o\
+                    relax_mat.o\
+                    ew_recip.o\
+                    parms.o\
+                    nonbond_list.o\
+                    dssp.o\
+                    amoeba_interface.o\
+                    amoeba_mdin.o\
+                    evb_vars.o\
+                    softcore.o\
+                    pupildata.o\
+                    xref.o\
+                    def_time.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    extra_pts.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    md.h\
+                    pb_md.h\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    files.h\
+                    extra.h\
+                    tgtmd.h\
+                    flocntrl.h\
+                    les.h\
+                    sgld.h
+
+
+force.o:   force.f
+	$(FPP) force.f > _force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _force.f
+
+force.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    remd.LES.o\
+                    ncsu-sander-proxy.o\
+                    egb.LES.o\
+                    pb_force.o\
+                    np_force.o\
+                    apbs.o\
+                    trace.o\
+                    stack.o\
+                    pimd_vars.o\
+                    qmmm_module.o\
+                    constants.o\
+                    relax_mat.o\
+                    ew_recip.LES.o\
+                    parms.o\
+                    nonbond_list.LES.o\
+                    dssp.o\
+                    amoeba_interface.o\
+                    amoeba_mdin.o\
+                    evb_vars.o\
+                    softcore.o\
+                    pupildata.o\
+                    xref.o\
+                    def_time.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    extra_pts.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    md.h\
+                    pb_md.h\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    files.h\
+                    extra.h\
+                    tgtmd.h\
+                    flocntrl.h\
+                    les.h\
+                    sgld.h
+
+force.LES.o:   force.f
+	$(FPP) -DLES force.f > _force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _force.f
+
+force.PUPIL.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    remd.o\
+                    ncsu-sander-proxy.o\
+                    egb.o\
+                    pb_force.o\
+                    np_force.o\
+                    apbs.o\
+                    trace.o\
+                    stack.o\
+                    pimd_vars.o\
+                    qmmm_module.o\
+                    constants.o\
+                    relax_mat.o\
+                    ew_recip.o\
+                    parms.o\
+                    nonbond_list.o\
+                    dssp.o\
+                    amoeba_interface.o\
+                    amoeba_mdin.o\
+                    evb_vars.o\
+                    softcore.o\
+                    pupildata.o\
+                    xref.o\
+                    def_time.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    extra_pts.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    md.h\
+                    pb_md.h\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    files.h\
+                    extra.h\
+                    tgtmd.h\
+                    flocntrl.h\
+                    les.h\
+                    sgld.h
+
+force.PUPIL.o:   force.f
+	$(FPP) -DPUPIL_SUPPORT force.f > _force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _force.f
+
+getcor.o: \
+                    dprec.h\
+                    copyright.h\
+                    amoeba_mdin.o\
+                    remd.o\
+                    files.h\
+                    ew_cntrl.h
+
+icosasurf.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    decomp.o
+
+
+icosasurf.o:   icosasurf.f
+	$(FPP) icosasurf.f > _icosasurf.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _icosasurf.f
+
+interactmask.o: \
+                    dprec.h\
+                    parms.o
+
+ips.o: \
+                    dprec.h\
+                    constants.o\
+                    extra.h\
+                    sgld.h\
+                    nonbond_list.o\
+                    parallel.h
+
+
+ips.o:   ips.f
+	$(FPP) ips.f > _ips.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ips.f
+
+is_init.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    pb_force.o\
+                    np_force.o\
+                    sa_driver.o\
+                    files.h\
+                    pb_md.h\
+                    box.h\
+                    constants.o\
+                    parms.o\
+                    md.h
+
+kappa_keck.o: \
+                    dprec.h\
+                    evb_vars.o
+
+lmod.o: \
+                    assert.h\
+                    dprec.h\
+                    memory.h\
+                    files.h\
+                    md.h\
+                    xmin.h\
+                    parallel.h\
+                    constants.o\
+                    nmr.h
+
+locmem.o: \
+                    copyright.h\
+                    dprec.h\
+                    nonbond_list.o\
+                    amoeba_mdin.o\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    md.h\
+                    tgtmd.h\
+                    ew_cntrl.h\
+                    extra_pts.h\
+                    dynph.h\
+                    sgld.h\
+                    parallel.h
+
+locmem.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    nonbond_list.LES.o\
+                    amoeba_mdin.o\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    md.h\
+                    tgtmd.h\
+                    ew_cntrl.h\
+                    extra_pts.h\
+                    dynph.h\
+                    sgld.h\
+                    parallel.h
+
+locmem.LES.o:   locmem.f
+	$(FPP) -DLES locmem.f > _locmem.f
+	$(FC) -c $(FFLAGS) -o $@ _locmem.f
+
+lsc_init.o: \
+                    dprec.h\
+                    lscivr_vars.o\
+                    constants.o\
+                    md.h\
+                    extra.h
+
+lsc_xp.o: \
+                    dprec.h\
+                    lscivr_vars.o\
+                    constants.o\
+                    extra.h\
+                    parallel.h
+
+lscivr_vars.o: \
+                    dprec.h
+
+matinv.o: \
+                    copyright.h\
+                    dprec.h
+
+
+matinv.o:   matinv.f
+	$(FPP) matinv.f > _matinv.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _matinv.f
+
+mdfil.o: \
+                    copyright.h\
+                    remd.o\
+                    xref.o\
+                    files.h\
+                    ew_parallel.h\
+                    parallel.h\
+                    dprec.h
+
+mdfil.PUPIL.o: \
+                    copyright.h\
+                    remd.o\
+                    xref.o\
+                    files.h\
+                    ew_parallel.h\
+                    parallel.h\
+                    dprec.h
+
+mdfil.PUPIL.o:   mdfil.f
+	$(FPP) -DPUPIL_SUPPORT mdfil.f > _mdfil.f
+	$(FC) -c $(FFLAGS) -o $@ _mdfil.f
+
+mdread.o: \
+                    copyright.h\
+                    dprec.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    lmod.o\
+                    qmmm_module.o\
+                    constants.o\
+                    amoeba_mdin.o\
+                    dssp.o\
+                    softcore.o\
+                    nose_hoover_vars.o\
+                    lscivr_vars.o\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    stack.o\
+                    nmr.o\
+                    apbs.o\
+                    box.h\
+                    def_time.h\
+                    ew_cntrl.h\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    mmtsb.h\
+                    nmr.h\
+                    tgtmd.h\
+                    sgld.h\
+                    ew_erfc_spline.h\
+                    les.h\
+                    dynph.h\
+                    random.h\
+                    decomp.o\
+                    findmask.o\
+                    parms.o\
+                    nonbond_list.o\
+                    amoeba_runmd.o\
+                    evb_pimd_init.o\
+                    remd.o\
+                    parallel.h\
+                    extra_pts.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    ew_legal.h
+
+mdread.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    lmod.o\
+                    qmmm_module.o\
+                    constants.o\
+                    amoeba_mdin.o\
+                    dssp.o\
+                    softcore.o\
+                    nose_hoover_vars.o\
+                    lscivr_vars.o\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    stack.o\
+                    nmr.LES.o\
+                    apbs.o\
+                    box.h\
+                    def_time.h\
+                    ew_cntrl.h\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    mmtsb.h\
+                    nmr.h\
+                    tgtmd.h\
+                    sgld.h\
+                    ew_erfc_spline.h\
+                    les.h\
+                    dynph.h\
+                    random.h\
+                    decomp.o\
+                    findmask.o\
+                    parms.o\
+                    nonbond_list.LES.o\
+                    amoeba_runmd.o\
+                    evb_pimd_init.LES.o\
+                    remd.LES.o\
+                    parallel.h\
+                    extra_pts.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    ew_legal.h
+
+mdread.LES.o:   mdread.f
+	$(FPP) -DLES mdread.f > _mdread.f
+	$(FC) -c $(FFLAGS) -o $@ _mdread.f
+
+mdwrit.o: \
+                    copyright.h\
+                    dprec.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    files.h\
+                    nonbond_list.o\
+                    remd.o
+
+
+mdwrit.o:   mdwrit.f
+	$(FPP) mdwrit.f > _mdwrit.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _mdwrit.f
+
+mexit.o: \
+                    copyright.h\
+                    pupildata.o\
+                    parallel.h
+
+mexit.PUPIL.o: \
+                    copyright.h\
+                    pupildata.o\
+                    parallel.h
+
+mexit.PUPIL.o:   mexit.f
+	$(FPP) -DPUPIL_SUPPORT mexit.f > _mexit.f
+	$(FC) -c $(FFLAGS) -o $@ _mexit.f
+
+minrit.o: \
+                    copyright.h\
+                    dprec.h\
+                    nonbond_list.o\
+                    md.h\
+                    files.h\
+                    box.h
+
+mmtsb.o: \
+                    dprec.h\
+                    assert.h\
+                    constants.o\
+                    files.h\
+                    mmtsb.h\
+                    md.h
+
+
+mmtsb.o:   mmtsb.f
+	$(FPP) mmtsb.f > _mmtsb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _mmtsb.f
+
+mod_vdw.o: \
+                    assert.h\
+                    dprec.h\
+                    parms.o\
+                    evb_vars.o\
+                    parallel.h\
+                    les.h\
+                    memory.h\
+                    nonbond_list.o
+
+mod_vdw.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    parms.o\
+                    evb_vars.o\
+                    parallel.h\
+                    les.h\
+                    memory.h\
+                    nonbond_list.LES.o
+
+mod_vdw.LES.o:   mod_vdw.f
+	$(FPP) -DLES mod_vdw.f > _mod_vdw.f
+	$(FC) -c $(FFLAGS) -o $@ _mod_vdw.f
+
+morse_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+morsify.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h\
+                    les.h\
+                    memory.h\
+                    parms.o
+
+morsify.LES.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h\
+                    les.h\
+                    memory.h\
+                    parms.o
+
+morsify.LES.o:   morsify.f
+	$(FPP) -DLES morsify.f > _morsify.f
+	$(FC) -c $(FFLAGS) -o $@ _morsify.f
+
+mt19937.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    netcdf.o\
+                    ncsu-constants.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-utils.o\
+                    ncsu-mpi.h
+
+multisander.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    remd.o\
+                    ncsu-sander-hooks.o\
+                    evb_pimd_init.o\
+                    files.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    md.h
+
+multisander.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    remd.LES.o\
+                    ncsu-sander-hooks.o\
+                    evb_pimd_init.LES.o\
+                    files.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    md.h
+
+multisander.LES.o:   multisander.f
+	$(FPP) -DLES multisander.f > _multisander.f
+	$(FC) -c $(FFLAGS) -o $@ _multisander.f
+
+ncsu-abmd-hooks.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-umbrella.o\
+                    ncsu-colvar-type.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-mpi.h\
+                    ncsu-utils.o\
+                    ncsu-colvar.o\
+                    ncsu-cftree.o\
+                    ncsu-parser.o
+
+
+ncsu-abmd-hooks.o:   ncsu-abmd-hooks.f
+	$(FPP) ncsu-abmd-hooks.f > _ncsu-abmd-hooks.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-abmd-hooks.f
+
+ncsu-bbmd-ctxt.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-umbrella.o\
+                    ncsu-colvar-type.o\
+                    ncsu-utils.o\
+                    ncsu-cftree.o\
+                    ncsu-colvar.o\
+                    ncsu-sander-proxy.o\
+                    files.h\
+                    ncsu-mpi.h
+
+ncsu-bbmd-hooks.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    mt19937.o\
+                    ncsu-bbmd-ctxt.o\
+                    ncsu-constants.o\
+                    ncsu-utils.o\
+                    ncsu-cftree.o\
+                    ncsu-parser.o\
+                    ncsu-sander-proxy.o\
+                    files.h\
+                    ncsu-mpi.h
+
+ncsu-cftree.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-value.o\
+                    ncsu-constants.o\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o
+
+ncsu-colvar-math.o: \
+                    ncsu-config.h\
+                    ncsu-constants.o
+
+
+ncsu-colvar-math.o:   ncsu-colvar-math.f
+	$(FPP) ncsu-colvar-math.f > _ncsu-colvar-math.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-colvar-math.f
+
+ncsu-colvar-type.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h
+
+
+ncsu-colvar-type.o:   ncsu-colvar-type.f
+	$(FPP) ncsu-colvar-type.f > _ncsu-colvar-type.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-colvar-type.f
+
+ncsu-colvar-utils.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-utils.o\
+                    ncsu-constants.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-mpi.h
+
+ncsu-colvar.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-colvar-type.o\
+                    ncsu-cv-ANGLE.o\
+                    ncsu-cv-TORSION.o\
+                    ncsu-cv-DISTANCE.o\
+                    ncsu-cv-MULTI_RMSD.o\
+                    ncsu-cv-R_OF_GYRATION.o\
+                    ncsu-cv-HANDEDNESS.o\
+                    ncsu-cv-N_OF_BONDS.o\
+                    ncsu-cv-N_OF_STRUCTURES.o\
+                    ncsu-constants.o\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-value.o\
+                    ncsu-cftree.o\
+                    ncsu-mpi.h
+
+
+ncsu-colvar.o:   ncsu-colvar.f
+	$(FPP) ncsu-colvar.f > _ncsu-colvar.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-colvar.f
+
+ncsu-constants.o: \
+                    ncsu-config.h
+
+ncsu-cv-ANGLE.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-colvar-math.o\
+                    ncsu-mpi.h\
+                    ncsu-colvar-utils.o
+
+
+ncsu-cv-ANGLE.o:   ncsu-cv-ANGLE.f
+	$(FPP) ncsu-cv-ANGLE.f > _ncsu-cv-ANGLE.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-ANGLE.f
+
+ncsu-cv-DISTANCE.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-colvar-math.o\
+                    ncsu-mpi.h\
+                    ncsu-colvar-utils.o
+
+
+ncsu-cv-DISTANCE.o:   ncsu-cv-DISTANCE.f
+	$(FPP) ncsu-cv-DISTANCE.f > _ncsu-cv-DISTANCE.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-DISTANCE.f
+
+ncsu-cv-HANDEDNESS.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-utils.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-mpi.h\
+                    ncsu-colvar-utils.o\
+                    ncsu-sander-proxy.o
+
+
+ncsu-cv-HANDEDNESS.o:   ncsu-cv-HANDEDNESS.f
+	$(FPP) ncsu-cv-HANDEDNESS.f > _ncsu-cv-HANDEDNESS.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-HANDEDNESS.f
+
+ncsu-cv-MULTI_RMSD.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-cv-priv.type\
+                    ncsu-cv-priv.decl\
+                    ncsu-cv-priv.impl\
+                    ncsu-rmsd.o\
+                    ncsu-utils.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-mpi.h\
+                    ncsu-sander-proxy.o\
+                    ncsu-colvar-utils.o
+
+
+ncsu-cv-MULTI_RMSD.o:   ncsu-cv-MULTI_RMSD.f
+	$(FPP) ncsu-cv-MULTI_RMSD.f > _ncsu-cv-MULTI_RMSD.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-MULTI_RMSD.f
+
+ncsu-cv-N_OF_BONDS.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-mpi.h\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o
+
+
+ncsu-cv-N_OF_BONDS.o:   ncsu-cv-N_OF_BONDS.f
+	$(FPP) ncsu-cv-N_OF_BONDS.f > _ncsu-cv-N_OF_BONDS.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-N_OF_BONDS.f
+
+ncsu-cv-N_OF_STRUCTURES.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-cv-priv.type\
+                    ncsu-cv-priv.decl\
+                    ncsu-cv-priv.impl\
+                    ncsu-rmsd.o\
+                    ncsu-utils.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-mpi.h\
+                    ncsu-sander-proxy.o\
+                    ncsu-colvar-utils.o
+
+
+ncsu-cv-N_OF_STRUCTURES.o:   ncsu-cv-N_OF_STRUCTURES.f
+	$(FPP) ncsu-cv-N_OF_STRUCTURES.f > _ncsu-cv-N_OF_STRUCTURES.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-N_OF_STRUCTURES.f
+
+ncsu-cv-R_OF_GYRATION.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-cv-priv.type\
+                    ncsu-cv-priv.decl\
+                    ncsu-cv-priv.impl\
+                    ncsu-utils.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-mpi.h\
+                    ncsu-colvar-utils.o\
+                    ncsu-sander-proxy.o
+
+
+ncsu-cv-R_OF_GYRATION.o:   ncsu-cv-R_OF_GYRATION.f
+	$(FPP) ncsu-cv-R_OF_GYRATION.f > _ncsu-cv-R_OF_GYRATION.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-R_OF_GYRATION.f
+
+ncsu-cv-TORSION.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-colvar-math.o\
+                    ncsu-mpi.h\
+                    ncsu-colvar-utils.o
+
+
+ncsu-cv-TORSION.o:   ncsu-cv-TORSION.f
+	$(FPP) ncsu-cv-TORSION.f > _ncsu-cv-TORSION.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-cv-TORSION.f
+
+ncsu-lexer.o: \
+                    ncsu-utils.h\
+                    ncsu-utils.o
+
+ncsu-parser.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-cftree.o\
+                    ncsu-utils.o\
+                    ncsu-lexer.o\
+                    ncsu-value.o\
+                    ncsu-constants.o\
+                    ncsu-sander-proxy.o
+
+ncsu-pmd-hooks.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-colvar.o\
+                    ncsu-utils.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-mpi.h\
+                    ncsu-cftree.o\
+                    ncsu-parser.o
+
+
+ncsu-pmd-hooks.o:   ncsu-pmd-hooks.f
+	$(FPP) ncsu-pmd-hooks.f > _ncsu-pmd-hooks.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-pmd-hooks.f
+
+ncsu-rmsd.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-utils.o\
+                    ncsu-constants.o
+
+
+ncsu-rmsd.o:   ncsu-rmsd.f
+	$(FPP) ncsu-rmsd.f > _ncsu-rmsd.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-rmsd.f
+
+ncsu-sander-hooks.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-pmd-hooks.o\
+                    ncsu-abmd-hooks.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-mpi.h\
+                    ncsu-smd-hooks.o\
+                    ncsu-bbmd-hooks.o\
+                    ncsu-utils.o
+
+
+ncsu-sander-hooks.o:   ncsu-sander-hooks.f
+	$(FPP) ncsu-sander-hooks.f > _ncsu-sander-hooks.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-sander-hooks.f
+
+ncsu-sander-proxy.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    files.h\
+                    md.h\
+                    ncsu-mpi.h\
+                    memory.h\
+                    ncsu-constants.o
+
+ncsu-smd-hooks.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-colvar-type.o\
+                    ncsu-utils.o\
+                    ncsu-value.o\
+                    ncsu-cftree.o\
+                    ncsu-parser.o\
+                    ncsu-colvar.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-mpi.h
+
+
+ncsu-smd-hooks.o:   ncsu-smd-hooks.f
+	$(FPP) ncsu-smd-hooks.f > _ncsu-smd-hooks.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-smd-hooks.f
+
+ncsu-umbrella.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    netcdf.o\
+                    ncsu-constants.o\
+                    ncsu-utils.o\
+                    ncsu-mpi.h\
+                    ncsu-sander-proxy.o
+
+
+ncsu-umbrella.o:   ncsu-umbrella.f
+	$(FPP) ncsu-umbrella.f > _ncsu-umbrella.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _ncsu-umbrella.f
+
+ncsu-utils.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-sander-proxy.o\
+                    ncsu-mpi.h
+
+ncsu-value.o: \
+                    ncsu-utils.h\
+                    ncsu-config.h\
+                    ncsu-constants.o\
+                    ncsu-utils.o
+
+new_time.o: \
+                    copyright.h\
+                    dprec.h\
+                    def_time.h\
+                    new_time.h\
+                    stack.o\
+                    extra.h\
+                    parallel.h
+
+
+new_time.o:   new_time.f
+	$(FPP) new_time.f > _new_time.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _new_time.f
+
+nmlsrc.o: \
+                    copyright.h
+
+nmr.o: \
+                    assert.h\
+                    copyright.h\
+                    dprec.h\
+                    constants.o\
+                    nmr.h\
+                    memory.h\
+                    files.h\
+                    extra.h\
+                    softcore.o\
+                    les.h\
+                    md.h\
+                    box.h
+
+
+nmr.o:   nmr.f
+	$(FPP) nmr.f > _nmr.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _nmr.f
+
+nmr.LES.o: \
+                    assert.h\
+                    copyright.h\
+                    dprec.h\
+                    constants.o\
+                    nmr.h\
+                    memory.h\
+                    files.h\
+                    extra.h\
+                    softcore.o\
+                    les.h\
+                    md.h\
+                    box.h
+
+nmr.LES.o:   nmr.f
+	$(FPP) -DLES nmr.f > _nmr.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _nmr.f
+
+nmrcal.o: \
+                    copyright.h\
+                    dprec.h\
+                    nmr.o\
+                    nmr.h\
+                    parallel.h\
+                    files.h
+
+nonbond_list.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    amoeba_mdin.o\
+                    trace.o\
+                    extra.h\
+                    ew_cntrl.h\
+                    ew_mpole.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    def_time.h\
+                    constants.o\
+                    pimd_vars.o\
+                    softcore.o\
+                    qmmm_module.o\
+                    les.h\
+                    box.h\
+                    memory.h
+
+
+nonbond_list.o:   nonbond_list.f
+	$(FPP) nonbond_list.f > _nonbond_list.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _nonbond_list.f
+
+nonbond_list.LES.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    amoeba_mdin.o\
+                    trace.o\
+                    extra.h\
+                    ew_cntrl.h\
+                    ew_mpole.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    def_time.h\
+                    constants.o\
+                    pimd_vars.o\
+                    softcore.o\
+                    qmmm_module.o\
+                    les.h\
+                    box.h\
+                    memory.h
+
+nonbond_list.LES.o:   nonbond_list.f
+	$(FPP) -DLES nonbond_list.f > _nonbond_list.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _nonbond_list.f
+
+nose_hoover.o: \
+                    dprec.h\
+                    parallel.h\
+                    md.h\
+                    memory.h
+
+
+nose_hoover.o:   nose_hoover.f
+	$(FPP) nose_hoover.f > _nose_hoover.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _nose_hoover.f
+
+nose_hoover_init.o: \
+                    pimd_vars.o\
+                    constants.o\
+                    nose_hoover.o\
+                    nose_hoover_vars.o\
+                    cmd_vars.o\
+                    les.h\
+                    memory.h\
+                    md.h\
+                    parallel.h
+
+nose_hoover_init_LES.o: \
+                    pimd_vars.o\
+                    constants.o\
+                    nose_hoover.o\
+                    nose_hoover_vars.o\
+                    cmd_vars.o\
+                    les.h\
+                    memory.h\
+                    md.h\
+                    parallel.h
+
+nose_hoover_vars.o: \
+                    dprec.h\
+                    nose_hoover.o
+
+np_force.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    def_time.h\
+                    pb_force.o\
+                    sa_driver.o\
+                    pb_md.h\
+                    box.h\
+                    constants.o
+
+
+np_force.o:   np_force.f
+	$(FPP) np_force.f > _np_force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _np_force.f
+
+out_evb.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    pimd_vars.o\
+                    evb_pimd_init.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+
+out_evb.o:   out_evb.f
+	$(FPP) out_evb.f > _out_evb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _out_evb.f
+
+out_evb.LES.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    pimd_vars.o\
+                    evb_pimd_init.LES.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+out_evb.LES.o:   out_evb.f
+	$(FPP) -DLES out_evb.f > _out_evb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _out_evb.f
+
+parallel.o: \
+                    copyright.h\
+                    dprec.h\
+                    trace.o\
+                    amoeba_mdin.o\
+                    amoeba_valence.o\
+                    amoeba_multipoles.o\
+                    amoeba_adjust.o\
+                    amoeba_vdw.o\
+                    amoeba_induced.o\
+                    amoeba_self.o\
+                    amoeba_recip.o\
+                    amoeba_runmd.o\
+                    amoeba_direct.o\
+                    parms.o\
+                    nonbond_list.o\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    nose_hoover_vars.o\
+                    lscivr_vars.o\
+                    spatial_fft.o\
+                    softcore.o\
+                    molecule.o\
+                    parallel.h\
+                    ew_parallel.h\
+                    extra.h\
+                    md.h\
+                    memory.h\
+                    nmr.h\
+                    box.h\
+                    files.h\
+                    les.h\
+                    extra_pts.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    ew_erfc_spline.h\
+                    ew_cntrl.h\
+                    flocntrl.h\
+                    debug.h\
+                    new_time.h\
+                    tgtmd.h\
+                    sgld.h
+
+parallel.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    trace.o\
+                    amoeba_mdin.o\
+                    amoeba_valence.o\
+                    amoeba_multipoles.o\
+                    amoeba_adjust.o\
+                    amoeba_vdw.o\
+                    amoeba_induced.o\
+                    amoeba_self.o\
+                    amoeba_recip.o\
+                    amoeba_runmd.o\
+                    amoeba_direct.o\
+                    parms.o\
+                    nonbond_list.LES.o\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    nose_hoover_vars.o\
+                    lscivr_vars.o\
+                    spatial_fft.o\
+                    softcore.o\
+                    molecule.o\
+                    parallel.h\
+                    ew_parallel.h\
+                    extra.h\
+                    md.h\
+                    memory.h\
+                    nmr.h\
+                    box.h\
+                    files.h\
+                    les.h\
+                    extra_pts.h\
+                    ew_pme_recip.h\
+                    ew_mpole.h\
+                    ew_erfc_spline.h\
+                    ew_cntrl.h\
+                    flocntrl.h\
+                    debug.h\
+                    new_time.h\
+                    tgtmd.h\
+                    sgld.h
+
+parallel.LES.o:   parallel.f
+	$(FPP) -DLES parallel.f > _parallel.f
+	$(FC) -c $(FFLAGS) -o $@ _parallel.f
+
+parms.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h
+
+
+parms.o:   parms.f
+	$(FPP) parms.f > _parms.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _parms.f
+
+pb_direct.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    pb_force.o\
+                    decomp.o
+
+
+pb_direct.o:   pb_direct.f
+	$(FPP) pb_direct.f > _pb_direct.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _pb_direct.f
+
+pb_exmol.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    pb_force.o\
+                    sa_driver.o
+
+
+pb_exmol.o:   pb_exmol.f
+	$(FPP) pb_exmol.f > _pb_exmol.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _pb_exmol.f
+
+pb_force.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    def_time.h\
+                    sa_driver.o\
+                    decomp.o\
+                    pb_md.h\
+                    md.h\
+                    box.h\
+                    constants.o
+
+
+pb_force.o:   pb_force.f
+	$(FPP) pb_force.f > _pb_force.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _pb_force.f
+
+pb_list.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    pb_force.o\
+                    sa_driver.o
+
+
+pb_list.o:   pb_list.f
+	$(FPP) pb_list.f > _pb_list.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _pb_list.f
+
+pb_mpfrc.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    constants.o
+
+
+pb_mpfrc.o:   pb_mpfrc.f
+	$(FPP) pb_mpfrc.f > _pb_mpfrc.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _pb_mpfrc.f
+
+pcshift.o: \
+                    copyright.h\
+                    dprec.h\
+                    nmr.h\
+                    md.h\
+                    files.h\
+                    pcshift.h\
+                    def_time.h\
+                    constants.o
+
+
+pcshift.o:   pcshift.f
+	$(FPP) pcshift.f > _pcshift.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _pcshift.f
+
+pearsn.o: \
+                    copyright.h\
+                    dprec.h\
+                    constants.o
+
+pimd_force.o: \
+                    dprec.h\
+                    assert.h\
+                    constants.o\
+                    pimd_vars.o\
+                    evb_pimd_init.o\
+                    evb_vars.o\
+                    md.h\
+                    les.h\
+                    memory.h\
+                    parallel.h\
+                    files.h
+
+pimd_force.LES.o: \
+                    dprec.h\
+                    assert.h\
+                    constants.o\
+                    pimd_vars.o\
+                    evb_pimd_init.LES.o\
+                    evb_vars.o\
+                    md.h\
+                    les.h\
+                    memory.h\
+                    parallel.h\
+                    files.h
+
+pimd_force.LES.o:   pimd_force.f
+	$(FPP) -DLES pimd_force.f > _pimd_force.f
+	$(FC) -c $(FFLAGS) -o $@ _pimd_force.f
+
+pimd_init.o: \
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    evb_pimd_init.o\
+                    evb_vars.o\
+                    md.h\
+                    extra.h\
+                    les.h\
+                    files.h\
+                    memory.h\
+                    parallel.h\
+                    qmmm_module.o\
+                    nose_hoover.o
+
+pimd_init.LES.o: \
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    pimd_vars.o\
+                    cmd_vars.o\
+                    evb_pimd_init.LES.o\
+                    evb_vars.o\
+                    md.h\
+                    extra.h\
+                    les.h\
+                    files.h\
+                    memory.h\
+                    parallel.h\
+                    qmmm_module.o\
+                    nose_hoover.o
+
+pimd_init.LES.o:   pimd_init.f
+	$(FPP) -DLES pimd_init.f > _pimd_init.f
+	$(FC) -c $(FFLAGS) -o $@ _pimd_init.f
+
+pimd_vars.o: \
+                    dprec.h
+
+printe.o: \
+                    copyright.h\
+                    dprec.h\
+                    decomp.o\
+                    box.h\
+                    extra.h\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    nmr.h\
+                    constants.o\
+                    qmmm_module.o\
+                    xref.o\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    tgtmd.h
+
+printe.PUPIL.o: \
+                    copyright.h\
+                    dprec.h\
+                    decomp.o\
+                    box.h\
+                    extra.h\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    nmr.h\
+                    constants.o\
+                    qmmm_module.o\
+                    xref.o\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    tgtmd.h
+
+printe.PUPIL.o:   printe.f
+	$(FPP) -DPUPIL_SUPPORT printe.f > _printe.f
+	$(FC) -c $(FFLAGS) -o $@ _printe.f
+
+prn_dipoles.o: \
+                    copyright.h\
+                    dprec.h\
+                    constants.o\
+                    qmmm_module.o
+
+
+prn_dipoles.o:   prn_dipoles.f
+	$(FPP) prn_dipoles.f > _prn_dipoles.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _prn_dipoles.f
+
+pubfft.o: \
+                    copyright.h\
+                    dprec.h
+
+pupildata.o: \
+                    dprec.h\
+                    parms.o\
+                    memory.h\
+                    extra_pts.h
+
+putvalues.o: \
+                    dprec.h\
+                    assert.h\
+                    pupildata.o\
+                    constants.o\
+                    qmmm_module.o\
+                    memory.h
+
+qm2_allocate_e_repul.o: \
+                    copyright.h\
+                    assert.h\
+                    qmmm_module.o
+
+
+qm2_allocate_e_repul.o:   qm2_allocate_e_repul.f
+	$(FPP) qm2_allocate_e_repul.f > _qm2_allocate_e_repul.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_allocate_e_repul.f
+
+qm2_calc_charges.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o
+
+
+qm2_calc_charges.o:   qm2_calc_charges.f
+	$(FPP) qm2_calc_charges.f > _qm2_calc_charges.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_calc_charges.f
+
+qm2_calc_rij_and_eqns.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h\
+                    ew_pme_recip.h
+
+
+qm2_calc_rij_and_eqns.o:   qm2_calc_rij_and_eqns.f
+	$(FPP) qm2_calc_rij_and_eqns.f > _qm2_calc_rij_and_eqns.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_calc_rij_and_eqns.f
+
+qm2_dftb_broyden.o: \
+                    dprec.h\
+                    copyright.h\
+                    constants.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_broyden.o:   qm2_dftb_broyden.f
+	$(FPP) qm2_dftb_broyden.f > _qm2_dftb_broyden.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_broyden.f
+
+qm2_dftb_cm3.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_cm3.o:   qm2_dftb_cm3.f
+	$(FPP) qm2_dftb_cm3.f > _qm2_dftb_cm3.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_cm3.f
+
+qm2_dftb_dispersion_egr.o: \
+                    dprec.h\
+                    qm2_dftb_module.o\
+                    constants.o\
+                    qmmm_module.o
+
+
+qm2_dftb_dispersion_egr.o:   qm2_dftb_dispersion_egr.f
+	$(FPP) qm2_dftb_dispersion_egr.f > _qm2_dftb_dispersion_egr.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_dispersion_egr.f
+
+qm2_dftb_dispersion_params.o: \
+                    dprec.h\
+                    qm2_dftb_module.o\
+                    qmmm_module.o
+
+
+qm2_dftb_dispersion_params.o:   qm2_dftb_dispersion_params.f
+	$(FPP) qm2_dftb_dispersion_params.f > _qm2_dftb_dispersion_params.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_dispersion_params.f
+
+qm2_dftb_dispersionread.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_dispersionread.o:   qm2_dftb_dispersionread.f
+	$(FPP) qm2_dftb_dispersionread.f > _qm2_dftb_dispersionread.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_dispersionread.f
+
+qm2_dftb_energy.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    constants.o
+
+
+qm2_dftb_energy.o:   qm2_dftb_energy.f
+	$(FPP) qm2_dftb_energy.f > _qm2_dftb_energy.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_energy.f
+
+qm2_dftb_ewald.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    constants.o
+
+
+qm2_dftb_ewald.o:   qm2_dftb_ewald.f
+	$(FPP) qm2_dftb_ewald.f > _qm2_dftb_ewald.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_ewald.f
+
+qm2_dftb_ewevge.o: \
+                    dprec.h\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_ewevge.o:   qm2_dftb_ewevge.f
+	$(FPP) qm2_dftb_ewevge.f > _qm2_dftb_ewevge.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_ewevge.f
+
+qm2_dftb_externalshift.o: \
+                    dprec.h\
+                    qm2_dftb_module.o\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_dftb_externalshift.o:   qm2_dftb_externalshift.f
+	$(FPP) qm2_dftb_externalshift.f > _qm2_dftb_externalshift.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_externalshift.f
+
+qm2_dftb_fermi.o: \
+                    dprec.h\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_fermi.o:   qm2_dftb_fermi.f
+	$(FPP) qm2_dftb_fermi.f > _qm2_dftb_fermi.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_fermi.f
+
+qm2_dftb_gamma.o: \
+                    dprec.h
+
+
+qm2_dftb_gamma.o:   qm2_dftb_gamma.f
+	$(FPP) qm2_dftb_gamma.f > _qm2_dftb_gamma.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_gamma.f
+
+qm2_dftb_gammamat.o: \
+                    dprec.h\
+                    constants.o
+
+
+qm2_dftb_gammamat.o:   qm2_dftb_gammamat.f
+	$(FPP) qm2_dftb_gammamat.f > _qm2_dftb_gammamat.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_gammamat.f
+
+qm2_dftb_gb.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    constants.o
+
+
+qm2_dftb_gb.o:   qm2_dftb_gb.f
+	$(FPP) qm2_dftb_gb.f > _qm2_dftb_gb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_gb.f
+
+qm2_dftb_get_qm_forces.o: \
+                    copyright.h\
+                    dprec.h\
+                    def_time.h\
+                    qm2_dftb_module.o\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_dftb_get_qm_forces.o:   qm2_dftb_get_qm_forces.f
+	$(FPP) qm2_dftb_get_qm_forces.f > _qm2_dftb_get_qm_forces.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_get_qm_forces.f
+
+qm2_dftb_get_qmmm_forces.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_dftb_get_qmmm_forces.o:   qm2_dftb_get_qmmm_forces.f
+	$(FPP) qm2_dftb_get_qmmm_forces.f > _qm2_dftb_get_qmmm_forces.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_get_qmmm_forces.f
+
+qm2_dftb_gettab.o: \
+                    dprec.h\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_gettab.o:   qm2_dftb_gettab.f
+	$(FPP) qm2_dftb_gettab.f > _qm2_dftb_gettab.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_gettab.f
+
+qm2_dftb_load_params.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_dftb_module.o\
+                    nonbond_list.o\
+                    assert.h
+
+
+qm2_dftb_load_params.o:   qm2_dftb_load_params.f
+	$(FPP) qm2_dftb_load_params.f > _qm2_dftb_load_params.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_load_params.f
+
+qm2_dftb_module.o: \
+                    assert.h\
+                    dprec.h\
+                    qmmm_module.o
+
+
+qm2_dftb_module.o:   qm2_dftb_module.f
+	$(FPP) qm2_dftb_module.f > _qm2_dftb_module.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_module.f
+
+qm2_dftb_mulliken.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_mulliken.o:   qm2_dftb_mulliken.f
+	$(FPP) qm2_dftb_mulliken.f > _qm2_dftb_mulliken.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_mulliken.f
+
+qm2_dftb_read_cm3.o: \
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_read_cm3.o:   qm2_dftb_read_cm3.f
+	$(FPP) qm2_dftb_read_cm3.f > _qm2_dftb_read_cm3.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_read_cm3.f
+
+qm2_dftb_repulsiv.o: \
+                    dprec.h\
+                    constants.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_repulsiv.o:   qm2_dftb_repulsiv.f
+	$(FPP) qm2_dftb_repulsiv.f > _qm2_dftb_repulsiv.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_repulsiv.f
+
+qm2_dftb_scf.o: \
+                    copyright.h\
+                    dprec.h\
+                    def_time.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    constants.o\
+                    md.h
+
+
+qm2_dftb_scf.o:   qm2_dftb_scf.f
+	$(FPP) qm2_dftb_scf.f > _qm2_dftb_scf.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_scf.f
+
+qm2_dftb_self.o: \
+                    dprec.h
+
+
+qm2_dftb_self.o:   qm2_dftb_self.f
+	$(FPP) qm2_dftb_self.f > _qm2_dftb_self.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_self.f
+
+qm2_dftb_shift.o: \
+                    dprec.h\
+                    copyright.h\
+                    qmmm_module.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_shift.o:   qm2_dftb_shift.f
+	$(FPP) qm2_dftb_shift.f > _qm2_dftb_shift.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_shift.f
+
+qm2_dftb_short_range.o: \
+                    dprec.h\
+                    nonbond_list.o
+
+
+qm2_dftb_short_range.o:   qm2_dftb_short_range.f
+	$(FPP) qm2_dftb_short_range.f > _qm2_dftb_short_range.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_short_range.f
+
+qm2_dftb_skpar.o: \
+                    dprec.h\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_skpar.o:   qm2_dftb_skpar.f
+	$(FPP) qm2_dftb_skpar.f > _qm2_dftb_skpar.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_skpar.f
+
+qm2_dftb_slkode.o: \
+                    dprec.h\
+                    constants.o\
+                    qm2_dftb_module.o
+
+
+qm2_dftb_slkode.o:   qm2_dftb_slkode.f
+	$(FPP) qm2_dftb_slkode.f > _qm2_dftb_slkode.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_slkode.f
+
+qm2_dftb_slktrafo.o: \
+                    dprec.h
+
+
+qm2_dftb_slktrafo.o:   qm2_dftb_slktrafo.f
+	$(FPP) qm2_dftb_slktrafo.f > _qm2_dftb_slktrafo.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dftb_slktrafo.f
+
+qm2_dihed.o: \
+                    copyright.h\
+                    dprec.h
+
+
+qm2_dihed.o:   qm2_dihed.f
+	$(FPP) qm2_dihed.f > _qm2_dihed.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_dihed.f
+
+qm2_energy.o: \
+                    copyright.h\
+                    dprec.h\
+                    def_time.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_energy.o:   qm2_energy.f
+	$(FPP) qm2_energy.f > _qm2_energy.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_energy.f
+
+qm2_fock.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o
+
+
+qm2_fock.o:   qm2_fock.f
+	$(FPP) qm2_fock.f > _qm2_fock.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_fock.f
+
+qm2_get_qm_forces.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h
+
+
+qm2_get_qm_forces.o:   qm2_get_qm_forces.f
+	$(FPP) qm2_get_qm_forces.f > _qm2_get_qm_forces.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_get_qm_forces.f
+
+qm2_get_qmmm_forces.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h
+
+
+qm2_get_qmmm_forces.o:   qm2_get_qmmm_forces.f
+	$(FPP) qm2_get_qmmm_forces.f > _qm2_get_qmmm_forces.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_get_qmmm_forces.f
+
+qm2_h1elec.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_h1elec.o:   qm2_h1elec.f
+	$(FPP) qm2_h1elec.f > _qm2_h1elec.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_h1elec.f
+
+qm2_hcore_qmmm.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h
+
+
+qm2_hcore_qmmm.o:   qm2_hcore_qmmm.f
+	$(FPP) qm2_hcore_qmmm.f > _qm2_hcore_qmmm.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_hcore_qmmm.f
+
+qm2_hcore_qmqm.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h
+
+
+qm2_hcore_qmqm.o:   qm2_hcore_qmqm.f
+	$(FPP) qm2_hcore_qmqm.f > _qm2_hcore_qmqm.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_hcore_qmqm.f
+
+qm2_identify_peptide_links.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    qmmm_module.o
+
+
+qm2_identify_peptide_links.o:   qm2_identify_peptide_links.f
+	$(FPP) qm2_identify_peptide_links.f > _qm2_identify_peptide_links.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_identify_peptide_links.f
+
+qm2_load_params_and_allocate.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_parameters.h
+
+
+qm2_load_params_and_allocate.o:   qm2_load_params_and_allocate.f
+	$(FPP) qm2_load_params_and_allocate.f > _qm2_load_params_and_allocate.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_load_params_and_allocate.f
+
+qm2_repp.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_repp.o:   qm2_repp.f
+	$(FPP) qm2_repp.f > _qm2_repp.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_repp.f
+
+qm2_rotate_qmqm.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h
+
+
+qm2_rotate_qmqm.o:   qm2_rotate_qmqm.f
+	$(FPP) qm2_rotate_qmqm.f > _qm2_rotate_qmqm.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_rotate_qmqm.f
+
+qm2_scf.o: \
+                    copyright.h\
+                    dprec.h\
+                    def_time.h\
+                    assert.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_scf.o:   qm2_scf.f
+	$(FPP) qm2_scf.f > _qm2_scf.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_scf.f
+
+qm2_setup_orb_exp.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm2_setup_orb_exp.o:   qm2_setup_orb_exp.f
+	$(FPP) qm2_setup_orb_exp.f > _qm2_setup_orb_exp.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm2_setup_orb_exp.f
+
+qm2_smallest_number.o: \
+                    copyright.h\
+                    dprec.h
+
+qm2_transf_roothaan_diag.o: \
+                    qmmm_module.o
+
+qm_assign_atom_types.o: \
+                    copyright.h\
+                    assert.h\
+                    qmmm_module.o
+
+
+qm_assign_atom_types.o:   qm_assign_atom_types.f
+	$(FPP) qm_assign_atom_types.f > _qm_assign_atom_types.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_assign_atom_types.f
+
+qm_div.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    memory.h
+
+
+qm_div.o:   qm_div.f
+	$(FPP) qm_div.f > _qm_div.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_div.f
+
+qm_ewald.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    qmmm_module.o\
+                    nonbond_list.o\
+                    constants.o\
+                    ew_pme_recip.h\
+                    qm2_array_locations.h
+
+
+qm_ewald.o:   qm_ewald.f
+	$(FPP) qm_ewald.f > _qm_ewald.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_ewald.f
+
+qm_gb.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_array_locations.h
+
+
+qm_gb.o:   qm_gb.f
+	$(FPP) qm_gb.f > _qm_gb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_gb.f
+
+qm_link_atoms.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    constants.o\
+                    memory.h
+
+
+qm_link_atoms.o:   qm_link_atoms.f
+	$(FPP) qm_link_atoms.f > _qm_link_atoms.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_link_atoms.f
+
+qm_mm.o: \
+                    copyright.h\
+                    dprec.h\
+                    def_time.h\
+                    qmmm_module.o\
+                    constants.o\
+                    qm2_dftb_module.o\
+                    nonbond_list.o\
+                    assert.h
+
+
+qm_mm.o:   qm_mm.f
+	$(FPP) qm_mm.f > _qm_mm.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_mm.f
+
+qm_print_info.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    qm2_array_locations.h
+
+
+qm_print_info.o:   qm_print_info.f
+	$(FPP) qm_print_info.f > _qm_print_info.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_print_info.f
+
+qm_zero_charges.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    qmmm_module.o\
+                    constants.o
+
+
+qm_zero_charges.o:   qm_zero_charges.f
+	$(FPP) qm_zero_charges.f > _qm_zero_charges.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qm_zero_charges.f
+
+qmmm_module.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    constants.o\
+                    parallel.h\
+                    memory.h\
+                    findmask.o
+
+
+qmmm_module.o:   qmmm_module.f
+	$(FPP) qmmm_module.f > _qmmm_module.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _qmmm_module.f
+
+random.o: \
+                    copyright.h\
+                    dprec.h\
+                    random.h
+
+
+random.o:   random.f
+	$(FPP) random.f > _random.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _random.f
+
+rcbond_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+rcdbonds_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+rdparm.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    parms.o\
+                    molecule.o\
+                    md.h\
+                    memory.h\
+                    files.h\
+                    box.h\
+                    nmr.h\
+                    extra_pts.h\
+                    les.h\
+                    nonbond_list.o\
+                    amoeba_mdin.o\
+                    pimd_vars.o\
+                    dssp.o
+
+rdparm.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    parms.o\
+                    molecule.o\
+                    md.h\
+                    memory.h\
+                    files.h\
+                    box.h\
+                    nmr.h\
+                    extra_pts.h\
+                    les.h\
+                    nonbond_list.LES.o\
+                    amoeba_mdin.o\
+                    pimd_vars.o\
+                    dssp.o
+
+rdparm.LES.o:   rdparm.f
+	$(FPP) -DLES rdparm.f > _rdparm.f
+	$(FC) -c $(FFLAGS) -o $@ _rdparm.f
+
+react_flux.o: \
+                    dprec.h\
+                    evb_vars.o
+
+react_flux_init.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o
+
+
+react_flux_init.o:   react_flux_init.f
+	$(FPP) react_flux_init.f > _react_flux_init.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _react_flux_init.f
+
+react_path.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    parallel.h\
+                    files.h\
+                    md.h
+
+relax_mat.o: \
+                    copyright.h\
+                    dprec.h\
+                    constants.o\
+                    nmr.h\
+                    md.h\
+                    memory.h\
+                    def_time.h\
+                    box.h\
+                    files.h\
+                    parallel.h\
+                    extra.h
+
+
+relax_mat.o:   relax_mat.f
+	$(FPP) relax_mat.f > _relax_mat.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _relax_mat.f
+
+remd.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    parallel.h\
+                    ncsu-sander-hooks.o\
+                    les.h\
+                    memory.h\
+                    box.h
+
+
+remd.o:   remd.f
+	$(FPP) remd.f > _remd.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _remd.f
+
+remd.LES.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    parallel.h\
+                    ncsu-sander-hooks.o\
+                    les.h\
+                    memory.h\
+                    box.h
+
+remd.LES.o:   remd.f
+	$(FPP) -DLES remd.f > _remd.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _remd.f
+
+rfree.o: \
+                    copyright.h\
+                    dprec.h
+
+rgroup.o: \
+                    copyright.h\
+                    dprec.h
+
+runmd.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    cmd_vars.o\
+                    pimd_vars.o\
+                    lscivr_vars.o\
+                    nose_hoover.o\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    constants.o\
+                    trace.o\
+                    stack.o\
+                    decomp.o\
+                    fastwt.o\
+                    bintraj.o\
+                    nonbond_list.o\
+                    nose_hoover_vars.o\
+                    evb_vars.o\
+                    remd.o\
+                    evb_pimd_init.o\
+                    softcore.o\
+                    amoeba_mdin.o\
+                    amoeba_runmd.o\
+                    parallel.h\
+                    files.h\
+                    md.h\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    extra.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    ew_mpole.h\
+                    def_time.h\
+                    extra_pts.h\
+                    les.h\
+                    pb_md.h\
+                    random.h\
+                    sgld.h\
+                    mmtsb.h
+
+
+runmd.o:   runmd.f
+	$(FPP) runmd.f > _runmd.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _runmd.f
+
+runmd.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    cmd_vars.o\
+                    pimd_vars.o\
+                    lscivr_vars.o\
+                    nose_hoover.o\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    constants.o\
+                    trace.o\
+                    stack.o\
+                    decomp.o\
+                    fastwt.o\
+                    bintraj.o\
+                    nonbond_list.LES.o\
+                    nose_hoover_vars.o\
+                    evb_vars.o\
+                    remd.LES.o\
+                    evb_pimd_init.LES.o\
+                    softcore.o\
+                    amoeba_mdin.o\
+                    amoeba_runmd.o\
+                    parallel.h\
+                    files.h\
+                    md.h\
+                    box.h\
+                    nmr.h\
+                    memory.h\
+                    extra.h\
+                    ew_frc.h\
+                    ew_cntrl.h\
+                    ew_mpole.h\
+                    def_time.h\
+                    extra_pts.h\
+                    les.h\
+                    pb_md.h\
+                    random.h\
+                    sgld.h\
+                    mmtsb.h
+
+runmd.LES.o:   runmd.f
+	$(FPP) -DLES runmd.f > _runmd.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _runmd.f
+
+runmin.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    fastwt.o\
+                    constants.o\
+                    qmmm_module.o\
+                    qm2_dftb_module.o\
+                    pb_force.o\
+                    evb_vars.o\
+                    softcore.o\
+                    parallel.h\
+                    md.h\
+                    box.h\
+                    files.h\
+                    memory.h\
+                    nmr.h\
+                    extra.h\
+                    ew_cntrl.h\
+                    pb_md.h
+
+
+runmin.o:   runmin.f
+	$(FPP) runmin.f > _runmin.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _runmin.f
+
+sa_driver.o: \
+                    copyright.h\
+                    is_copyright.h\
+                    dprec.h\
+                    is_def.h\
+                    constants.o
+
+
+sa_driver.o:   sa_driver.f
+	$(FPP) sa_driver.f > _sa_driver.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _sa_driver.f
+
+sander.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    lmod.o\
+                    constants.o\
+                    qmmm_module.o\
+                    egb.o\
+                    decomp.o\
+                    fastwt.o\
+                    relax_mat.o\
+                    nmr.o\
+                    ew_recip.o\
+                    parms.o\
+                    nonbond_list.o\
+                    stack.o\
+                    amoeba_runmd.o\
+                    amoeba_mdin.o\
+                    amoeba_interface.o\
+                    apbs.o\
+                    molecule.o\
+                    softcore.o\
+                    evb_vars.o\
+                    evb_pimd_init.o\
+                    remd.o\
+                    pimd_vars.o\
+                    pupildata.o\
+                    files.h\
+                    memory.h\
+                    nmr.h\
+                    box.h\
+                    md.h\
+                    extra.h\
+                    tgtmd.h\
+                    les.h\
+                    sgld.h\
+                    parallel.h\
+                    ew_pme_recip.h\
+                    ew_frc.h\
+                    ew_erfc_spline.h\
+                    ew_parallel.h\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    def_time.h
+
+sander.LES.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    lmod.o\
+                    constants.o\
+                    qmmm_module.o\
+                    egb.LES.o\
+                    decomp.o\
+                    fastwt.o\
+                    relax_mat.o\
+                    nmr.LES.o\
+                    ew_recip.LES.o\
+                    parms.o\
+                    nonbond_list.LES.o\
+                    stack.o\
+                    amoeba_runmd.o\
+                    amoeba_mdin.o\
+                    amoeba_interface.o\
+                    apbs.o\
+                    molecule.o\
+                    softcore.o\
+                    evb_vars.o\
+                    evb_pimd_init.LES.o\
+                    remd.LES.o\
+                    pimd_vars.o\
+                    pupildata.o\
+                    files.h\
+                    memory.h\
+                    nmr.h\
+                    box.h\
+                    md.h\
+                    extra.h\
+                    tgtmd.h\
+                    les.h\
+                    sgld.h\
+                    parallel.h\
+                    ew_pme_recip.h\
+                    ew_frc.h\
+                    ew_erfc_spline.h\
+                    ew_parallel.h\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    def_time.h
+
+sander.LES.o:   sander.f
+	$(FPP) -DLES sander.f > _sander.f
+	$(FC) -c $(FFLAGS) -o $@ _sander.f
+
+sander.PUPIL.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    ncsu-config.h\
+                    ncsu-sander-hooks.o\
+                    lmod.o\
+                    constants.o\
+                    qmmm_module.o\
+                    egb.o\
+                    decomp.o\
+                    fastwt.o\
+                    relax_mat.o\
+                    nmr.o\
+                    ew_recip.o\
+                    parms.o\
+                    nonbond_list.o\
+                    stack.o\
+                    amoeba_runmd.o\
+                    amoeba_mdin.o\
+                    amoeba_interface.o\
+                    apbs.o\
+                    molecule.o\
+                    softcore.o\
+                    evb_vars.o\
+                    evb_pimd_init.o\
+                    remd.o\
+                    pimd_vars.o\
+                    pupildata.o\
+                    files.h\
+                    memory.h\
+                    nmr.h\
+                    box.h\
+                    md.h\
+                    extra.h\
+                    tgtmd.h\
+                    les.h\
+                    sgld.h\
+                    parallel.h\
+                    ew_pme_recip.h\
+                    ew_frc.h\
+                    ew_erfc_spline.h\
+                    ew_parallel.h\
+                    ew_mpole.h\
+                    ew_cntrl.h\
+                    def_time.h
+
+sander.PUPIL.o:   sander.f
+	$(FPP) -DPUPIL_SUPPORT sander.f > _sander.f
+	$(FC) -c $(FFLAGS) -o $@ _sander.f
+
+schlegel_dg.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    schlegel_uff.o\
+                    parallel.h\
+                    extra.h\
+                    files.h\
+                    evb_mathf.o
+
+schlegel_diis.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o
+
+schlegel_full.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o
+
+schlegel_gbasis.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    evb_mathf.o
+
+schlegel_gmres.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    files.h\
+                    evb_mathf.o\
+                    parallel.h\
+                    extra.h
+
+schlegel_hcn_cart.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    files.h\
+                    parallel.h\
+                    extra.h
+
+schlegel_hcn_cart_irc.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    files.h\
+                    parallel.h\
+                    extra.h
+
+schlegel_hcn_int_irc.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    files.h\
+                    parallel.h\
+                    extra.h
+
+schlegel_pgbasis.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    evb_mathf.o
+
+schlegel_poh_irc.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    evb_mathf.o\
+                    files.h\
+                    parallel.h\
+                    extra.h
+
+schlegel_poh_uff.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    files.h\
+                    parallel.h\
+                    extra.h
+
+schlegel_uff.o: \
+                    dprec.h\
+                    constants.o\
+                    evb_vars.o\
+                    schlegel_uff_parm.h
+
+select_coord.o: \
+                    assert.h\
+                    dprec.h\
+                    evb_vars.o\
+                    evb_mathf.o
+
+set.o: \
+                    copyright.h\
+                    dprec.h\
+                    qmmm_module.o\
+                    parms.o\
+                    constants.o\
+                    files.h\
+                    md.h\
+                    memory.h\
+                    parallel.h\
+                    extra.h\
+                    nmr.h\
+                    box.h\
+                    softcore.o
+
+sglds.o: \
+                    dprec.h\
+                    md.h\
+                    parallel.h\
+                    sgld.h
+
+
+sglds.o:   sglds.f
+	$(FPP) sglds.f > _sglds.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _sglds.f
+
+shake.o: \
+                    copyright.h\
+                    dprec.h\
+                    parallel.h\
+                    md.h
+
+
+shake.o:   shake.f
+	$(FPP) shake.f > _shake.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _shake.f
+
+short_ene.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    nonbond_list.o\
+                    constants.o\
+                    stack.o\
+                    softcore.o\
+                    ew_parallel.h\
+                    parallel.h\
+                    flocntrl.h\
+                    def_time.h\
+                    sgld.h\
+                    pimd_vars.o\
+                    decomp.o\
+                    les.h\
+                    ew_cntrl.h\
+                    md.h\
+                    files.h\
+                    ew_directp.h\
+                    ene_decomp.h\
+                    ips_lj.h\
+                    ew_directe.h\
+                    ew_directe2.h\
+                    ew_directe3.h\
+                    ew_directe4.h
+
+
+short_ene.o:   short_ene.f
+	$(FPP) short_ene.f > _short_ene.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _short_ene.f
+
+short_ene.LES.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    nonbond_list.LES.o\
+                    constants.o\
+                    stack.o\
+                    softcore.o\
+                    ew_parallel.h\
+                    parallel.h\
+                    flocntrl.h\
+                    def_time.h\
+                    sgld.h\
+                    pimd_vars.o\
+                    decomp.o\
+                    les.h\
+                    ew_cntrl.h\
+                    md.h\
+                    files.h\
+                    ew_directp.h\
+                    ene_decomp.h\
+                    ips_lj.h\
+                    ew_directe.h\
+                    ew_directe2.h\
+                    ew_directe3.h\
+                    ew_directe4.h
+
+short_ene.LES.o:   short_ene.f
+	$(FPP) -DLES short_ene.f > _short_ene.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _short_ene.f
+
+softcore.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    findmask.o\
+                    parallel.h\
+                    parms.o
+
+
+softcore.o:   softcore.f
+	$(FPP) softcore.f > _softcore.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _softcore.f
+
+spatial_fft.o: \
+                    assert.h\
+                    dprec.h\
+                    trace.o\
+                    def_time.h\
+                    parallel.h\
+                    constants.o\
+                    ew_parallel.h
+
+
+spatial_fft.o:   spatial_fft.f
+	$(FPP) spatial_fft.f > _spatial_fft.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _spatial_fft.f
+
+spatial_recip.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    nonbond_list.o\
+                    qmmm_module.o\
+                    stack.o\
+                    spatial_fft.o\
+                    ew_recip.o\
+                    flocntrl.h\
+                    ew_pme_recip.h\
+                    ew_frc.h\
+                    def_time.h\
+                    box.h\
+                    parallel.h\
+                    ew_parallel.h\
+                    constants.o\
+                    ew_bspline.o\
+                    extra.h\
+                    md.h
+
+
+spatial_recip.o:   spatial_recip.f
+	$(FPP) spatial_recip.f > _spatial_recip.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _spatial_recip.f
+
+stack.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h
+
+
+stack.o:   stack.f
+	$(FPP) stack.f > _stack.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _stack.f
+
+thermo_int.o: \
+                    copyright.h\
+                    dprec.h\
+                    softcore.o
+
+
+thermo_int.o:   thermo_int.f
+	$(FPP) thermo_int.f > _thermo_int.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _thermo_int.f
+
+torinternal.o: \
+                    dprec.h
+
+trace.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h\
+                    parallel.h
+
+trajene.o: \
+                    copyright.h\
+                    dprec.h\
+                    assert.h\
+                    nonbond_list.o\
+                    constants.o\
+                    memory.h\
+                    tgtmd.h\
+                    extra.h\
+                    box.h\
+                    ew_pme_recip.h
+
+unitv.o: \
+                    assert.h\
+                    dprec.h
+
+vdw_anal2num.o: \
+                    dprec.h\
+                    parms.o\
+                    evb_vars.o\
+                    memory.h
+
+veclib.o: \
+                    copyright.h\
+                    dprec.h\
+                    constants.o
+
+
+veclib.o:   veclib.f
+	$(FPP) veclib.f > _veclib.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _veclib.f
+
+wdc_bmat.o: \
+                    dprec.h\
+                    evb_vars.o\
+                    evb_mathf.o
+
+xgauss_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+xref.o: \
+                    copyright.h\
+                    assert.h\
+                    dprec.h
+
+
+xref.o:   xref.f
+	$(FPP) xref.f > _xref.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _xref.f
+
+xwarshel_anal2num.o: \
+                    dprec.h\
+                    evb_vars.o
+
+yammpnb.o: \
+                    copyright.h\
+                    dprec.h\
+                    parallel.h\
+                    md.h
+
+
+yammpnb.o:   yammpnb.f
+	$(FPP) yammpnb.f > _yammpnb.f
+	$(FC) -c $(FOPTFLAGS) -o $@ _yammpnb.f
+
+netcdf.o:  $(NETCDF)
+	touch netcdf.o
+

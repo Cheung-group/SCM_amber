@@ -1,0 +1,386 @@
+_align.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_align.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_align.f:integer     FENCC_UNIT
+_align.f:parameter ( FENCC_UNIT  = 40 )
+_align.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_align.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_align.f:integer     FENCC_UNIT
+_align.f:parameter ( FENCC_UNIT  = 40 )
+_amoeba_mdin.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_amoeba_mdin.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_amoeba_mdin.f:integer     FENCC_UNIT
+_amoeba_mdin.f:parameter ( FENCC_UNIT  = 40 )
+_amoeba_runmd.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_amoeba_runmd.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_amoeba_runmd.f:integer     FENCC_UNIT
+_amoeba_runmd.f:parameter ( FENCC_UNIT  = 40 )
+_amoeba_runmd.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_amoeba_runmd.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_amoeba_runmd.f:integer     FENCC_UNIT
+_amoeba_runmd.f:parameter ( FENCC_UNIT  = 40 )
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:integer     FENCC_UNIT
+_bintraj.f:parameter ( FENCC_UNIT  = 40 )
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:integer     FENCC_UNIT
+_bintraj.f:parameter ( FENCC_UNIT  = 40 )
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:integer     FENCC_UNIT
+_bintraj.f:parameter ( FENCC_UNIT  = 40 )
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_bintraj.f:integer     FENCC_UNIT
+_bintraj.f:parameter ( FENCC_UNIT  = 40 )
+_check_input.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_check_input.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_check_input.f:integer     FENCC_UNIT
+_check_input.f:parameter ( FENCC_UNIT  = 40 )
+_constantph.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_constantph.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_constantph.f:integer     FENCC_UNIT
+_constantph.f:parameter ( FENCC_UNIT  = 40 )
+_constantph.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_constantph.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_constantph.f:integer     FENCC_UNIT
+_constantph.f:parameter ( FENCC_UNIT  = 40 )
+_csa.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_csa.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_csa.f:integer     FENCC_UNIT
+_csa.f:parameter ( FENCC_UNIT  = 40 )
+_csa.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_csa.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_csa.f:integer     FENCC_UNIT
+_csa.f:parameter ( FENCC_UNIT  = 40 )
+_cshf.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_cshf.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_cshf.f:integer     FENCC_UNIT
+_cshf.f:parameter ( FENCC_UNIT  = 40 )
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:integer     FENCC_UNIT
+_dynlib.f:parameter ( FENCC_UNIT  = 40 )
+_dynlib.f:         call amopen(FENCC_UNIT,fencc,owrite,'F','W')
+_dynlib.f:            write(FENCC_UNIT,1000) title
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:integer     FENCC_UNIT
+_dynlib.f:parameter ( FENCC_UNIT  = 40 )
+_dynlib.f:      if ( ntwe > 0 ) close( FENCC_UNIT )
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:integer     FENCC_UNIT
+_dynlib.f:parameter ( FENCC_UNIT  = 40 )
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_dynlib.f:integer     FENCC_UNIT
+_dynlib.f:parameter ( FENCC_UNIT  = 40 )
+dynlib.f:         call amopen(FENCC_UNIT,fencc,owrite,'F','W')
+dynlib.f:            write(FENCC_UNIT,1000) title
+dynlib.f:      if ( ntwe > 0 ) close( FENCC_UNIT )
+_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ene.f:integer     FENCC_UNIT
+_ene.f:parameter ( FENCC_UNIT  = 40 )
+_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ene.f:integer     FENCC_UNIT
+_ene.f:parameter ( FENCC_UNIT  = 40 )
+_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ene.f:integer     FENCC_UNIT
+_ene.f:parameter ( FENCC_UNIT  = 40 )
+_evb_alloc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_alloc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_alloc.f:integer     FENCC_UNIT
+_evb_alloc.f:parameter ( FENCC_UNIT  = 40 )
+_evb_dealloc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_dealloc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_dealloc.f:integer     FENCC_UNIT
+_evb_dealloc.f:parameter ( FENCC_UNIT  = 40 )
+_evb_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_force.f:integer     FENCC_UNIT
+_evb_force.f:parameter ( FENCC_UNIT  = 40 )
+_evb_input.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_input.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_input.f:integer     FENCC_UNIT
+_evb_input.f:parameter ( FENCC_UNIT  = 40 )
+_evb_outoptions.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_outoptions.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_outoptions.f:integer     FENCC_UNIT
+_evb_outoptions.f:parameter ( FENCC_UNIT  = 40 )
+_evb_umb_primitive.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_umb_primitive.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_evb_umb_primitive.f:integer     FENCC_UNIT
+_evb_umb_primitive.f:parameter ( FENCC_UNIT  = 40 )
+_ew_box.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_box.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_box.f:integer     FENCC_UNIT
+_ew_box.f:parameter ( FENCC_UNIT  = 40 )
+_ew_force.f:double precision ENPP, ENPC, ENCC 
+_ew_force.f:common/ENCRD/ENPP,ENPC,ENCC
+_ew_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_force.f:integer     FENCC_UNIT
+_ew_force.f:parameter ( FENCC_UNIT  = 40 )
+_ew_force.f:   call mpi_allreduce(ENCC,rl_temp,1, &
+_ew_force.f:   call putm_back(ENCC,rl_temp,1)
+_ew_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_force.f:integer     FENCC_UNIT
+_ew_force.f:parameter ( FENCC_UNIT  = 40 )
+_ew_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_force.f:integer     FENCC_UNIT
+_ew_force.f:parameter ( FENCC_UNIT  = 40 )
+ew_force.f:   call mpi_allreduce(ENCC,rl_temp,1, &
+ew_force.f:   call putm_back(ENCC,rl_temp,1)
+_ew_handle_dips.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_handle_dips.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_handle_dips.f:integer     FENCC_UNIT
+_ew_handle_dips.f:parameter ( FENCC_UNIT  = 40 )
+_ew_recip.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_recip.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_recip.f:integer     FENCC_UNIT
+_ew_recip.f:parameter ( FENCC_UNIT  = 40 )
+_ew_setup.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_setup.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_setup.f:integer     FENCC_UNIT
+_ew_setup.f:parameter ( FENCC_UNIT  = 40 )
+_ew_setup.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_setup.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ew_setup.f:integer     FENCC_UNIT
+_ew_setup.f:parameter ( FENCC_UNIT  = 40 )
+_extra_pts.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_extra_pts.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_extra_pts.f:integer     FENCC_UNIT
+_extra_pts.f:parameter ( FENCC_UNIT  = 40 )
+_extra_pts.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_extra_pts.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_extra_pts.f:integer     FENCC_UNIT
+_extra_pts.f:parameter ( FENCC_UNIT  = 40 )
+_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_force.f:integer     FENCC_UNIT
+_force.f:parameter ( FENCC_UNIT  = 40 )
+_getcor.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_getcor.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_getcor.f:integer     FENCC_UNIT
+_getcor.f:parameter ( FENCC_UNIT  = 40 )
+_is_init.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_is_init.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_is_init.f:integer     FENCC_UNIT
+_is_init.f:parameter ( FENCC_UNIT  = 40 )
+_lmod.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_lmod.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_lmod.f:integer     FENCC_UNIT
+_lmod.f:parameter ( FENCC_UNIT  = 40 )
+_lmod.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_lmod.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_lmod.f:integer     FENCC_UNIT
+_lmod.f:parameter ( FENCC_UNIT  = 40 )
+_mdfil.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdfil.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdfil.f:integer     FENCC_UNIT
+_mdfil.f:parameter ( FENCC_UNIT  = 40 )
+_mdfil.f:   fencc = 'fencc'
+_mdfil.f:         call getarg_wrap(iarg,fencc)
+_mdfil.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdfil.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdfil.f:integer     FENCC_UNIT
+_mdfil.f:parameter ( FENCC_UNIT  = 40 )
+_mdfil.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdfil.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdfil.f:integer     FENCC_UNIT
+_mdfil.f:parameter ( FENCC_UNIT  = 40 )
+mdfil.f:   fencc = 'fencc'
+mdfil.f:         call getarg_wrap(iarg,fencc)
+_mdread.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdread.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdread.f:integer     FENCC_UNIT
+_mdread.f:parameter ( FENCC_UNIT  = 40 )
+_mdread.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdread.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdread.f:integer     FENCC_UNIT
+_mdread.f:parameter ( FENCC_UNIT  = 40 )
+_mdread.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdread.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdread.f:integer     FENCC_UNIT
+_mdread.f:parameter ( FENCC_UNIT  = 40 )
+_mdwrit.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdwrit.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdwrit.f:integer     FENCC_UNIT
+_mdwrit.f:parameter ( FENCC_UNIT  = 40 )
+_mdwrit.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdwrit.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mdwrit.f:integer     FENCC_UNIT
+_mdwrit.f:parameter ( FENCC_UNIT  = 40 )
+_minrit.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_minrit.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_minrit.f:integer     FENCC_UNIT
+_minrit.f:parameter ( FENCC_UNIT  = 40 )
+_mmtsb.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mmtsb.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_mmtsb.f:integer     FENCC_UNIT
+_mmtsb.f:parameter ( FENCC_UNIT  = 40 )
+_multisander.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_multisander.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_multisander.f:integer     FENCC_UNIT
+_multisander.f:parameter ( FENCC_UNIT  = 40 )
+_ncsu-bbmd-ctxt.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-bbmd-ctxt.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-bbmd-ctxt.f:integer     FENCC_UNIT
+_ncsu-bbmd-ctxt.f:parameter ( FENCC_UNIT  = 40 )
+_ncsu-bbmd-ctxt.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-bbmd-ctxt.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-bbmd-ctxt.f:integer     FENCC_UNIT
+_ncsu-bbmd-ctxt.f:parameter ( FENCC_UNIT  = 40 )
+_ncsu-bbmd-hooks.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-bbmd-hooks.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-bbmd-hooks.f:integer     FENCC_UNIT
+_ncsu-bbmd-hooks.f:parameter ( FENCC_UNIT  = 40 )
+_ncsu-sander-proxy.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-sander-proxy.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-sander-proxy.f:integer     FENCC_UNIT
+_ncsu-sander-proxy.f:parameter ( FENCC_UNIT  = 40 )
+_ncsu-sander-proxy.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-sander-proxy.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_ncsu-sander-proxy.f:integer     FENCC_UNIT
+_ncsu-sander-proxy.f:parameter ( FENCC_UNIT  = 40 )
+_nmrcal.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmrcal.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmrcal.f:integer     FENCC_UNIT
+_nmrcal.f:parameter ( FENCC_UNIT  = 40 )
+_nmr.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmr.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmr.f:integer     FENCC_UNIT
+_nmr.f:parameter ( FENCC_UNIT  = 40 )
+_nmr.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmr.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmr.f:integer     FENCC_UNIT
+_nmr.f:parameter ( FENCC_UNIT  = 40 )
+_nmr.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmr.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_nmr.f:integer     FENCC_UNIT
+_nmr.f:parameter ( FENCC_UNIT  = 40 )
+_out_evb.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_out_evb.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_out_evb.f:integer     FENCC_UNIT
+_out_evb.f:parameter ( FENCC_UNIT  = 40 )
+_parallel.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_parallel.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_parallel.f:integer     FENCC_UNIT
+_parallel.f:parameter ( FENCC_UNIT  = 40 )
+_pcshift.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pcshift.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pcshift.f:integer     FENCC_UNIT
+_pcshift.f:parameter ( FENCC_UNIT  = 40 )
+_pimd_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pimd_force.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pimd_force.f:integer     FENCC_UNIT
+_pimd_force.f:parameter ( FENCC_UNIT  = 40 )
+_pimd_init.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pimd_init.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pimd_init.f:integer     FENCC_UNIT
+_pimd_init.f:parameter ( FENCC_UNIT  = 40 )
+_pimd_init.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pimd_init.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_pimd_init.f:integer     FENCC_UNIT
+_pimd_init.f:parameter ( FENCC_UNIT  = 40 )
+_printe.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_printe.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_printe.f:integer     FENCC_UNIT
+_printe.f:parameter ( FENCC_UNIT  = 40 )
+_printe.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_printe.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_printe.f:integer     FENCC_UNIT
+_printe.f:parameter ( FENCC_UNIT  = 40 )
+_rdparm.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_rdparm.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_rdparm.f:integer     FENCC_UNIT
+_rdparm.f:parameter ( FENCC_UNIT  = 40 )
+_rdparm.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_rdparm.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_rdparm.f:integer     FENCC_UNIT
+_rdparm.f:parameter ( FENCC_UNIT  = 40 )
+_react_path.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_react_path.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_react_path.f:integer     FENCC_UNIT
+_react_path.f:parameter ( FENCC_UNIT  = 40 )
+_relax_mat.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_relax_mat.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_relax_mat.f:integer     FENCC_UNIT
+_relax_mat.f:parameter ( FENCC_UNIT  = 40 )
+_relax_mat.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_relax_mat.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_relax_mat.f:integer     FENCC_UNIT
+_relax_mat.f:parameter ( FENCC_UNIT  = 40 )
+_runmd.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_runmd.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_runmd.f:integer     FENCC_UNIT
+_runmd.f:parameter ( FENCC_UNIT  = 40 )
+_runmd.f:double precision ENPP, ENPC, ENCC 
+_runmd.f:common/ENCRD/ENPP,ENPC,ENCC
+_runmd.f:              write(40,*)ENCC
+runmd.f:              write(40,*)ENCC
+_runmin.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_runmin.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_runmin.f:integer     FENCC_UNIT
+_runmin.f:parameter ( FENCC_UNIT  = 40 )
+_sander.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_sander.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_sander.f:integer     FENCC_UNIT
+_sander.f:parameter ( FENCC_UNIT  = 40 )
+_sander.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_sander.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_sander.f:integer     FENCC_UNIT
+_sander.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_dg.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_dg.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_dg.f:integer     FENCC_UNIT
+_schlegel_dg.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_gmres.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_gmres.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_gmres.f:integer     FENCC_UNIT
+_schlegel_gmres.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_hcn_cart.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_hcn_cart.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_hcn_cart.f:integer     FENCC_UNIT
+_schlegel_hcn_cart.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_hcn_cart_irc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_hcn_cart_irc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_hcn_cart_irc.f:integer     FENCC_UNIT
+_schlegel_hcn_cart_irc.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_hcn_int_irc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_hcn_int_irc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_hcn_int_irc.f:integer     FENCC_UNIT
+_schlegel_hcn_int_irc.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_poh_irc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_poh_irc.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_poh_irc.f:integer     FENCC_UNIT
+_schlegel_poh_irc.f:parameter ( FENCC_UNIT  = 40 )
+_schlegel_poh_uff.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_poh_uff.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_schlegel_poh_uff.f:integer     FENCC_UNIT
+_schlegel_poh_uff.f:parameter ( FENCC_UNIT  = 40 )
+_set.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_set.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_set.f:integer     FENCC_UNIT
+_set.f:parameter ( FENCC_UNIT  = 40 )
+_short_ene.f:double precision ENPP, ENPC, ENCC 
+_short_ene.f:common/ENCRD/ENPP,ENPC,ENCC
+_short_ene.f:   ENCC = zero
+_short_ene.f:double precision ENPP, ENPC, ENCC 
+_short_ene.f:common/ENCRD/ENPP,ENPC,ENCC
+_short_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_short_ene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_short_ene.f:integer     FENCC_UNIT
+_short_ene.f:parameter ( FENCC_UNIT  = 40 )
+short_ene.f:   ENCC = zero
+_trajene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_trajene.f:      inptraj,twhb,twvdw,twchi,fenpc,fencc
+_trajene.f:integer     FENCC_UNIT
+_trajene.f:parameter ( FENCC_UNIT  = 40 )

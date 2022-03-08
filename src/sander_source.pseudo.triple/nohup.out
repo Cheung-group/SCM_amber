@@ -1,0 +1,414 @@
+./checkserconf
+cpp -traditional -P -xassembler-with-cpp -Dsecond=ambsecond -DBINTRAJ  ene.f > _ene.f
+gfortran -c -O3 -fno-range-check -fno-second-underscore -ffree-form  -o ene.o _ene.f
+ In file _ene.f:1379
+
+   double precision xij(max190),yij(max190),zij(max190),xkj(max190), &
+                      1
+Error: Symbol 'xij' at (1) already has basic type of REAL
+ In file _ene.f:1458
+
+      xij(jn) = x(i3+1)-x(j3+1)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1459
+
+      yij(jn) = x(i3+2)-x(j3+2)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1460
+
+      zij(jn) = x(i3+3)-x(j3+3)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1461
+
+      xkj(jn) = x(k3+1)-x(j3+1)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1462
+
+      ykj(jn) = x(k3+2)-x(j3+2)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1463
+
+      zkj(jn) = x(k3+3)-x(j3+3)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1464
+
+      xkl(jn) = x(k3+1)-x(l3+1)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1465
+
+      ykl(jn) = x(k3+2)-x(l3+2)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1466
+
+      zkl(jn) = x(k3+3)-x(l3+3)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1472
+
+      dx(jn) = yij(jn)*zkj(jn)-zij(jn)*ykj(jn)
+                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1473
+
+      dy(jn) = zij(jn)*xkj(jn)-xij(jn)*zkj(jn)
+                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1474
+
+      dz(jn) = xij(jn)*ykj(jn)-yij(jn)*xkj(jn)
+                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1475
+
+      gx(jn) = zkj(jn)*ykl(jn)-ykj(jn)*zkl(jn)
+                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1476
+
+      gy(jn) = xkj(jn)*zkl(jn)-zkj(jn)*xkl(jn)
+                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1477
+
+      gz(jn) = ykj(jn)*xkl(jn)-xkj(jn)*ykl(jn)
+                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1483
+
+            +dz(jn)*dz(jn)+tm24)
+                               1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1486
+
+            +gz(jn)*gz(jn)+tm24)
+                               1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1487
+
+      ct(jn) = dx(jn)*gx(jn)+dy(jn)*gy(jn)+dz(jn)*gz(jn)
+                                                       1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1498
+
+      z1(jn) = z10
+                 1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1499
+
+      z2(jn) = z20
+                 1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1502
+
+      fzi(jn) = ftem
+                   1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1510
+
+      ct(jn) = ap1
+                 1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1511
+
+      cphi(jn) = cos(ap1)
+                        1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1512
+
+      sphi(jn) = sin(ap1)
+                        1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1539
+
+      df(jn) = df1*fzi(jn)
+                         1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1573
+
+      fxi(jn) = - dr1
+                    1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1574
+
+      fyi(jn) = - dr2
+                    1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1575
+
+      fzi(jn) = - dr3
+                    1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1576
+
+      fxj(jn) = - drx + dr1
+                          1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1577
+
+      fyj(jn) = - dry + dr2
+                          1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1578
+
+      fzj(jn) = - drz + dr3
+                          1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1579
+
+      fxk(jn) = + drx + dr4
+                          1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1580
+
+      fyk(jn) = + dry + dr5
+                          1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1581
+
+      fzk(jn) = + drz + dr6
+                          1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1582
+
+      fxl(jn) = - dr4
+                    1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1583
+
+      fyl(jn) = - dr5
+                    1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1584
+
+      fzl(jn) = - dr6
+                    1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1599
+
+      xij(jn) = x(i3+1)-x(l3+1)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1600
+
+      yij(jn) = x(i3+2)-x(l3+2)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1601
+
+      zij(jn) = x(i3+3)-x(l3+3)
+                              1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1607
+
+      ct(jn) = xij(jn)*xij(jn)+yij(jn)*yij(jn)+zij(jn)*zij(jn)
+                                                             1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1646
+
+      sphi(jn) = g
+                 1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1670
+
+      cphi(jn) = f1-f2
+                     1
+Error: Unexpected STATEMENT FUNCTION statement at (1)
+ In file _ene.f:1705
+
+      fxi(jn) = fxi(jn)-xa
+               1
+Error: Statement function at (1) is recursive
+ In file _ene.f:1706
+
+      fyi(jn) = fyi(jn)-ya
+               1
+Error: Statement function at (1) is recursive
+ In file _ene.f:1707
+
+      fzi(jn) = fzi(jn)-za
+               1
+Error: Statement function at (1) is recursive
+ In file _ene.f:1708
+
+      fxl(jn) = fxl(jn)+xa
+               1
+Error: Statement function at (1) is recursive
+ In file _ene.f:1709
+
+      fyl(jn) = fyl(jn)+ya
+               1
+Error: Statement function at (1) is recursive
+ In file _ene.f:1710
+
+      fzl(jn) = fzl(jn)+za
+               1
+Error: Statement function at (1) is recursive
+ In file _ene.f:1503
+
+      ct0 = min(one,ct(jn)*z12)
+                     1
+Error: Function 'ct' at (1) has no IMPLICIT type
+ In file _ene.f:1507
+
+            zkj(jn)*(dy(jn)*gx(jn)-dx(jn)*gy(jn))
+                                           1
+Error: Function 'gy' at (1) has no IMPLICIT type
+ In file _ene.f:1521
+
+      ct0 = pn(ic)*ct(jn)
+                    1
+Error: Function 'ct' at (1) has no IMPLICIT type
+ In file _ene.f:1535
+
+      dums = sphi(jn)+sign(tm24,sphi(jn))
+                               1
+Error: Function 'sphi' at (1) has no IMPLICIT type
+ In file _ene.f:1536
+
+      dflim = gamc(ic)*(pn(ic)-gmul(inc)+gmul(inc)*cphi(jn))
+                                                      1
+Error: Function 'cphi' at (1) has no IMPLICIT type
+ In file _ene.f:1549
+
+      z11 = z1(jn)*z1(jn)
+                    1
+Error: Function 'z1' at (1) has no IMPLICIT type
+ In file _ene.f:1550
+
+      z12 = z1(jn)*z2(jn)
+                    1
+Error: Function 'z2' at (1) has no IMPLICIT type
+ In file _ene.f:1551
+
+      z22 = z2(jn)*z2(jn)
+                    1
+Error: Function 'z2' at (1) has no IMPLICIT type
+ In file _ene.f:1552
+
+      dc1 = -gx(jn)*z12-cphi(jn)*dx(jn)*z11
+                                  1
+Error: Function 'dx' at (1) has no IMPLICIT type
+ In file _ene.f:1553
+
+      dc2 = -gy(jn)*z12-cphi(jn)*dy(jn)*z11
+                                  1
+Error: Function 'dy' at (1) has no IMPLICIT type
+ In file _ene.f:1554
+
+      dc3 = -gz(jn)*z12-cphi(jn)*dz(jn)*z11
+                                  1
+Error: Function 'dz' at (1) has no IMPLICIT type
+ In file _ene.f:1555
+
+      dc4 =  dx(jn)*z12+cphi(jn)*gx(jn)*z22
+                                  1
+Error: Function 'gx' at (1) has no IMPLICIT type
+ In file _ene.f:1556
+
+      dc5 =  dy(jn)*z12+cphi(jn)*gy(jn)*z22
+                                  1
+Error: Function 'gy' at (1) has no IMPLICIT type
+ In file _ene.f:1557
+
+      dc6 =  dz(jn)*z12+cphi(jn)*gz(jn)*z22
+                                  1
+Error: Function 'gz' at (1) has no IMPLICIT type
+ In file _ene.f:1561
+
+      dr1 = df(jn)*(dc3*ykj(jn) - dc2*zkj(jn))
+             1
+Error: Function 'df' at (1) has no IMPLICIT type
+ In file _ene.f:1562
+
+      dr2 = df(jn)*(dc1*zkj(jn) - dc3*xkj(jn))
+             1
+Error: Function 'df' at (1) has no IMPLICIT type
+ In file _ene.f:1563
+
+      dr3 = df(jn)*(dc2*xkj(jn) - dc1*ykj(jn))
+             1
+Error: Function 'df' at (1) has no IMPLICIT type
+ In file _ene.f:1564
+
+      dr4 = df(jn)*(dc6*ykj(jn) - dc5*zkj(jn))
+             1
+Error: Function 'df' at (1) has no IMPLICIT type
+ In file _ene.f:1565
+
+      dr5 = df(jn)*(dc4*zkj(jn) - dc6*xkj(jn))
+             1
+Error: Function 'df' at (1) has no IMPLICIT type
+ In file _ene.f:1566
+
+      dr6 = df(jn)*(dc5*xkj(jn) - dc4*ykj(jn))
+             1
+Error: Function 'df' at (1) has no IMPLICIT type
+ In file _ene.f:1568
+
+            dc5*zkl(jn) - dc6*ykl(jn))
+                                1
+Error: Function 'ykl' at (1) has no IMPLICIT type
+ In file _ene.f:1570
+
+            dc4*zkl(jn) + dc6*xkl(jn))
+                                1
+Error: Function 'xkl' at (1) has no IMPLICIT type
+ In file _ene.f:1572
+
+            dc4*ykl(jn) - dc5*xkl(jn))
+                                1
+Error: Function 'xkl' at (1) has no IMPLICIT type
+ In file _ene.f:1631
+
+      r2 = fmuln/ct(jn)
+                  1
+Error: Function 'ct' at (1) has no IMPLICIT type
+ In file _ene.f:1651
+
+            call decpair(4,ii,jj,sphi(jn)*scee0)
+                                    1
+Error: Function 'sphi' at (1) has no IMPLICIT type
+ In file _ene.f:1653
+
+            call decpair(2,ii,jj,sphi(jn)*scee0)
+                                    1
+Error: Function 'sphi' at (1) has no IMPLICIT type
+ In file _ene.f:1658
+
+            call decpair(-2,ii,jj,sphi(jn)*scee0)
+                                     1
+Error: Function 'sphi' at (1) has no IMPLICIT type
+ In file _ene.f:1683
+
+            call decpair(4,ii,jj,cphi(jn)*scnb0)
+                                    1
+Error: Function 'cphi' at (1) has no IMPLICIT type
+ In file _ene.f:1685
+
+            call decpair(3,ii,jj,cphi(jn)*scnb0)
+                                    1
+Error: Function 'cphi' at (1) has no IMPLICIT type
+ In file _ene.f:1690
+
+            call decpair(-3,ii,jj,cphi(jn)*scnb0)
+                                     1
+Error: Function 'cphi' at (1) has no IMPLICIT type
+ In file _ene.f:1748
+
+      enbpl = enbpl+cphi(ksum)
+                       1
+Error: Function 'cphi' at (1) has no IMPLICIT type
+ In file _ene.f:1749
+
+      eelpl = eelpl+sphi(ksum)
+                       1
+Error: Function 'sphi' at (1) has no IMPLICIT type
+make: *** [ene.o] Error 1

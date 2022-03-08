@@ -1,0 +1,166 @@
+!9.2.2010
+!Antonios added the calculation of the triple scalar product that
+!         accounts for the correct chirality in amino acid pairs.
+
+! Margaret
+! add chiral term
+! U(chiral)=0.5*xkchi*(triple-triple_o)^2
+! triple is the triple scaler product
+! triple=(AxB)*C, where A=CB-CA,B=NC-CA, C=CC-CA
+! CA=xi,CB=x(i+1),NC=x(i+2),CC=x(i+3)
+! Ax=x(i+1)-xi
+! Ay=y(i+1)-yi
+! Az=z(i+1)-zi
+! Bx=x(i+2)-xi
+! By=y(i+2)-yi
+! Bz=z(i+2)-zi
+! Cx=x(i+3)-xi
+! Cy=y(i+3)-yi
+! Cz=z(i+3)-zi
+! F_xi=-dU(chiral)/dxi
+!     =-dU/dAx * dAx/dxi - dU/dBx* dBx/dxi - dU/dCx* dCx/dxi
+!     = dU/dAx+dU/dBx+dU/dCx
+! F_xi1=-dU(chiral)/dxi1
+!       = -dU/dAx * dAx/dxi1
+!       = -dU/dAx 
+! F_xi+2=-dU(chiral)/dxi2
+!       = -dU/dBx * dBx/dxi2
+!       = -dU/dBx 
+! F_xi+3=-dU(chiral)/dxi3
+!       = -dU/dCx * dCx/dxi3
+!       = -dU/dCx 
+
+        do i=1,ICHI
+        
+        ixi=ICA(i)
+        ixi1=ICB(i)
+        ixi2=INC(i)
+        ixi3=ICC(i)
+
+        XAX = delx_xax(i)
+        XAY = dely_xay(i) 
+        XAZ = delz_xaz(i)
+
+        XBX = delx_xbx(i) 
+        XBY = dely_xby(i)
+        XBZ = delz_xbz(i)
+
+        XCX = delx_xcx(i)
+        XCY = dely_xcy(i)
+        XCZ = delz_xcz(i)
+
+
+        xtriple=  XAX*XBY*XCZ+ XAZ*XBX*XCY + XAY*XBZ*XCX- XAZ*XBY*XCX - XAY*XBX*XCZ- XAX*XBZ*XCY
+
+! calculate energy
+
+        temp_chi=xkchi*(xtriple-XCHI(i))
+
+!        write(85,*) 'temp_chi ', xkchi, xtriple, XCHI(i) 
+
+
+        ECHII=0.5*temp_chi*(xtriple-XCHI(i))
+        ECHI=ECHII+ECHI
+
+       if(i.eq.1) then
+!       write(81,*)xchi(i),xtriple,ECHII,temp_chi
+       write(72,*)ixi,ixi1,ixi2,ixi3
+       endif
+! calculate force
+
+        Fxi1_chi= -(XBY*XCZ-XBZ*XCY)*temp_chi
+        Fxi2_chi= -(XAZ*XCY-XAY*XCZ)*temp_chi
+        Fxi3_chi= -(XAY*XBZ-XAZ*XBY)*temp_chi
+
+!       if(i.eq.1) then
+!       write(82,*)fxi1,fxi2,fxi3
+!       endif
+
+        Fxi_chi = -(Fxi1_chi+Fxi2_chi+Fxi3_chi)
+
+        Fyi1_chi= -(XBZ*XCX-XBX*XCZ)*temp_chi
+        Fyi2_chi= -(XAX*XCZ-XAZ*XCX)*temp_chi
+        Fyi3_chi= -(XAZ*XBX-XAX*XBZ)*temp_chi
+        Fyi_chi=   -(Fyi1_chi+Fyi2_chi+Fyi3_chi)
+
+!       if(i.eq.1) then
+!       write(83,*)fyi1,fyi2,fyi3
+!       endif
+
+        Fzi1_chi= -(XBX*XCY-XBY*XCX)*temp_chi
+        Fzi2_chi= -(XAY*XCX-XAX*XCY)*temp_chi
+        Fzi3_chi= -(XAX*XBY-XAY*XBX)*temp_chi
+        Fzi_chi = -(Fzi1_chi+Fzi2_chi+Fzi3_chi)
+
+!!      if(i.eq.1) then
+!       write(79,*)fzi1,fzi2,fzi3
+!       endif
+
+        
+        if(Fxi_chi.gt.MAXLIM) then
+        write(84,*) 'ixi,x ', ixi,fxi_chi,temp_chi,xtriple
+        Fxi_chi=MAXLIM
+        endif
+        if(Fyi_chi.gt.MAXLIM) then
+        write(84,*) 'ixi,y ', ixi,fyi_chi,temp_chi,xtriple
+        Fyi_chi=MAXLIM
+        endif
+        if(Fzi_chi.gt.MAXLIM) then
+        Fzi_chi=MAXLIM
+        write(84,*) 'ixi,z ', ixi,fzi_chi,temp_chi,xtriple
+        endif
+
+        if(Fxi1_chi.gt.MAXLIM) then
+        write(84,*) 'ixi1,x ', ixi1,fxi1_chi,temp_chi,xtriple
+        Fxi1_chi=MAXLIM
+        endif
+        if(Fyi1_chi.gt.MAXLIM) then
+        write(84,*) 'ixi1,y ', ixi1,fyi1_chi,temp_chi,xtriple
+        Fyi1_chi=MAXLIM
+        endif
+        if(Fzi1_chi.gt.MAXLIM) then
+        write(84,*) 'ixi1,z ', ixi1,fzi1_chi,temp_chi,xtriple
+        Fzi1_chi=MAXLIM
+        endif
+
+        if(Fxi2_chi.gt.MAXLIM) then
+        write(84,*) 'ixi2,x ', ixi2,fxi2_chi,temp_chi,xtriple
+        Fxi2_chi=MAXLIM
+        endif
+        if(Fyi2_chi.gt.MAXLIM) then
+        write(84,*) 'ixi2,y ', ixi2,fyi2_chi,temp_chi,xtriple
+        Fyi2_chi=MAXLIM
+        endif
+        if(Fzi2_chi.gt.MAXLIM) then
+        write(84,*) 'ixi2,z ', ixi2,fzi2_chi,temp_chi,xtriple
+        Fzi2_chi=MAXLIM
+        endif
+
+        if(Fxi3_chi.gt.MAXLIM) then
+        write(84,*) 'ixi3,x ', ixi3,fxi3_chi,temp_chi,xtriple
+        Fxi3_chi=MAXLIM
+        endif
+        if(Fyi3_chi.gt.MAXLIM) then
+        write(84,*) 'ixi3,y ', ixi3,fyi3_chi,temp_chi,xtriple
+        Fyi3_chi=MAXLIM
+        endif
+        if(Fzi3_chi.gt.MAXLIM) then
+        write(84,*) 'ixi3,z ', ixi3,fzi3_chi,temp_chi,xtriple
+        Fzi3_chi=MAXLIM
+        endif
+
+        force(1,ixi) = force(1,ixi)+Fxi_chi
+        force(2,ixi) = force(2,ixi)+Fyi_chi
+        force(3,ixi) = force(3,ixi)+Fzi_chi
+        force(1,ixi1) = force(1,ixi1)+Fxi1_chi
+        force(2,ixi1) = force(2,ixi1)+Fyi1_chi
+        force(3,ixi1) = force(3,ixi1)+Fzi1_chi
+        force(1,ixi2) = force(1,ixi2)+Fxi2_chi
+        force(2,ixi2) = force(2,ixi2)+Fyi2_chi
+        force(3,ixi2) = force(3,ixi2)+Fzi2_chi
+        force(1,ixi3) = force(1,ixi3)+Fxi3_chi
+        force(2,ixi3) = force(2,ixi3)+Fyi3_chi
+        force(3,ixi3) = force(3,ixi3)+Fzi3_chi
+
+        enddo   
+! Antonios end

@@ -1,0 +1,102 @@
+box.h:!     common block sizes:
+box.h:common/boxr/box(3),cut,scnb,scee,dielc,xbox0,ybox0,zbox0, &
+box.h:common/boxi/ntb,ifbox,numpk,nbit,ifcap,natcap,isftrp
+CHI.h:common/DELMAPCHI1/delx_xax(10000),dely_xay(10000),delz_xaz(10000)
+CHI.h:common/DELMAPCHI2/delx_xbx(10000),dely_xby(10000),delz_xbz(10000)
+CHI.h:common/DELMAPCHI3/delx_xcx(10000),dely_xcy(10000),delz_xcz(10000)
+debug.h:common/debug/do_debugf,neglgdel,zerochg,zerovdw,atomn, &
+debug.h:common/deb_heap/lscg,lsrms,lscn1,lscn2,lsdip, &
+ew_cntrl.h:!   BC_EWCTNRL needs to be set to the size of the common block:
+ew_cntrl.h:common/ewcntrl/ &
+ew_cntrl.h:common/nogrd_flags/nogrdptrs,nocutoff,boxbad
+ew_cntrl.h:common/nogrd_flags/inogrdptrs,inocutoff
+ew_erfc_spline.h:common/eedctab/leed_cub,leed_lin,ltau,mxeedtab, &
+ew_erfc_spline.h:common/tabpars/eedtbdns,dxdr
+ew_frc.h:common/ew_comm3/eer,eed,evdw,evdwr,ehb,eedvir,eea,ees, &
+ew_mpole.h:!   BC_MULTPOLE needs to be set to the size of the common block:
+ew_mpole.h:common/multpole/ &
+ew_mpole.h:common/inddipr/ &
+ew_mpole.h:common/inddipi/ &
+ew_parallel.h:common /ew_slabs/ indz,ind_tr_tmp,ind_tr_tmp1, &
+ew_parallel.h:common /pme_groups/direct_group,recip_group,world_group, &
+ew_parallel.h:common /pme_comms/direct_comm, recip_comm, world_comm
+ew_pme_recip.h:common/pme_size/ sizfftab,sizffwrk,siztheta,siz_q,sizheap,sizstack,sizscr, &
+ew_pme_recip.h:common/pme_pars_real/dsum_tol,rsum_tol,maxexp,ew_coeff
+ew_time.h:common /ew_time/ listtime(EW_LST_TIM_NUM),forctime(EW_FRC_TIM_NUM) &
+ew_time.h:common/indtime/ &
+extra.h:common/extra_logical/master
+extra_pts.h:common/fr_ptr/ifrtyp,iatcen,inumep,iepfr,ifrst,imid,ithrd, &
+files.h:common /files/ groupbuffer, mdin, mdout, inpcrd, parm, restrt, &
+files.h:! put this in a separate common block to stop the compiler from
+files.h:common/nmgrp/ numgroup, nslice
+files.h:common/runhed/ title, title1
+files.h:common/mdin_flags/mdin_ewald,mdin_pb,mdin_amoeba,mdin_apbs,sp_apbs
+files.h:common/mdin_flags/mdin_ewald,mdin_pb,mdin_amoeba
+files.h:integer BC_HULP  ! size in integers of common HULP
+files.h:common/hulp/ntpr,ntwr,ntwx,ntwv,ntwe,ntpp,ioutfm,ntwprt,ntave
+files.h:common/nmrrdr/redir,iredir
+flocntrl.h:common/flocntrl/do_dir,do_rec,do_adj,do_self,do_bond, &
+HB.1.h:common/MAP/maphb(10000,10000)
+HB.1.h:common/ENERTW/EHBA,EHBV
+HB.h:common/HYDROB/NXI(92000),NXI1(92000),NXI2(92000),NXI3(92000)
+HB.h:common/HBANG/THE0(10000),PHI0(10000)
+HB.h:common/MAP/maphb(10000,10000)
+HB.h:common/ENERTW/EHBA,EHBV,ECHI,XKCHI,tot_EHBA
+HB.h:common/DISPLACE/amp,nhb_pair
+HB.h:common/DELMAP1/delx_ixi_ixj(92000),dely_ixi_ixj(92000),delz_ixi_ixj(92000)
+HB.h:common/DELMAP2/delx_ixk_ixl(92000),dely_ixk_ixl(92000),delz_ixk_ixl(92000)
+HB.h:common/DELMAP3/delx_ixj_ixk(92000),dely_ixj_ixk(92000),delz_ixj_ixk(92000)
+les.h:common/lesr/lesfac,temp0les
+les.h:common/lesi/nlesty,lestyp,cnum,subsp,ileslst,jleslst,nlesadj
+les.h:common/ewlescomm/eeles,les_vir
+les.h:common/eprem/elesa,elesb,elesd,elesp
+md.h:integer BC_MDI  ! size in integers of common block mdi
+md.h:integer BC_MDR  ! size in Reals of common block mdr
+md.h:common/mdi/nrp,nspm,ig, &
+md.h:common/mdr/t,dt,temp0,tautp,pres0,comp,taup,temp,tempi, &
+md.h:common/mds/ restraintmask,bellymask,tgtfitmask,tgtrmsmask,noshakemask,crgmask,  &
+memory.h:common/memory/ &
+memory.h:! BC_MEMORY is the size of the MEMORY common block
+mmtsb.h:common /mmtsb_public/ mmtsb_switch, mmtsb_iterations, mmtsb_is_exchanged
+mmtsb.h:common /mmtsb_private_server/ servername, serverport, serverid, &
+new_time.h:! time_ptr common) are strictly internal to new_time.f.
+new_time.h:integer bc_time_par  ! size in integers of common time_ptr
+new_time.h:common/TIME_ptr/tpar_p(maxtime),tchild_p(maxtime), &
+new_time.h:common/TIME_val/t_accum(maxtime),tch_acc(maxtime), &
+new_time.h:common/TIME_lab/t_string
+new_time.h:common/timeglob/t_numtree,t_first(t_maxtree), &
+nmr.h:common /methylr/ tau,pop,popn,emix,aexp,awt,arange,oscale, &
+nmr.h:common /methyli/ nath,natmet,nummt,id2o,iroesy,ihet,nvect,ihsful,m2, &
+nmr.h:common/nmr1/scalm,pencut,ensave,tausw,ebdev,eadev,drjar, &
+nmr.h:common/nmr2/ resat
+nmr.h:common/align/dobsu,dobsl,dcut,gigj,dij,dwt,s11,s12,s13,s22,s23,s33, &
+nmr.h:common/csa/cobsu,cobsl,ccut,cwt,sigma,field,ncsa,icsa,jcsa,kcsa,datasetc
+nmr.h:   common/modes/ vect,freq,xdev,omegax,vtemp,bose,per_mode,nmsnap
+nmr.h:   common/derivg/ gamma_nmr, dgamma,dratg,iusev
+nmr.h:common/nmrstf/intreq,irlreq,lnmr01,inmr02,iprr,iprw
+nmr.h:common/correl/ntot,ntota,calc,exper,calca,expera,calcb,experb,ipmix,ntotb
+nmr.h:common/wremar/wnoesy,wshift,enoe,eshf,epcshf,ealign,ecsa
+parallel.h:common/parallel/numtasks,mytaskid,notdone, &
+parallel.h:common/parallel_multi/commworld, commsander, commmaster, comm_lpimd, &
+pb_md.h:   common /pb_mdl/ pbverbose
+pb_md.h:   common /pb_mdl/ pbprint
+pb_md.h:   common /pb_mdl/ pbgrid
+pb_md.h:   common /pb_mdl/ pbinit
+pb_md.h:   common /pb_mdi/ npbstep
+pb_md.h:   common /pb_mdi/ nsaslag
+pb_md.h:   common /pb_mdi/ npbgrid
+pb_md.h:   common /pb_mdi/ nsnbr
+pb_md.h:   common /pb_mdi/ nsnba
+pb_md.h:   common /pb_mdi/ ntnbr
+pb_md.h:   common /pb_mdi/ ntnba
+pb_md.h:   common /pb_mdi/ dofd
+pb_md.h:   common /pb_mdi/ ndofd
+pb_md.h:   common /pb_mdi/ dosas
+pb_md.h:   common /pb_mdi/ ndosas
+pcshift.h:common /simplex/ &
+pcshift.h:common/derive/ d(3,mshfd)
+qm2_parameters.h:! SECTION 1: Parameters common to all semi-empirical methods
+tgtmd.h:!     note: if this common block if changed, dont forget to
+tgtmd.h:common/tmd_int/ itgtmd
+tgtmd.h:common/tmd_real/ tgtrmsd,tgtmdfrc
+tgtmd.h:common/tmd_real2/ rmsdvalue

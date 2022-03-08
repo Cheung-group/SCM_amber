@@ -1,0 +1,302 @@
+134d133
+< #include "OLAP.h"
+136d134
+< #include "GAMMA.h"
+496,509c494,495
+< 
+< !Antonios added here 11.19.2010
+<    do gamma_index=1,nrsize
+<    gammai_as(gamma_index) = gamma_array(gamma_index)/20.455d0
+<    sdfac_as(gamma_index) = sqrt( 4.d0*gammai_as(gamma_index)*boltz2*temp0/dtx)
+< !   write(72,*)gammai,gammai_as(gamma_index),gamma_index
+< !   write(72,*)sdfac_as(gamma_index),gamma_index
+< !write(72,*)nrsize
+< 
+<    c_implic_as(gamma_index) = 1.d0/(1.d0+gammai_as(gamma_index)*dt5)
+<    c_explic_as(gamma_index) = 1.d0 - gammai_as(gamma_index)*dt5
+<    enddo
+< !   c_implic = 1.d0/(1.d0+gammai*dt5)
+< !   c_explic = 1.d0 - gammai*dt5
+---
+>    c_implic = 1.d0/(1.d0+gammai*dt5)
+>    c_explic = 1.d0 - gammai*dt5
+511d496
+< !Antonios end
+513d497
+< 
+1210c1194,1195
+< !        write(72,*)ECHI   This is the one that works. Prints one value for every step. 
+---
+> !        write(72,*)ECHI   This is the one that works. Prints one value for every step.
+> ! It was used for the serial version before we decided to add the echi at evdw in ew_directe.h 
+1633,1641d1617
+< 
+< !Antonios changed here 12/1/2010
+<         do gamma_index=1,nrsize
+<         sdfac_as(gamma_index) = sqrt( 4.d0*gammai_as(gamma_index)*boltz2*temp0/dtx)
+< !   write(72,*)gammai,gammai_as(gamma_index),gamma_index
+< !   write(72,*)sdfac_as(gamma_index),gamma_index
+<    enddo
+< !Antonios end
+< 
+1665,1668d1640
+< !Antonios added 11/20/2010
+< rsd_index=1.d0
+< !Antonios end
+< 
+1711,1732c1683,1688
+< !Antonios changed 11/20/2010
+< !Qian change
+<          !rsd_as(rsd_index) = sdfac_as(rsd_index)*sqrt(aamass)
+<          !rsd_as(rsd_index) = sdfac_as(rsd_index)*sqrt(amass(rsd_index))
+<          rsd_as(j) = sdfac_as(j)*sqrt(aamass)
+<          !write(72,*)rsd_index,rsd_as(rsd_index),aamass
+< !Qian change end
+< 
+< !         write(72,*)rsd,rsd_as(rsd_index),rsd_index
+< !Qian change
+<          !call gauss( 0.d0, rsd_as(rsd_index), fln )
+<          call gauss( 0.d0, rsd_as(j), fln )
+<          fln_as(i3+1) = fln
+< !         v(i3+1) = (v(i3+1)*c_explic_as(rsd_index) + (f(i3+1)+fln)*wfac) * c_implic_as(rsd_index)
+<          !call gauss( 0.d0, rsd_as(rsd_index), fln )
+<          call gauss( 0.d0, rsd_as(j), fln )
+<          fln_as(i3+2) = fln
+< !         v(i3+2) = (v(i3+2)*c_explic_as(rsd_index) + (f(i3+2)+fln)*wfac) * c_implic_as(rsd_index)
+<          !call gauss( 0.d0, rsd_as(rsd_index), fln )
+<          call gauss( 0.d0, rsd_as(j), fln )
+<          fln_as(i3+3) = fln
+< !         v(i3+3) = (v(i3+3)*c_explic_as(rsd_index) + (f(i3+3)+fln)*wfac) * c_implic_as(rsd_index)
+---
+>          call gauss( 0.d0, rsd, fln )
+>          v(i3+1) = (v(i3+1)*c_explic + (f(i3+1)+fln)*wfac) * c_implic
+>          call gauss( 0.d0, rsd, fln )
+>          v(i3+2) = (v(i3+2)*c_explic + (f(i3+2)+fln)*wfac) * c_implic
+>          call gauss( 0.d0, rsd, fln )
+>          v(i3+3) = (v(i3+3)*c_explic + (f(i3+3)+fln)*wfac) * c_implic
+1734c1690
+< 
+---
+>       
+1736,1787d1691
+<          rsd_index = rsd_index+1
+< !         write(72,*)rsd_index
+<       end do
+< ! Antonios commented out
+< !         call gauss( 0.d0, rsd, fln )
+< !         v(i3+1) = (v(i3+1)*c_explic + (f(i3+1)+fln)*wfac) * c_implic
+< !         call gauss( 0.d0, rsd, fln )
+< !         v(i3+2) = (v(i3+2)*c_explic + (f(i3+2)+fln)*wfac) * c_implic
+< !         call gauss( 0.d0, rsd, fln )
+< !         v(i3+3) = (v(i3+3)*c_explic + (f(i3+3)+fln)*wfac) * c_implic
+< !#  endif
+< !      
+< !         i3 = i3+3
+< !      end do
+< 
+< 
+< ! A new assignment of the mass is needed before the Verlet loop. Otherwise the mass will have
+< ! the latest value used in the presvious loop which is the one for the crowders.
+< ! Antonios changed here for Brownian Dynamics
+< !-----------------------------BROWNIAN DYNAMICS ------------------------------------------
+< 
+< rsd_index = 1
+<       do i3 = istart3,iend3
+< !Qian change
+<       if(mod((i3-1),3)==0) then
+<             rsd_index = i3/3 + 1
+<       endif
+< !Qian change end
+<           aamass = amass(rsd_index)
+<           !write(72,*)rsd_index,i3,istart3,iend3,aamass
+<           f(i3) = f(i3)*dtx/(aamass*gammai_as(rsd_index))
+< !          f(i3) = f(i3)*dtx/(gammai_as(rsd_index))
+< !           write(72,*)istart3,iend3,i3
+< !          write(72,*)gammai_as(rsd_index),f(i3),x(i3),fln_as(i3)
+< !         f(i3) = x(i3)
+< !         x(i3) = x(i3) + f(i3) + dtx*fln_as(i3)/(gammai_as(rsd_index))
+< !Qian add cap for the force
+<           if(f(i3) .gt. 500.0) then
+<           write(84,*)"warning",f(i3)
+<           f(i3) = 500.0
+<           endif
+<           if(f(i3) .lt. -500.0) then
+<           write(84,*)"warning",f(i3)
+<           f(i3) = -500.0
+<           endif
+< !Qian add end
+<          x(i3) = x(i3) + f(i3) + dtx*fln_as(i3)/(gammai_as(rsd_index)*aamass)
+< !Qian change
+< !         if(mod(i3,3)==0) then
+< !            rsd_index = rsd_index+1
+< !         endif
+< !Qian change end
+1790,1797d1693
+<       goto 245
+< 
+< !Antonios making sure that goto works and skips all the rest up to 245
+< do i3 = istart3,iend3
+< write(72,*)"hello",fln_as(i3)
+< end do
+< ! Antonios end
+< 
+1875,1876d1770
+< ! Antonios Brownian verlet
+< !write(72,*)istart3,iend3
+1879,1880c1773
+<          x(i3) = x(i3)+v(i3)*dtx 
+< !write(72,*)fln_as(i3)
+---
+>          x(i3) = x(i3)+v(i3)*dtx
+1883c1776
+< ! goto 245
+---
+> 
+2509,2517d2401
+< !Antonios adds continue
+<    245  continue  
+< 
+< !Antonios copied this from step 5 (necessary for output of mdcrd,rst,en, etc.)
+< 
+<    itdump = .false.             ! Write coordinates this step?
+<    ivdump = .false.             ! Write velocities this step?
+<    ixdump = .false.             ! Write restart this step?
+<    ivscm  = .false.             ! Do com removal this step?
+2519,2607d2402
+<    !  --- Determine if trajectory, velocity, or restart
+<    !      writing is imminent, or if the center of mass
+<    !      motion will be removed.
+<    !      These require xdist of velocities or dipoles in parallel runs:
+<    !
+<    ! Modified so that when running REMD, writing can occur less often
+<    !  than exchanges (e.g. ntwx > nstlim)
+<    ! DAN ROE: Added two new variables, total_nstep and total_nstlim.
+<    !          For non-REMD runs, total_nstep=nstep+1 and total_nstlim=nstlim 
+<    !           just like before.
+<    !          For REMD runs, total_nstep=(mdloop-1)*nstlim+nstep+1, where
+<    !           mdloop is the current exchange - this is the current
+<    !           replica exchange MD step. total_nstlim=numexchg*nstlim, which is
+<    !           the maximum number of REMD steps.
+<    total_nstep=nstep+1
+<    total_nstlim=nstlim
+< 
+<    if (ntwx>0) itdump = mod(total_nstep,ntwx) == 0 ! Trajectory coords
+<    if (ntwv>0) ivdump = mod(total_nstep,ntwv) == 0 ! Velocity
+<    if( ntwr /= 0 ) then
+<       if ( mod(total_nstep, ntwr ) == 0 ) ixdump = .true. ! Restart
+<    endif
+<    if( total_nstep >= total_nstlim ) ixdump = .true. ! Final restart
+<    if( mod(total_nstep,nscm) == 0 ) ivscm =.true. ! C.o.M. removal
+<    if (ntwv == -1 .and. itdump) ivdump = .true. !Combined crdvel file
+< 
+< ! Antonios moved here for parallel 4.7.11
+< 
+< #ifdef MPI
+< 
+<    !-----------------------------------------------------------------
+<    !  --- now distribute the coordinates, and if necessary, dipoles and vel:
+<    !-----------------------------------------------------------------
+< 
+<    call timer_barrier( commsander )
+<    call timer_stop_start(TIME_VERLET,TIME_DISTCRD)
+<    if ( .not. mpi_orig .and. numtasks > 1 ) then
+<       call xdist(x)
+<    end if
+<    ! dac/knut change: force the coordinates to be the same on both masters.
+<    ! For certain compilers, addition may not be strictly commutative, so
+<    ! the forces on group 0 may be different by roundoff from the forces on 
+<    ! group 1.  This can lead to divergent trajectories.  The interval at
+<    ! which they are resynchronized is hard-wired here to 20, which seems to
+<    ! work fine in our tests.
+<    if( icfe /= 0 .and. mod(nstep+1,20) == 0 ) then
+< 
+<       ! In dual-topology this is done within softcore.f
+<       if (ifsc /= 1) then
+<          if( master ) call mpi_bcast(x,nr3,MPI_DOUBLE_PRECISION, &
+<                                      0,commmaster,ierr)
+<       else
+<          if( master ) call sc_sync_x(x,nr3)
+<       end if
+<       if( numtasks>1 ) call mpi_bcast(x,nr3,MPI_DOUBLE_PRECISION, &
+<                                       0,commsander,ierr)
+<    end if
+<    call timer_stop(TIME_DISTCRD)
+< 
+< #endif  /* MPI */
+< 
+< #ifdef MPI
+<    if ( .not. mpi_orig .and. numtasks > 1 ) then
+<       call timer_start(TIME_DISTCRD)
+< 
+<       !  ---Here we provide every processor a full copy of the velocities
+<       !     for removal of center of mass motion, or for archiving.
+<       !     (Note: this is actually over-kill: for example, only the master
+<       !     node really needs the velocities for archiving.  But the extra
+<       !     overhead of doing it this way is probably small in most cases.)
+< 
+<       if( ivdump .or. ivscm .or. ixdump) then
+<          call xdist(v)
+<       endif
+< 
+<       if( ixdump .and. (induced == 1 .and. indmeth == 3 ) )then
+<          call xdist(xx(ldipvel))
+<          call xdist(xx(linddip))
+<       end if
+<       call timer_stop(TIME_DISTCRD)
+<    end if
+<    call timer_start(TIME_VERLET)
+< 
+<    !     ========================= END AMBER/MPI =========================
+< #endif  /* MPI */
+< 
+< 
+< 
+< !Antonios end
+2610,2652d2404
+< ! Antonios 9.15.2010
+< ! Folding condition and stop
+< 
+< ! check overlap
+<        temp_olap=EHBV+EHBA
+< !       write(75,*)EHBV, EHBA, temp_olap,nsolut
+<         if(temp_olap.lt.xener) then
+<         count_olap=0
+<         Q=0
+<           DO i_olap = 1,(ntypes-1)
+<            DO j_olap = i_olap+2,(ntypes-1)
+<            dist=0
+<              do M_olap=1,3
+<               ii_olap = (i_olap-1)*3+M_olap
+<               jj_olap = (j_olap-1)*3+M_olap
+<               dist= dist + (x(ii_olap)-x(jj_olap))**2
+< !       write(75,*)i_olap,ii_olap,j_olap,jj_olap,nsolut
+<              enddo
+<            count_olap = count_olap + 1
+<            dist=sqrt(dist)
+<            dist=dist/xolapcut
+< !       write(75,*)i,j,dist,xdist_olap(count_olap),count_olap
+<             if(dist.le.xdist_olap(count_olap)) then
+<             Q = Q + 1
+<             endif
+< 
+<            enddo
+<           enddo
+<                xdummy_olap=Q/real(count_olap)
+< !       write(78,*)Q,count_olap,xdummy_olap
+<                xdummy_olap=1.0-xdummy_olap
+< !       write(75,*)count_olap,Q,xdummy_olap,xoverlap
+< !       write(75,*)count_olap,Q,xdummy_olap,xoverlap,temp_olap,NSTEP
+<                 if(xdummy_olap.lt.xoverlap) then
+<        write(75,*)count_olap,Q,xdummy_olap,xoverlap,temp_olap,NSTEP
+<                 NSTEP = NSTLIM
+< !                NRU = NRUN
+<                 endif
+< 
+<       endif
+< 
+< 
+< ! Antonios end
+2905a2658
+>               write(38,*)ECHI
+2908d2660
+<               write(38,*)ECHI

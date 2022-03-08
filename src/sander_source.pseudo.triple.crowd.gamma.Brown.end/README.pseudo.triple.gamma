@@ -1,0 +1,102 @@
+11/2010
+Antonios Samiotakis
+
+This file contains the additional changes made to the code sander_source.pseudo.triple.size in order to
+include the size dependence for different beads in the langevin equation of motion.
+
+
+---------------------------------------------------------------------
+
+See new header file GAMMA.h
+
+------------------------------------------------------------------------
+sander.f
+
+
+
+!Antonios added 11.15.10
+!Antonios added gamma.inp for size dependent friction in Langevin
+
+      open(77,file='gamma.inp')
+      read(77,*)nrsize
+      write(80,*)nrsize
+
+      if(nrsize.lt.natom.or.nrsize.gt.natom) then
+      write(756,*) 'error: nrsize not equal natom, check'
+      endif
+
+        do i=1,nrsize
+        read(77,*)gamma_bd
+        gamma_array(i)= gamma_bd
+        write(80,*)gamma_array(i)
+        enddo
+
+
+
+
+
+close(77)
+------------------------------------------------------------------------
+
+runmd.f
+
+
+
+!Antonios added here 11.19.2010
+   do gamma_index=1,nrsize
+   gammai_as(gamma_index) = gamma_array(gamma_index)/20.455d0
+   sdfac_as(gamma_index) = sqrt( 4.d0*gammai_as(gamma_index)*boltz2*temp0/dtx)
+!   write(72,*)gammai,gammai_as(gamma_index),gamma_index
+!   write(72,*)sdfac_as(gamma_index),gamma_index
+   enddo
+!write(72,*)nrsize
+
+!Antonios end
+
+
+.....
+
+
+!Antonio changed here 11/20/2010
+        do gamma_index=1,nrsize
+        sdfac_as(gamma_index) = sqrt( 4.d0*gammai_as(gamma_index)*boltz2*temp0/dtx)
+!   write(72,*)gammai,gammai_as(gamma_index),gamma_index
+!   write(72,*)sdfac_as(gamma_index),gamma_index
+   enddo
+!Antonios end
+
+.....
+
+
+!Antonios added 11/20/2010
+rsd_index=1.d0
+!Antonios end
+
+
+......
+
+
+!Antonios changed 11/20/2010
+         rsd_as(rsd_index) = sdfac_as(rsd_index)*sqrt(aamass)
+
+!         write(72,*)rsd,rsd_as(rsd_index),rsd_index
+         call gauss( 0.d0, rsd_as(rsd_index), fln )
+         v(i3+1) = (v(i3+1)*c_explic + (f(i3+1)+fln)*wfac) * c_implic
+         call gauss( 0.d0, rsd_as(rsd_index), fln )
+         v(i3+2) = (v(i3+2)*c_explic + (f(i3+2)+fln)*wfac) * c_implic
+         call gauss( 0.d0, rsd_as(rsd_index), fln )
+         v(i3+3) = (v(i3+3)*c_explic + (f(i3+3)+fln)*wfac) * c_implic
+#  endif
+
+         i3 = i3+3
+         rsd_index = rsd_index+1
+      end do
+! Antonios end
+
+
+
+
+
+
+
+
