@@ -1,0 +1,66 @@
+############################################################################################
+##  The modification is based on Qian Wang's sander code (version 2012)			   #
+##   
+############################################################################################
+
+09.17.2013
+Jianfa Chen
+
+--------------------------------------------------------------------------------------------
+This modification is to fix the bug related to the chiral term.
+Qian wrote:
+
+The chiral calculation is in the code "ew_directe.h". In the current version, we wrote:
+ 
+if (atom index .eq. 1) then
+calculate the chiral
+end
+ 
+The reason we did the above "if statement" is to prevent double counting. 
+To help understand, let us assume there are only three beads 1, 2, 3 in the system.
+ 
+There are totally three pair interactions, i=1 and j=2; i=1 and j=3; i=2 and j=3; 
+For each i, the "ew_directe.h" will be called once. Here i can be 1 or 2 so totally this code will be called twice. 
+If we do not write the above if statement, the chiral energy will be calculated  twice, which is wrong. 
+So we added the if statement, the chiral energy calculation will be only performed once, when i = 1
+ 
+This is OK for Amber 6. Unfortunately, Amber 10 is different. Amber 10 has a unique loop sequence, depending on the structure!!! 
+For example, the pair can be i=3 and j=2, i=3 and j=1, i=2 and j=1. 
+See, in this situation, i cannot be 1 and so the chiral energy calculation is omitted due to the above if statement. 
+That is why occasionally the chiral is zero....
+ 
+Solution:
+The easiest solution I can think of:
+ 
+the 96th line in short_ene.f:  delete the line "if ( ntot > 0 )then"
+the 149th line in short_ene.f: delete this line "end if  ! ( ntot > 0 )"
+
+
+
+
+############################################################################################
+
+09.18.2014
+Pengzhi Zhang
+
+--------------------------------------------------------------------------------------------
+Amendment: Change I/O of the input files for parallel version. 
+For the input file pseudo.inp and triple.inp etc. that we added, we read them from all the 
+computing tasks, slowing down the performance when systems are large; 
+
+More importantly, we write the same information into the same file (80) from all the tasks, 
+once we do this for more than two nodes, the Lustre system chokes and doesn't know how to 
+handle it. To resolve this problem, only the masternode will read the input and broadcast to
+the slave nodes; writes to the file (80) is commented out (it is not used).
+
+>> sander.f
+
+Details can be found in files README.pseudo.triple and README.parallel in each subdirectory sander_source*.
+
+
+11.07.2015
+Pengzhi Zhang
+
+--------------------------------------------------------------------------------------------
+The previous change of the I/O part had a mistake broadcasting the triple.inp related variables.
+ICHI should also be broadcasted to all the slave nodes.

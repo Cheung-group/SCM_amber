@@ -1,0 +1,306 @@
+4.7.2011
+Antonios Samiotakis
+
+This file contains the changes made for the parallel version of sander.pseudo.triple.gamma.Brown.end
+The changes are made in runmd.f
+
+
+>> runmd.f
+
+
+! Antonios moved here for parallel 4.7.11
+
+#ifdef MPI
+
+   !-----------------------------------------------------------------
+   !  --- now distribute the coordinates, and if necessary, dipoles and vel:
+   !-----------------------------------------------------------------
+
+   call timer_barrier( commsander )
+   call timer_stop_start(TIME_VERLET,TIME_DISTCRD)
+   if ( .not. mpi_orig .and. numtasks > 1 ) then
+      call xdist(x)
+   end if
+   ! dac/knut change: force the coordinates to be the same on both masters.
+   ! For certain compilers, addition may not be strictly commutative, so
+   ! the forces on group 0 may be different by roundoff from the forces on 
+   ! group 1.  This can lead to divergent trajectories.  The interval at
+   ! which they are resynchronized is hard-wired here to 20, which seems to
+   ! work fine in our tests.
+   if( icfe /= 0 .and. mod(nstep+1,20) == 0 ) then
+
+      ! In dual-topology this is done within softcore.f
+      if (ifsc /= 1) then
+         if( master ) call mpi_bcast(x,nr3,MPI_DOUBLE_PRECISION, &
+                                     0,commmaster,ierr)
+      else
+         if( master ) call sc_sync_x(x,nr3)
+      end if
+      if( numtasks>1 ) call mpi_bcast(x,nr3,MPI_DOUBLE_PRECISION, &
+                                      0,commsander,ierr)
+   end if
+   call timer_stop(TIME_DISTCRD)
+
+#endif  /* MPI */
+
+
+#ifdef MPI
+   if ( .not. mpi_orig .and. numtasks > 1 ) then
+      call timer_start(TIME_DISTCRD)
+
+      !  ---Here we provide every processor a full copy of the velocities
+      !     for removal of center of mass motion, or for archiving.
+      !     (Note: this is actually over-kill: for example, only the master
+      !     node really needs the velocities for archiving.  But the extra
+      !     overhead of doing it this way is probably small in most cases.)
+
+      if( ivdump .or. ivscm .or. ixdump) then
+         call xdist(v)
+      endif
+
+      if( ixdump .and. (induced == 1 .and. indmeth == 3 ) )then
+         call xdist(xx(ldipvel))
+         call xdist(xx(linddip))
+      end if
+      call timer_stop(TIME_DISTCRD)
+   end if
+   call timer_start(TIME_VERLET)
+
+   !     ========================= END AMBER/MPI =========================
+#endif  /* MPI */
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+>> ew_force.f
+
+!Antonios added
+   call mpi_allreduce(EHBA,rl_temp,1, &
+         MPI_DOUBLE_PRECISION, mpi_sum,commsander,ierr)
+   call putm_back(EHBA,rl_temp,1)
+ 
+   call mpi_allreduce(EHBV,rl_temp,1, &
+         MPI_DOUBLE_PRECISION, mpi_sum,commsander,ierr)
+   call putm_back(EHBV,rl_temp,1)
+ 
+   call mpi_allreduce(ECHI,rl_temp,1, &
+         MPI_DOUBLE_PRECISION, mpi_sum,commsander,ierr)
+   call putm_back(ECHI,rl_temp,1)
+!Antonios end
+
+
+############################################################################################
+
+09.17.2013
+Jianfa Chen
+
+--------------------------------------------------------------------------------------------
+>>short_ene.f
+
+line 96-98
+!! 09/05/2013, Jianfa commented out the line below.
+!!            if ( ntot > 0 )then
+!!End Jianfa
+
+line 151-154
+!! 09/05 Jianfa commented out the line below to fix a bug in the chiral energy
+!!term
+!!            end if  ! ( ntot > 0 )
+!! End Jianfa
+
+This modification is to fix the bug related to the chiral term.
+Qian wrote:
+
+The chiral calculation is in the code "ew_directe.h". In the current version, we wrote:
+ 
+if (atom index .eq. 1) then
+calculate the chiral
+end
+ 
+The reason we did the above "if statement" is to prevent double counting. 
+To help understand, let us assume there are only three beads 1, 2, 3 in the system.
+ 
+There are totally three pair interactions, i=1 and j=2; i=1 and j=3; i=2 and j=3; 
+For each i, the "ew_directe.h" will be called once. Here i can be 1 or 2 so totally this code will be called twice. 
+If we do not write the above if statement, the chiral energy will be calculated  twice, which is wrong. 
+So we added the if statement, the chiral energy calculation will be only performed once, when i = 1
+ 
+This is OK for Amber 6. Unfortunately, Amber 10 is different. Amber 10 has a unique loop sequence, depending on the structure!!! 
+For example, the pair can be i=3 and j=2, i=3 and j=1, i=2 and j=1. 
+See, in this situation, i cannot be 1 and so the chiral energy calculation is omitted due to the above if statement. 
+That is why occasionally the chiral is zero....
+ 
+Solution:
+The easiest solution I can think of:
+ 
+the 96th line in short_ene.f:  delete the line "if ( ntot > 0 )then"
+the 149th line in short_ene.f: delete this line "end if  ! ( ntot > 0 )"
+
+
+
+
+
+############################################################################################
+
+09.18.2014
+Pengzhi Zhang
+
+--------------------------------------------------------------------------------------------
+Amendment: Change I/O of the input files for parallel version. 
+For the input file pseudo.inp and triple.inp etc. that we added, we read them from all the 
+computing tasks, slowing down the performance when systems are large; 
+
+More importantly, we write the same information into the same file (80) from all the tasks, 
+once we do this for more than two nodes, the Lustre system chokes and doesn't know how to 
+handle it. To resolve this problem, only the masternode will read the input and broadcast to
+the slave nodes; writes to the file (80) is commented out (it is not used).
+
+>> sander.f
+
+! Pengzhi 9/20/14
+! CHANGE                                        - STATUS
+! Only master task should read input files      - done
+! Commented out writing fo fortran unit 80      - done
+! Added bcast of data after inputs are captured - done
+! Added timers                                  - done
+tacc_masterwork: if(master) then
+
+! Antonios added 9/2/10
+! Reading triple.inp for Chiral term
+
+      open(78,file='triple.inp')
+      read(78,*)nbeta,xxkchi
+
+        XKCHI=xxkchi
+        ICHI=nbeta
+! Pengzhi 9/20/14
+!      write(80,*)ICHI,XKCHI
+
+      do j=1,nbeta
+        read(78,*)IICA,IICB,IINC,IICC,xxchi
+! Pengzhi 9/20/14
+!        write(80,*)IICA,IICB,IINC,IICC,xxchi
+       ICA(j) = iica
+       ICB(j) = iicb
+       INC(j) = iinc
+       ICC(j) = iicc
+       XCHI(j) = xxchi
+      enddo
+                                      
+! Antonios added 2/9/10
+! Reading pseudo.inp for Hydrogen Bonds
+
+      open(79,file='pseudo.inp')
+      read(79,*)nhb_pair,Amp
+! Pengzhi 9/20/14
+!      write(80,*)nhb_pair,Amp
+      if(natom.gt.10000) then
+      write(755,*) 'error:natom gt 10000,check HB.h'
+      endif
+
+      if(nhb_pair.gt.92000) then
+      write(755,*) 'error:nhb_pair gt 92000,check HB.h'
+      endif
+
+      do j=1,natom
+       do k=1,natom
+       maphb(j,k) = zero
+       enddo
+      enddo
+
+
+
+      do j=1,nhb_pair
+       NXI(j) = zero
+       NXI1(j) = zero
+       NXI2(j) = zero
+       NXI3(j) = zero
+      enddo
+
+
+
+! ixi1<ixi2
+      do j=1,nhb_pair
+        read(79,*)ixi,ixi1,ixi2,ixi3
+! Pengzhi 9/20/14
+!        write(80,*)ixi,ixi1,ixi2,ixi3
+
+       maphb(ixi1,ixi2) = j
+       maphb(ixi2,ixi1) = j
+
+!        write(80,*)maphb(j,j)
+
+       NXI(j) = ixi
+       NXI1(j) = ixi1
+       NXI2(j) = ixi2
+       NXI3(j) = ixi3
+
+      enddo
+
+close(78)
+close(79)
+close(80)
+! Antonios end
+
+! Pengzhi 9/20/14
+ end if tacc_masterwork
+
+#ifdef MPI
+   !     =========================== AMBER/MPI ===========================
+
+   !     NOTE: in the current AMBER/MPI implementation, two means of
+   !     running in parallel within sander are supported. The value
+   !     of mpi_orig determines which approach is used.
+   !     This is turned on when minimization (imin .ne. 0) is requested,
+   !     and is otherwise off.
+
+   !     When running the mpi_orig case, a variable notdone is now
+   !     set by the master and determines when to exit the force()
+   !     loop.  When the master has finished calling force, the
+   !     master changes notdone to 0 and broadcasts the data one more
+   !     time to signal end of the loop.  force() is modified so that
+   !     in the mpi_orig case, an initial broadcast is done to receive
+   !     the value from the master to decide whether to do the work or
+   !     simply exit.
+
+   !     ...set up initial data and send all needed data to other nodes,
+   !     now that the master has it
+
+   !     First, broadcast parameters in memory.h, so that all processors
+   !     will know how much memory to allocate:
+ 
+! Pengzhi 9/20/14
+! Broadcast data read from input files
+! From triple.inp
+ CALL MPI_Bcast( ICHI,    1, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( nbeta,    1, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( ICA,  nbeta, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( ICB,  nbeta, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( INC,  nbeta, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( ICC,  nbeta, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( XKCHI,    1, MPI_DOUBLE_PRECISION, 0, commsander, ierr )
+ CALL MPI_Bcast( XCHI, nbeta, MPI_DOUBLE_PRECISION, 0, commsander, ierr )
+! From pseudo.inp
+! NOTE: I am skipping the initialization of NXI, NXI1, NXI2, NXI3 to zero 
+!       since they are read from file immediately afterwards
+ CALL MPI_Bcast( natom,    1, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( nhb_pair, 1, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( NXI,  nhb_pair, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( NXI1, nhb_pair, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( NXI2, nhb_pair, MPI_INTEGER, 0, commsander, ierr )
+ CALL MPI_Bcast( NXI3, nhb_pair, MPI_INTEGER, 0, commsander, ierr )
+ DO j=1,natom
+   DO k=1,natom
+      maphb(j,k) = zero
+   END DO
+ END DO
+ DO j=1,nhb_pair
+       ixi1 = NXI1(j)
+       ixi2 = NXI2(j)
+       maphb(ixi1,ixi2) = j
+       maphb(ixi2,ixi1) = j
+ END DO
+! Pengzhi end 9/20/14
