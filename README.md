@@ -15,6 +15,7 @@ Please start from the original version of amber/10 before compile this version.
 ***According to License agreement, we only upload the sander source code. Place those sander_source directories in the $AMBERHOME/src and compile.
 
 ***Description***
+
 Below are descriptions about versions of sander codes for various types of the Sidechain-Calpha Model (SCM).
    1) sander_source.pseudo.triple --------------- thermodynamics, bulk, without debye-huckel potential
    2) sander_source.pseudo.triple.debye --------- thermodynamics, bulk, with debye-huckel potential
