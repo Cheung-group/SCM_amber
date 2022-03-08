@@ -14,6 +14,8 @@ Please start from the original version of amber/10 before compile this version.
 
 ***According to License agreement, we only upload the sander source code. Place those sander_source directories in the $AMBERHOME/src and compile.
 
+
+
 ***Description***
 
 Below are descriptions about versions of sander codes for various types of the Sidechain-Calpha Model (SCM).
@@ -51,6 +53,7 @@ Below are descriptions about versions of sander codes for various types of the S
    if( numtasks <= 8 ) maxpr = maxpr/numtasks
    if( numtasks >  8 ) maxpr = 4*maxpr/(3*numtasks)
    play with the coefficient, eg. change 4 to 40, it can solve the problem
+
 
 
 ***Installation***
